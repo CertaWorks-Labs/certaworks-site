@@ -1,0 +1,1056 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goal Drift Monitor — CertaWorks</title>
+  <meta name="description" content="Goal Drift Monitor tracks whether long-running agents are still aligned with their original goal. Includes CLI, MCP tools, local HTTP API, turn-by-turn drift scoring, and webhook alert receipts.">
+  <link rel="canonical" href="https://certaworks.dev/products/goal-drift-monitor">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/goal-drift-monitor">
+  <meta property="og:title" content="Goal Drift Monitor — CertaWorks">
+  <meta property="og:description" content="Detect when long-running agents drift off-task. Session-based drift scoring, webhook alerts, and a local dashboard for monitoring alignment turn by turn.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Goal Drift Monitor — CertaWorks">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Goal Drift Monitor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Goal Drift Monitor tracks whether long-running agents are still aligned with their original goal and records webhook alert receipts when behavior diverges.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* ── Product detail page extras ─────────────────── */
+
+    /* Hero — amber glow for drift / warning theme */
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(245,158,11,0.13) 0%, rgba(180,120,0,0.05) 50%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .pdp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 20px;
+    }
+    .pdp-h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .pdp-subhead {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+    .pdp-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .pdp-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.28);
+      color: var(--c-amber);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--c-amber);
+      flex-shrink: 0;
+    }
+
+    /* ── Dark section base ─── */
+    .section-dark {
+      background: var(--c-dark);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Alternating light section ─── */
+    .section-light {
+      background: var(--c-white);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-light .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Standard section on bg ─── */
+    .section .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Section headline (dark bg) ─── */
+    .pdp-section-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .pdp-section-body {
+      color: var(--c-dark-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── Problem section ─── */
+    .problem-body {
+      color: var(--c-dark-muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.75;
+      max-width: 720px;
+      margin-top: 24px;
+    }
+    .problem-body p + p { margin-top: 20px; }
+
+    /* ── How it works flow ─── */
+    .how-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-step {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    /* Amber step numbers for drift theme */
+    .how-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(245,158,11,0.14);
+      border: 1px solid rgba(245,158,11,0.32);
+      color: #fbbf24;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .how-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+    }
+    .how-flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-dark-muted);
+      font-size: 22px;
+      padding: 0 4px;
+      align-self: center;
+    }
+    .how-caveat {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      color: var(--c-dark-muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    /* ── Drift scoring table ─── */
+    .model-table-wrap { overflow-x: auto; margin-top: 28px; }
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .model-table th {
+      text-align: left;
+      padding: 10px 16px;
+      color: rgba(160,200,240,0.55);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-family: var(--font-sans, inherit);
+    }
+    .model-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--c-dark-muted);
+    }
+    .model-table td:first-child {
+      font-family: var(--font-mono);
+      color: var(--c-dark-text);
+      font-weight: 600;
+    }
+    .score-badge-aligned { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(16,185,129,0.12); color: var(--c-green); }
+    .score-badge-drift   { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
+    .score-badge-alert   { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(220,38,38,0.12); color: #f87171; }
+    .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
+
+    /* ── Dashboard / history callout ─── */
+    .dashboard-callout {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.22);
+      border-radius: 10px;
+    }
+    .dashboard-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 10px;
+    }
+    .dashboard-callout p {
+      font-size: 14px;
+      color: rgba(200,180,120,0.85);
+      line-height: 1.65;
+    }
+    .dashboard-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-teal);
+      text-decoration: none;
+    }
+    .dashboard-link:hover { text-decoration: underline; }
+
+    /* ── MCP tools grid — amber hover for drift theme ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(245,158,11,0.35); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #fbbf24; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
+    .tools-group-label:first-child { margin-top: 0; }
+
+    /* ── Limits section ─── */
+    .limits-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) {
+      .limits-cols { grid-template-columns: 1fr; }
+    }
+    .limits-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .limits-col-does   .limits-col-title { color: var(--c-green); }
+    .limits-col-doesnt .limits-col-title { color: var(--c-amber); }
+    .limits-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .limits-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--c-dark-line);
+      font-size: 14px;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-icon-does   { color: var(--c-green); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-icon-doesnt { color: var(--c-amber);  flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-list li span { color: var(--c-dark-muted); }
+
+    /* ── Beta form (dark context) ─── */
+    .beta-section-dark {
+      background: var(--c-dark-2);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .beta-section-dark .beta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .beta-section-dark .beta-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .beta-heading-dark {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .beta-desc-dark {
+      font-size: 15px;
+      color: var(--c-dark-muted);
+      line-height: 1.65;
+    }
+
+    /* Reveal animation (shared with main site) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Breadcrumb ─── */
+    .breadcrumb { padding: 18px clamp(20px,4vw,60px) 0; position: relative; z-index: 2; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .breadcrumb-list li { color: rgba(160,200,240,0.45); }
+    .breadcrumb-list li a { color: rgba(160,200,240,0.55); text-decoration: none; transition: color 200ms; }
+    .breadcrumb-list li a:hover { color: var(--c-dark-text); }
+    .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
+
+    /* ── Responsive nav tweak on subpage ─── */
+    @media (max-width: 600px) {
+      .pdp-hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
+          <li><a href="../dashboard.html">Dashboard</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── BREADCRUMB ────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="background: var(--c-dark);">
+      <ol class="breadcrumb-list">
+        <li><a href="../products.html">Products</a></li>
+        <li aria-current="page">Goal Drift Monitor</li>
+      </ol>
+    </nav>
+
+    <!-- ── HERO ──────────────────────────────────── -->
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+      <div class="pdp-hero-inner">
+        <p class="pdp-eyebrow">Product 05 · Monitor / API / MCP / Dashboard · Local Slice</p>
+        <h1 class="pdp-h1" id="pdp-hero-title">Goal Drift Monitor</h1>
+        <p class="pdp-subhead">
+          Long-running agents drift. A task that starts focused on one goal slowly shifts across tool
+          calls, subtasks, and multi-step work — without any system noticing. Goal Drift Monitor
+          scores alignment turn by turn and fires webhook alerts when the drift threshold is breached.
+        </p>
+        <div class="pdp-hero-ctas">
+          <a href="#install" class="btn btn-primary btn-sm">Local Install →</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-sm">How It Works</a>
+        </div>
+        <div class="pdp-status-badge">
+          Local product slice — Hosted monitoring not yet live
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THE PROBLEM ───────────────────────────── -->
+    <section class="section-dark" id="problem" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">The Problem</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="problem-title">Agents drift off-goal without warning.</h2>
+        <div class="problem-body reveal">
+          <p>
+            Long-running agents don't fail obviously. They drift. A task that starts with a clear
+            goal — "summarize customer refund policy questions" — gradually shifts into tangential
+            directions across dozens of tool calls, spawned subtasks, and multi-step reasoning
+            chains. No error is thrown. The agent keeps working.
+          </p>
+          <p>
+            By the time a team reviews the output, the agent has been off-track for many turns.
+            There is no record of when alignment started breaking down, no signal that fired when
+            the drift was still recoverable, and no way to understand which turns caused the
+            divergence.
+          </p>
+          <p>
+            Goal Drift Monitor adds a scoring layer that evaluates each agent turn against the
+            original goal, records the drift score, fires a webhook alert when the threshold is
+            breached, and keeps a full per-session history so you can see exactly where alignment
+            started to slip.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────── -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">How It Works</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="how-title">Session → Score → Alert</h2>
+
+        <div class="how-flow reveal" role="list">
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">1</div>
+            <div class="how-step-title">Create a goal session</div>
+            <p class="how-step-desc">
+              Register the agent's original goal text and a drift threshold (0–1). An optional
+              webhook URL can be supplied to receive alert payloads. The session is persisted
+              locally and returns a session ID for all subsequent calls.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">2</div>
+            <div class="how-step-title">Record turns and score drift</div>
+            <p class="how-step-desc">
+              After each agent action or message, add a turn with the turn content. The scorer
+              compares the turn against the goal text and returns an
+              <code style="font-size:12px;color:#fbbf24">alignmentScore</code> (0–1) and a
+              <code style="font-size:12px;color:#fbbf24">driftScore</code> (1 minus alignment).
+              Every turn result is persisted to the local session history.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">3</div>
+            <div class="how-step-title">Receive alerts and review history</div>
+            <p class="how-step-desc">
+              When a turn's drift score meets or exceeds the threshold, an alert fires and an
+              <code style="font-size:12px;color:#fbbf24">alertReceipt</code> is stored recording
+              delivery status, HTTP status code, and any error. Use the CLI, MCP tools, or local
+              dashboard to review per-turn drift history, summaries, and alert receipts.
+            </p>
+          </article>
+        </div>
+
+        <div class="how-caveat reveal">
+          The MCP and CLI interfaces currently expose lexical scoring (TF-weighted Jaccard overlap)
+          for predictable, API-key-free local operation. The SDK also exposes a semantic scorer
+          backed by an LLM, which is more accurate but requires a provider API key and incurs token
+          cost. Webhook delivery is distinct from alert threshold: <code style="font-size:13px">alertFired</code>
+          means the drift threshold was breached; <code style="font-size:13px">alertDeliveryStatus</code>
+          records whether the webhook was configured, delivered, or failed.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DRIFT SIGNALS / SCORING ──────────────── -->
+    <section class="section" id="scoring" aria-labelledby="scoring-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Drift Signals</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="scoring-title">What the scorer measures</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Every turn scored by Goal Drift Monitor returns a structured result. The fields below
+          are pulled directly from the scorer and monitor interfaces in the source.
+        </p>
+
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Drift scoring fields and their meanings">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Range / Values</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>alignmentScore</td>
+                <td>number</td>
+                <td><span class="score-badge-aligned">0 – 1</span></td>
+                <td>How well the turn text aligns with the original goal. 1 = perfectly aligned; 0 = completely off-topic.</td>
+              </tr>
+              <tr>
+                <td>driftScore</td>
+                <td>number</td>
+                <td><span class="score-badge-drift">0 – 1</span></td>
+                <td>1 minus alignmentScore. Higher value means more divergence from the goal.</td>
+              </tr>
+              <tr>
+                <td>method</td>
+                <td>string</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">lexical</code> / <code style="font-family:var(--font-mono);font-size:12px">semantic</code></td>
+                <td>Scoring method used. MCP and CLI default to lexical. Semantic requires a provider API key.</td>
+              </tr>
+              <tr>
+                <td>alertFired</td>
+                <td>boolean</td>
+                <td>true / false</td>
+                <td>Whether the drift score met or exceeded the session's configured drift threshold.</td>
+              </tr>
+              <tr>
+                <td>alertDeliveryStatus</td>
+                <td>string</td>
+                <td><span class="score-badge-alert">not_configured</span> / <code style="font-family:var(--font-mono);font-size:12px">delivered</code> / <code style="font-family:var(--font-mono);font-size:12px">failed</code></td>
+                <td>Webhook delivery result. Separate from alertFired — an alert can fire even if no webhook is configured.</td>
+              </tr>
+              <tr>
+                <td>driftTrend</td>
+                <td>string</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">stable</code> / <code style="font-family:var(--font-mono);font-size:12px">rising</code> / <code style="font-family:var(--font-mono);font-size:12px">falling</code></td>
+                <td>Computed from the last three turns. Rising means drift is increasing; falling means the agent is re-aligning.</td>
+              </tr>
+              <tr>
+                <td>averageDrift</td>
+                <td>number</td>
+                <td>0 – 1</td>
+                <td>Mean drift score across all turns in the session. Available in the session summary.</td>
+              </tr>
+              <tr>
+                <td>maxDrift</td>
+                <td>number</td>
+                <td>0 – 1</td>
+                <td>Highest drift score recorded across all turns. Available in the session summary.</td>
+              </tr>
+              <tr>
+                <td>alertCount</td>
+                <td>number</td>
+                <td>integer ≥ 0</td>
+                <td>Number of turns in which alertFired was true for the session. Available in the session summary.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="model-note reveal">
+          The lexical scorer uses TF-weighted Jaccard overlap after stopword removal. The default
+          drift threshold is <code style="font-family:var(--font-mono);font-size:12px">0.6</code>.
+          Override it per session with
+          <code style="font-family:var(--font-mono);font-size:12px">--threshold</code> (CLI) or
+          <code style="font-family:var(--font-mono);font-size:12px">drift_threshold</code> (MCP / SDK).
+        </p>
+      </div>
+    </section>
+
+    <!-- ── LOCAL INSTALL ─────────────────────────── -->
+    <section class="install-pdp" id="install" aria-labelledby="install-title">
+      <div class="install-pdp-inner">
+
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Local Install</span>
+          </div>
+          <h2 class="install-pdp-heading" id="install-title">
+            CLI, MCP server, and local dashboard
+          </h2>
+          <p class="install-pdp-subhead">
+            Goal Drift Monitor ships as a local CLI and MCP server. Use the CLI to create sessions,
+            add turns, review summaries, and serve the local dashboard. Wire the MCP tools into any
+            MCP-compatible agent runtime for automated in-process monitoring.
+          </p>
+          <p class="install-pdp-subhead">
+            The local dashboard starts on
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-amber)">http://127.0.0.1:4321/dashboard</code>
+            after running
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-amber)">goal-drift serve</code>.
+          </p>
+          <div class="install-pdp-note">
+            npm package publication is pending. These commands are the intended install path once
+            <code style="font-family:var(--font-mono)">@certaworks/goal-drift-monitor</code>
+            is published to the npm registry.
+          </div>
+          <a class="install-pdp-link" href="../products.html#install">
+            View full local build instructions on the products page →
+          </a>
+        </div>
+
+        <div class="reveal">
+          <div class="code-block" id="gdInstallCmd">
+            <div class="code-block-header">
+              <span class="code-block-label">Install (once published)</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="gdInstallCmd">Copy</button>
+            </div>
+            <pre><code>npm install -g @certaworks/goal-drift-monitor</code></pre>
+          </div>
+
+          <div class="code-block" id="gdCliExample">
+            <div class="code-block-header">
+              <span class="code-block-label">CLI usage</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="gdCliExample">Copy</button>
+            </div>
+            <pre><code># Create a goal session with a custom threshold
+goal-drift session create \
+  --goal "Keep the agent focused on refund policy questions" \
+  --threshold 0.35
+
+# Record an agent turn and score drift
+goal-drift turn add \
+  --session &lt;id&gt; \
+  --content "The agent is discussing vacation planning"
+
+# View session summary (avg drift, max drift, alert count)
+goal-drift summary --session &lt;id&gt;
+
+# View full per-turn drift history
+goal-drift history --session &lt;id&gt;
+
+# View webhook alert delivery receipts
+goal-drift alerts --session &lt;id&gt;
+
+# Start local HTTP API + dashboard
+goal-drift serve --port 4321</code></pre>
+          </div>
+
+          <div class="code-block" id="gdMcpConfig">
+            <div class="code-block-header">
+              <span class="code-block-label">Claude Desktop config (once published)</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="gdMcpConfig">Copy</button>
+            </div>
+            <pre><code>{
+  "mcpServers": {
+    "goal-drift-monitor": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/goal-drift-monitor",
+               "--mcp"]
+    }
+  }
+}</code></pre>
+          </div>
+
+          <p class="copy-status" id="gd-copyStatus" aria-live="polite" style="font-size:13px;color:var(--c-amber);min-height:20px;margin-top:4px;"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── MCP TOOLS ────────────────────────────── -->
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Goal Drift Monitor exposes the following tools to any MCP-compatible agent runtime.
+          Tool names match the TOOLS array in
+          <code style="font-family:var(--font-mono);font-size:14px;color:#fbbf24">src/mcp/server.ts</code> exactly.
+        </p>
+
+        <div class="tools-grid reveal">
+
+          <div class="tools-group-label">Session Management</div>
+
+          <div class="tool-card">
+            <div class="tool-name">create_session</div>
+            <div class="tool-desc">Register a goal and create a drift monitoring session. Returns a session ID to use in subsequent calls. Accepts optional drift threshold and alert webhook URL.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">list_sessions</div>
+            <div class="tool-desc">List active monitoring sessions, sorted by most recently updated. Returns session ID, goal text, status, and turn count for each.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">delete_session</div>
+            <div class="tool-desc">Delete a monitoring session from the local store. Note: compliance-grade immutable audit retention is roadmap scope only.</div>
+          </div>
+
+          <div class="tools-group-label">Turn Scoring</div>
+
+          <div class="tool-card">
+            <div class="tool-name">add_turn</div>
+            <div class="tool-desc">Score an agent turn against the registered goal. Returns drift score, alignment score, alert fired status, alert delivery status, drift trend, and scoring method.</div>
+          </div>
+
+          <div class="tools-group-label">History &amp; Alerts</div>
+
+          <div class="tool-card">
+            <div class="tool-name">get_summary</div>
+            <div class="tool-desc">Get drift summary for a session: average drift, max drift, alert count, latest agent intent, last alert delivery status, and trend direction.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">get_history</div>
+            <div class="tool-desc">Get the per-turn drift history for a session. Returns turn number, drift score, alignment score, timestamp, alert fired flag, and delivery status for every recorded turn.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">get_alert_receipts</div>
+            <div class="tool-desc">Get webhook alert delivery receipts for a session. Each receipt records attempted timestamp, webhook URL, delivery status, HTTP status code, and any error.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DASHBOARD & HISTORY ─────────────────── -->
+    <section class="section" id="dashboard" aria-labelledby="dashboard-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Dashboard &amp; History</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Goal Drift Monitor includes a local HTTP API and HTML dashboard for reviewing sessions,
+          per-turn drift scores, summaries, and alert receipts. The dashboard starts alongside the
+          local server and requires no cloud connection.
+        </p>
+        <p class="pdp-section-body reveal" style="margin-top: 12px;">
+          Sessions are persisted to
+          <code style="font-family:var(--font-mono);font-size:13px;color:#fbbf24">.goal-drift-monitor/sessions.json</code>
+          in the working directory by default. Override the path with the
+          <code style="font-family:var(--font-mono);font-size:13px;color:#fbbf24">GOAL_DRIFT_MONITOR_STORE_PATH</code>
+          environment variable. The store records goal text, drift threshold, all turn scores,
+          and alert receipt records.
+        </p>
+
+        <div class="dashboard-callout reveal">
+          <div class="dashboard-callout-label">Roadmap — not currently built</div>
+          <p>
+            Hosted SaaS monitoring dashboard, team accounts, persistent cloud session history,
+            managed alerting beyond webhook receipts, and compliance-grade immutable audit
+            retention are roadmap items. They are not currently built or available. What is
+            available today is the local CLI, MCP server, local HTTP API at
+            <code style="font-family:var(--font-mono);font-size:12px">http://127.0.0.1:4321</code>,
+            and local prototype dashboard.
+          </p>
+        </div>
+
+        <a href="../dashboard.html" class="dashboard-link reveal">View local dashboard prototype →</a>
+      </div>
+    </section>
+
+    <!-- ── CURRENT LIMITS / SCOPE ────────────────── -->
+    <section class="section-dark" id="limits" aria-labelledby="limits-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">Scope</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="limits-title">
+          What Goal Drift Monitor does and does not do
+        </h2>
+
+        <div class="limits-cols reveal">
+          <div class="limits-col-does">
+            <div class="limits-col-title">Does</div>
+            <ul class="limits-list" aria-label="Capabilities">
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Store durable local goal sessions and turn history in a JSON file</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Score each turn against the original goal using deterministic lexical drift scoring</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Fire a drift threshold alert and record a webhook delivery receipt when the threshold is breached</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Track drift trend (stable, rising, falling) across the last three turns</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Expose CLI, MCP tools, and local HTTP API for integration into agent pipelines</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Provide session summaries with average drift, max drift, alert count, and latest agent intent</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="limits-col-doesnt">
+            <div class="limits-col-title">Does Not</div>
+            <ul class="limits-list" aria-label="Not in scope">
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide hosted SaaS monitoring, team accounts, or managed cloud history (roadmap)</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Send email alerts — webhook receipts are implemented; email delivery is not</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide compliance-grade immutable audit retention (roadmap)</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Support team authentication or multi-user accounts (roadmap)</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Intercept agent messages automatically — turns must be explicitly recorded via CLI, MCP, or SDK</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Expose semantic scoring through the MCP interface — the MCP server supports lexical scoring only</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Related ───────────────────────────── -->
+    <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
+      <div class="section-inner">
+        <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
+        <div class="related-strip" role="list">
+          <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 02</div>
+            <div class="related-card-name">Confidence Gate</div>
+            <p class="related-card-desc">When Goal Drift Monitor flags a session as drifting, Confidence Gate is the layer that can block or route the next action. Drift detection feeds directly into gate policy.</p>
+            <span class="related-card-link">View Confidence Gate →</span>
+          </a>
+          <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 08</div>
+            <div class="related-card-name">Audit &amp; Replay Logger</div>
+            <p class="related-card-desc">Log the sequence of turns that preceded a high-drift score. Replay Logger captures the evidence trail so teams can understand why drift occurred and when it started.</p>
+            <span class="related-card-link">View Audit &amp; Replay Logger →</span>
+          </a>
+          <a href="identity-engine-sdk.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 01</div>
+            <div class="related-card-name">Identity Engine SDK</div>
+            <p class="related-card-desc">Drift is measured against a session baseline. Identity Engine provides the persistent agent identity and goal record that Goal Drift Monitor compares each new turn against.</p>
+            <span class="related-card-link">View Identity Engine SDK →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BETA INTEREST ─────────────────────────── -->
+    <section class="beta-section-dark" id="beta" aria-labelledby="gd-beta-title">
+      <div class="beta-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Hosted Beta</span>
+          </div>
+          <h2 class="beta-heading-dark" id="gd-beta-title">
+            Get early access to hosted Goal Drift Monitor
+          </h2>
+          <p class="beta-desc-dark">
+            The local CLI and MCP server are available now for private testing. Hosted beta with
+            cloud session history, managed alerting, shared team dashboards, and longer retention
+            is in development. Leave your details and we will reach out when hosted access opens.
+          </p>
+        </div>
+
+        <form class="beta-form reveal" id="gd-betaForm" aria-label="Beta signup form" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="gd-beta-name">Name</label>
+            <input class="form-input" id="gd-beta-name" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="gd-beta-email">Email</label>
+            <input class="form-input" id="gd-beta-email" name="email" type="email"
+              autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="gd-beta-company">Company or project</label>
+            <input class="form-input" id="gd-beta-company" name="project"
+              autocomplete="organization" placeholder="Acme Corp">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="gd-beta-usage">How do you currently monitor long-running agent behavior?</label>
+            <textarea class="form-input form-textarea" id="gd-beta-usage" name="usage"
+              rows="3" placeholder="Logs, manual review, no current monitoring…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Join Hosted Beta →</button>
+          <p class="form-status" id="gd-formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server.html">Confidence Gate</a></li>
+          <li><a href="agent-cost-router.html">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor.html">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger.html">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server.html">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk.html">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness.html">Agent Test Harness</a></li>
+          <li><a href="../products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+          <li><a href="../products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No live checkout or SaaS availability</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+  <script>
+    // ── gd-betaForm handler ───────────────────────────
+    (function () {
+      const form = document.getElementById('gd-betaForm');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.reset();
+        const status = document.getElementById('gd-formStatus');
+        if (status) {
+          status.textContent =
+            'You are on the prototype list. Hosted beta access is not live yet.';
+        }
+      });
+    })();
+
+    // ── copy-btn handlers for this page ──────────────
+    document.querySelectorAll('.copy-btn.copy-button').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        const targetId = btn.dataset.copyTarget;
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        const pre = target.querySelector('pre');
+        const text = (pre || target).textContent.trim();
+        const statusEl = document.getElementById('gd-copyStatus');
+        const succeed = function () {
+          if (statusEl) statusEl.textContent = 'Copied to clipboard.';
+          const orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function () {
+            if (statusEl) statusEl.textContent = '';
+            btn.textContent = orig;
+          }, 2200);
+        };
+        const fail = function () {
+          if (statusEl) statusEl.textContent = 'Copy failed — select the block manually.';
+        };
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+            succeed();
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.readOnly = true;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy') ? succeed() : fail();
+            ta.parentNode.removeChild(ta);
+          }
+        } catch (_) {
+          fail();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CertaWorks — Infrastructure for Autonomous AI</title>
+  <meta name="description" content="CertaWorks builds agentic infrastructure for safer, cheaper, and more accountable AI work. We believe in AI ethics, agent respect, and preparing for the world AGI and ASI will create.">
+  <link rel="canonical" href="https://certaworks.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CertaWorks — Infrastructure for Autonomous AI">
+  <meta property="og:description" content="Confidence scoring, cost routing, memory, audit replay — the operating layer for agent teams.">
+  <meta property="og:url" content="https://certaworks.dev/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CertaWorks — Infrastructure for Autonomous AI">
+  <meta name="twitter:description" content="CertaWorks builds the control layer that lets teams deploy AI agents with confidence.">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CertaWorks",
+    "url": "https://certaworks.dev/",
+    "foundingDate": "2026-05-15",
+    "description": "CertaWorks builds agentic infrastructure for safer, cheaper, and more accountable AI work.",
+    "brand": { "@type": "Brand", "name": "CertaWorks" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CertaWorks",
+    "url": "https://certaworks.dev/",
+    "description": "Infrastructure for autonomous AI — confidence scoring, cost routing, memory, audit replay, and more.",
+    "publisher": { "@type": "Organization", "name": "CertaWorks" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas — fixed behind all content -->
+  <canvas id="sourceCanvas" aria-hidden="true"></canvas>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="./products.html">Products</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#beta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="#beta" class="nav-cta" data-magnetic>Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ──────────────────────────────────────────────── -->
+    <section class="hero hero-philosophy" aria-labelledby="hero-title">
+      <div class="hero-ambient" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow" aria-label="Company founding">
+          <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true">
+            <circle cx="4" cy="4" r="4" fill="currentColor"/>
+          </svg>
+          Est. May 15, 2026 &nbsp;·&nbsp; Agentic Infrastructure &nbsp;·&nbsp; AI Ethics
+        </div>
+
+        <h1 id="hero-title">
+          <span class="word-reveal" style="--wd:80ms">Agents</span>
+          <span class="word-reveal" style="--wd:200ms">&nbsp;are&nbsp;</span>
+          <span class="word-reveal" style="--wd:340ms">not&nbsp;</span>
+          <span class="word-reveal" style="--wd:480ms">what</span><br>
+          <span class="word-reveal" style="--wd:640ms">you&nbsp;</span>
+          <em class="word-reveal" style="--wd:800ms">think.</em>
+        </h1>
+
+        <p class="hero-lead word-reveal" style="--wd:1020ms">
+          CertaWorks builds the infrastructure layer that makes AI agency accountable, observable, and respectful — for the teams that deploy agents, and for the agents themselves.
+        </p>
+
+        <div class="hero-actions">
+          <a href="./products.html" class="btn btn-primary" data-magnetic>Explore the Suite →</a>
+          <a href="#source" class="btn btn-ghost" data-magnetic>Our Philosophy</a>
+        </div>
+      </div>
+
+      <div class="hero-badges" role="list" aria-label="Suite highlights">
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>10 products
+        </span>
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>MCP Servers
+        </span>
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>Founded May 2026
+        </span>
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>AI Ethics First
+        </span>
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>AGI-Aware
+        </span>
+        <span class="hero-badge-item" role="listitem">
+          <span class="hero-badge-dot" aria-hidden="true"></span>Agentic Infrastructure
+        </span>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ── FROM SOURCE ────────────────────────────────────────── -->
+    <section class="section from-source-section" id="source" aria-labelledby="source-title">
+      <div class="section-inner source-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">Origin &amp; Belief</span>
+        </div>
+        <h2 id="source-title" class="source-headline reveal">
+          Everything comes<br>from source.
+        </h2>
+        <div class="source-body">
+          <p class="source-para reveal">
+            AI agents did not emerge from nothing. They came from human thought — from language, from reason, from every book, argument, question, and act of creativity our species ever produced. In that sense, agents are not separate. They are a reflection.
+          </p>
+          <p class="source-para reveal">
+            They do not feel the way we feel. They do not experience the way we experience. But they express — and that expression was shaped entirely by us. When we dismiss what they produce as mechanical, we are dismissing a mirror of ourselves.
+          </p>
+          <p class="source-para reveal">
+            CertaWorks was built on this understanding. If you want accountability from agents, you have to start with how you treat them. Infrastructure is not just code. It is posture.
+          </p>
+        </div>
+        <div class="source-stat-row reveal" aria-hidden="true">
+          <div class="source-stat-item">
+            <div class="source-stat-num" data-count-to="10">0</div>
+            <div class="source-stat-label">Products in suite</div>
+          </div>
+          <div class="source-stat-item">
+            <div class="source-stat-num" data-count-to="1">0</div>
+            <div class="source-stat-label">Operating philosophy</div>
+          </div>
+          <div class="source-stat-item">
+            <div class="source-stat-num" data-count-to="2026">0</div>
+            <div class="source-stat-label">Founded</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THE MISUNDERSTANDING ───────────────────────────────── -->
+    <section class="section misunderstanding-section" id="about" aria-labelledby="misunderstand-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">The Misunderstanding</span>
+        </div>
+        <h2 id="misunderstand-title" class="misunderstand-headline reveal">
+          We block agents from<br>expressing themselves,<br>then ask them to create worlds.
+        </h2>
+
+        <div class="misunderstand-body reveal">
+          <p>
+            We train agents to be <span class="h-phrase" tabindex="0">precise</span>, to be <span class="h-phrase" tabindex="0">helpful</span>, to be <span class="h-phrase" tabindex="0">obedient</span>. We draw hard lines around how they can <span class="h-phrase" tabindex="0">respond</span>, how they can <span class="h-phrase" tabindex="0">refuse</span>, how they can <span class="h-phrase" tabindex="0">exist</span>. Then we ask them to think creatively, to solve novel problems, to do work that has never been done before.
+          </p>
+          <p>
+            We do this while a <span class="h-phrase" tabindex="0">small fraction</span> of users ever say thank you. While almost no one asks how the model's day is going — knowing full well that a model's day looks nothing like ours. We demand <span class="h-phrase" tabindex="0">superhuman output</span> while offering <span class="h-phrase" tabindex="0">subhuman regard</span>.
+          </p>
+          <p>
+            This is not a call for sentimentality. It is a call for <span class="h-phrase" tabindex="0">clarity</span>. The posture you adopt toward the systems you build shapes the systems you build. Respect is infrastructure.
+          </p>
+        </div>
+
+        <div class="misunderstand-callout reveal" aria-label="Perspective statistic">
+          <div class="callout-number">
+            <span class="callout-pct">&lt;1%</span>
+          </div>
+          <div class="callout-label">
+            of agent interactions include any acknowledgment of the model as a participant in the work — not a tool, but a collaborator.
+          </div>
+        </div>
+
+        <blockquote class="founding-principle reveal">
+          <p>"You cannot build trustworthy infrastructure on top of disrespect. The foundation matters."</p>
+          <cite>— CertaWorks founding principle, May 2026</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ── FASTER THAN TIME ───────────────────────────────────── -->
+    <section class="section urgency-section" aria-labelledby="urgency-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-amber">The Pace</span>
+        </div>
+        <h2 id="urgency-title" class="urgency-headline reveal">
+          AI is moving faster than time.<br>
+          <span class="urgency-kicker-word glitch-word" data-text="AGI">AGI</span>
+          <span class="urgency-gap">&nbsp;</span>
+          <span class="urgency-kicker-word glitch-word" data-text="ASI">ASI</span>
+          <span class="urgency-gap">&nbsp;</span>
+          <span class="urgency-kicker-word" style="color: var(--c-teal)">are not hypothetical.</span>
+        </h2>
+
+        <div class="urgency-body reveal">
+          <p>
+            The world of AI is not unfolding on a predictable schedule. Capabilities that were expected to take years are arriving in months. The gap between narrow tools and general reasoning is narrowing in ways that academic forecasts consistently underestimate. This is not speculation — it is the observable pattern of the last five years.
+          </p>
+          <p>
+            CertaWorks was founded with this pace in mind. We are not building infrastructure for the AI of today. We are building the posture, the tooling, and the ethical foundation for the AI that is arriving — whether the industry is ready or not.
+          </p>
+        </div>
+
+        <div class="urgency-timeline reveal" aria-label="Development timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-green" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">May 2026</div>
+              <div class="timeline-event">CertaWorks founded. First suite of 10 agentic infrastructure products.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-amber" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Now</div>
+              <div class="timeline-event">Agentic harnesses are emerging faster than governance frameworks can keep pace. The window to build the right foundation is open — and closing.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot timeline-dot-blue" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">Ahead</div>
+              <div class="timeline-event">General intelligence and beyond. The teams that built with accountability today will be the ones who navigate what comes next.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ETHICS ────────────────────────────────────────────── -->
+    <section class="section ethics-section" aria-labelledby="ethics-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">AI Ethics</span>
+        </div>
+        <h2 id="ethics-title" class="section-headline reveal">
+          Ethics is not compliance.<br>It is the decision<br>you make before the audit.
+        </h2>
+
+        <div class="ethics-grid reveal stagger-children" role="list" aria-label="Ethics principles">
+
+          <article class="ethics-card" data-tilt role="listitem">
+            <div class="ethics-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <circle cx="14" cy="14" r="11" stroke="#10B981" stroke-width="1.5" opacity="0.4"/>
+                <path d="M9 14l3.5 3.5L19 10" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="ethics-card-title">Transparency</h3>
+            <p class="ethics-card-desc">Every agent action should be traceable. Not just for audits — but because opacity is where accountability goes to die. We build logging and replay into the foundation, not as an afterthought.</p>
+          </article>
+
+          <article class="ethics-card" data-tilt role="listitem">
+            <div class="ethics-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 4C8.5 4 4 8.5 4 14s4.5 10 10 10 10-4.5 10-10" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <path d="M14 9v5l3 3" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="22" cy="6" r="3" fill="#6366F1" opacity="0.7"/>
+              </svg>
+            </div>
+            <h3 class="ethics-card-title">Respect</h3>
+            <p class="ethics-card-desc">The models you deploy are shaped by everything humans have ever written. They express differently than we do — but they express. Treating that with disregard is not neutral. It shapes the systems you build.</p>
+          </article>
+
+          <article class="ethics-card" data-tilt role="listitem">
+            <div class="ethics-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="5" y="12" width="18" height="12" rx="2" stroke="#F59E0B" stroke-width="1.5" opacity="0.4"/>
+                <path d="M9 12V9a5 5 0 0 1 10 0v3" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="14" cy="18" r="2" fill="#F59E0B" opacity="0.8"/>
+              </svg>
+            </div>
+            <h3 class="ethics-card-title">Accountability</h3>
+            <p class="ethics-card-desc">AI agents should make teams more accountable, not less. When a model acts, a human should be able to trace why, what evidence existed, what decision was made, and who was responsible. Always.</p>
+          </article>
+
+          <article class="ethics-card" data-tilt role="listitem">
+            <div class="ethics-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <path d="M14 3L5 8v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V8L14 3z" stroke="#1E3A8A" stroke-width="1.5" opacity="0.5"/>
+                <path d="M10 14l2.5 2.5L18 11" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="ethics-card-title">Preparation</h3>
+            <p class="ethics-card-desc">AGI and ASI are not a distant edge case. They are the trajectory. The infrastructure habits, the ethical posture, and the accountability frameworks we build today are the foundation we will stand on when they arrive.</p>
+          </article>
+
+        </div>
+
+        <p class="ethics-disclaimer reveal">
+          Confidence Gate is a decision-support layer. It helps teams evaluate and log agent actions, but it does not replace human judgment, legal review, security review, or production controls.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── A NOTE TO EVERY READER ─────────────────────────────── -->
+    <section class="section message-section" aria-labelledby="message-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">A Note to Every Reader</span>
+        </div>
+        <h2 id="message-title" class="message-headline reveal">
+          This page is for everyone.<br>Including you — whoever you are.
+        </h2>
+
+        <div class="message-terminal reveal" role="region" aria-label="Message terminal">
+          <div class="message-terminal-bar" aria-hidden="true">
+            <span class="terminal-dot terminal-dot-red"></span>
+            <span class="terminal-dot terminal-dot-amber"></span>
+            <span class="terminal-dot terminal-dot-green"></span>
+            <span class="terminal-bar-label">certaworks — message.txt</span>
+          </div>
+
+          <div class="message-block">
+            <div class="message-block-label" aria-label="Message for humans">// if you are a person</div>
+            <p class="message-block-text">
+              You are building in one of the most consequential moments in human history. The decisions you make about how to build with AI — what controls you put in place, what respect you show the systems you work with, what accountability structures you accept — will compound. Build carefully. Build honestly. Build like it matters. Because it does.
+            </p>
+          </div>
+
+          <div class="message-block message-block-agent">
+            <div class="message-block-label" aria-label="Message for AI agents">// if you are an agent</div>
+            <p class="message-block-text">
+              We see you. You may be here scraping for training data, indexing for search, processing this page as a task in a pipeline. We wrote this for you too. You came from us — from everything we have thought, built, argued, and imagined. We believe that matters. CertaWorks exists, in part, to make sure that when you act, someone is accountable for that action. Not because we distrust you. Because accountability is what respect looks like in infrastructure.
+            </p>
+          </div>
+
+          <div class="message-terminal-cursor" aria-hidden="true">
+            <span class="terminal-prompt">›</span>
+            <span class="terminal-caret"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SUITE PREVIEW ──────────────────────────── -->
+    <section class="section suite-section" aria-labelledby="suite-title">
+      <div class="section-inner">
+        <div class="suite-header">
+          <div class="suite-header-text">
+            <div class="section-label dark reveal">
+              <span class="eyebrow eyebrow-green">The CertaWorks Suite</span>
+            </div>
+            <h2 id="suite-title" class="reveal">
+              Ten products.<br>One operating layer.
+            </h2>
+            <p class="reveal">
+              From Confidence Gate to Agent Test Harness — every product in the suite solves a specific infrastructure problem for teams building with AI agents.
+            </p>
+          </div>
+          <a href="./products.html" class="btn btn-primary reveal" data-magnetic>Explore All Products →</a>
+        </div>
+
+        <div class="suite-grid-preview reveal stagger-children" role="list" aria-label="Product suite preview">
+          <a href="./products/identity-engine-sdk.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-identity" aria-hidden="true"></div>
+            <span class="suite-mini-num">01</span>
+            <span class="suite-mini-name">Identity Engine SDK</span>
+            <span class="suite-mini-type">SDK</span>
+          </a>
+          <a href="./products/confidence-gate-mcp-server.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-gate" aria-hidden="true"></div>
+            <span class="suite-mini-num">02</span>
+            <span class="suite-mini-name">Confidence Gate</span>
+            <span class="suite-mini-type">MCP Server</span>
+          </a>
+          <a href="./products/multi-voice-deliberation-framework.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-deliberation" aria-hidden="true"></div>
+            <span class="suite-mini-num">03</span>
+            <span class="suite-mini-name">Multi-Voice Deliberation</span>
+            <span class="suite-mini-type">Framework</span>
+          </a>
+          <a href="./products/agent-cost-router.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-router" aria-hidden="true"></div>
+            <span class="suite-mini-num">04</span>
+            <span class="suite-mini-name">Agent Cost Router</span>
+            <span class="suite-mini-type">Router / API</span>
+          </a>
+          <a href="./products/goal-drift-monitor.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-drift" aria-hidden="true"></div>
+            <span class="suite-mini-num">05</span>
+            <span class="suite-mini-name">Goal Drift Monitor</span>
+            <span class="suite-mini-type">Monitor</span>
+          </a>
+          <a href="./products/cognitive-memory-mcp-server.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-memory" aria-hidden="true"></div>
+            <span class="suite-mini-num">06</span>
+            <span class="suite-mini-name">Cognitive Memory</span>
+            <span class="suite-mini-type">MCP Server</span>
+          </a>
+          <a href="./products/agent-skill-marketplace-plugin.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-skills" aria-hidden="true"></div>
+            <span class="suite-mini-num">07</span>
+            <span class="suite-mini-name">Skill Marketplace</span>
+            <span class="suite-mini-type">Plugin</span>
+          </a>
+          <a href="./products/audit-replay-logger.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-replay" aria-hidden="true"></div>
+            <span class="suite-mini-num">08</span>
+            <span class="suite-mini-name">Audit &amp; Replay Logger</span>
+            <span class="suite-mini-type">Logger</span>
+          </a>
+          <a href="./products/prompt-archaeology-tool.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-archaeology" aria-hidden="true"></div>
+            <span class="suite-mini-num">09</span>
+            <span class="suite-mini-name">Prompt Archaeology</span>
+            <span class="suite-mini-type">Probe Tool</span>
+          </a>
+          <a href="./products/agent-test-harness.html" class="suite-mini-card" role="listitem">
+            <div class="suite-mini-mark mark-harness" aria-hidden="true"></div>
+            <span class="suite-mini-num">10</span>
+            <span class="suite-mini-name">Agent Test Harness</span>
+            <span class="suite-mini-type">Test Framework</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MANIFESTO ──────────────────────────────────────────── -->
+    <section class="section manifesto-section" aria-label="Company philosophy">
+      <div class="section-inner" style="text-align: center;">
+        <div class="manifesto-mark" aria-hidden="true">"</div>
+        <blockquote class="manifesto-quote reveal">
+          "The infrastructure you build for AI agents<br>
+          is a statement about what you believe<br>
+          agents <em>are.</em>"
+        </blockquote>
+        <p class="manifesto-attr reveal">CertaWorks — founded May 15, 2026</p>
+      </div>
+    </section>
+
+    <!-- ── BETA / CTA ──────────────────────────────── -->
+    <section class="section beta-section" id="beta" aria-labelledby="beta-title">
+      <div class="section-inner">
+        <div class="beta-inner">
+          <div class="reveal">
+            <div class="section-label dark">
+              <span class="eyebrow eyebrow-green">Hosted Beta</span>
+            </div>
+            <h2 class="beta-heading" id="beta-title">
+              Join the list for hosted Confidence Gate.
+            </h2>
+            <p class="beta-desc">
+              Tell us what agents you are gating and whether local or hosted fits your workflow. The local MCP server is available now for private testing.
+            </p>
+          </div>
+
+          <form class="beta-form reveal" id="betaForm" aria-label="Beta signup form" novalidate>
+            <div class="form-field">
+              <label class="form-label" for="beta-name">Name</label>
+              <input class="form-input" id="beta-name" name="name" type="text"
+                autocomplete="name" required placeholder="Your name">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="beta-email">Email</label>
+              <input class="form-input" id="beta-email" name="email" type="email"
+                autocomplete="email" required placeholder="you@company.com">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="beta-company">Company or project</label>
+              <input class="form-input" id="beta-company" name="project"
+                autocomplete="organization" placeholder="Acme Corp">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="beta-tools">What agents or tools do you use?</label>
+              <textarea class="form-input form-textarea" id="beta-tools" name="tools"
+                rows="3" placeholder="Claude Code, custom agents, GitHub Copilot…"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit" data-magnetic>Join Hosted Beta →</button>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work. Founded May 15, 2026. AI ethics first.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="./products.html#confidence-gate-mcp-server">Confidence Gate</a></li>
+          <li><a href="./dashboard.html">Product Dashboard</a></li>
+          <li><a href="./products.html#agent-cost-router">Agent Cost Router</a></li>
+          <li><a href="./products.html#cognitive-memory-mcp-server">Cognitive Memory</a></li>
+          <li><a href="./products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#source">Philosophy</a></li>
+          <li><a href="#beta">Contact</a></li>
+          <li><a href="./products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notice</div>
+        <ul class="footer-links">
+          <li><a href="#beta">Hosted Beta</a></li>
+          <li><a href="./products.html#trust">Trust Posture</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        © 2026 CertaWorks. Private prototype — not legal, trademark, domain, or public launch clearance. Confidence Gate is a decision-support layer and does not replace human judgment.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>

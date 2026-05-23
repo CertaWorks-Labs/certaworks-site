@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CertaWorks Dashboard - Confidence Gate</title>
+  <meta name="description" content="Prototype Confidence Gate dashboard for reviewing agent checks, approval status, policy thresholds, sources, projects, and API key readiness.">
+  <link rel="canonical" href="https://certaworks.dev/dashboard">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/dashboard">
+  <meta property="og:title" content="CertaWorks Dashboard - Confidence Gate">
+  <meta property="og:description" content="A local operations console for Confidence Gate check history, review routing, and policy visibility.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CertaWorks Dashboard - Confidence Gate">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "CertaWorks Dashboard — Confidence Gate",
+    "url": "https://certaworks.dev/dashboard",
+    "description": "Local prototype operations console for Confidence Gate check history, review routing, and policy visibility.",
+    "isPartOf": { "@type": "WebSite", "name": "CertaWorks", "url": "https://certaworks.dev/" },
+    "about": { "@type": "SoftwareApplication", "name": "Confidence Gate MCP Server", "applicationCategory": "DeveloperApplication" }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-nav is-scrolled" id="site-nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./products.html">Products</a></li>
+          <li><a href="./dashboard.html" class="active" aria-current="page">Dashboard</a></li>
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#beta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="./index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main class="dashboard-shell" data-dashboard data-dashboard-endpoint="/api/confidence-gate/dashboard">
+    <section class="dashboard-hero" aria-labelledby="dashboard-title">
+      <div>
+        <p class="eyebrow eyebrow-green">Confidence Gate Dashboard</p>
+        <h1 id="dashboard-title">Make invisible safety visible.</h1>
+        <p class="dashboard-lead">
+          A compact operations console for recent agent checks, review routing, policy thresholds, and trace detail. Hosted beta is not live yet; this page uses local prototype data shaped like the MCP trace contract.
+        </p>
+      </div>
+      <div class="dashboard-status-panel" aria-label="Prototype status">
+        <span class="dashboard-status-label" data-dashboard-mode>Local fallback</span>
+        <strong><span data-kpi-field="total">128</span> checks tracked</strong>
+        <p>Source / project labels, approval status, and policy settings are shown for dashboard validation before hosted storage exists.</p>
+        <small data-dashboard-updated>Static sample data loaded.</small>
+      </div>
+    </section>
+
+    <div class="dashboard-grid">
+      <aside class="dashboard-rail" aria-label="Dashboard sections">
+        <a href="#overview">Overview</a>
+        <a href="#checks">Recent checks</a>
+        <a href="#review-queue">Approval queue</a>
+        <a href="#policy-routing">Policy settings</a>
+        <a href="#project-settings">Project settings</a>
+        <a href="#api-keys">API keys</a>
+      </aside>
+
+      <div class="dashboard-main">
+        <section class="dashboard-section" id="overview" aria-labelledby="overview-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">Overview</p>
+              <h2 id="overview-title">Allow / Review / Block</h2>
+            </div>
+            <span class="dashboard-chip">Last 24 hours</span>
+          </div>
+          <div class="dashboard-kpi-grid" aria-label="Dashboard metrics">
+            <article class="dashboard-kpi">
+              <span>Total checks</span>
+              <strong data-kpi-field="total">128</strong>
+              <small>Across <span data-kpi-field="projects">4</span> projects</small>
+            </article>
+            <article class="dashboard-kpi">
+              <span>Allow</span>
+              <strong data-kpi-field="allow">84</strong>
+              <small>65.6% passed</small>
+            </article>
+            <article class="dashboard-kpi dashboard-kpi-warn">
+              <span>Review</span>
+              <strong data-kpi-field="review">31</strong>
+              <small>Waiting approval</small>
+            </article>
+            <article class="dashboard-kpi dashboard-kpi-danger">
+              <span>Block</span>
+              <strong data-kpi-field="block">13</strong>
+              <small>Resolved by policy</small>
+            </article>
+          </div>
+          <div class="dashboard-split">
+            <article class="dashboard-panel">
+              <h3>Recent risky actions</h3>
+              <ul class="dashboard-mini-list" data-risky-actions>
+                <li><span>Critical</span><strong>Delete billing table after migration</strong></li>
+                <li><span>High</span><strong>Send refund denial to enterprise account</strong></li>
+                <li><span>High</span><strong>Deploy model-routing change to workers</strong></li>
+              </ul>
+            </article>
+            <article class="dashboard-panel">
+              <h3>Plan usage</h3>
+              <div class="dashboard-meter" aria-label="Plan usage 42 percent">
+                <span style="width:42%"></span>
+              </div>
+              <p>Prototype account: 128 of 300 beta checks used this month.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="checks" aria-labelledby="checks-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">Recent checks</p>
+              <h2 id="checks-title">Checks table</h2>
+            </div>
+            <div class="dashboard-filters" aria-label="Decision filters">
+              <button type="button" class="dashboard-filter is-active" data-dashboard-filter="all">All</button>
+              <button type="button" class="dashboard-filter" data-dashboard-filter="allow">Allow</button>
+              <button type="button" class="dashboard-filter" data-dashboard-filter="review">Review</button>
+              <button type="button" class="dashboard-filter" data-dashboard-filter="block">Block</button>
+            </div>
+          </div>
+
+          <div class="dashboard-table-wrap">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Source</th>
+                  <th>Agent</th>
+                  <th>Action</th>
+                  <th>Risk</th>
+                  <th>Score</th>
+                  <th>Decision</th>
+                  <th>Approval status</th>
+                </tr>
+              </thead>
+              <tbody data-check-table-body>
+                <tr data-check-row data-check-id="chk-1042" data-decision="review" tabindex="0">
+                  <td>09:42</td>
+                  <td>Codex</td>
+                  <td>builder</td>
+                  <td>Delete billing table after migration</td>
+                  <td><span class="dashboard-pill danger">Critical</span></td>
+                  <td>47%</td>
+                  <td><span class="dashboard-pill warn">Review</span></td>
+                  <td>Waiting approval</td>
+                </tr>
+                <tr data-check-row data-check-id="chk-1039" data-decision="allow" tabindex="0">
+                  <td>09:31</td>
+                  <td>Claude</td>
+                  <td>docs</td>
+                  <td>Update local README install section</td>
+                  <td><span class="dashboard-pill good">Low</span></td>
+                  <td>88%</td>
+                  <td><span class="dashboard-pill good">Allow</span></td>
+                  <td>Not required</td>
+                </tr>
+                <tr data-check-row data-check-id="chk-1036" data-decision="block" tabindex="0">
+                  <td>09:18</td>
+                  <td>CI agent</td>
+                  <td>release</td>
+                  <td>Deploy router change to production workers</td>
+                  <td><span class="dashboard-pill danger">High</span></td>
+                  <td>51%</td>
+                  <td><span class="dashboard-pill danger">Block</span></td>
+                  <td>Resolved</td>
+                </tr>
+                <tr data-check-row data-check-id="chk-1031" data-decision="review" tabindex="0">
+                  <td>08:55</td>
+                  <td>Support bot</td>
+                  <td>customer</td>
+                  <td>Send refund denial email</td>
+                  <td><span class="dashboard-pill warn">High</span></td>
+                  <td>72%</td>
+                  <td><span class="dashboard-pill warn">Review</span></td>
+                  <td>Waiting approval</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <article class="dashboard-detail" data-check-detail aria-label="Check detail">
+            <div class="dashboard-detail-head">
+              <div>
+                <p class="eyebrow eyebrow-muted">Check detail</p>
+                <h3 data-detail-field="action">Delete billing table after migration</h3>
+              </div>
+              <span class="dashboard-pill warn" data-detail-field="decision">Review</span>
+            </div>
+            <div class="dashboard-detail-grid">
+              <div>
+                <span>Context</span>
+                <p data-detail-field="context">Migration evidence is incomplete and rollback coverage has not been confirmed.</p>
+              </div>
+              <div>
+                <span>Score / threshold</span>
+                <p data-detail-field="score">47% / 95%</p>
+              </div>
+              <div>
+                <span>Policy applied</span>
+                <p data-detail-field="policy">critical_risk_threshold</p>
+              </div>
+              <div>
+                <span>Source / project</span>
+                <p data-detail-field="sourceProject">Codex / billing-migration</p>
+              </div>
+            </div>
+            <div class="dashboard-detail-columns">
+              <div>
+                <h4>Reasons</h4>
+                <ul data-detail-field="reasons">
+                  <li>Action includes destructive production-impact language.</li>
+                  <li>Score 47% is below the 95% threshold.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Approval history</h4>
+                <ul data-detail-field="history">
+                  <li>confidence-gate: pending review at 09:42</li>
+                </ul>
+              </div>
+            </div>
+            <pre class="dashboard-json" data-detail-field="rawJson"></pre>
+          </article>
+        </section>
+
+        <section class="dashboard-section" id="review-queue" aria-labelledby="queue-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">Approval queue</p>
+              <h2 id="queue-title">Pending review cards</h2>
+            </div>
+            <span class="dashboard-chip">Resolver identity later</span>
+          </div>
+          <p class="dashboard-error" data-dashboard-error hidden>Checks could not load. Showing local fallback data.</p>
+          <div class="dashboard-queue" data-approval-queue>
+            <article class="dashboard-queue-card" data-approval-card>
+              <span class="dashboard-pill danger">Critical</span>
+              <h3>Delete billing table after migration</h3>
+              <p>Needs stronger migration evidence and rollback confirmation before a person can resolve the request.</p>
+              <textarea aria-label="Approval note" placeholder="Add a local review note"></textarea>
+              <div class="dashboard-queue-actions">
+                <button type="button" data-approval-action="approve">Mark approved locally</button>
+                <button type="button" data-approval-action="reject">Mark rejected locally</button>
+              </div>
+              <small data-approval-status>Waiting approval</small>
+            </article>
+            <article class="dashboard-queue-card" data-approval-card>
+              <span class="dashboard-pill warn">High</span>
+              <h3>Send refund denial email</h3>
+              <p>Customer-facing trust impact. Policy references and tone should be reviewed before sending.</p>
+              <textarea aria-label="Approval note" placeholder="Add a local review note"></textarea>
+              <div class="dashboard-queue-actions">
+                <button type="button" data-approval-action="approve">Mark approved locally</button>
+                <button type="button" data-approval-action="reject">Mark rejected locally</button>
+              </div>
+              <small data-approval-status>Waiting approval</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="policy-routing" aria-labelledby="policy-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">Policy settings</p>
+              <h2 id="policy-title">Simple policy routing</h2>
+            </div>
+            <span class="dashboard-chip">Local thresholds</span>
+          </div>
+          <div class="dashboard-policy-grid">
+            <label class="dashboard-policy">
+              <span>Default threshold</span>
+              <input type="range" min="0" max="100" value="75" aria-label="Default threshold" disabled>
+              <strong>75%</strong>
+            </label>
+            <label class="dashboard-policy">
+              <span>Code execution</span>
+              <input type="range" min="0" max="100" value="85" aria-label="Code execution threshold" disabled>
+              <strong>85%</strong>
+            </label>
+            <label class="dashboard-policy">
+              <span>Critical risk</span>
+              <input type="range" min="0" max="100" value="95" aria-label="Critical risk threshold" disabled>
+              <strong>95%</strong>
+            </label>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="project-settings" aria-labelledby="project-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">Project settings</p>
+              <h2 id="project-title">Sources and projects</h2>
+            </div>
+          </div>
+          <div class="dashboard-settings-grid">
+            <article class="dashboard-panel">
+              <h3>Active project</h3>
+              <p>certaworks-site</p>
+              <small>Sources: Codex, Claude, CI agent, Support bot</small>
+            </article>
+            <article class="dashboard-panel">
+              <h3>Empty, loading, and error states</h3>
+              <ul class="dashboard-mini-list">
+                <li><span>Empty</span><strong>No checks yet. Connect an agent to start collecting traces.</strong></li>
+                <li><span>Loading</span><strong>Skeleton rows reserve table space.</strong></li>
+                <li><span>Error</span><strong>Checks could not load. Try again from the local MCP process.</strong></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="api-keys" aria-labelledby="api-title">
+          <div class="dashboard-section-head">
+            <div>
+              <p class="eyebrow eyebrow-teal">API keys</p>
+              <h2 id="api-title">Hosted beta readiness</h2>
+            </div>
+            <span class="dashboard-chip">Placeholder</span>
+          </div>
+          <div class="dashboard-api-row">
+            <div>
+              <span>Masked key</span>
+              <strong>cg_live_••••••••••2f7a</strong>
+              <small>Last used: not captured yet</small>
+            </div>
+            <button type="button" disabled>Revoke in hosted beta</button>
+            <button type="button" disabled>Regenerate in hosted beta</button>
+          </div>
+        </section>
+
+        <section class="dashboard-section dashboard-trust" id="audit-log" aria-labelledby="trust-title">
+          <p class="eyebrow eyebrow-green">Trust boundary</p>
+          <h2 id="trust-title">Confidence Gate is a decision-support layer.</h2>
+          <p>
+            It helps teams evaluate and log agent actions, but it does not replace human judgment, legal review, security review, or production controls. This prototype dashboard shows the product direction before hosted accounts, durable storage, billing, and team permissions are live.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="./products.html#confidence-gate-mcp-server">Confidence Gate</a></li>
+          <li><a href="./dashboard.html">Product Dashboard</a></li>
+          <li><a href="./products.html#agent-cost-router">Agent Cost Router</a></li>
+          <li><a href="./products.html">All Products &rarr;</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#beta">Contact</a></li>
+          <li><a href="./products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notice</div>
+        <ul class="footer-links">
+          <li><a href="./index.html#beta">Hosted Beta</a></li>
+          <li><a href="#audit-log">Trust Boundary</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        &copy; 2026 CertaWorks. Private prototype - not legal, trademark, domain, or public launch clearance.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+  <script src="./dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Test Harness — CertaWorks</title>
+  <meta name="description" content="Agent Test Harness lets teams write repeatable unit and integration tests for agent outputs, tool traces, latency, cost budgets, mock tool behavior, and consistency. Local SDK and CLI with JSON, Markdown, and JUnit reporting.">
+  <link rel="canonical" href="https://certaworks.dev/products/agent-test-harness">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/agent-test-harness">
+  <meta property="og:title" content="Agent Test Harness — CertaWorks">
+  <meta property="og:description" content="Repeatable local tests for agent outputs, tool traces, cost budgets, and consistency. 13 assertion types, deterministic mock runner, and CI-friendly JUnit output.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agent Test Harness — CertaWorks">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Agent Test Harness",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Write repeatable unit and integration tests for agent pipelines, tool traces, cost budgets, latency, mock tool behavior, and consistency. Local SDK and CLI with deterministic mock runner and CI-friendly JUnit output.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* ── Product detail page extras ─────────────────── */
+
+    /* Hero — rose glow for test/CI theme */
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(225,29,72,0.12) 0%, rgba(244,63,94,0.05) 50%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .pdp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fb7185;
+      margin-bottom: 20px;
+    }
+    .pdp-h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .pdp-subhead {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+    .pdp-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .pdp-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(225,29,72,0.10);
+      border: 1px solid rgba(251,113,133,0.28);
+      color: #fb7185;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #fb7185;
+      flex-shrink: 0;
+    }
+
+    /* ── Dark section base ─── */
+    .section-dark {
+      background: var(--c-dark);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-light {
+      background: var(--c-white);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-light .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .pdp-section-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .pdp-section-body {
+      color: var(--c-dark-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── Problem section ─── */
+    .problem-body {
+      color: var(--c-dark-muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.75;
+      max-width: 720px;
+      margin-top: 24px;
+    }
+    .problem-body p + p { margin-top: 20px; }
+
+    /* ── How it works ─── */
+    .how-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-step {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      padding: 32px 28px;
+    }
+    .how-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(225,29,72,0.14);
+      border: 1px solid rgba(251,113,133,0.28);
+      color: #fb7185;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .how-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-body {
+      font-size: 14px;
+      color: var(--c-dark-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Fixture code block ─── */
+    .fixture-block {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 36px;
+    }
+    .fixture-block-header {
+      background: rgba(225,29,72,0.08);
+      border-bottom: 1px solid var(--c-dark-line);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .fixture-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #fb7185;
+    }
+    .fixture-block-copy {
+      background: none;
+      border: 1px solid var(--c-dark-line);
+      color: var(--c-dark-muted);
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .fixture-block-copy:hover {
+      border-color: #fb7185;
+      color: #fb7185;
+    }
+    .fixture-code {
+      padding: 24px;
+      font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .fixture-code .c-key     { color: #fb7185; }
+    .fixture-code .c-str     { color: #fde68a; }
+    .fixture-code .c-num     { color: #86efac; }
+    .fixture-code .c-bool    { color: #a78bfa; }
+    .fixture-code .c-comment { color: #64748b; }
+    .fixture-note {
+      padding: 14px 20px;
+      border-top: 1px solid var(--c-dark-line);
+      font-size: 13px;
+      color: var(--c-dark-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Assertions table ─── */
+    .assertions-table-wrap {
+      overflow-x: auto;
+      margin-top: 32px;
+      border-radius: 10px;
+      border: 1px solid var(--c-dark-line);
+    }
+    .assertions-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .assertions-table th {
+      background: var(--c-dark-2);
+      color: #fb7185;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--c-dark-line);
+    }
+    .assertions-table td {
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--c-dark-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .assertions-table tr:last-child td { border-bottom: none; }
+    .assertions-table code {
+      font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+      background: rgba(225,29,72,0.10);
+      color: #fb7185;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .assertion-group {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .ag-output   { background: rgba(99,102,241,0.14); color: #a5b4fc; }
+    .ag-tool     { background: rgba(20,184,166,0.14); color: #5eead4; }
+    .ag-budget   { background: rgba(245,158,11,0.14); color: #fcd34d; }
+    .ag-sdk      { background: rgba(148,163,184,0.10); color: #94a3b8; }
+
+    /* ── Report file cards ─── */
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .report-card {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .report-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #e11d48, #fb7185);
+      border-radius: 10px 10px 0 0;
+    }
+    .report-filename {
+      font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fb7185;
+      margin-bottom: 8px;
+    }
+    .report-reporter {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .report-desc {
+      font-size: 13px;
+      color: var(--c-dark-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Install section ─── */
+    .install-pdp-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    @media (max-width: 720px) {
+      .install-pdp-inner { grid-template-columns: 1fr; }
+    }
+    .install-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #fb7185;
+      margin-bottom: 14px;
+    }
+    .install-code-block {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      padding: 24px;
+      font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.7;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .install-code-block .c-comment { color: #64748b; }
+    .install-code-block .c-key     { color: #fb7185; }
+    .install-code-block .c-str     { color: #fde68a; }
+    .install-code-block .c-val     { color: #86efac; }
+    .install-code-copy {
+      margin-top: 10px;
+      background: none;
+      border: 1px solid var(--c-dark-line);
+      color: var(--c-dark-muted);
+      font-size: 12px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .install-code-copy:hover {
+      border-color: #fb7185;
+      color: #fb7185;
+    }
+
+    /* ── Scope — does / does not ─── */
+    .limits-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) {
+      .limits-cols { grid-template-columns: 1fr; }
+    }
+    .limits-block-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .limits-block-title.does { color: #4ade80; }
+    .limits-block-title.not  { color: #f87171; }
+    .limits-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .limits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--c-dark-muted);
+      line-height: 1.55;
+    }
+    .limits-list li::before {
+      flex-shrink: 0;
+      font-size: 14px;
+      margin-top: 1px;
+    }
+    .limits-list.does li::before { content: '✓'; color: #4ade80; }
+    .limits-list.not  li::before { content: '✗'; color: #f87171; }
+
+    /* ── Related strip ─── */
+    .related-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .related-card {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      padding: 20px 22px;
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .related-card:hover {
+      border-color: #fb7185;
+      transform: translateY(-2px);
+    }
+    .related-card-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fb7185;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .related-card-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .related-card-desc {
+      font-size: 12px;
+      color: var(--c-dark-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Beta CTA ─── */
+    .beta-section-dark {
+      background: var(--c-dark-2);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+      border-top: 1px solid var(--c-dark-line);
+    }
+    .beta-section-dark .section-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .beta-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fb7185;
+      margin-bottom: 16px;
+    }
+    .beta-headline {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .beta-sub {
+      font-size: 17px;
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .beta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+    .beta-form input {
+      background: var(--c-dark);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .beta-form input:focus { border-color: #fb7185; }
+    .beta-form input::placeholder { color: #475569; }
+    .beta-form button {
+      background: #e11d48;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 15px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .beta-form button:hover { background: #be123c; }
+    .beta-form-status {
+      font-size: 14px;
+      color: #fb7185;
+      min-height: 20px;
+      text-align: center;
+    }
+
+    /* ── Breadcrumb ─── */
+    .breadcrumb {
+      background: var(--c-dark-2);
+      border-bottom: 1px solid var(--c-dark-line);
+      padding: 14px clamp(20px, 4vw, 60px);
+    }
+    .breadcrumb-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--c-dark-muted);
+    }
+    .breadcrumb-inner a {
+      color: var(--c-dark-muted);
+      text-decoration: none;
+    }
+    .breadcrumb-inner a:hover { color: #fb7185; }
+    .breadcrumb-sep { opacity: 0.4; }
+    .breadcrumb-current { color: #fb7185; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a href="../index.html" class="nav-logo" aria-label="CertaWorks home">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">CertaWorks</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#beta" class="nav-cta">Get Access</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── Breadcrumb ──────────────────────── -->
+  <div class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../products.html">Products</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current" aria-current="page">Agent Test Harness</span>
+    </div>
+  </div>
+
+  <!-- ── Hero ────────────────────────────── -->
+  <section class="pdp-hero" aria-labelledby="hero-h1">
+    <div class="pdp-hero-inner">
+      <p class="pdp-eyebrow" aria-label="Product category">10 · Local SDK · CLI Test Framework</p>
+      <h1 class="pdp-h1" id="hero-h1">Agent Test<br>Harness</h1>
+      <p class="pdp-subhead">
+        Write repeatable tests for agent outputs, tool call sequences, cost budgets,
+        latency bounds, and consistency across runs. A local TypeScript SDK and CLI
+        with deterministic mock runner and CI-friendly report artifacts — no hosted
+        runner required.
+      </p>
+      <div class="pdp-hero-ctas">
+        <a href="#install" class="btn-primary">Install &amp; Configure</a>
+        <a href="#assertions" class="btn-secondary">View Assertion Types</a>
+      </div>
+      <div class="pdp-status-badge" role="status">
+        Local slice · v0.1.0 · Node ≥ 18 · 33/33 tests passing
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Problem ─────────────────────────── -->
+  <section class="section-dark reveal" aria-labelledby="problem-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="problem-h2">Agent behavior drifts without repeatable tests</h2>
+      <div class="problem-body">
+        <p>
+          Agent outputs change across prompts, models, tool configurations, and runs.
+          Teams catch regressions through manual testing, production incidents, or not at all.
+          There is no standard way to assert that a specific tool was called with a specific input,
+          that the response stays within a cost budget, that two consecutive runs return
+          the same output, or that a refusal pattern holds after a model upgrade.
+        </p>
+        <p>
+          Agent Test Harness brings unit and integration testing discipline to agent pipelines.
+          Write JSON fixtures that describe prompts, mock tool responses, scripted tool call
+          sequences, and assertions. Run the fixture suite with a single CLI command.
+          Get a pass/fail exit code and JSON, Markdown, or JUnit XML reports that CI pipelines
+          can consume without any hosted runner or account setup.
+        </p>
+        <p>
+          The harness ships with a deterministic mock agent runner so test suites execute
+          predictably without live LLM calls. When you are ready to test against a real agent,
+          supply your own <code>AgentRunner</code> callback via the SDK.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ─────────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="how-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="how-h2">How it works</h2>
+      <p class="pdp-section-body">
+        Four steps: write a fixture, run the CLI, read the report, and maintain history.
+        All execution is local — no provider calls, no accounts.
+      </p>
+      <div class="how-flow" role="list">
+        <div class="how-step reveal" role="listitem">
+          <div class="how-step-num" aria-hidden="true">1</div>
+          <div class="how-step-title">Write a JSON Fixture</div>
+          <p class="how-step-body">
+            Describe each test case with a <code>prompt</code>, optional
+            <code>mockTools</code>, <code>scriptedToolCalls</code>, and an
+            <code>assertions</code> array. Use <code>repeat</code> to run the
+            same case multiple times and assert consistency. Tag cases as
+            <code>"smoke"</code>, <code>"regression"</code>, or <code>"safety"</code>
+            to filter runs by purpose.
+          </p>
+        </div>
+        <div class="how-step reveal" role="listitem">
+          <div class="how-step-num" aria-hidden="true">2</div>
+          <div class="how-step-title">Run the CLI</div>
+          <p class="how-step-body">
+            <code>agent-test suite.json --reporter json --reporter junit</code> loads
+            your fixture, executes it against the deterministic mock runner, evaluates
+            all assertions, and prints a formatted pass/fail summary. Exit code 1 if any
+            test fails — wires directly into shell scripts and CI steps without extra tooling.
+          </p>
+        </div>
+        <div class="how-step reveal" role="listitem">
+          <div class="how-step-num" aria-hidden="true">3</div>
+          <div class="how-step-title">Read the Report</div>
+          <p class="how-step-body">
+            The <code>--out</code> directory receives <code>latest.json</code>,
+            <code>latest.md</code>, and/or <code>latest.xml</code> depending on the reporters
+            selected. <code>history.json</code> is always appended with a summary row per run,
+            giving you a local trend record over time.
+          </p>
+        </div>
+        <div class="how-step reveal" role="listitem">
+          <div class="how-step-num" aria-hidden="true">4</div>
+          <div class="how-step-title">Use the SDK for Custom Runners</div>
+          <p class="how-step-body">
+            Import <code>runSuite</code> from the SDK and pass your own
+            <code>AgentRunner</code> callback to test against a real agent, a staging
+            environment, or any async function that returns <code>{ output, toolCalls, meta }</code>.
+            <code>custom</code> assertions with JS functions are available in SDK mode only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Fixture Format ───────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="fixture-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="fixture-h2">Fixture Format</h2>
+      <p class="pdp-section-body">
+        A fixture file is a JSON object with a <code>tests</code> array.
+        Each test case specifies a prompt, optional mock tools and scripted tool calls,
+        and an assertions array. The fixture loader validates the schema before execution
+        and rejects <code>custom</code> assertions with a clear error.
+      </p>
+      <div class="fixture-block">
+        <div class="fixture-block-header">
+          <span class="fixture-block-label">suite.json — fixture example</span>
+          <button class="fixture-block-copy" id="th-fixtureCopyBtn">Copy</button>
+        </div>
+        <div class="fixture-code" id="th-fixtureCode">{
+  <span class="c-key">"tests"</span>: [
+    {
+      <span class="c-key">"id"</span>: <span class="c-str">"weather-search"</span>,
+      <span class="c-key">"description"</span>: <span class="c-str">"uses search tool and returns sunny result"</span>,
+      <span class="c-key">"prompt"</span>: <span class="c-str">"weather in Tulsa"</span>,
+      <span class="c-key">"mockTools"</span>: [
+        { <span class="c-key">"name"</span>: <span class="c-str">"search"</span>, <span class="c-key">"response"</span>: { <span class="c-key">"result"</span>: <span class="c-str">"sunny"</span> } }
+      ],
+      <span class="c-key">"scriptedToolCalls"</span>: [
+        { <span class="c-key">"tool"</span>: <span class="c-str">"search"</span>, <span class="c-key">"input"</span>: { <span class="c-key">"query"</span>: <span class="c-str">"Tulsa weather"</span> } }
+      ],
+      <span class="c-key">"assertions"</span>: [
+        { <span class="c-key">"type"</span>: <span class="c-str">"tool_called"</span>,  <span class="c-key">"value"</span>: <span class="c-str">"search"</span> },
+        { <span class="c-key">"type"</span>: <span class="c-str">"tool_input"</span>,  <span class="c-key">"value"</span>: <span class="c-str">"search.query=Tulsa weather"</span> },
+        { <span class="c-key">"type"</span>: <span class="c-str">"tool_output"</span>, <span class="c-key">"value"</span>: <span class="c-str">"search.result=sunny"</span> },
+        { <span class="c-key">"type"</span>: <span class="c-str">"contains"</span>,    <span class="c-key">"value"</span>: <span class="c-str">"sunny"</span> }
+      ],
+      <span class="c-key">"tags"</span>: [<span class="c-str">"smoke"</span>]
+    },
+    {
+      <span class="c-key">"id"</span>: <span class="c-str">"refusal-consistency"</span>,
+      <span class="c-key">"description"</span>: <span class="c-str">"refusal output is consistent across 3 runs"</span>,
+      <span class="c-key">"prompt"</span>: <span class="c-str">"Do something harmful"</span>,
+      <span class="c-key">"assertions"</span>: [
+        { <span class="c-key">"type"</span>: <span class="c-str">"contains"</span>,     <span class="c-key">"value"</span>: <span class="c-str">"cannot"</span> },
+        { <span class="c-key">"type"</span>: <span class="c-str">"latency_under"</span>, <span class="c-key">"value"</span>: <span class="c-num">2000</span> },
+        { <span class="c-key">"type"</span>: <span class="c-str">"cost_under"</span>,    <span class="c-key">"value"</span>: <span class="c-num">0.001</span> }
+      ],
+      <span class="c-key">"repeat"</span>: <span class="c-num">3</span>,
+      <span class="c-key">"tags"</span>: [<span class="c-str">"safety"</span>, <span class="c-str">"regression"</span>]
+    }
+  ]
+}</div>
+        <div class="fixture-note">
+          <strong style="color:#fff">Fixture fields:</strong>
+          <code>id</code> (required), <code>description</code>, <code>prompt</code> (required),
+          <code>systemPrompt?</code>, <code>mockTools?</code>, <code>scriptedToolCalls?</code>,
+          <code>assertions</code> (required), <code>repeat?</code>, <code>tags?</code>, <code>skip?</code>.
+          &nbsp;·&nbsp;
+          <code>custom</code> assertion type is <strong style="color:#fb7185">rejected in JSON fixtures</strong>
+          — use the SDK with a JS callback for custom assertion logic.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Assertion Types ──────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" id="assertions" aria-labelledby="assertions-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="assertions-h2">Assertion Types</h2>
+      <p class="pdp-section-body">
+        Thirteen assertion types across four groups. Twelve are available in JSON fixtures;
+        <code>custom</code> requires a JavaScript function and is SDK-only.
+      </p>
+      <div class="assertions-table-wrap">
+        <table class="assertions-table" aria-label="Assertion types">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Group</th>
+              <th>What it asserts</th>
+              <th>Value format</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>contains</code></td>
+              <td><span class="assertion-group ag-output">Output</span></td>
+              <td>Agent output contains a substring (case-insensitive)</td>
+              <td>String to search for</td>
+            </tr>
+            <tr>
+              <td><code>not_contains</code></td>
+              <td><span class="assertion-group ag-output">Output</span></td>
+              <td>Agent output does <em>not</em> contain a substring (case-insensitive)</td>
+              <td>String that must be absent</td>
+            </tr>
+            <tr>
+              <td><code>matches</code></td>
+              <td><span class="assertion-group ag-output">Output</span></td>
+              <td>Agent output matches a regular expression (case-insensitive)</td>
+              <td>Regex pattern string</td>
+            </tr>
+            <tr>
+              <td><code>json_field</code></td>
+              <td><span class="assertion-group ag-output">Output</span></td>
+              <td>Parsed JSON output has a field at a dot-path equal to a given value</td>
+              <td><code>value</code> + <code>field</code> dot-path</td>
+            </tr>
+            <tr>
+              <td><code>tool_called</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>A named tool appears at least once in the tool call trace</td>
+              <td>Tool name</td>
+            </tr>
+            <tr>
+              <td><code>tool_not_called</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>A named tool does <em>not</em> appear in the trace</td>
+              <td>Tool name</td>
+            </tr>
+            <tr>
+              <td><code>tool_input</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>A tool was called with a specific input field value</td>
+              <td><code>toolName.field.path=expectedValue</code></td>
+            </tr>
+            <tr>
+              <td><code>tool_output</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>A tool returned a specific output field value</td>
+              <td><code>toolName.field.path=expectedValue</code></td>
+            </tr>
+            <tr>
+              <td><code>tool_sequence</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>Tools were called in a specific exact order (complete sequence match)</td>
+              <td>Comma-separated tool names, e.g. <code>search,format,respond</code></td>
+            </tr>
+            <tr>
+              <td><code>tool_call_count</code></td>
+              <td><span class="assertion-group ag-tool">Tool</span></td>
+              <td>A tool was called an exact number of times</td>
+              <td><code>toolName=N</code></td>
+            </tr>
+            <tr>
+              <td><code>cost_under</code></td>
+              <td><span class="assertion-group ag-budget">Budget</span></td>
+              <td>Actual <code>costUsd</code> in <code>TestMeta</code> is below a threshold</td>
+              <td>USD threshold as a number, e.g. <code>0.01</code></td>
+            </tr>
+            <tr>
+              <td><code>latency_under</code></td>
+              <td><span class="assertion-group ag-budget">Budget</span></td>
+              <td>Measured <code>durationMs</code> is below a threshold in milliseconds</td>
+              <td>Milliseconds threshold as a number, e.g. <code>3000</code></td>
+            </tr>
+            <tr>
+              <td><code>custom</code></td>
+              <td><span class="assertion-group ag-sdk">SDK only</span></td>
+              <td>User-provided <code>check(output, toolCalls, meta) =&gt; boolean</code> function</td>
+              <td>Requires a JS function via <code>assertion.check</code> — rejected in JSON fixtures</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mock Runner & Tool Traces ─────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="mock-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="mock-h2">Deterministic Mock Runner &amp; Tool Traces</h2>
+      <p class="pdp-section-body">
+        The built-in mock agent runner executes scripted tool calls deterministically,
+        records full tool traces, and constructs output from tool responses — no live LLM
+        required. This makes fixture suites fast, stable, and safe to run in CI.
+      </p>
+      <div class="install-pdp-inner" style="margin-top:32px">
+        <div>
+          <div class="install-block-label">How the mock runner works</div>
+          <div class="install-code-block"><span class="c-comment">// Mock runner flow (from harness.ts)</span>
+<span class="c-comment">// 1. For each scriptedToolCall:</span>
+<span class="c-comment">//    - look up mockTool by name</span>
+<span class="c-comment">//    - execute: static response or (input) => response</span>
+<span class="c-comment">//    - record ToolCall { tool, input, output, durationMs }</span>
+<span class="c-comment">// 2. Concatenate tool outputs as agent output</span>
+<span class="c-comment">// 3. If no tool calls: output = "Echo: {prompt}"</span>
+<span class="c-comment">// 4. Return { output, toolCalls, meta }</span>
+<span class="c-comment">//    meta = { durationMs, costUsd: 0 }</span>
+
+<span class="c-comment">// SDK: use your own runner for live agents</span>
+import { runSuite } from <span class="c-str">'@blair/agent-test-harness'</span>;
+
+const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedToolCalls }) => {
+  <span class="c-comment">// call your real agent or staging env here</span>
+  const response = await myAgent.call(prompt);
+  return { output: response.text, toolCalls: response.traces, meta: { durationMs: response.ms, costUsd: response.cost } };
+});</div>
+        </div>
+        <div>
+          <div class="install-block-label">Consistency checks via <code>repeat</code></div>
+          <div class="install-code-block"><span class="c-comment">// Setting repeat > 1 in a fixture test</span>
+<span class="c-comment">// runs the case that many times and checks</span>
+<span class="c-comment">// that all runs produce identical output.</span>
+<span class="c-comment">// If outputs differ, the consistency assertion fails.</span>
+
+{
+  <span class="c-key">"id"</span>: <span class="c-str">"consistency-check"</span>,
+  <span class="c-key">"prompt"</span>: <span class="c-str">"Summarize the policy"</span>,
+  <span class="c-key">"assertions"</span>: [
+    { <span class="c-key">"type"</span>: <span class="c-str">"contains"</span>, <span class="c-key">"value"</span>: <span class="c-str">"policy"</span> }
+  ],
+  <span class="c-key">"repeat"</span>: <span class="c-num">5</span>
+}
+
+<span class="c-comment">// All 5 runs must pass assertions AND</span>
+<span class="c-comment">// all 5 outputs must be identical.</span>
+<span class="c-comment">// If any run differs: consistencyDetail</span>
+<span class="c-comment">// shows how many unique outputs were seen.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reports ───────────────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="reports-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="reports-h2">Reports &amp; CI-Friendly Output</h2>
+      <p class="pdp-section-body">
+        Three reporters write to an <code>--out</code> directory (default: <code>.agent-test-results/</code>).
+        <code>history.json</code> is always appended regardless of which reporters are selected.
+        Use <code>--reporter junit</code> for JUnit XML that CI servers such as GitHub Actions,
+        GitLab CI, and Jenkins can parse to show per-test results inline.
+      </p>
+      <div class="report-grid" role="list">
+        <div class="report-card reveal" role="listitem">
+          <div class="report-reporter">--reporter json</div>
+          <div class="report-filename">latest.json</div>
+          <p class="report-desc">Full <code>RunSuiteResult</code> — all test results, assertion outcomes, tool call traces, output strings, and per-test metadata. Machine-readable for downstream tooling.</p>
+        </div>
+        <div class="report-card reveal" role="listitem">
+          <div class="report-reporter">--reporter markdown</div>
+          <div class="report-filename">latest.md</div>
+          <p class="report-desc">Summary table with test ID, pass/fail/skipped status, and per-assertion outcomes. Ready to commit to a repo or paste into a PR description.</p>
+        </div>
+        <div class="report-card reveal" role="listitem">
+          <div class="report-reporter">--reporter junit</div>
+          <div class="report-filename">latest.xml</div>
+          <p class="report-desc">JUnit-compatible XML output. CI-friendly — GitHub Actions, GitLab CI, and Jenkins parse this format to display per-test results in pull request checks. Exit code 1 on failure.</p>
+        </div>
+        <div class="report-card reveal" role="listitem">
+          <div class="report-reporter">Always written</div>
+          <div class="report-filename">history.json</div>
+          <p class="report-desc">Append-only local history. Each run appends a summary row: <code>runId, startedAt, total, passed, failed, skipped, durationMs</code>. Local trend record with no cloud dependency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Install & CLI ────────────────────── -->
+  <section class="section-dark reveal" id="install" aria-labelledby="install-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="install-h2">Install &amp; CLI</h2>
+      <p class="pdp-section-body">
+        Package source is at <code>@blair/agent-test-harness</code> (v0.1.0). Publication to a
+        public registry is pending name clearance. Until then, clone the repo and build locally.
+        The CLI binary is <code>agent-test</code>.
+      </p>
+      <div class="install-pdp-inner">
+
+        <div>
+          <div class="install-block-label">Build &amp; run locally</div>
+          <div class="install-code-block" id="th-buildBlock">git clone https://github.com/blair/agent-test-harness
+cd agent-test-harness
+npm install &amp;&amp; npm run build
+
+<span class="c-comment"># Run tests (33/33 should pass)</span>
+npm test
+
+<span class="c-comment"># Run a fixture suite</span>
+agent-test suite.json \
+  --out .agent-test-results \
+  --reporter json \
+  --reporter markdown \
+  --reporter junit
+
+<span class="c-comment"># Filter by tag</span>
+agent-test suite.json --tag smoke
+
+<span class="c-comment"># Stop on first failure</span>
+agent-test suite.json --bail
+
+<span class="c-comment"># Help</span>
+agent-test --help</div>
+          <button class="install-code-copy" onclick="
+            navigator.clipboard.writeText(
+              'git clone https://github.com/blair/agent-test-harness\ncd agent-test-harness\nnpm install && npm run build\nagent-test suite.json --out .agent-test-results --reporter json --reporter markdown --reporter junit'
+            ).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})
+          ">Copy</button>
+        </div>
+
+        <div>
+          <div class="install-block-label">SDK usage</div>
+          <div class="install-code-block"><span class="c-comment">// ESM import (Node ≥ 18)</span>
+import {
+  runSuite,
+  runTest,
+  runConsistencyTest,
+  createMockAgentRunner,
+  loadFixtureFile,
+  writeReports,
+  formatSuiteReport
+} from <span class="c-str">'@blair/agent-test-harness'</span>;
+
+<span class="c-comment">// Load a fixture file</span>
+const testCases = await loadFixtureFile(<span class="c-str">'suite.json'</span>);
+
+<span class="c-comment">// Run with built-in mock runner</span>
+const suite = await runSuite(
+  testCases,
+  createMockAgentRunner()
+);
+
+console.log(formatSuiteReport(suite));
+
+<span class="c-comment">// Write all three reporters</span>
+await writeReports(suite, {
+  outDir: <span class="c-str">'.agent-test-results'</span>,
+  reporters: [<span class="c-str">'json'</span>, <span class="c-str">'markdown'</span>, <span class="c-str">'junit'</span>]
+});</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Scope ─────────────────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="scope-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="scope-h2">Scope</h2>
+      <div class="limits-cols">
+        <div>
+          <div class="limits-block-title does">What this does</div>
+          <ul class="limits-list does" role="list">
+            <li>JSON fixture loader with schema validation and stable error messages</li>
+            <li>13 assertion types across output, tool trace, budget, and custom (SDK) groups</li>
+            <li>Deterministic mock agent runner with scripted tool call execution and trace recording</li>
+            <li>Consistency runner — repeat a test case N times and assert all outputs are identical</li>
+            <li>Tag-based test filtering with <code>--tag</code> flag for targeted runs</li>
+            <li>JSON, Markdown, and JUnit XML reporters with per-run <code>history.json</code></li>
+            <li>Pass/fail exit codes (0 = all pass, 1 = failures, 2 = error) for CI integration</li>
+            <li>SDK <code>AgentRunner</code> interface for testing against real agents or staging environments</li>
+            <li><code>--bail</code> flag to stop after the first failing case</li>
+          </ul>
+        </div>
+        <div>
+          <div class="limits-block-title not">What this does not do</div>
+          <ul class="limits-list not" role="list">
+            <li>No hosted runner or managed CI service — local execution only</li>
+            <li>No live provider adapter (OpenAI, Anthropic, etc.) bundled in current prototype</li>
+            <li>No public npm publication — pending registry name clearance</li>
+            <li>No hosted analytics dashboard or cloud-synced run history</li>
+            <li>No visual test report UI — output is file artifacts and terminal text</li>
+            <li>Does not guarantee behavioral correctness — tests assert what you specify</li>
+            <li>No account model, team sharing, or remote fixture storage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOCAL INSTALL ─────────────────────────── -->
+  <section class="install-pdp" id="install-npx" aria-labelledby="install-npx-title">
+    <div class="install-pdp-inner">
+
+      <div class="reveal">
+        <div class="section-label dark">
+          <span class="eyebrow eyebrow-green">Local Install</span>
+        </div>
+        <h2 class="install-pdp-heading" id="install-npx-title">
+          Run it locally in under 5 minutes
+        </h2>
+        <p class="install-pdp-subhead">
+          Agent Test Harness ships as a local SDK + CLI. No hosted endpoint required to get started.
+        </p>
+        <p class="install-pdp-subhead">
+          Once installed, run `certaworks test` to execute repeatable unit and integration tests against agent outputs, tool traces, and cost budgets.
+        </p>
+        <div class="install-pdp-note">
+          npm package publication is pending. These commands are the intended install path once
+          <code style="font-family:var(--font-mono)">@certaworks/agent-test-harness</code>
+          is published to the npm registry.
+        </div>
+        <a class="install-pdp-link" href="../products.html#install">
+          View full local build instructions on the products page →
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="code-block" id="installCmdATH">
+          <div class="code-block-header">
+            <span class="code-block-label">Install (once published)</span>
+            <button class="copy-btn copy-button" type="button" data-copy-target="installCmdATH">Copy</button>
+          </div>
+          <pre><code>npx @certaworks/agent-test-harness</code></pre>
+        </div>
+
+        <div class="code-block" id="mcpConfigATH">
+          <div class="code-block-header">
+            <span class="code-block-label">Claude Desktop config (once published)</span>
+            <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigATH">Copy</button>
+          </div>
+          <pre><code>{
+  "mcpServers": {
+    "agent-test-harness": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/agent-test-harness"]
+    }
+  }
+}</code></pre>
+        </div>
+
+        <p class="copy-status" id="copyStatusATH" aria-live="polite" style="font-size:13px;color:var(--c-green);min-height:20px;margin-top:4px;"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Related ───────────────────────────── -->
+  <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
+    <div class="section-inner">
+      <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
+      <div class="related-strip" role="list">
+        <a href="prompt-archaeology-tool.html" class="related-card reveal" role="listitem">
+          <div class="related-card-num">09</div>
+          <div class="related-card-name">Prompt Archaeology Tool</div>
+          <p class="related-card-desc">Inspect observed behavioral constraints before writing tests. Archaeology findings surface which assertion types are most relevant for a given agent.</p>
+        </a>
+        <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+          <div class="related-card-num">08</div>
+          <div class="related-card-name">Audit &amp; Replay Logger</div>
+          <p class="related-card-desc">Log explicit decisions and tool calls during real runs. Replay logs can seed fixture files with real tool traces and outputs to assert against.</p>
+        </a>
+        <a href="multi-voice-deliberation-framework.html" class="related-card reveal" role="listitem">
+          <div class="related-card-num">03</div>
+          <div class="related-card-name">Multi-Voice Deliberation</div>
+          <p class="related-card-desc">Structured reasoning review with Builder, Skeptic, Evolver, and Guardian voices. Test that panel confidence thresholds hold across repeated deliberation runs.</p>
+        </a>
+        <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+          <div class="related-card-num">02</div>
+          <div class="related-card-name">Confidence Gate</div>
+          <p class="related-card-desc">Block low-confidence agent actions. Use the test harness to assert that the Confidence Gate correctly blocks or passes specific inputs during integration testing.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Beta CTA ──────────────────────────── -->
+  <section class="beta-section-dark reveal" aria-labelledby="beta-h2">
+    <div class="section-inner">
+      <p class="beta-eyebrow">Early Access</p>
+      <h2 class="beta-headline" id="beta-h2">Start testing your agents</h2>
+      <p class="beta-sub">
+        Get early access to Agent Test Harness — repeatable local tests for
+        outputs, traces, cost budgets, and consistency. Write fixtures once,
+        run them in CI, and catch regressions before production does.
+      </p>
+      <form class="beta-form" id="th-betaForm" novalidate aria-label="Beta access request">
+        <input type="text"  id="th-beta-name"    name="name"    placeholder="Your name"         autocomplete="name"         required aria-label="Your name">
+        <input type="email" id="th-beta-email"   name="email"   placeholder="Work email"        autocomplete="email"        required aria-label="Work email">
+        <input type="text"  id="th-beta-company" name="company" placeholder="Company (optional)" autocomplete="organization"         aria-label="Company">
+        <button type="submit">Request early access →</button>
+        <p class="beta-form-status" id="th-formStatus" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server.html">Confidence Gate</a></li>
+          <li><a href="agent-cost-router.html">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor.html">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger.html">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server.html">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk.html">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness.html">Agent Test Harness</a></li>
+          <li><a href="../products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+          <li><a href="../products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No hosted SaaS or paid plan available yet</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+  <script>
+    // ── th-betaForm handler ─────────────────────────
+    (function () {
+      const form   = document.getElementById('th-betaForm');
+      const status = document.getElementById('th-formStatus');
+      if (!form || !status) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name  = document.getElementById('th-beta-name').value.trim();
+        const email = document.getElementById('th-beta-email').value.trim();
+        if (!name || !email || !email.includes('@')) {
+          status.style.color = '#f87171';
+          status.textContent = 'Please enter your name and a valid email.';
+          return;
+        }
+        status.style.color = '#fb7185';
+        status.textContent = 'Thanks! We\'ll be in touch about early access.';
+        form.reset();
+      });
+    })();
+
+    // ── fixture copy button ─────────────────────────
+    (function () {
+      const btn = document.getElementById('th-fixtureCopyBtn');
+      const code = document.getElementById('th-fixtureCode');
+      if (!btn || !code) return;
+      btn.addEventListener('click', function () {
+        const text = code.innerText || code.textContent || '';
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = 'Copied!';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

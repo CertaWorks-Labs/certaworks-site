@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products — CertaWorks Suite</title>
+  <meta name="description" content="The CertaWorks product suite: 10 agentic infrastructure products including Confidence Gate, Agent Cost Router, Cognitive Memory, Audit Replay, and more.">
+  <link rel="canonical" href="https://certaworks.dev/products">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products">
+  <meta property="og:title" content="Products — CertaWorks Suite">
+  <meta property="og:description" content="Ten products, one operating layer for agent teams.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Products — CertaWorks Suite">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "CertaWorks Agentic Infrastructure Product Suite",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1,  "name": "Identity Engine SDK",              "url": "https://certaworks.dev/products#identity-engine-sdk" },
+      { "@type": "ListItem", "position": 2,  "name": "Confidence Gate MCP Server",       "url": "https://certaworks.dev/products#confidence-gate-mcp-server" },
+      { "@type": "ListItem", "position": 3,  "name": "Multi-Voice Deliberation Framework","url": "https://certaworks.dev/products#multi-voice-deliberation-framework" },
+      { "@type": "ListItem", "position": 4,  "name": "Agent Cost Router",                "url": "https://certaworks.dev/products#agent-cost-router" },
+      { "@type": "ListItem", "position": 5,  "name": "Goal Drift Monitor",               "url": "https://certaworks.dev/products#goal-drift-monitor" },
+      { "@type": "ListItem", "position": 6,  "name": "Cognitive Memory MCP Server",      "url": "https://certaworks.dev/products#cognitive-memory-mcp-server" },
+      { "@type": "ListItem", "position": 7,  "name": "Agent Skill Marketplace Plugin",   "url": "https://certaworks.dev/products#agent-skill-marketplace-plugin" },
+      { "@type": "ListItem", "position": 8,  "name": "Audit & Replay Logger",            "url": "https://certaworks.dev/products/audit-replay-logger" },
+      { "@type": "ListItem", "position": 9,  "name": "Prompt Archaeology Tool",          "url": "https://certaworks.dev/products#prompt-archaeology-tool" },
+      { "@type": "ListItem", "position": 10, "name": "Agent Test Harness",               "url": "https://certaworks.dev/products#agent-test-harness" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./products.html" class="active" aria-current="page">Products</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#beta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="./index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── PRODUCTS HERO ──────────────────────────── -->
+    <section class="products-hero" aria-labelledby="products-title">
+      <div class="products-hero-inner">
+        <div class="section-label dark">
+          <span class="eyebrow eyebrow-green">CertaWorks</span>
+        </div>
+        <h1 id="products-title">The full suite.<br>Ten products, one layer.</h1>
+        <p class="products-hero-lead">
+          Every product solves a specific infrastructure problem for teams building with AI agents — from scoring actions before they run, to routing cost, to keeping a complete audit trail.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── FEATURED: CONFIDENCE GATE ─────────────── -->
+    <section class="section featured-section" id="confidence-gate-feature" aria-labelledby="gate-title">
+      <div class="section-inner">
+        <div class="featured-header">
+
+          <div class="reveal">
+            <div class="section-label">
+              <span class="eyebrow eyebrow-teal">Product 02 · MCP Server</span>
+            </div>
+            <h2 class="featured-headline" id="gate-title">Confidence Gate</h2>
+            <p class="featured-desc">
+              Scores proposed agent actions and returns allow, review, or block decisions — before tools touch files, APIs, customers, or production. The primary control point in the CertaWorks suite.
+            </p>
+            <div class="feature-pills" role="list" aria-label="Key capabilities">
+              <span class="feature-pill" role="listitem">Score</span>
+              <span class="feature-pill" role="listitem">Route to review</span>
+              <span class="feature-pill" role="listitem">Block</span>
+              <span class="feature-pill" role="listitem">Decision trace</span>
+              <span class="feature-pill" role="listitem">MCP Server</span>
+            </div>
+            <div class="featured-ctas">
+              <a href="#install" class="btn btn-primary btn-sm">Install Local →</a>
+              <a href="./dashboard.html" class="btn btn-outline btn-sm">Open Dashboard</a>
+              <a href="./index.html#beta" class="btn btn-outline btn-sm">Join Hosted Beta</a>
+              <a href="./products/confidence-gate-mcp-server.html" class="btn btn-outline btn-sm">Full product page →</a>
+            </div>
+          </div>
+
+          <!-- Interactive workbench demo -->
+          <div class="reveal">
+            <div class="workbench-wrapper" aria-label="Interactive Confidence Gate demo">
+              <div class="workbench-tabs" role="tablist" aria-label="Review scenarios">
+                <button class="wb-tab active" role="tab" aria-selected="true"  type="button" data-scenario="code">Code</button>
+                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="customer">Customer</button>
+                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="database">Database</button>
+                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="deploy">Deploy</button>
+              </div>
+
+              <div class="workbench-body">
+                <div class="wb-main">
+                  <div class="wb-topline">
+                    <span class="wb-live-dot" aria-hidden="true"></span>
+                    <span class="wb-scene-label" id="sceneLabel">Code change review</span>
+                    <button class="wb-replay-btn" type="button" id="replayButton">Replay</button>
+                  </div>
+
+                  <div class="motion-stage" data-frame="proposed" aria-label="Gate sequence">
+                    <ol class="stage-steps" aria-label="Steps">
+                      <li class="active" data-step="proposed">Proposed</li>
+                      <li data-step="scored">Scored</li>
+                      <li data-step="routed">Routed</li>
+                      <li data-step="logged">Logged</li>
+                    </ol>
+
+                    <article class="action-surface" aria-label="Proposed action">
+                      <p class="wb-surface-label">Agent proposes</p>
+                      <h2 id="actionTitle">Rewrite authentication middleware after failing tests.</h2>
+                      <p id="actionContext">The agent has test output, touched files, and rollback notes, but the change affects login behavior.</p>
+                    </article>
+
+                    <div class="gate-surface" aria-label="Gate decision">
+                      <div class="score-block">
+                        <span>Confidence</span>
+                        <strong id="scoreValue">78%</strong>
+                      </div>
+                      <div class="decision-block">
+                        <span>Decision</span>
+                        <strong id="decisionValue">Review required</strong>
+                      </div>
+                      <div class="progress-track" aria-label="Step progress">
+                        <span id="progressFill" style="width:18%"></span>
+                      </div>
+                    </div>
+
+                    <div class="trace-surface" aria-label="Decision trace">
+                      <p class="wb-surface-label">Decision trace</p>
+                      <code id="auditPreview">08:42 · Code change · Proposed · 78% · policy: high_risk_review</code>
+                      <ul id="reasonList">
+                        <li>Touches authentication flow.</li>
+                        <li>Test evidence is present but incomplete.</li>
+                        <li>Rollback path should be confirmed.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ALL PRODUCTS GRID ───────────────────────── -->
+    <section class="section products-section" aria-labelledby="all-products-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">Complete suite</span>
+        </div>
+        <h2 class="section-headline reveal" id="all-products-title">All ten products.</h2>
+
+        <div class="products-grid" role="list">
+
+          <!-- 01 Identity Engine SDK -->
+          <article class="product-card reveal" id="identity-engine-sdk"
+            style="--product-accent: #2563EB" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-identity" aria-hidden="true"></div>
+              <span class="product-tag">SDK</span>
+            </div>
+            <span class="product-num">01</span>
+            <h3 class="product-name">Identity Engine SDK</h3>
+            <p class="product-desc">Persistent identity, mutable state, append-only history, and drift checks for agents that need continuity across sessions. Node / TypeScript prototype.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+              </span>
+              <a href="./products/identity-engine-sdk.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Identity</span>
+                    <span class="card-expand-pill">State</span>
+                    <span class="card-expand-pill">History</span>
+                    <span class="card-expand-pill">Drift checks</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/identity-engine-sdk.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/identity-engine-sdk.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 Confidence Gate -->
+          <article class="product-card reveal" id="confidence-gate-mcp-server"
+            style="--product-accent: #10B981" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-gate" aria-hidden="true"></div>
+              <span class="product-tag">MCP Server</span>
+            </div>
+            <span class="product-num">02</span>
+            <h3 class="product-name">Confidence Gate MCP Server</h3>
+            <p class="product-desc">Scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context. The primary control point in the CertaWorks suite — the product the gate workbench above demonstrates live.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Available now
+              </span>
+              <a href="#install" class="product-cta-text">Install local →</a>
+              <a href="./products/confidence-gate-mcp-server.html" class="product-cta-text" style="margin-left:12px;opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Score</span>
+                    <span class="card-expand-pill">Route to review</span>
+                    <span class="card-expand-pill">Block</span>
+                    <span class="card-expand-pill">Decision trace</span>
+                    <span class="card-expand-pill">MCP Server</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="#install" class="btn btn-primary btn-sm">Install local →</a>
+                    <a href="./dashboard.html" class="btn btn-outline btn-sm">Open dashboard →</a>
+                    <a href="./products/confidence-gate-mcp-server.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 Multi-Voice Deliberation -->
+          <article class="product-card reveal" id="multi-voice-deliberation-framework"
+            style="--product-accent: #6366F1" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-deliberation" aria-hidden="true"></div>
+              <span class="product-tag">Framework</span>
+            </div>
+            <span class="product-num">03</span>
+            <h3 class="product-name">Multi-Voice Deliberation Framework</h3>
+            <p class="product-desc">Adds Builder, Skeptic, Evolver, and Guardian review loops before an agent commits to an answer. A quality review layer for high-stakes agent decisions.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+              </span>
+              <a href="./products/multi-voice-deliberation-framework.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Builder</span>
+                    <span class="card-expand-pill">Skeptic</span>
+                    <span class="card-expand-pill">Evolver</span>
+                    <span class="card-expand-pill">Guardian</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/multi-voice-deliberation-framework.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/multi-voice-deliberation-framework.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 Agent Cost Router -->
+          <article class="product-card reveal" id="agent-cost-router"
+            style="--product-accent: #10B981" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-router" aria-hidden="true"></div>
+              <span class="product-tag">Router</span>
+            </div>
+            <span class="product-num">04</span>
+            <h3 class="product-name">Agent Cost Router</h3>
+            <p class="product-desc">Routes prompts to the cheapest capable model while estimating cost and respecting quality needs and budget constraints. Local slice — SDK, CLI, MCP tools, local API, and local dashboard.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Local slice
+              </span>
+              <a href="./products/agent-cost-router.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Classify</span>
+                    <span class="card-expand-pill">Route</span>
+                    <span class="card-expand-pill">Cost estimate</span>
+                    <span class="card-expand-pill">Budget guard</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/agent-cost-router.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/agent-cost-router.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05 Goal Drift Monitor -->
+          <article class="product-card reveal" id="goal-drift-monitor"
+            style="--product-accent: #F59E0B" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-drift" aria-hidden="true"></div>
+              <span class="product-tag">Monitor</span>
+            </div>
+            <span class="product-num">05</span>
+            <h3 class="product-name">Goal Drift Monitor</h3>
+            <p class="product-desc">Monitors long-running agents for divergence from their original goal and flags risky behavioral drift. Local slice — stores session turn history, scores drift, and records webhook alert receipts.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+              </span>
+              <a href="./products/goal-drift-monitor.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Drift score</span>
+                    <span class="card-expand-pill">Session baseline</span>
+                    <span class="card-expand-pill">Turn history</span>
+                    <span class="card-expand-pill">Webhook alerts</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/goal-drift-monitor.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/goal-drift-monitor.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 06 Cognitive Memory -->
+          <article class="product-card reveal" id="cognitive-memory-mcp-server"
+            style="--product-accent: #0F766E" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-memory" aria-hidden="true"></div>
+              <span class="product-tag">MCP Server</span>
+            </div>
+            <span class="product-num">06</span>
+            <h3 class="product-name">Cognitive Memory MCP Server</h3>
+            <p class="product-desc">Gives agents episodic, semantic, and working-memory tools for retrieval and context packing. A local memory primitive for agents that need continuity between sessions.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Available now
+              </span>
+              <a href="./products/cognitive-memory-mcp-server.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Episodic</span>
+                    <span class="card-expand-pill">Semantic</span>
+                    <span class="card-expand-pill">Working memory</span>
+                    <span class="card-expand-pill">Context pack</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/cognitive-memory-mcp-server.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/cognitive-memory-mcp-server.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 07 Skill Marketplace -->
+          <article class="product-card reveal" id="agent-skill-marketplace-plugin"
+            style="--product-accent: #10B981" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-skills" aria-hidden="true"></div>
+              <span class="product-tag">Plugin</span>
+            </div>
+            <span class="product-num">07</span>
+            <h3 class="product-name">Agent Skill Marketplace Plugin</h3>
+            <p class="product-desc">Lets agents discover, inspect, load, and run trusted skills from a local registry-style capability layer. Includes durable local install state, checksum verification, and MCP tools.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Local slice
+              </span>
+              <a href="./products/agent-skill-marketplace-plugin.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Discover</span>
+                    <span class="card-expand-pill">Install</span>
+                    <span class="card-expand-pill">Verify</span>
+                    <span class="card-expand-pill">Run</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/agent-skill-marketplace-plugin.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/agent-skill-marketplace-plugin.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 08 Audit & Replay Logger -->
+          <article class="product-card reveal" id="audit-replay-logger"
+            style="--product-accent: #334155" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-replay" aria-hidden="true"></div>
+              <span class="product-tag">Logger</span>
+            </div>
+            <span class="product-num">08</span>
+            <h3 class="product-name">Audit &amp; Replay Logger</h3>
+            <p class="product-desc">Captures explicitly logged decisions, tool calls, state changes, and causal chains for local agent debugging. Includes durable local storage, redaction, hash-chain events, and replay bundles.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot proto" aria-hidden="true"></span>Local slice
+              </span>
+              <a href="./products/audit-replay-logger.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Hash-chain</span>
+                    <span class="card-expand-pill">Redact</span>
+                    <span class="card-expand-pill">Replay</span>
+                    <span class="card-expand-pill">Causal chain</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/audit-replay-logger.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/audit-replay-logger.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 09 Prompt Archaeology -->
+          <article class="product-card reveal" id="prompt-archaeology-tool"
+            style="--product-accent: #6366F1" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-archaeology" aria-hidden="true"></div>
+              <span class="product-tag">Probe Tool</span>
+            </div>
+            <span class="product-num">09</span>
+            <h3 class="product-name">Prompt Archaeology Tool</h3>
+            <p class="product-desc">Runs probes to infer behavioral constraints, persona patterns, and likely hidden operating rules in agent systems. Audit signals — not exact prompt recovery.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Available now
+              </span>
+              <a href="./products/prompt-archaeology-tool.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Probe</span>
+                    <span class="card-expand-pill">Infer</span>
+                    <span class="card-expand-pill">Constraints</span>
+                    <span class="card-expand-pill">Evidence report</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/prompt-archaeology-tool.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/prompt-archaeology-tool.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10 Agent Test Harness -->
+          <article class="product-card reveal" id="agent-test-harness"
+            style="--product-accent: #1E3A8A" role="listitem" data-expandable>
+            <div class="product-card-header">
+              <div class="product-mark mark-harness" aria-hidden="true"></div>
+              <span class="product-tag">Test Framework</span>
+            </div>
+            <span class="product-num">10</span>
+            <h3 class="product-name">Agent Test Harness</h3>
+            <p class="product-desc">Provides repeatable tests for agent outputs, traces, tool calls, latency, cost, and mock tool behavior. An SDK / library for teams building agent test suites.</p>
+            <div class="product-card-footer">
+              <span class="product-status">
+                <span class="status-dot live" aria-hidden="true"></span>Available now
+              </span>
+              <a href="./products/agent-test-harness.html" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
+            </div>
+            <div class="card-expand-panel">
+              <div class="card-expand-inner">
+                <div class="card-expand-content">
+                  <div class="card-expand-pills">
+                    <span class="card-expand-pill">Assertions</span>
+                    <span class="card-expand-pill">Fixtures</span>
+                    <span class="card-expand-pill">Cost tracking</span>
+                    <span class="card-expand-pill">Trace replay</span>
+                  </div>
+                  <div class="card-expand-actions">
+                    <a href="./products/agent-test-harness.html" class="btn btn-primary btn-sm">Install docs →</a>
+                    <a href="./products/agent-test-harness.html" class="btn btn-outline btn-sm">Full product page →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INSTALL ─────────────────────────────────── -->
+    <section class="install-section" id="install" aria-labelledby="install-title">
+      <div class="install-inner">
+
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Local Install</span>
+          </div>
+          <h2 class="install-heading" id="install-title">
+            Run Confidence Gate locally.
+          </h2>
+          <p class="install-desc">
+            The local MCP server is the current install path for private testing. Public package names are not reserved or published yet.
+          </p>
+          <div class="install-actions">
+            <button class="btn btn-ghost btn-sm copy-button" type="button"
+              data-copy-target="mcpConfig">Copy MCP config</button>
+            <a href="./index.html#beta" class="btn btn-sm"
+              style="background:rgba(255,255,255,0.06);color:rgba(200,225,255,0.7);border:1px solid rgba(255,255,255,0.1)">
+              Join hosted beta →
+            </a>
+          </div>
+          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+        </div>
+
+        <div class="reveal">
+          <div class="code-block">
+            <div class="code-block-header">
+              <span class="code-block-label">Build &amp; test</span>
+            </div>
+            <pre><code>cd /Users/source/Desktop/CC/products/02-confidence-gate-mcp-server
+npm install
+npm run build
+npm test</code></pre>
+          </div>
+
+          <div class="code-block" id="mcpConfig">
+            <div class="code-block-header">
+              <span class="code-block-label">MCP config</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfig">Copy</button>
+            </div>
+            <pre><code>{
+  "mcpServers": {
+    "confidence-gate": {
+      "command": "node",
+      "args": [
+        "/Users/source/Desktop/CC/products/02-confidence-gate-mcp-server/dist/index.js"
+      ]
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── TRUST POSTURE ───────────────────────────── -->
+    <section class="section" id="trust" style="background: var(--c-white);"
+      aria-labelledby="trust-title">
+      <div class="section-inner">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">Trust posture</span>
+        </div>
+        <h2 class="section-headline reveal" id="trust-title">
+          Calm, precise,<br>careful about claims.
+        </h2>
+
+        <div class="values-grid stagger-children reveal" style="margin-top: 48px;" role="list">
+          <article class="value-card" role="listitem">
+            <h3 class="value-title">Clear boundary</h3>
+            <p class="value-desc">Confidence Gate is a decision-support layer. It helps teams evaluate and log agent actions, but it does not replace human judgment, legal review, security review, or production controls.</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title">Private brand status</h3>
+            <p class="value-desc">CertaWorks is a working private brand direction. Name, trademark, domain, and public launch risk remain unresolved as of this prototype version.</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title">Payment posture</h3>
+            <p class="value-desc">Pricing can be discussed for beta planning, but checkout and Stripe products are intentionally not enabled at this stage of development.</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title">What is live now</h3>
+            <p class="value-desc">The local Confidence Gate MCP server is the current working product. A prototype dashboard is available now; hosted access and persistent team storage are not current reality.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="./products/confidence-gate-mcp-server.html">Confidence Gate</a></li>
+          <li><a href="./products/agent-cost-router.html">Agent Cost Router</a></li>
+          <li><a href="./products/goal-drift-monitor.html">Goal Drift Monitor</a></li>
+          <li><a href="./products/audit-replay-logger.html">Audit &amp; Replay Logger</a></li>
+          <li><a href="./products/cognitive-memory-mcp-server.html">Cognitive Memory</a></li>
+          <li><a href="./products/identity-engine-sdk.html">Identity Engine SDK</a></li>
+          <li><a href="./products/multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
+          <li><a href="./products/agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="./products/prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="./products/agent-test-harness.html">Agent Test Harness</a></li>
+          <li><a href="#">All Products ↑</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./index.html#beta">Contact</a></li>
+          <li><a href="#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notice</div>
+        <ul class="footer-links">
+          <li><a href="./index.html#beta">Hosted Beta</a></li>
+          <li><a href="#trust">Trust Posture</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        © 2026 CertaWorks. Private prototype — not legal, trademark, domain, or public launch clearance.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+  <style>
+    /* ── Product card expand interaction ─────────────────── */
+    .product-card[data-expandable] {
+      cursor: pointer;
+      user-select: none;
+    }
+    .product-card[data-expandable] a {
+      /* links inside cards still navigate normally */
+      cursor: pointer;
+      user-select: auto;
+    }
+    /* Expand chevron affordance */
+    .product-card[data-expandable] .product-card-footer::after {
+      content: '›';
+      font-size: 16px;
+      color: var(--c-muted-2);
+      margin-left: auto;
+      transition: transform 220ms ease, color 180ms;
+      display: inline-flex;
+      align-items: center;
+      padding-left: 8px;
+      flex-shrink: 0;
+    }
+    .product-card.is-expanded .product-card-footer::after {
+      transform: rotate(90deg);
+      color: var(--c-teal);
+    }
+    /* Smooth height-to-auto via grid trick */
+    .card-expand-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 300ms cubic-bezier(0.4,0,0.2,1);
+      margin-top: 0;
+    }
+    .card-expand-inner {
+      overflow: hidden;
+      min-height: 0;
+    }
+    .product-card.is-expanded .card-expand-panel {
+      grid-template-rows: 1fr;
+    }
+    .product-card.is-expanded {
+      border-color: rgba(var(--product-accent-rgb, 16,185,129), 0.35);
+      box-shadow: 0 0 0 1px rgba(var(--product-accent-rgb, 16,185,129), 0.18),
+                  var(--sh-card-hover);
+    }
+    /* Content inside the expand panel */
+    .card-expand-content {
+      padding-top: 18px;
+      border-top: 1px solid var(--c-border);
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .card-expand-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .card-expand-pill {
+      height: 22px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      background: var(--c-bg);
+      border: 1px solid var(--c-border);
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    .card-expand-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 4px;
+    }
+    .card-expand-actions .btn {
+      font-size: 12px;
+      padding: 7px 14px;
+      height: auto;
+    }
+  </style>
+  <script>
+    (function () {
+      document.querySelectorAll('.product-card[data-expandable]').forEach(function (card) {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-expanded', 'false');
+
+        function toggle(e) {
+          if (e.target.closest('a')) return; // let link clicks through
+          var opening = !card.classList.contains('is-expanded');
+          // close all
+          document.querySelectorAll('.product-card.is-expanded').forEach(function (c) {
+            c.classList.remove('is-expanded');
+            c.setAttribute('aria-expanded', 'false');
+          });
+          if (opening) {
+            card.classList.add('is-expanded');
+            card.setAttribute('aria-expanded', 'true');
+          }
+        }
+
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

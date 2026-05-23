@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit & Replay Logger — CertaWorks</title>
+  <meta name="description" content="Audit & Replay Logger records explicitly logged agent decisions, tool calls, state changes, causal chains, and replay bundles in a local tamper-evident audit store.">
+  <link rel="canonical" href="https://certaworks.dev/products/audit-replay-logger">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/audit-replay-logger">
+  <meta property="og:title" content="Audit & Replay Logger — CertaWorks">
+  <meta property="og:description" content="Capture local hash-chain audit events, redacted payloads, causal chains, and exportable replay bundles for agent debugging and review.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audit & Replay Logger — CertaWorks">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Audit & Replay Logger",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Audit & Replay Logger records explicitly logged agent decisions, tool calls, state changes, causal chains, and replay bundles in a local audit store.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* Product detail page extras */
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 720px; height: 720px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(148,163,184,0.16) 0%, rgba(51,65,85,0.08) 50%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .pdp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+    .pdp-h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .pdp-subhead {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      max-width: 650px;
+      margin-bottom: 36px;
+    }
+    .pdp-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .pdp-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(148,163,184,0.12);
+      border: 1px solid rgba(148,163,184,0.28);
+      color: #cbd5e1;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #94a3b8;
+      flex-shrink: 0;
+    }
+    .section-dark {
+      background: var(--c-dark);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-dark .section-inner,
+    .section-light .section-inner,
+    .section .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-light {
+      background: var(--c-white);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .pdp-section-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .pdp-section-body {
+      color: var(--c-dark-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+    .problem-body {
+      color: var(--c-dark-muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.75;
+      max-width: 740px;
+      margin-top: 24px;
+    }
+    .problem-body p + p { margin-top: 20px; }
+    .how-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-step {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .how-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(148,163,184,0.14);
+      border: 1px solid rgba(148,163,184,0.32);
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .how-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+    }
+    .how-flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-dark-muted);
+      font-size: 22px;
+      padding: 0 4px;
+      align-self: center;
+    }
+    .how-caveat {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      color: var(--c-dark-muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 800px;
+    }
+    .model-table-wrap { overflow-x: auto; margin-top: 28px; }
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .model-table th {
+      text-align: left;
+      padding: 10px 16px;
+      color: rgba(160,200,240,0.55);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-family: var(--font-sans, inherit);
+    }
+    .model-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--c-dark-muted);
+      vertical-align: top;
+    }
+    .model-table td:first-child {
+      font-family: var(--font-mono);
+      color: var(--c-dark-text);
+      font-weight: 600;
+    }
+    .event-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(148,163,184,0.12); color: #cbd5e1; }
+    .event-badge-green { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(16,185,129,0.12); color: var(--c-green); }
+    .event-badge-amber { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
+    .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
+    .dashboard-callout {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(148,163,184,0.06);
+      border: 1px solid rgba(148,163,184,0.22);
+      border-radius: 10px;
+    }
+    .dashboard-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+    .dashboard-callout p {
+      font-size: 14px;
+      color: rgba(203,213,225,0.82);
+      line-height: 1.65;
+    }
+    .dashboard-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-teal);
+      text-decoration: none;
+    }
+    .dashboard-link:hover { text-decoration: underline; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(148,163,184,0.36); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #cbd5e1; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
+    .tools-group-label:first-child { margin-top: 0; }
+    .limits-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) {
+      .limits-cols { grid-template-columns: 1fr; }
+    }
+    .limits-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .limits-col-does .limits-col-title { color: var(--c-green); }
+    .limits-col-doesnt .limits-col-title { color: var(--c-amber); }
+    .limits-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .limits-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--c-dark-line);
+      font-size: 14px;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-icon-does { color: var(--c-green); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-icon-doesnt { color: var(--c-amber); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-list li span { color: var(--c-dark-muted); }
+    .beta-section-dark {
+      background: var(--c-dark-2);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .beta-section-dark .beta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .beta-section-dark .beta-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .beta-heading-dark {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .beta-desc-dark {
+      font-size: 15px;
+      color: var(--c-dark-muted);
+      line-height: 1.65;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+    .breadcrumb { padding: 18px clamp(20px,4vw,60px) 0; position: relative; z-index: 2; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .breadcrumb-list li { color: rgba(160,200,240,0.45); }
+    .breadcrumb-list li a { color: rgba(160,200,240,0.55); text-decoration: none; transition: color 200ms; }
+    .breadcrumb-list li a:hover { color: var(--c-dark-text); }
+    .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
+    @media (max-width: 600px) {
+      .pdp-hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
+          <li><a href="../dashboard.html">Dashboard</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="background: var(--c-dark);">
+      <ol class="breadcrumb-list">
+        <li><a href="../products.html">Products</a></li>
+        <li aria-current="page">Audit &amp; Replay Logger</li>
+      </ol>
+    </nav>
+
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+      <div class="pdp-hero-inner">
+        <p class="pdp-eyebrow">Product 08 · Logger / API / MCP / Dashboard · Local Slice</p>
+        <h1 class="pdp-h1" id="pdp-hero-title">Audit &amp; Replay Logger</h1>
+        <p class="pdp-subhead">
+          Agents make decisions, call tools, and change state. Audit &amp; Replay Logger captures the
+          events you explicitly send it, redacts sensitive payload fields, links causes together,
+          and exports a local replay bundle so teams can understand what actually happened.
+        </p>
+        <div class="pdp-hero-ctas">
+          <a href="#install" class="btn btn-primary btn-sm">Local Install →</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-sm">How It Works</a>
+        </div>
+        <div class="pdp-status-badge">
+          Local product slice — Hosted audit cloud is not live yet
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark" id="problem" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">The Problem</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="problem-title">Agent work is hard to trust when the trail is missing.</h2>
+        <div class="problem-body reveal">
+          <p>
+            A model can produce a useful final answer while leaving the team unsure which decision
+            triggered which tool call, which payload was sent, whether sensitive fields were exposed,
+            or how a failed state change affected the rest of the session.
+          </p>
+          <p>
+            Ordinary logs help with raw output, but agent systems need a clearer account: ordered
+            events, causal links, redacted payloads, event hashes, and replay exports that can be
+            reviewed without relying on a hosted service.
+          </p>
+          <p>
+            Audit &amp; Replay Logger adds that local account. It records explicitly logged sessions,
+            decisions, tool calls, tool results, state changes, messages, errors, and session-end
+            events, then lets teams replay the sequence or inspect the causal chain behind one event.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works" aria-labelledby="how-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">How It Works</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="how-title">Record → Chain → Replay</h2>
+
+        <div class="how-flow reveal" role="list">
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">1</div>
+            <div class="how-step-title">Start a local audit session</div>
+            <p class="how-step-desc">
+              Create a session with an actor and optional metadata. The logger writes to
+              <code style="font-size:12px;color:#cbd5e1">.audit-replay-logger/audit-log.json</code>
+              by default, or to a configured local store path.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">2</div>
+            <div class="how-step-title">Log events with causal links</div>
+            <p class="how-step-desc">
+              Record decisions, tool calls, tool results, state changes, messages, and errors.
+              Each event gets a sequence number, timestamp, hash, and previous hash. Optional
+              <code style="font-size:12px;color:#cbd5e1">causedBy</code> links connect events.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">3</div>
+            <div class="how-step-title">Replay or export the evidence</div>
+            <p class="how-step-desc">
+              Filter replay timelines by event type, sequence range, or actor. Trace one event's
+              causal chain, or export a replay bundle containing event hashes, causal chains, and
+              a bundle hash for local review.
+            </p>
+          </article>
+        </div>
+
+        <div class="how-caveat reveal">
+          The logger records what the SDK, MCP tools, or HTTP API explicitly receive. It does not automatically observe every agent action.
+          <span>Hash-chain events provide local tamper evidence, not notarized compliance storage, WORM retention, legal review, or certification.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="audit-signals" aria-labelledby="audit-signals-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Audit Signals</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="audit-signals-title">What the audit record contains</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The fields below match the local logger's event and bundle model: ordered events,
+          redacted payloads, causal chains, and exportable replay bundles.
+        </p>
+
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Audit event fields and their meanings">
+            <thead>
+              <tr>
+                <th>Signal</th>
+                <th>Source field</th>
+                <th>Values</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Event type</td>
+                <td>type</td>
+                <td><span class="event-badge">decision</span> / tool_call / tool_result / state_change / message / error</td>
+                <td>Classifies what happened in the session timeline.</td>
+              </tr>
+              <tr>
+                <td>Sequence</td>
+                <td>seq</td>
+                <td><span class="event-badge-green">integer</span></td>
+                <td>Orders session events from the session_start event onward.</td>
+              </tr>
+              <tr>
+                <td>Hash-chain audit trail</td>
+                <td>hash / previousHash</td>
+                <td><span class="event-badge">sha256</span></td>
+                <td>Links each event to the previous event hash for local tamper-evidence.</td>
+              </tr>
+              <tr>
+                <td>Causal chains</td>
+                <td>causedBy</td>
+                <td>event id</td>
+                <td>Connects decisions to downstream tool calls, results, and state changes.</td>
+              </tr>
+              <tr>
+                <td>Redaction</td>
+                <td>payload</td>
+                <td><span class="event-badge-amber">[REDACTED]</span></td>
+                <td>Common secret, token, credential, password, authorization, and API-key fields are redacted before storage.</td>
+              </tr>
+              <tr>
+                <td>Replay bundles</td>
+                <td>bundleHash</td>
+                <td><span class="event-badge">sha256</span></td>
+                <td>Export bundles include the session, events, causal-chain map, and bundle hash.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="model-note reveal">
+          Replay filters currently support sequence range, event type, and actor. Bundle exports are
+          confined to a configured local export directory by the MCP server.
+        </p>
+      </div>
+    </section>
+
+    <section class="install-pdp" id="install" aria-labelledby="install-title">
+      <div class="install-pdp-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-light">Local Install</span>
+          </div>
+          <h2 class="install-pdp-heading" id="install-title">
+            SDK, MCP server, and local HTTP API
+          </h2>
+          <p class="install-pdp-subhead">
+            Audit &amp; Replay Logger ships as a local Node package with SDK exports, an MCP server,
+            and a local HTTP API. Use the SDK in process, connect MCP-compatible tools to the
+            server, or run the local API for dashboard and replay endpoints.
+          </p>
+          <p class="install-pdp-subhead">
+            The local HTTP API defaults to
+            <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">http://127.0.0.1:4319/dashboard</code>
+            after running
+            <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">npm run serve</code>.
+          </p>
+          <div class="install-pdp-note">
+            npm package publication is pending. The current private package metadata is
+            <code style="font-family:var(--font-mono)">@blair/audit-replay-logger</code>;
+            public package naming and registry publication are not live.
+          </div>
+          <a class="install-pdp-link" href="../products.html#install">
+            View full local build instructions on the products page →
+          </a>
+        </div>
+
+        <div class="reveal">
+          <div class="code-block" id="arInstallCmd">
+            <div class="code-block-header">
+              <span class="code-block-label">Install (once published)</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="arInstallCmd">Copy</button>
+            </div>
+            <pre><code>npm install -g @blair/audit-replay-logger</code></pre>
+          </div>
+
+          <div class="code-block" id="arSdkExample">
+            <div class="code-block-header">
+              <span class="code-block-label">SDK usage</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="arSdkExample">Copy</button>
+            </div>
+            <pre><code>import { createAuditLogger } from '@blair/audit-replay-logger';
+
+const audit = createAuditLogger({ storePath: './audit-log.json' });
+const session = audit.startSession({
+  actor: 'agent',
+  metadata: { task: 'refund-review' }
+});
+
+const decision = audit.logDecision(session.id, {
+  actor: 'agent',
+  decision: 'request human review',
+  reasoning: 'confidence gate returned review'
+});
+
+audit.logToolCall(session.id, {
+  actor: 'agent',
+  tool: 'confidence_gate',
+  input: { action: 'refund customer', token: 'redacted' },
+  causedBy: decision.id
+});
+
+const timeline = audit.replay(session.id);</code></pre>
+          </div>
+
+          <div class="code-block" id="arMcpConfig">
+            <div class="code-block-header">
+              <span class="code-block-label">Claude Desktop config (once published)</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="arMcpConfig">Copy</button>
+            </div>
+            <pre><code>{
+  "mcpServers": {
+    "audit-replay-logger": {
+      "command": "npx",
+      "args": ["-y", "@blair/audit-replay-logger",
+               "audit-replay-mcp"]
+    }
+  }
+}</code></pre>
+          </div>
+
+          <p class="copy-status" id="ar-copyStatus" aria-live="polite" style="font-size:13px;color:#cbd5e1;min-height:20px;margin-top:4px;"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Audit &amp; Replay Logger exposes these tools to any MCP-compatible agent runtime. Tool
+          names match the TOOLS array in
+          <code style="font-family:var(--font-mono);font-size:14px;color:#cbd5e1">src/mcp/server.ts</code> exactly.
+        </p>
+
+        <div class="tools-grid reveal">
+          <div class="tools-group-label">Sessions</div>
+
+          <div class="tool-card">
+            <div class="tool-name">start_session</div>
+            <div class="tool-desc">Start a new audit session. Returns the session ID to use for future event logging.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">end_session</div>
+            <div class="tool-desc">End an audit session and append a session_end event to the local timeline.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">list_sessions</div>
+            <div class="tool-desc">List local audit sessions with ID, timestamps, end status, and metadata.</div>
+          </div>
+
+          <div class="tools-group-label">Event Logging</div>
+
+          <div class="tool-card">
+            <div class="tool-name">log_event</div>
+            <div class="tool-desc">Record an arbitrary audit event with redacted payload and hash-chain continuity.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">log_decision</div>
+            <div class="tool-desc">Record an agent decision with reasoning, alternatives, and optional causal parent event.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">log_tool_call</div>
+            <div class="tool-desc">Record a tool invocation, including redacted input payload and optional caused_by link.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">log_tool_result</div>
+            <div class="tool-desc">Record a tool result, duration, output payload, and causal link back to the call.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">log_state_change</div>
+            <div class="tool-desc">Record a before/after state transition under a named key.</div>
+          </div>
+
+          <div class="tools-group-label">Replay &amp; Export</div>
+
+          <div class="tool-card">
+            <div class="tool-name">replay_session</div>
+            <div class="tool-desc">Replay events with optional filters for sequence range, event type, and actor.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">causal_chain</div>
+            <div class="tool-desc">Trace the causal chain leading to a specific event ID.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">export_bundle</div>
+            <div class="tool-desc">Export a session replay bundle to a safe local path inside the configured export directory.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dashboard" aria-labelledby="dashboard-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Dashboard &amp; API</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Audit &amp; Replay Logger includes a local HTTP API and lightweight dashboard landing page.
+          The dashboard lists the local replay endpoints and requires no cloud connection.
+        </p>
+        <p class="pdp-section-body reveal" style="margin-top: 12px;">
+          The API supports session creation, session listing, direct event logging, replay retrieval,
+          causal-chain lookup, and replay-bundle export through local endpoints such as
+          <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">GET /api/sessions/:id/replay</code>
+          and
+          <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">GET /api/sessions/:id/bundle</code>.
+        </p>
+
+        <div class="dashboard-callout reveal">
+          <div class="dashboard-callout-label">Roadmap — not currently built</div>
+          <p>
+            Hosted SaaS audit cloud, team accounts, user auth, signed exports, managed retention,
+            WORM storage, compliance certification, and a full visual replay timeline UI are roadmap
+            items. They are not currently built or available. What is available today is the local
+            SDK, MCP server, HTTP API, durable JSON store, and lightweight local dashboard page.
+          </p>
+        </div>
+
+        <a href="../dashboard.html" class="dashboard-link reveal">View suite dashboard prototype →</a>
+      </div>
+    </section>
+
+    <section class="section-dark" id="limits" aria-labelledby="limits-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">Scope</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="limits-title">
+          What Audit &amp; Replay Logger does and does not do
+        </h2>
+
+        <div class="limits-cols reveal">
+          <div class="limits-col-does">
+            <div class="limits-col-title">Does</div>
+            <ul class="limits-list" aria-label="Capabilities">
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Store durable local sessions with explicitly logged events and metadata</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Record event sequence numbers, timestamps, event hashes, and previous-hash links</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Redact common secret, password, token, authorization, credential, and API-key fields</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Replay sessions by sequence range, event type, or actor</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Return causal chains for specific event IDs</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Export replay bundles with event hashes, causal chains, and a bundle hash</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="limits-col-doesnt">
+            <div class="limits-col-title">Does Not</div>
+            <ul class="limits-list" aria-label="Not in scope">
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide hosted SaaS audit storage, team accounts, user auth, or managed retention (roadmap)</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Automatically observe every agent action — events must be explicitly logged through SDK, MCP, or HTTP API</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide notarized compliance storage, WORM retention, legal certification, or signed exports yet</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Guarantee that every sensitive value is redacted; teams should review custom payload schemas</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide a full visual replay timeline UI; the dashboard is a lightweight local landing page</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Replace security, legal, compliance, or human review processes</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Related ───────────────────────────── -->
+    <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
+      <div class="section-inner">
+        <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
+        <div class="related-strip" role="list">
+          <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 02</div>
+            <div class="related-card-name">Confidence Gate</div>
+            <p class="related-card-desc">Gate decisions are the most important events to log. Confidence Gate generates the allow/review/block decisions; Audit Logger captures them for replay and review.</p>
+            <span class="related-card-link">View Confidence Gate →</span>
+          </a>
+          <a href="agent-test-harness.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 10</div>
+            <div class="related-card-name">Agent Test Harness</div>
+            <p class="related-card-desc">Replay bundles from the logger can seed fixture files for the test harness. Real tool traces become repeatable test cases — log once, assert forever.</p>
+            <span class="related-card-link">View Agent Test Harness →</span>
+          </a>
+          <a href="goal-drift-monitor.html" class="related-card reveal" role="listitem">
+            <div class="related-card-label">Product 05</div>
+            <div class="related-card-name">Goal Drift Monitor</div>
+            <p class="related-card-desc">Drift events are loggable signals. Log the moment a session drifts and replay the sequence of turns that preceded it — the two products form an accountability arc.</p>
+            <span class="related-card-link">View Goal Drift Monitor →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="beta-section-dark" id="beta" aria-labelledby="ar-beta-title">
+      <div class="beta-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Hosted Beta</span>
+          </div>
+          <h2 class="beta-heading-dark" id="ar-beta-title">
+            Get early access to hosted Audit &amp; Replay
+          </h2>
+          <p class="beta-desc-dark">
+            The local SDK, MCP server, and HTTP API are available now for private testing. Hosted
+            beta with cloud audit history, shared team review, signed export workflows, and longer
+            retention is in development. Leave your details and we will reach out when hosted
+            access opens.
+          </p>
+        </div>
+
+        <form class="beta-form reveal" id="ar-betaForm" aria-label="Beta signup form" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="ar-beta-name">Name</label>
+            <input class="form-input" id="ar-beta-name" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ar-beta-email">Email</label>
+            <input class="form-input" id="ar-beta-email" name="email" type="email"
+              autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ar-beta-company">Company or project</label>
+            <input class="form-input" id="ar-beta-company" name="project"
+              autocomplete="organization" placeholder="Acme Corp">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ar-beta-usage">What agent actions do you need to audit or replay?</label>
+            <textarea class="form-input form-textarea" id="ar-beta-usage" name="usage"
+              rows="3" placeholder="Tool calls, human approvals, deployment changes, customer actions..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Join Hosted Beta →</button>
+          <p class="form-status" id="ar-formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server.html">Confidence Gate</a></li>
+          <li><a href="agent-cost-router.html">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor.html">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger.html">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server.html">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk.html">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness.html">Agent Test Harness</a></li>
+          <li><a href="../products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+          <li><a href="../products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No paid purchase flow or SaaS availability</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+  <script>
+    (function () {
+      const form = document.getElementById('ar-betaForm');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.reset();
+        const status = document.getElementById('ar-formStatus');
+        if (status) {
+          status.textContent =
+            'You are on the prototype list. Hosted beta access is not live yet.';
+        }
+      });
+    })();
+
+    document.querySelectorAll('.copy-btn.copy-button').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        const targetId = btn.dataset.copyTarget;
+        const target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        const pre = target.querySelector('pre');
+        const text = (pre || target).textContent.trim();
+        const statusEl = document.getElementById('ar-copyStatus');
+        const succeed = function () {
+          if (statusEl) statusEl.textContent = 'Copied to clipboard.';
+          const orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function () {
+            if (statusEl) statusEl.textContent = '';
+            btn.textContent = orig;
+          }, 2200);
+        };
+        const fail = function () {
+          if (statusEl) statusEl.textContent = 'Copy failed — select the block manually.';
+        };
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+            succeed();
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.readOnly = true;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy') ? succeed() : fail();
+            ta.parentNode.removeChild(ta);
+          }
+        } catch (_) {
+          fail();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

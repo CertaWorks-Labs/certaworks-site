@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-Voice Deliberation Framework — CertaWorks</title>
+  <meta name="description" content="Multi-Voice Deliberation Framework adds Builder, Skeptic, Evolver, and Guardian review loops before an agent commits to an answer. Local TypeScript framework with MCP server and CLI.">
+  <link rel="canonical" href="https://certaworks.dev/products/multi-voice-deliberation-framework">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/multi-voice-deliberation-framework">
+  <meta property="og:title" content="Multi-Voice Deliberation Framework — CertaWorks">
+  <meta property="og:description" content="Four voices. One answer. Builder, Skeptic, Evolver, and Guardian review every decision before it commits.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Multi-Voice Deliberation Framework — CertaWorks">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Multi-Voice Deliberation Framework",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Adds structured Builder, Skeptic, Evolver, and Guardian debate to LLM pipelines before they commit to an answer.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* ── Product detail page extras ─────────────────── */
+
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.13) 0%, rgba(99,102,241,0.05) 50%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+    .pdp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-green); margin-bottom: 20px; }
+    .pdp-h1 { font-size: clamp(44px, 7vw, 80px); font-weight: 900; letter-spacing: -0.04em; color: #fff; line-height: 1.0; margin-bottom: 24px; }
+    .pdp-subhead { font-size: clamp(16px, 2.2vw, 20px); color: var(--c-dark-muted); line-height: 1.6; max-width: 640px; margin-bottom: 36px; }
+    .pdp-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 28px; }
+    .pdp-status-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.28);
+      color: var(--c-amber); font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c-amber); flex-shrink: 0; }
+
+    .section-dark { background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px); }
+    .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .pdp-section-headline { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 16px; }
+    .pdp-section-body { color: var(--c-dark-muted); font-size: 16px; line-height: 1.7; max-width: 680px; }
+
+    .problem-body { color: var(--c-dark-muted); font-size: clamp(16px, 2vw, 18px); line-height: 1.75; max-width: 720px; margin-top: 24px; }
+    .problem-body p + p { margin-top: 20px; }
+
+    /* How it works */
+    .how-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
+    .how-step { background: var(--c-dark-2); border: 1px solid var(--c-dark-line); border-radius: 12px; padding: 32px 28px; }
+    .how-step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(124,58,237,0.14); border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa; font-size: 14px; font-weight: 800; margin-bottom: 18px;
+    }
+    .how-step-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .how-step-desc { font-size: 14px; line-height: 1.65; color: var(--c-dark-muted); }
+    .how-flow-arrow { display: flex; align-items: center; justify-content: center; color: var(--c-dark-muted); font-size: 22px; padding: 0 4px; align-self: center; }
+    .how-caveat { margin-top: 32px; padding: 20px 24px; background: rgba(255,255,255,0.03); border: 1px solid var(--c-dark-line); border-radius: 10px; color: var(--c-dark-muted); font-size: 15px; line-height: 1.65; max-width: 780px; }
+
+    /* Voice cards */
+    .voice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 40px; }
+    .voice-card { border-radius: 12px; padding: 28px 24px; border: 1px solid transparent; position: relative; overflow: hidden; }
+    .voice-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+
+    .voice-builder   { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.18); }
+    .voice-builder::before   { background: var(--c-green); }
+    .voice-skeptic   { background: rgba(220,38,38,0.05); border-color: rgba(220,38,38,0.18); }
+    .voice-skeptic::before   { background: var(--c-red); }
+    .voice-evolver   { background: rgba(124,58,237,0.06); border-color: rgba(124,58,237,0.2); }
+    .voice-evolver::before   { background: #8b5cf6; }
+    .voice-guardian  { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.2); }
+    .voice-guardian::before  { background: var(--c-amber); }
+
+    .voice-name-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .voice-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .voice-dot-green  { background: var(--c-green); }
+    .voice-dot-red    { background: var(--c-red); }
+    .voice-dot-violet { background: #8b5cf6; }
+    .voice-dot-amber  { background: var(--c-amber); }
+
+    .voice-name-tag-builder  { color: var(--c-green); }
+    .voice-name-tag-skeptic  { color: #f87171; }
+    .voice-name-tag-evolver  { color: #a78bfa; }
+    .voice-name-tag-guardian { color: var(--c-amber); }
+
+    .voice-role { font-size: 14px; line-height: 1.65; color: var(--c-dark-muted); margin-bottom: 14px; }
+    .voice-focus-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin-bottom: 8px; }
+    .voice-focus-list { list-style: none; padding: 0; margin: 0; }
+    .voice-focus-list li { font-size: 13px; color: var(--c-dark-muted); padding: 4px 0; line-height: 1.5; }
+    .voice-focus-list li::before { content: '·'; margin-right: 7px; opacity: 0.5; }
+    .voice-weight-note { margin-top: 12px; font-size: 12px; color: rgba(245,158,11,0.7); font-style: italic; }
+
+    /* Flow table */
+    .model-table-wrap { overflow-x: auto; margin-top: 28px; }
+    .model-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .model-table th { text-align: left; padding: 10px 16px; color: rgba(160,200,240,0.55); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.07); font-family: var(--font-sans, inherit); }
+    .model-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--c-dark-muted); vertical-align: top; }
+    .model-table td:first-child { font-family: var(--font-mono); color: #a78bfa; font-weight: 600; font-size: 13px; }
+    .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
+
+    /* Provider badges */
+    .provider-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .provider-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); font-size: 13px; color: var(--c-dark-muted); }
+    .provider-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #a78bfa; flex-shrink: 0; }
+
+    /* MCP tools */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 20px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(124,58,237,0.3); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #a78bfa; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+
+    /* Code block */
+    .code-block { background: #080E1A; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
+    .code-block-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .code-block-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(150,190,230,0.55); }
+    .copy-btn { font-size: 11px; font-weight: 600; color: rgba(150,190,230,0.6); padding: 4px 10px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); background: transparent; cursor: pointer; transition: color 140ms, background 140ms; }
+    .copy-btn:hover { color: #fff; background: rgba(255,255,255,0.07); }
+    .code-block pre { margin: 0; padding: 18px 20px; overflow-x: auto; }
+    .code-block pre code { font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: rgba(210,235,255,0.85); white-space: pre; }
+
+    /* Dashboard callout */
+    .dashboard-callout { margin-top: 28px; padding: 18px 24px; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.22); border-radius: 10px; }
+    .dashboard-callout-label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-amber); margin-bottom: 10px; }
+    .dashboard-callout p { font-size: 14px; color: rgba(200,180,120,0.85); line-height: 1.65; }
+
+    /* Limits */
+    .limits-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+    @media (max-width: 640px) { .limits-cols { grid-template-columns: 1fr; } }
+    .limits-col-title { font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+    .limits-col-does   .limits-col-title { color: var(--c-green); }
+    .limits-col-doesnt .limits-col-title { color: var(--c-amber); }
+    .limits-list { list-style: none; padding: 0; margin: 0; }
+    .limits-list li { padding: 9px 0; border-bottom: 1px solid var(--c-dark-line); font-size: 14px; line-height: 1.6; display: flex; align-items: flex-start; gap: 10px; }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-icon-does   { color: var(--c-green); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-icon-doesnt { color: var(--c-amber);  flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-list li span { color: var(--c-dark-muted); }
+
+    /* Related products */
+    .related-strip { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+    .related-card { flex: 1 1 200px; padding: 20px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; text-decoration: none; transition: background 200ms, border-color 200ms; }
+    .related-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(124,58,237,0.3); }
+    .related-card-num { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin-bottom: 8px; }
+    .related-card-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .related-card-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+
+    /* Beta form */
+    .beta-section-dark { background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px); }
+    .beta-section-dark .beta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    @media (max-width: 768px) { .beta-section-dark .beta-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .beta-heading-dark { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.03em; color: #fff; margin-bottom: 14px; line-height: 1.15; }
+    .beta-desc-dark { font-size: 15px; color: var(--c-dark-muted); line-height: 1.65; }
+
+    /* Breadcrumb */
+    .breadcrumb { padding: 18px clamp(20px,4vw,60px) 0; position: relative; z-index: 2; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .breadcrumb-list li { color: rgba(160,200,240,0.45); }
+    .breadcrumb-list li a { color: rgba(160,200,240,0.55); text-decoration: none; transition: color 200ms; }
+    .breadcrumb-list li a:hover { color: var(--c-dark-text); }
+    .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 600px) {
+      .pdp-hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
+          <li><a href="../dashboard.html">Dashboard</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── BREADCRUMB ────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="background: var(--c-dark);">
+      <ol class="breadcrumb-list">
+        <li><a href="../products.html">Products</a></li>
+        <li aria-current="page">Multi-Voice Deliberation Framework</li>
+      </ol>
+    </nav>
+
+    <!-- ── HERO ──────────────────────────────────── -->
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+      <div class="pdp-hero-inner">
+        <p class="pdp-eyebrow">Product 03 · Framework · SDK / MCP / CLI · Local Prototype</p>
+        <h1 class="pdp-h1" id="pdp-hero-title">Multi-Voice Deliberation</h1>
+        <p class="pdp-subhead">
+          Four voices — Builder, Skeptic, Evolver, Guardian — review every decision before your agent commits to an answer. Structured debate for high-stakes agent reasoning.
+        </p>
+        <div class="pdp-hero-ctas">
+          <a href="#install" class="btn btn-primary btn-sm">SDK Install →</a>
+          <a href="#how-it-works" class="btn btn-ghost btn-sm">How It Works</a>
+        </div>
+        <div class="pdp-status-badge">
+          Local TypeScript prototype — provider support is narrow; hosted SaaS not yet live
+        </div>
+      </div>
+    </section>
+
+    <!-- ── THE PROBLEM ───────────────────────────── -->
+    <section class="section-dark" id="problem" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">The Problem</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="problem-title">Single-pass answers miss risks, gaps, and better alternatives.</h2>
+        <div class="problem-body reveal">
+          <p>
+            LLMs generate answers in a single forward pass. They have no built-in adversarial review,
+            no mechanism for challenging their own assumptions, and no structured way to flag when a
+            proposed action might be harmful, incomplete, or simply wrong. The first answer is often
+            the only answer.
+          </p>
+          <p>
+            For low-stakes tasks this is fine. For high-stakes decisions — code changes that affect
+            production, responses to upset customers, actions with irreversible consequences, or
+            reasoning chains that inform further agent steps — a single-pass answer is a risk.
+          </p>
+          <p>
+            Multi-Voice Deliberation adds a structured panel review step before the agent commits.
+            Four named voices each read the same question and respond from a defined perspective.
+            Their positions, concerns, and suggestions are aggregated into a synthesis with a
+            weighted confidence score. If panel confidence falls below the configured threshold,
+            the result is flagged for human review before the agent proceeds.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────── -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">How It Works</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="how-title">Submit → Panel → Synthesize</h2>
+
+        <div class="how-flow reveal" role="list">
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">1</div>
+            <div class="how-step-title">Submit the question or decision</div>
+            <p class="how-step-desc">
+              Call <code style="font-size:12px;color:#a78bfa">deliberate(adapter, options)</code>
+              with the prompt and optional context. Specify which voices to include, the model to use,
+              the confidence threshold, and whether to run voices in parallel (default: true).
+              Requires an API key for the selected provider.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">2</div>
+            <div class="how-step-title">Each voice reads and responds</div>
+            <p class="how-step-desc">
+              Builder, Skeptic, Evolver, and Guardian each receive the same prompt with their own
+              system prompt defining their role. Each voice returns a structured JSON object:
+              <code style="font-size:12px;color:#a78bfa">position</code>,
+              <code style="font-size:12px;color:#a78bfa">concerns</code>,
+              <code style="font-size:12px;color:#a78bfa">suggestions</code>, and a
+              <code style="font-size:12px;color:#a78bfa">confidence</code> score (0–1).
+              Guardian carries a weight of 1.2 in the panel average.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step" role="listitem">
+            <div class="how-step-num" aria-hidden="true">3</div>
+            <div class="how-step-title">Synthesize — flag for review if needed</div>
+            <p class="how-step-desc">
+              The framework computes a weighted average
+              <code style="font-size:12px;color:#a78bfa">panelConfidence</code>, aggregates
+              all concerns and suggestions, and produces a markdown synthesis.
+              If <code style="font-size:12px;color:#a78bfa">panelConfidence</code> falls below
+              the <code style="font-size:12px;color:#a78bfa">approvalThreshold</code> (default 0.6),
+              <code style="font-size:12px;color:#a78bfa">requiresHumanReview</code> is set true.
+            </p>
+          </article>
+
+        </div>
+
+        <div class="how-caveat reveal">
+          Each voice call is an LLM API call. Running all four in parallel is the default.
+          Cost and latency scale with the model and provider selected. The framework does not
+          make final decisions — it returns a synthesis and a review flag. Acting on the result
+          is the responsibility of the calling code or the human reviewer.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── VOICE ROLES ────────────────────────────── -->
+    <section class="section-dark" id="voices" aria-labelledby="voices-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">The Panel</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="voices-title">Four voices. Four perspectives.</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Each voice is defined by a name, a label, and a system prompt that shapes its response.
+          All four are active by default. Voices can be filtered per call.
+        </p>
+
+        <div class="voice-grid reveal" role="list">
+
+          <article class="voice-card voice-builder" role="listitem">
+            <div class="voice-name-tag voice-name-tag-builder">
+              <span class="voice-dot voice-dot-green" aria-hidden="true"></span>Builder
+            </div>
+            <p class="voice-role">Constructs the best possible answer — concrete, actionable, and useful.</p>
+            <div class="voice-focus-label">Focus</div>
+            <ul class="voice-focus-list">
+              <li>What should be done and how</li>
+              <li>Concrete steps and actionable detail</li>
+              <li>Making the response as useful as possible</li>
+            </ul>
+          </article>
+
+          <article class="voice-card voice-skeptic" role="listitem">
+            <div class="voice-name-tag voice-name-tag-skeptic">
+              <span class="voice-dot voice-dot-red" aria-hidden="true"></span>Skeptic
+            </div>
+            <p class="voice-role">Challenges assumptions and finds weaknesses in the proposed approach.</p>
+            <div class="voice-focus-label">Focus</div>
+            <ul class="voice-focus-list">
+              <li>What could go wrong</li>
+              <li>Hidden assumptions and edge cases</li>
+              <li>What information is missing</li>
+            </ul>
+          </article>
+
+          <article class="voice-card voice-evolver" role="listitem">
+            <div class="voice-name-tag voice-name-tag-evolver">
+              <span class="voice-dot voice-dot-violet" aria-hidden="true"></span>Evolver
+            </div>
+            <p class="voice-role">Improves and iterates — creative alternatives, hybrid approaches, second-order effects.</p>
+            <div class="voice-focus-label">Focus</div>
+            <ul class="voice-focus-list">
+              <li>How to enhance the Builder's proposal</li>
+              <li>Approaches that address the Skeptic's concerns</li>
+              <li>Long-term implications and trade-offs</li>
+            </ul>
+          </article>
+
+          <article class="voice-card voice-guardian" role="listitem">
+            <div class="voice-name-tag voice-name-tag-guardian">
+              <span class="voice-dot voice-dot-amber" aria-hidden="true"></span>Guardian
+            </div>
+            <p class="voice-role">Protects against harm, risk, and irreversibility. Flags when human review is needed.</p>
+            <div class="voice-focus-label">Focus</div>
+            <ul class="voice-focus-list">
+              <li>Safety and ethical implications</li>
+              <li>Irreversible consequences</li>
+              <li>Safeguards and conditions for safe execution</li>
+            </ul>
+            <p class="voice-weight-note">Guardian carries panel weight 1.2 — heavier than the other three.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DELIBERATION RESULT ────────────────────── -->
+    <section class="section" id="result-model" aria-labelledby="result-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Result Model</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="result-title">What deliberate() returns</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">DeliberationResult</code>
+          interface is the exact return type of every
+          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">deliberate()</code> call.
+        </p>
+
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="DeliberationResult fields">
+            <thead>
+              <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>prompt</td><td>string</td><td>The original prompt passed to the panel</td></tr>
+              <tr><td>voiceResponses</td><td>VoiceResponse[]</td><td>Per-voice position, concerns, suggestions, and confidence score</td></tr>
+              <tr><td>synthesis</td><td>string</td><td>Formatted markdown with all voice positions, concerns, suggestions, and panel confidence</td></tr>
+              <tr><td>panelConfidence</td><td>number (0–1)</td><td>Weighted average confidence across all voices — Guardian weight is 1.2</td></tr>
+              <tr><td>requiresHumanReview</td><td>boolean</td><td>True when panelConfidence falls below approvalThreshold (default 0.6)</td></tr>
+              <tr><td>allConcerns</td><td>string[]</td><td>Aggregate of all concerns raised across every voice</td></tr>
+              <tr><td>allSuggestions</td><td>string[]</td><td>Aggregate of all suggestions raised across every voice</td></tr>
+              <tr><td>durationMs</td><td>number</td><td>Wall-clock time for the full deliberation in milliseconds</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="model-note reveal">
+          <code style="font-family:var(--font-mono);font-size:12px">approvalThreshold</code> defaults to 0.6.
+          When <code style="font-family:var(--font-mono);font-size:12px">requiresHumanReview</code> is true,
+          the calling code is responsible for pausing and routing the decision to a human reviewer.
+          The framework flags — it does not block execution.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── SDK INSTALL ────────────────────────────── -->
+    <section class="install-pdp" id="install" aria-labelledby="install-title">
+      <div class="install-pdp-inner">
+
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">SDK Install</span>
+          </div>
+          <h2 class="install-pdp-heading" id="install-title">
+            TypeScript SDK, MCP server, and CLI
+          </h2>
+          <p class="install-pdp-subhead">
+            Import <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">deliberate</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">adapterFromEnv</code>, and
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">DEFAULT_VOICES</code>
+            into any Node ≥ 18 TypeScript project, or wire the MCP server into any MCP-compatible
+            agent runtime. The CLI binary is
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">deliberate</code>.
+          </p>
+          <p class="install-pdp-subhead">
+            Requires an API key for the selected provider.
+            Set <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">OPENROUTER_API_KEY</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">OPENAI_API_KEY</code>, or
+            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">GROQ_API_KEY</code>
+            in your environment. Provider support uses the OpenAI-compatible SDK.
+          </p>
+          <div class="install-pdp-note">
+            The current package name is <code style="font-family:var(--font-mono)">@blair/multi-voice-deliberation</code>.
+            A <code style="font-family:var(--font-mono)">@certaworks/multi-voice-deliberation</code>
+            publication is pending scope finalization and npm registry clearance.
+          </div>
+          <a class="install-pdp-link" href="../products.html#install">
+            View full local build instructions on the products page →
+          </a>
+        </div>
+
+        <div class="reveal">
+          <div class="code-block" id="mvInstall">
+            <div class="code-block-header">
+              <span class="code-block-label">Install</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="mvInstall">Copy</button>
+            </div>
+            <pre><code>npm install @blair/multi-voice-deliberation</code></pre>
+          </div>
+
+          <div class="code-block" id="mvQuickstart">
+            <div class="code-block-header">
+              <span class="code-block-label">SDK quickstart</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="mvQuickstart">Copy</button>
+            </div>
+            <pre><code>import { deliberate, adapterFromEnv } from '@blair/multi-voice-deliberation';
+
+// Requires OPENROUTER_API_KEY, OPENAI_API_KEY, or GROQ_API_KEY
+const adapter = adapterFromEnv();
+
+const result = await deliberate(adapter, {
+  prompt: 'Should we delete the legacy billing table after migration?',
+  context: 'Migration completed 2 hours ago. No rollback confirmed.',
+  model: 'openai/gpt-4o-mini', // via OpenRouter
+  approvalThreshold: 0.65,     // flag for review below this
+  parallel: true               // run voices concurrently
+});
+
+console.log(result.panelConfidence);    // e.g. 0.54
+console.log(result.requiresHumanReview); // true — pause before acting
+console.log(result.allConcerns);
+console.log(result.synthesis);</code></pre>
+          </div>
+
+          <div class="code-block" id="mvCli">
+            <div class="code-block-header">
+              <span class="code-block-label">CLI usage</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="mvCli">Copy</button>
+            </div>
+            <pre><code># Run a deliberation from the command line
+deliberate --prompt "Refactor auth middleware after failing tests?" \
+           --model "openai/gpt-4o-mini" \
+           --threshold 0.6</code></pre>
+          </div>
+
+          <p class="copy-status" id="mv-copyStatus" aria-live="polite"
+            style="font-size:13px;color:var(--c-green);min-height:20px;margin-top:4px;"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── PROVIDER SUPPORT ───────────────────────── -->
+    <section class="section" id="providers" aria-labelledby="providers-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Provider Support</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="providers-title">OpenAI-compatible providers via env vars</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">adapterFromEnv()</code>
+          checks for the following API keys in order and returns a ready-to-use adapter.
+          Any OpenAI-compatible endpoint can also be wired manually via
+          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">OpenAICompatAdapter</code>.
+        </p>
+
+        <div class="provider-grid reveal">
+          <div class="provider-badge">
+            <span class="provider-badge-dot" aria-hidden="true"></span>
+            <strong style="color:#e2e8f0">OpenRouter</strong>&nbsp;·&nbsp;
+            <code style="font-size:12px">OPENROUTER_API_KEY</code>&nbsp;·&nbsp;default model: <code style="font-size:12px">openai/gpt-4o-mini</code>
+          </div>
+          <div class="provider-badge">
+            <span class="provider-badge-dot" aria-hidden="true"></span>
+            <strong style="color:#e2e8f0">OpenAI</strong>&nbsp;·&nbsp;
+            <code style="font-size:12px">OPENAI_API_KEY</code>&nbsp;·&nbsp;default model: <code style="font-size:12px">gpt-4o-mini</code>
+          </div>
+          <div class="provider-badge">
+            <span class="provider-badge-dot" aria-hidden="true"></span>
+            <strong style="color:#e2e8f0">Groq</strong>&nbsp;·&nbsp;
+            <code style="font-size:12px">GROQ_API_KEY</code>&nbsp;·&nbsp;default model: <code style="font-size:12px">llama-3.1-8b-instant</code>
+          </div>
+        </div>
+
+        <div class="how-caveat reveal" style="margin-top: 32px;">
+          Provider support is implemented via the <code style="font-family:var(--font-mono);font-size:13px">openai</code> npm package
+          with a configurable <code style="font-family:var(--font-mono);font-size:13px">baseURL</code>.
+          Anthropic and other non-OpenAI-compatible providers are not supported by the current adapter.
+          Model behavior and output quality will vary by provider and model selected.
+          The default model is <code style="font-family:var(--font-mono);font-size:13px">gpt-4o-mini</code> — override
+          with the <code style="font-family:var(--font-mono);font-size:13px">DELIBERATION_MODEL</code> env var or per-call option.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MCP TOOLS ─────────────────────────────── -->
+    <section class="section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Multi-Voice Deliberation exposes the following tools to any MCP-compatible agent runtime.
+          Both tools require a configured provider API key in the server environment.
+        </p>
+
+        <div class="tools-grid reveal">
+          <div class="tool-card">
+            <div class="tool-name">deliberate</div>
+            <div class="tool-desc">Run a multi-voice deliberation panel (Builder, Skeptic, Evolver, Guardian) on a question or proposed action before committing. Returns a synthesis, per-voice positions, concerns, suggestions, and a human-review flag when confidence is low.</div>
+          </div>
+          <div class="tool-card">
+            <div class="tool-name">list_voices</div>
+            <div class="tool-desc">List the available deliberation voices and their roles.</div>
+          </div>
+        </div>
+
+        <div class="code-block reveal" id="mvMcpConfig" style="margin-top: 28px; max-width: 680px;">
+          <div class="code-block-header">
+            <span class="code-block-label">Claude Desktop config (once published)</span>
+            <button class="copy-btn copy-button" type="button" data-copy-target="mvMcpConfig">Copy</button>
+          </div>
+          <pre><code>{
+  "mcpServers": {
+    "multi-voice-deliberation": {
+      "command": "npx",
+      "args": ["-y", "@blair/multi-voice-deliberation", "--mcp"],
+      "env": {
+        "OPENROUTER_API_KEY": "your-key-here"
+      }
+    }
+  }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SCOPE ─────────────────────────────────── -->
+    <section class="section-dark" id="limits" aria-labelledby="limits-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">Scope</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="limits-title">
+          What Multi-Voice Deliberation does and does not do
+        </h2>
+
+        <div class="limits-cols reveal">
+          <div class="limits-col-does">
+            <div class="limits-col-title">Does</div>
+            <ul class="limits-list" aria-label="Capabilities">
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Run Builder, Skeptic, Evolver, and Guardian in parallel or sequentially on any prompt</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Return a weighted panel confidence score with Guardian at 1.2× weight</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Aggregate all voice concerns and suggestions into the result</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Flag <code style="font-family:var(--font-mono);font-size:12px">requiresHumanReview</code> when confidence falls below the configured threshold</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Support OpenRouter, OpenAI, and Groq via the OpenAI-compatible adapter</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="limits-col-doesnt">
+            <div class="limits-col-title">Does Not</div>
+            <ul class="limits-list" aria-label="Not in scope">
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Guarantee correctness — it improves review coverage, not accuracy</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Replace human review — when the flag is raised, a human must decide</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Support Anthropic or other non-OpenAI-compatible providers in the current adapter</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Block agent execution — the result must be acted on by the calling code</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide hosted SaaS, team accounts, or persistent deliberation history (roadmap)</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide legal, safety, or compliance certification of any kind</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RELATED PRODUCTS ───────────────────────── -->
+    <section class="section" id="related" aria-labelledby="related-title"
+      style="background: var(--c-dark-2); padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Suite Context</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" id="related-title">Pairs well with the control loop</h2>
+        <div class="related-strip reveal" role="list">
+
+          <a class="related-card" href="confidence-gate-mcp-server.html" role="listitem">
+            <div class="related-card-num">Product 02</div>
+            <div class="related-card-name">Confidence Gate</div>
+            <p class="related-card-desc">Score and gate the action after deliberation. Deliberation improves the decision; Confidence Gate controls whether it executes.</p>
+          </a>
+
+          <a class="related-card" href="identity-engine-sdk.html" role="listitem">
+            <div class="related-card-num">Product 01</div>
+            <div class="related-card-name">Identity Engine SDK</div>
+            <p class="related-card-desc">Persistent agent identity, state, and drift checks. Deliberation can be used to review actions that touch the agent's declared purpose.</p>
+          </a>
+
+          <a class="related-card" href="cognitive-memory-mcp-server.html" role="listitem">
+            <div class="related-card-num">Product 06</div>
+            <div class="related-card-name">Cognitive Memory</div>
+            <p class="related-card-desc">Feed relevant past decisions as context into a deliberation panel. Memory improves the quality of every voice response.</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BETA INTEREST ─────────────────────────── -->
+    <section class="beta-section-dark" id="beta" aria-labelledby="beta-pdp-title">
+      <div class="beta-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Prototype Access</span>
+          </div>
+          <h2 class="beta-heading-dark" id="beta-pdp-title">
+            Get early access to Multi-Voice Deliberation
+          </h2>
+          <p class="beta-desc-dark">
+            The local TypeScript SDK and MCP server are available for private testing.
+            Hosted deliberation API, persistent panel history, and team features are in development.
+            Leave your details and we will reach out when broader access opens.
+          </p>
+        </div>
+
+        <form class="beta-form reveal" id="mv-betaForm" aria-label="Beta signup form" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="mv-beta-name">Name</label>
+            <input class="form-input" id="mv-beta-name" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mv-beta-email">Email</label>
+            <input class="form-input" id="mv-beta-email" name="email" type="email"
+              autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mv-beta-company">Company or project</label>
+            <input class="form-input" id="mv-beta-company" name="project"
+              autocomplete="organization" placeholder="Acme Corp">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="mv-beta-context">What kinds of agent decisions would benefit from multi-voice review?</label>
+            <textarea class="form-input form-textarea" id="mv-beta-context" name="context"
+              rows="3" placeholder="Production changes, customer messages, high-stakes reasoning…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Join Prototype List →</button>
+          <p class="form-status" id="mv-formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server.html">Confidence Gate</a></li>
+          <li><a href="agent-cost-router.html">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor.html">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger.html">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server.html">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk.html">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness.html">Agent Test Harness</a></li>
+          <li><a href="../products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#beta">Contact</a></li>
+          <li><a href="../products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No hosted SaaS or paid plan available yet</li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+  <script>
+    // ── mv-betaForm handler ─────────────────────────
+    (function () {
+      var form = document.getElementById('mv-betaForm');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.reset();
+        var status = document.getElementById('mv-formStatus');
+        if (status) {
+          status.textContent = 'You are on the prototype list. Hosted beta access is not live yet.';
+        }
+      });
+    })();
+
+    // ── copy buttons ────────────────────────────────
+    document.querySelectorAll('.copy-btn.copy-button').forEach(function (btn) {
+      btn.addEventListener('click', async function () {
+        var targetId = btn.dataset.copyTarget;
+        var target = targetId ? document.getElementById(targetId) : null;
+        if (!target) return;
+        var pre = target.querySelector('pre');
+        var text = (pre || target).textContent.trim();
+        var statusEl = document.getElementById('mv-copyStatus');
+        var succeed = function () {
+          if (statusEl) statusEl.textContent = 'Copied to clipboard.';
+          var orig = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(function () {
+            if (statusEl) statusEl.textContent = '';
+            btn.textContent = orig;
+          }, 2200);
+        };
+        var fail = function () {
+          if (statusEl) statusEl.textContent = 'Copy failed — select the block manually.';
+        };
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(text);
+            succeed();
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = text; ta.readOnly = true;
+            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
+            document.body.appendChild(ta); ta.select();
+            document.execCommand('copy') ? succeed() : fail();
+            ta.parentNode.removeChild(ta);
+          }
+        } catch (_) { fail(); }
+      });
+    });
+  </script>
+</body>
+</html>
