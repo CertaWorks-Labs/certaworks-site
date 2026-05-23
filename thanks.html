@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You're on the list — CertaWorks</title>
+  <meta name="description" content="Thanks for signing up. We'll be in touch when the beta opens.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    html, body {
+      height: 100%;
+    }
+    .thanks-page {
+      min-height: 100vh;
+      background: var(--c-dark);
+      color: var(--c-dark-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .thanks-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(15, 118, 110, 0.15);
+      border: 1px solid rgba(15, 118, 110, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.75rem;
+    }
+    .thanks-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-teal);
+      margin-bottom: 0.75rem;
+    }
+    .thanks-heading {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--c-white);
+      line-height: 1.2;
+      margin: 0 0 1rem;
+    }
+    .thanks-body {
+      font-size: 1.0625rem;
+      color: var(--c-dark-muted);
+      max-width: 420px;
+      line-height: 1.7;
+      margin: 0 auto 2rem;
+    }
+    .thanks-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--c-teal);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.15s;
+    }
+    .thanks-link:hover {
+      color: var(--c-green);
+    }
+    .thanks-link svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+    .thanks-wordmark {
+      margin-top: 3.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(122, 156, 189, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks-page">
+    <div class="thanks-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="#0F766E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <p class="thanks-eyebrow">Beta interest received</p>
+    <h1 class="thanks-heading">You're on the list.</h1>
+    <p class="thanks-body">We'll be in touch when the beta opens. Keep an eye on your inbox — we'll reach out with early access details.</p>
+
+    <a href="/" class="thanks-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to CertaWorks
+    </a>
+
+    <p class="thanks-wordmark">CertaWorks</p>
+  </div>
+</body>
+</html>

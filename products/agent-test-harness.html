@@ -571,10 +571,13 @@
         <span class="logo-text">CertaWorks</span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="../products.html">Products</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
+        <li><a href="../dashboard.html">Dashboard</a></li>
         <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#beta" class="nav-cta">Get Access</a></li>
+        <li><a href="../index.html#beta">Contact</a></li>
       </ul>
+      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
     </nav>
   </header>
 
@@ -1157,7 +1160,9 @@ await writeReports(suite, {
         outputs, traces, cost budgets, and consistency. Write fixtures once,
         run them in CI, and catch regressions before production does.
       </p>
-      <form class="beta-form" id="th-betaForm" novalidate aria-label="Beta access request">
+      <form class="beta-form" id="th-betaForm" novalidate aria-label="Beta access request" method="POST" action="https://formspree.io/f/hallblair2020@gmail.com">
+        <input type="hidden" name="_subject" value="Agent Test Harness Beta Signup — CertaWorks">
+        <input type="hidden" name="_next" value="https://certaworks.dev/thanks.html">
         <input type="text"  id="th-beta-name"    name="name"    placeholder="Your name"         autocomplete="name"         required aria-label="Your name">
         <input type="email" id="th-beta-email"   name="email"   placeholder="Work email"        autocomplete="email"        required aria-label="Work email">
         <input type="text"  id="th-beta-company" name="company" placeholder="Company (optional)" autocomplete="organization"         aria-label="Company">
@@ -1209,6 +1214,7 @@ await writeReports(suite, {
           <li>Private prototype — not yet public</li>
           <li>No legal or trademark clearance</li>
           <li>No hosted SaaS or paid plan available yet</li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>

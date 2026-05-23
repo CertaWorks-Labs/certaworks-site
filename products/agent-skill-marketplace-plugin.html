@@ -638,10 +638,13 @@
         <span class="logo-text">CertaWorks</span>
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="../products.html">Products</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
+        <li><a href="../dashboard.html">Dashboard</a></li>
         <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#beta" class="nav-cta">Get Access</a></li>
+        <li><a href="../index.html#beta">Contact</a></li>
       </ul>
+      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
     </nav>
   </header>
 
@@ -1231,7 +1234,9 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
         checksum-verified capability management for agents that need to trust
         what they run.
       </p>
-      <form class="beta-form" id="sm-betaForm" novalidate aria-label="Beta access request">
+      <form class="beta-form" id="sm-betaForm" novalidate aria-label="Beta access request" method="POST" action="https://formspree.io/f/hallblair2020@gmail.com">
+        <input type="hidden" name="_subject" value="Agent Skill Marketplace Beta Signup — CertaWorks">
+        <input type="hidden" name="_next" value="https://certaworks.dev/thanks.html">
         <input type="text"  id="sm-beta-name"    name="name"    placeholder="Your name"         autocomplete="name"         required aria-label="Your name">
         <input type="email" id="sm-beta-email"   name="email"   placeholder="Work email"        autocomplete="email"        required aria-label="Work email">
         <input type="text"  id="sm-beta-company" name="company" placeholder="Company (optional)" autocomplete="organization"         aria-label="Company">
@@ -1262,6 +1267,8 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
           <li><a href="identity-engine-sdk.html">Identity Engine SDK</a></li>
           <li><a href="multi-voice-deliberation-framework.html">Multi-Voice Deliberation</a></li>
           <li><a href="agent-skill-marketplace-plugin.html">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool.html">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness.html">Agent Test Harness</a></li>
           <li><a href="../products.html">All Products →</a></li>
         </ul>
       </nav>
@@ -1281,6 +1288,7 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
           <li>Private prototype — not yet public</li>
           <li>No legal or trademark clearance</li>
           <li>No hosted SaaS or paid plan available yet</li>
+          <li><a href="../privacy.html">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
