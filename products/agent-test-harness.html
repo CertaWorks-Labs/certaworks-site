@@ -1152,6 +1152,7 @@ await writeReports(suite, {
             <li>Pass/fail exit codes (0 = all pass, 1 = failures, 2 = error) for CI integration</li>
             <li>SDK <code>AgentRunner</code> interface for testing against real agents or staging environments</li>
             <li><code>--bail</code> flag to stop after the first failing case</li>
+            <li>Published to npm as <code style="font-family:var(--font-mono);font-size:13px">@certaworks/agent-test-harness</code></li>
           </ul>
         </div>
         <div>
@@ -1159,7 +1160,6 @@ await writeReports(suite, {
           <ul class="limits-list not" role="list">
             <li>No hosted runner or managed CI service — local execution only</li>
             <li>No live provider adapter (OpenAI, Anthropic, etc.) bundled in current prototype</li>
-            <li>Published to npm as <code style="font-family:var(--font-mono);font-size:13px">@certaworks/agent-test-harness</code></li>
             <li>No hosted analytics dashboard or cloud-synced run history</li>
             <li>No visual test report UI — output is file artifacts and terminal text</li>
             <li>Does not guarantee behavioral correctness — tests assert what you specify</li>
