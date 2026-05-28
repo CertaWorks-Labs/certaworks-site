@@ -35,23 +35,110 @@
   <style>
     /* ── Product detail page extras ─────────────────── */
 
-    /* Hero — cyan glow for marketplace theme */
+    /* Hero — green glow for marketplace theme */
     .pdp-hero {
       background: var(--c-dark);
       padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
       position: relative;
       overflow: hidden;
     }
-    .pdp-hero::before {
-      content: '';
+    .pdp-hero-glow {
       position: absolute;
       top: -120px; left: 50%;
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(6,182,212,0.14) 0%, rgba(34,211,238,0.05) 50%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(16,185,129,0.10) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 0;
     }
+    .pdp-hero-num-bg {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-60%);
+      font-size: clamp(180px, 25vw, 320px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 0;
+    }
+    /* ── In-page subnav ─── */
+    .pdp-subnav {
+      background: rgba(5, 12, 24, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+    }
+    .pdp-subnav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pdp-subnav-inner::-webkit-scrollbar { display: none; }
+    .pdp-subnav-link {
+      display: inline-block;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(160,200,240,0.55);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 200ms, border-color 200ms;
+    }
+    .pdp-subnav-link:hover {
+      color: rgba(230,240,255,0.9);
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+    /* ── Prev/Next bar ─── */
+    .pdp-next-bar {
+      background: var(--c-dark-2);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pdp-next-back {
+      font-size: 13px;
+      color: rgba(160,200,240,0.45);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .pdp-next-back:hover { color: rgba(160,200,240,0.8); }
+    .pdp-next-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-decoration: none;
+      gap: 4px;
+    }
+    .pdp-next-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(160,200,240,0.4);
+    }
+    .pdp-next-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--c-dark-text);
+      transition: color 200ms;
+    }
+    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
     .pdp-hero-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -116,7 +203,7 @@
     .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
 
     .section-light {
-      background: var(--c-white);
+      background: var(--c-dark);
       padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
     }
     .section-light .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -645,10 +732,10 @@
         <li><a href="../index.html">Home</a></li>
         <li><a href="../products.html" class="active" aria-current="page">Products</a></li>
         <li><a href="../dashboard.html">Dashboard</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#beta">Contact</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
-      <a href="../index.html#beta" class="nav-cta">Join Beta</a>
+      <a href="../contact.html" class="nav-cta">Join Beta</a>
     </nav>
   </header>
 
@@ -665,7 +752,9 @@
 
   <!-- ── Hero ────────────────────────────── -->
   <section class="pdp-hero" aria-labelledby="hero-h1">
-    <div class="pdp-hero-inner">
+    <div class="pdp-hero-glow" aria-hidden="true"></div>
+    <div class="pdp-hero-num-bg" aria-hidden="true">07</div>
+    <div class="pdp-hero-inner" style="position:relative;z-index:1;">
       <p class="pdp-eyebrow" aria-label="Product category">07 · Plugin · Local Registry</p>
       <h1 class="pdp-h1" id="hero-h1">Agent Skill<br>Marketplace</h1>
       <p class="pdp-subhead">
@@ -682,6 +771,17 @@
       </div>
     </div>
   </section>
+
+  <!-- ── IN-PAGE NAV ─────────────────────────────────── -->
+  <nav class="pdp-subnav" aria-label="Page sections">
+    <div class="pdp-subnav-inner">
+      <a href="#problem-h2" class="pdp-subnav-link">Problem</a>
+      <a href="#how-h2" class="pdp-subnav-link">How It Works</a>
+      <a href="#install" class="pdp-subnav-link">Install</a>
+      <a href="#scope-h2" class="pdp-subnav-link">Scope</a>
+      <a href="#tools" class="pdp-subnav-link">MCP Tools</a>
+    </div>
+  </nav>
 
   <!-- ── Problem ─────────────────────────── -->
   <section class="section-dark reveal" aria-labelledby="problem-h2">
@@ -1246,6 +1346,15 @@ npm run build</code></pre>
     </div>
   </section>
 
+  <!-- ── Prev/Next ────────────────────────── -->
+  <div class="pdp-next-bar">
+    <a href="cognitive-memory-mcp-server.html" class="pdp-next-back">← Product 06: Cognitive Memory</a>
+    <a href="audit-replay-logger.html" class="pdp-next-link">
+      <span class="pdp-next-label">Next: Product 08</span>
+      <span class="pdp-next-name">Audit &amp; Replay Logger →</span>
+    </a>
+  </div>
+
   <!-- ── Footer ───────────────────────────── -->
   <footer class="site-footer" aria-label="Site footer">
     <div class="footer-inner">
@@ -1276,8 +1385,8 @@ npm run build</code></pre>
       <nav aria-label="Company">
         <div class="footer-col-label">Company</div>
         <ul class="footer-links">
-          <li><a href="../index.html#about">About</a></li>
-          <li><a href="../index.html#beta">Contact</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
           <li><a href="../products.html#install">Install Docs</a></li>
         </ul>
       </nav>

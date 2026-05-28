@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — CertaWorks</title>
+  <meta name="description" content="Join the CertaWorks hosted beta or get in touch. We are building agentic infrastructure for teams deploying AI agents.">
+  <link rel="canonical" href="https://certaworks.dev/contact">
+  <meta property="og:title" content="Contact — CertaWorks">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Full-page particle canvas — fixed behind all content -->
+  <canvas id="sourceCanvas" aria-hidden="true"></canvas>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./products.html">Products</a></li>
+          <li><a href="./dashboard.html">Dashboard</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html" class="active" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="./contact.html" class="nav-cta" data-magnetic>Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── CONTACT HERO ──────────────────────────────────────────── -->
+    <section class="contact-hero" aria-labelledby="contact-hero-title">
+      <div class="contact-hero-inner">
+        <div class="hero-eyebrow" aria-label="Company">
+          <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true">
+            <circle cx="4" cy="4" r="4" fill="currentColor"/>
+          </svg>
+          CertaWorks Labs
+        </div>
+        <h1 id="contact-hero-title" class="reveal">Get in Touch</h1>
+        <p class="contact-hero-lead reveal">
+          Join the hosted beta, ask a question, or tell us what you're building.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CONTACT BODY ───────────────────────────────────────────── -->
+    <section class="section" aria-label="Contact form and details" style="padding-top: 0;">
+      <div class="section-inner">
+        <div class="contact-layout">
+
+          <!-- Left: Form (60%) -->
+          <div class="contact-form-col">
+            <div class="section-label reveal">
+              <span class="eyebrow eyebrow-green">Hosted Beta</span>
+            </div>
+            <h2 class="beta-heading reveal" style="margin-bottom: 0.75rem;">
+              Join the list for hosted Confidence Gate.
+            </h2>
+            <p class="beta-desc reveal">
+              Tell us what agents you are gating and whether local or hosted fits your workflow. The local MCP server is available now for private testing.
+            </p>
+
+            <form class="beta-form reveal" id="contactForm" aria-label="Contact form" novalidate method="POST" action="https://formspree.io/f/hallblair2020@gmail.com">
+              <input type="hidden" name="_subject" value="CertaWorks Contact Form">
+              <input type="hidden" name="_next" value="https://certaworks.dev/thanks.html">
+              <div class="form-field">
+                <label class="form-label" for="contact-name">Name</label>
+                <input class="form-input" id="contact-name" name="name" type="text"
+                  autocomplete="name" required placeholder="Your name">
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="contact-email">Email</label>
+                <input class="form-input" id="contact-email" name="email" type="email"
+                  autocomplete="email" required placeholder="you@company.com">
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="contact-company">Company or project</label>
+                <input class="form-input" id="contact-company" name="project"
+                  autocomplete="organization" placeholder="Acme Corp">
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="contact-tools">What agents or tools do you use?</label>
+                <textarea class="form-input form-textarea" id="contact-tools" name="tools"
+                  rows="3" placeholder="Claude Code, custom agents, GitHub Copilot…"></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit" data-magnetic>Join Hosted Beta →</button>
+              <p class="form-status" id="contactFormStatus" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <!-- Right: Info (40%) -->
+          <div class="contact-info-col reveal">
+
+            <div class="contact-expect-card">
+              <h3 class="contact-expect-title">What to expect</h3>
+              <ul class="contact-expect-list">
+                <li>
+                  <span class="contact-expect-dot" aria-hidden="true"></span>
+                  We read every submission personally
+                </li>
+                <li>
+                  <span class="contact-expect-dot" aria-hidden="true"></span>
+                  If you're building with AI agents we want to hear from you
+                </li>
+                <li>
+                  <span class="contact-expect-dot" aria-hidden="true"></span>
+                  No spam — we only reach out when hosted beta access opens
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact-links-card">
+              <div class="contact-link-row">
+                <span class="contact-link-label">Email</span>
+                <a href="mailto:blair.hall@certaworks.dev" class="contact-link-value">blair.hall@certaworks.dev</a>
+              </div>
+              <div class="contact-link-row">
+                <span class="contact-link-label">GitHub</span>
+                <a href="https://github.com/plantBase369" class="contact-link-value" target="_blank" rel="noopener noreferrer">github.com/plantBase369</a>
+              </div>
+            </div>
+
+            <div class="contact-note-card">
+              <p>
+                The local MCP server is available now — no waitlist required.
+                <a href="./products.html" class="contact-note-link">Explore products →</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work. Founded May 15, 2026. AI ethics first.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="./products.html#confidence-gate-mcp-server">Confidence Gate</a></li>
+          <li><a href="./dashboard.html">Product Dashboard</a></li>
+          <li><a href="./products.html#agent-cost-router">Agent Cost Router</a></li>
+          <li><a href="./products.html#cognitive-memory-mcp-server">Cognitive Memory</a></li>
+          <li><a href="./products.html">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./about.html#source">Philosophy</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./products.html#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li><a href="./contact.html">Hosted Beta</a></li>
+          <li><a href="./products.html#trust">Trust Posture</a></li>
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        © 2026 CertaWorks. Private prototype — not legal, trademark, domain, or public launch clearance. Confidence Gate is a decision-support layer and does not replace human judgment.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+
+  <style>
+    .contact-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px,4vw,60px) clamp(72px,8vw,100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-hero-inner {
+      position: relative;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .contact-hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .contact-hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: var(--c-dark-muted, #7A9CBD);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* Two-column contact layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Right-column cards */
+    .contact-expect-card,
+    .contact-links-card,
+    .contact-note-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-expect-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .contact-expect-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .contact-expect-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--c-dark-muted, #7A9CBD);
+      line-height: 1.5;
+    }
+    .contact-expect-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c-green);
+      flex-shrink: 0;
+      margin-top: 0.45em;
+    }
+    .contact-link-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-link-row:last-child {
+      margin-bottom: 0;
+    }
+    .contact-link-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .contact-link-value {
+      font-size: 0.9rem;
+      color: var(--c-teal, #10B981);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .contact-link-value:hover {
+      text-decoration: underline;
+    }
+    .contact-note-card p {
+      font-size: 0.875rem;
+      color: var(--c-dark-muted, #7A9CBD);
+      line-height: 1.6;
+    }
+    .contact-note-link {
+      color: var(--c-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-note-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</body>
+</html>
