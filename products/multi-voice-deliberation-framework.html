@@ -499,10 +499,12 @@
         <div class="reveal">
           <div class="code-block" id="mvInstall">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mvInstall">Copy</button>
             </div>
-            <pre><code>npm install @blair/multi-voice-deliberation</code></pre>
+            <pre><code>cd /Users/source/Desktop/CC/products/03-multi-voice-deliberation-framework
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="mvQuickstart">
@@ -617,14 +619,16 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
 
         <div class="code-block reveal" id="mvMcpConfig" style="margin-top: 28px; max-width: 680px;">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (once published)</span>
+            <span class="code-block-label">Claude Desktop config (local build)</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mvMcpConfig">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
     "multi-voice-deliberation": {
-      "command": "npx",
-      "args": ["-y", "@blair/multi-voice-deliberation", "--mcp"],
+      "command": "node",
+      "args": [
+        "/Users/source/Desktop/CC/products/03-multi-voice-deliberation-framework/dist/mcp/server.js"
+      ],
       "env": {
         "OPENROUTER_API_KEY": "your-key-here"
       }

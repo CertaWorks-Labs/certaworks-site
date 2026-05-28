@@ -1408,12 +1408,11 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
           Prompt Archaeology Tool ships as a local probe runner with MCP + CLI. No hosted endpoint required to get started.
         </p>
         <p class="install-pdp-subhead">
-          Once installed, call `analyze_response` to run scripted probes against agent responses and estimate behavioral constraints.
+          Once running locally, call `analyze_response` to run scripted probes against agent responses and estimate behavioral constraints.
         </p>
         <div class="install-pdp-note">
-          npm package publication is pending. These commands are the intended install path once
-          <code style="font-family:var(--font-mono)">@certaworks/prompt-archaeology</code>
-          is published to the npm registry.
+          npm package publication is pending. Use the local source/build for now. Planned public package:
+          <code style="font-family:var(--font-mono)">@certaworks/prompt-archaeology</code>.
         </div>
         <a class="install-pdp-link" href="../products.html#install">
           View full local build instructions on the products page →
@@ -1423,22 +1422,27 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
       <div class="reveal">
         <div class="code-block" id="installCmdPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Install (once published)</span>
+            <span class="code-block-label">Local source</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdPAT">Copy</button>
           </div>
-          <pre><code>npx @certaworks/prompt-archaeology</code></pre>
+          <pre><code>cd /Users/source/Desktop/CC/products/09-prompt-archaeology-tool
+npm install
+npm run build
+npm run mcp</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (once published)</span>
+            <span class="code-block-label">Claude Desktop config (local build)</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigPAT">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
     "prompt-archaeology": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/prompt-archaeology"]
+      "command": "node",
+      "args": [
+        "/Users/source/Desktop/CC/products/09-prompt-archaeology-tool/dist/mcp/server.js"
+      ]
     }
   }
 }</code></pre>

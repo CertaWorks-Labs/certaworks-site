@@ -1079,12 +1079,11 @@ await writeReports(suite, {
           Agent Test Harness ships as a local SDK + CLI. No hosted endpoint required to get started.
         </p>
         <p class="install-pdp-subhead">
-          Once installed, run `certaworks test` to execute repeatable unit and integration tests against agent outputs, tool traces, and cost budgets.
+          Once built locally, run `agent-test` to execute repeatable unit and integration tests against agent outputs, tool traces, and cost budgets.
         </p>
         <div class="install-pdp-note">
-          npm package publication is pending. These commands are the intended install path once
-          <code style="font-family:var(--font-mono)">@certaworks/agent-test-harness</code>
-          is published to the npm registry.
+          npm package publication is pending. Use the local source/build for now. Planned public package:
+          <code style="font-family:var(--font-mono)">@certaworks/agent-test-harness</code>.
         </div>
         <a class="install-pdp-link" href="../products.html#install">
           View full local build instructions on the products page →
@@ -1094,25 +1093,23 @@ await writeReports(suite, {
       <div class="reveal">
         <div class="code-block" id="installCmdATH">
           <div class="code-block-header">
-            <span class="code-block-label">Install (once published)</span>
+            <span class="code-block-label">Local source</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdATH">Copy</button>
           </div>
-          <pre><code>npx @certaworks/agent-test-harness</code></pre>
+          <pre><code>cd /Users/source/Desktop/CC/products/10-agent-test-harness
+npm install
+npm run build</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigATH">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (once published)</span>
+            <span class="code-block-label">CLI usage (local build)</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigATH">Copy</button>
           </div>
-          <pre><code>{
-  "mcpServers": {
-    "agent-test-harness": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/agent-test-harness"]
-    }
-  }
-}</code></pre>
+          <pre><code>node /Users/source/Desktop/CC/products/10-agent-test-harness/dist/cli.js suite.json \
+  --out .agent-test-results \
+  --reporter json \
+  --reporter markdown</code></pre>
         </div>
 
         <p class="copy-status" id="copyStatusATH" aria-live="polite" style="font-size:13px;color:var(--c-green);min-height:20px;margin-top:4px;"></p>

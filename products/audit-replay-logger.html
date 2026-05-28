@@ -579,10 +579,13 @@
         <div class="reveal">
           <div class="code-block" id="arInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install (once published)</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="arInstallCmd">Copy</button>
             </div>
-            <pre><code>npm install -g @blair/audit-replay-logger</code></pre>
+            <pre><code>cd /Users/source/Desktop/CC/products/08-audit-replay-logger
+npm install
+npm run build
+npm run mcp</code></pre>
           </div>
 
           <div class="code-block" id="arSdkExample">
@@ -616,15 +619,16 @@ const timeline = audit.replay(session.id);</code></pre>
 
           <div class="code-block" id="arMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config (once published)</span>
+              <span class="code-block-label">Claude Desktop config (local build)</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="arMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "audit-replay-logger": {
-      "command": "npx",
-      "args": ["-y", "@blair/audit-replay-logger",
-               "audit-replay-mcp"]
+      "command": "node",
+      "args": [
+        "/Users/source/Desktop/CC/products/08-audit-replay-logger/dist/mcp/server.js"
+      ]
     }
   }
 }</code></pre>

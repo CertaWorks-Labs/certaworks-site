@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = new URL("..", import.meta.url).pathname;
+const SITE_ORIGIN = "https://certaworks.dev";
+const SITE_BASE_URL = `${SITE_ORIGIN}/`;
+const STALE_DOMAINS = ["certaworks.com", "certaworks.io", "certaworks.example"];
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -16,6 +19,22 @@ function parseJsonLdBlocks(html) {
     blocks.push(JSON.parse(raw));
   }
   return blocks;
+}
+
+function getMetaPropertyContent(html, property) {
+  const propertyFirst = new RegExp(`<meta\\s+property="${property}"\\s+content="([^"]+)"`);
+  const contentFirst = new RegExp(`<meta\\s+content="([^"]+)"\\s+property="${property}"`);
+  return html.match(propertyFirst)?.[1] ?? html.match(contentFirst)?.[1];
+}
+
+function assertNoStaleDomains(value, context) {
+  for (const domain of STALE_DOMAINS) {
+    assert.ok(!value.includes(domain), `${context}: must not use stale domain ${domain}`);
+  }
+}
+
+function stripAllowedNegativeLaunchDisclaimers(html) {
+  return html.replace(/No\s+live\s+checkout\s+or\s+SaaS\s+availability/gi, "");
 }
 
 // ── Page inventory ────────────────────────────────────────────────────────────
@@ -68,16 +87,14 @@ for (const p of ALL_PAGES) {
     `${p}: missing meta description`);
 }
 
-// ── 2. Every page: canonical URL (placeholder domain only, not live) ──────────
+// ── 2. Every page: canonical URL (real purchased domain only) ────────────────
 
 for (const p of ALL_PAGES) {
   const html = pages[p];
   const m = html.match(/rel="canonical"\s+href="([^"]+)"/);
   assert.ok(m, `${p}: missing canonical link`);
-  assert.ok(m[1].startsWith("https://www.certaworks.example/"), `${p}: canonical must use placeholder domain`);
-  // No real TLD that implies live hosting
-  assert.ok(!m[1].includes("certaworks.com"), `${p}: canonical must not use certaworks.com (not acquired)`);
-  assert.ok(!m[1].includes("certaworks.io"), `${p}: canonical must not use certaworks.io (not acquired)`);
+  assert.ok(m[1].startsWith(SITE_BASE_URL), `${p}: canonical must use ${SITE_BASE_URL}`);
+  assertNoStaleDomains(m[1], `${p}: canonical`);
 }
 
 // ── 3. Every page: og:title, og:description, og:type, og:url, twitter:card ────
@@ -93,9 +110,10 @@ for (const p of ALL_PAGES) {
   assert.ok(/property="og:type"\s+content="[^"]+"/.test(html) ||
             /content="[^"]+"\s+property="og:type"/.test(html),
     `${p}: missing og:type`);
-  assert.ok(/property="og:url"\s+content="[^"]+"/.test(html) ||
-            /content="[^"]+"\s+property="og:url"/.test(html),
-    `${p}: missing og:url`);
+  const ogUrl = getMetaPropertyContent(html, "og:url");
+  assert.ok(ogUrl, `${p}: missing og:url`);
+  assert.ok(ogUrl.startsWith(SITE_BASE_URL), `${p}: og:url must use ${SITE_BASE_URL}`);
+  assertNoStaleDomains(ogUrl, `${p}: og:url`);
   assert.ok(/name="twitter:card"\s+content="[^"]+"/.test(html) ||
             /content="[^"]+"\s+name="twitter:card"/.test(html),
     `${p}: missing twitter:card`);
@@ -110,6 +128,7 @@ for (const p of ALL_PAGES) {
     () => parseJsonLdBlocks(html),
     `${p}: JSON-LD must parse as valid JSON`
   );
+  assertNoStaleDomains(JSON.stringify(parseJsonLdBlocks(html)), `${p}: JSON-LD`);
 }
 
 // ── 5. index.html: Organization + WebSite schemas ────────────────────────────
@@ -254,6 +273,7 @@ for (const p of ALL_PAGES) {
 //   "Guarantee safety or prevent all harmful agent actions"
 //   "@certaworks/confidence-gate-mcp-server — publication is pending"
 // Checking top-level pages catches accidental positive claims in primary content.
+// The shared footer can include concise negative launch-status disclaimers.
 const unsafeClaimsTopPages = [
   /guarantee(?:s|d)?\s+(?:ai\s+)?safety/i,
   /prevents?\s+all\s+(?:agent\s+)?mistakes/i,
@@ -272,7 +292,7 @@ const unsafeClaimsTopPages = [
 ];
 
 for (const p of TOP_PAGES) {
-  const html = pages[p];
+  const html = stripAllowedNegativeLaunchDisclaimers(pages[p]);
   for (const claim of unsafeClaimsTopPages) {
     assert.ok(!claim.test(html), `${p}: unsafe or restricted claim found: ${claim}`);
   }
@@ -283,6 +303,27 @@ for (const p of TOP_PAGES) {
 // This is a known gap recorded in the continuity doc. No assertion here.
 // When a real social preview image is created, add:
 //   assert.ok(/property="og:image"\s+content="/.test(html), `${p}: missing og:image`);
+
+// ── 15. robots.txt + sitemap.xml use the real purchased domain ────────────────
+
+const robotsTxt = read("robots.txt");
+assert.ok(robotsTxt.includes("User-agent: *"), "robots.txt: missing default user-agent");
+assert.ok(robotsTxt.includes("Allow: /"), "robots.txt: should allow crawling");
+assert.ok(robotsTxt.includes(`Sitemap: ${SITE_ORIGIN}/sitemap.xml`), "robots.txt: sitemap URL must use certaworks.dev");
+assertNoStaleDomains(robotsTxt, "robots.txt");
+
+const sitemapXml = read("sitemap.xml");
+const sitemapUrls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+const expectedSitemapUrls = [
+  SITE_BASE_URL,
+  `${SITE_ORIGIN}/products`,
+  `${SITE_ORIGIN}/dashboard`,
+  ...PRODUCT_SLUGS.map((slug) => `${SITE_ORIGIN}/products/${slug}`),
+  `${SITE_ORIGIN}/privacy`,
+];
+
+assert.deepEqual(sitemapUrls, expectedSitemapUrls, "sitemap.xml: URL inventory must match static public pages");
+assertNoStaleDomains(sitemapXml, "sitemap.xml");
 
 // ── Done ──────────────────────────────────────────────────────────────────────
 
