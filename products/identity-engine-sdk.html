@@ -864,39 +864,19 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
             files to a local directory.
           </p>
           <p class="install-pdp-subhead">
-            The current private package name is
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">@blair/identity-engine-sdk</code>.
-            A public <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">@certaworks</code>
-            scoped package is not yet published.
+            Install the package from npm as
+            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">@certaworks/identity-engine-sdk</code>.
           </p>
-          <div class="install-pdp-note">
-            npm package publication is pending. Clone the repository and build locally with
-            <code style="font-family:var(--font-mono)">npm install &amp;&amp; npm run build</code>
-            to try the SDK before the public package is available.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/identity-engine-sdk" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="ieInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Package status</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="ieInstallCmd">Copy</button>
             </div>
-            <pre><code># Planned public package: @certaworks/identity-engine-sdk
-# npm publication pending; use the local build below.</code></pre>
-          </div>
-
-          <div class="code-block" id="ieBuildLocal">
-            <div class="code-block-header">
-              <span class="code-block-label">Local build</span>
-              <button class="copy-btn copy-button" type="button" data-copy-target="ieBuildLocal">Copy</button>
-            </div>
-            <pre><code>npm install
-npm run build
-# Outputs to dist/index.js and dist/index.d.ts</code></pre>
+            <pre><code>npx @certaworks/identity-engine-sdk</code></pre>
           </div>
 
           <div class="code-block" id="ieImport">
@@ -912,7 +892,7 @@ npm run build
   type IdentityState,
   type JournalEntry,
   type DriftCheckResult,
-} from '@blair/identity-engine-sdk';</code></pre>
+} from '@certaworks/identity-engine-sdk';</code></pre>
           </div>
 
           <p class="copy-status" id="ie-copyStatus" aria-live="polite"

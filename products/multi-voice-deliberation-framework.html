@@ -486,25 +486,16 @@
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">GROQ_API_KEY</code>
             in your environment. Provider support uses the OpenAI-compatible SDK.
           </p>
-          <div class="install-pdp-note">
-            The current package name is <code style="font-family:var(--font-mono)">@blair/multi-voice-deliberation</code>.
-            A <code style="font-family:var(--font-mono)">@certaworks/multi-voice-deliberation</code>
-            publication is pending scope finalization and npm registry clearance.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/multi-voice-deliberation-framework" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="mvInstall">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mvInstall">Copy</button>
             </div>
-            <pre><code>cd /Users/source/Desktop/CC/products/03-multi-voice-deliberation-framework
-npm install
-npm run build</code></pre>
+            <pre><code>npx @certaworks/multi-voice-deliberation-framework</code></pre>
           </div>
 
           <div class="code-block" id="mvQuickstart">
@@ -512,7 +503,7 @@ npm run build</code></pre>
               <span class="code-block-label">SDK quickstart</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mvQuickstart">Copy</button>
             </div>
-            <pre><code>import { deliberate, adapterFromEnv } from '@blair/multi-voice-deliberation';
+            <pre><code>import { deliberate, adapterFromEnv } from '@certaworks/multi-voice-deliberation-framework';
 
 // Requires OPENROUTER_API_KEY, OPENAI_API_KEY, or GROQ_API_KEY
 const adapter = adapterFromEnv();
@@ -619,19 +610,14 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
 
         <div class="code-block reveal" id="mvMcpConfig" style="margin-top: 28px; max-width: 680px;">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (local build)</span>
+            <span class="code-block-label">Claude Desktop config</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mvMcpConfig">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
-    "multi-voice-deliberation": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/03-multi-voice-deliberation-framework/dist/mcp/server.js"
-      ],
-      "env": {
-        "OPENROUTER_API_KEY": "your-key-here"
-      }
+    "multi-voice-deliberation-framework": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/multi-voice-deliberation-framework"]
     }
   }
 }</code></pre>

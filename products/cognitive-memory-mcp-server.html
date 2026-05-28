@@ -784,49 +784,28 @@
             <code style="font-family:var(--font-mono);font-size:13px;color:#2dd4bf">cognitive-memory-mcp</code>.
             The MCP server reads from and writes to the local store on every tool call.
           </p>
-          <div class="install-pdp-note">
-            npm package publication is pending. The current private package name is
-            <code style="font-family:var(--font-mono)">@blair/cognitive-memory-mcp-server</code>;
-            the intended public package name under the CertaWorks scope is not yet published.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/cognitive-memory-mcp-server" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="cmInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Package status</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="cmInstallCmd">Copy</button>
             </div>
-            <pre><code># Planned public package: @certaworks/cognitive-memory-mcp-server
-# npm publication pending; use the local build below.</code></pre>
-          </div>
-
-          <div class="code-block" id="cmBuildRun">
-            <div class="code-block-header">
-              <span class="code-block-label">Local build and run</span>
-              <button class="copy-btn copy-button" type="button" data-copy-target="cmBuildRun">Copy</button>
-            </div>
-            <pre><code>npm install
-npm run build
-npm run mcp       # starts the stdio MCP server</code></pre>
+            <pre><code>npx @certaworks/cognitive-memory-mcp-server</code></pre>
           </div>
 
           <div class="code-block" id="cmMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config (local build)</span>
+              <span class="code-block-label">Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="cmMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
-    "cognitive-memory": {
-      "command": "node",
-      "args": ["dist/mcp/server.js"],
-      "env": {
-        "COGNITIVE_MEMORY_STORE_PATH": "./.cognitive-memory/memory.json"
-      }
+    "cognitive-memory-mcp-server": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/cognitive-memory-mcp-server"]
     }
   }
 }</code></pre>

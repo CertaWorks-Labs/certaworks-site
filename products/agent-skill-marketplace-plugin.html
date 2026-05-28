@@ -1155,39 +1155,28 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
         <p class="install-pdp-subhead">
           Once running locally, agents can call `list_skills`, `install_skill`, and `run_skill` to discover and execute trusted skills from the local registry.
         </p>
-        <div class="install-pdp-note">
-          npm package publication is pending. Use the local source/build for now. Planned public package:
-          <code style="font-family:var(--font-mono)">@certaworks/agent-skill-marketplace</code>.
-        </div>
-        <a class="install-pdp-link" href="../products.html#install">
-          View full local build instructions on the products page →
-        </a>
+        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-skill-marketplace-plugin" target="_blank" rel="noopener">View on npm →</a>
       </div>
 
       <div class="reveal">
         <div class="code-block" id="installCmdASM">
           <div class="code-block-header">
-            <span class="code-block-label">Local source</span>
+            <span class="code-block-label">Install</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdASM">Copy</button>
           </div>
-          <pre><code>cd /Users/source/Desktop/CC/products/07-agent-skill-marketplace-plugin
-npm install
-npm run build
-npm run mcp</code></pre>
+          <pre><code>npx @certaworks/agent-skill-marketplace-plugin</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigASM">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (local build)</span>
+            <span class="code-block-label">Claude Desktop config</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigASM">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
-    "agent-skill-marketplace": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/07-agent-skill-marketplace-plugin/dist/mcp/server.js"
-      ]
+    "agent-skill-marketplace-plugin": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/agent-skill-marketplace-plugin"]
     }
   }
 }</code></pre>

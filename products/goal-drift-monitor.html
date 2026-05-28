@@ -633,25 +633,16 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-amber)">goal-drift serve</code>.
           </p>
-          <div class="install-pdp-note">
-            npm package publication is pending. Use the local source/build for now. Planned public package:
-            <code style="font-family:var(--font-mono)">@certaworks/goal-drift-monitor</code>.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/goal-drift-monitor" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="gdInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="gdInstallCmd">Copy</button>
             </div>
-            <pre><code>cd /Users/source/Desktop/CC/products/05-goal-drift-monitor
-npm install
-npm run build
-npm run mcp</code></pre>
+            <pre><code>npx @certaworks/goal-drift-monitor</code></pre>
           </div>
 
           <div class="code-block" id="gdCliExample">
@@ -684,16 +675,14 @@ goal-drift serve --port 4321</code></pre>
 
           <div class="code-block" id="gdMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config (local build)</span>
+              <span class="code-block-label">Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="gdMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "goal-drift-monitor": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/05-goal-drift-monitor/dist/mcp/server.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "@certaworks/goal-drift-monitor"]
     }
   }
 }</code></pre>

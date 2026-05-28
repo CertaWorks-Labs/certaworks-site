@@ -724,25 +724,16 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">agent-cost-router serve</code>.
           </p>
-          <div class="install-pdp-note">
-            npm package publication is pending. Use the local source/build for now. Planned public package:
-            <code style="font-family:var(--font-mono)">@certaworks/agent-cost-router</code>.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-cost-router" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="acrInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="acrInstallCmd">Copy</button>
             </div>
-            <pre><code>cd /Users/source/Desktop/CC/products/04-agent-cost-router
-npm install
-npm run build
-npm run mcp</code></pre>
+            <pre><code>npx @certaworks/agent-cost-router</code></pre>
           </div>
 
           <div class="code-block" id="acrCliExample">
@@ -771,16 +762,14 @@ agent-cost-router serve --port 4317</code></pre>
 
           <div class="code-block" id="acrMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config (local build)</span>
+              <span class="code-block-label">Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="acrMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "agent-cost-router": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/04-agent-cost-router/dist/mcp/server.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "@certaworks/agent-cost-router"]
     }
   }
 }</code></pre>

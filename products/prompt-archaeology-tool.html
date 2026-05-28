@@ -1410,39 +1410,28 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
         <p class="install-pdp-subhead">
           Once running locally, call `analyze_response` to run scripted probes against agent responses and estimate behavioral constraints.
         </p>
-        <div class="install-pdp-note">
-          npm package publication is pending. Use the local source/build for now. Planned public package:
-          <code style="font-family:var(--font-mono)">@certaworks/prompt-archaeology</code>.
-        </div>
-        <a class="install-pdp-link" href="../products.html#install">
-          View full local build instructions on the products page →
-        </a>
+        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/prompt-archaeology-tool" target="_blank" rel="noopener">View on npm →</a>
       </div>
 
       <div class="reveal">
         <div class="code-block" id="installCmdPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Local source</span>
+            <span class="code-block-label">Install</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdPAT">Copy</button>
           </div>
-          <pre><code>cd /Users/source/Desktop/CC/products/09-prompt-archaeology-tool
-npm install
-npm run build
-npm run mcp</code></pre>
+          <pre><code>npx @certaworks/prompt-archaeology-tool</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config (local build)</span>
+            <span class="code-block-label">Claude Desktop config</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigPAT">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
-    "prompt-archaeology": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/09-prompt-archaeology-tool/dist/mcp/server.js"
-      ]
+    "prompt-archaeology-tool": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/prompt-archaeology-tool"]
     }
   }
 }</code></pre>

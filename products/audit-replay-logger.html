@@ -566,26 +566,16 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">npm run serve</code>.
           </p>
-          <div class="install-pdp-note">
-            npm package publication is pending. The current private package metadata is
-            <code style="font-family:var(--font-mono)">@blair/audit-replay-logger</code>;
-            public package naming and registry publication are not live.
-          </div>
-          <a class="install-pdp-link" href="../products.html#install">
-            View full local build instructions on the products page →
-          </a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/audit-replay-logger" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
           <div class="code-block" id="arInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">Install</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="arInstallCmd">Copy</button>
             </div>
-            <pre><code>cd /Users/source/Desktop/CC/products/08-audit-replay-logger
-npm install
-npm run build
-npm run mcp</code></pre>
+            <pre><code>npx @certaworks/audit-replay-logger</code></pre>
           </div>
 
           <div class="code-block" id="arSdkExample">
@@ -619,16 +609,14 @@ const timeline = audit.replay(session.id);</code></pre>
 
           <div class="code-block" id="arMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config (local build)</span>
+              <span class="code-block-label">Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="arMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "audit-replay-logger": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/08-audit-replay-logger/dist/mcp/server.js"
-      ]
+      "command": "npx",
+      "args": ["-y", "@certaworks/audit-replay-logger"]
     }
   }
 }</code></pre>
