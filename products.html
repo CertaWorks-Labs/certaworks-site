@@ -82,99 +82,6 @@
       </div>
     </section>
 
-    <!-- ── FEATURED: CONFIDENCE GATE ─────────────── -->
-    <section class="section featured-section" id="confidence-gate-feature" aria-labelledby="gate-title">
-      <div class="section-inner">
-        <div class="featured-header">
-
-          <div class="reveal">
-            <div class="section-label">
-              <span class="eyebrow eyebrow-teal">Product 02 · MCP Server</span>
-            </div>
-            <h2 class="featured-headline" id="gate-title">Confidence Gate</h2>
-            <p class="featured-desc">
-              Scores proposed agent actions and returns allow, review, or block decisions — before tools touch files, APIs, customers, or production. The primary control point in the CertaWorks suite.
-            </p>
-            <div class="feature-pills" role="list" aria-label="Key capabilities">
-              <span class="feature-pill" role="listitem">Score</span>
-              <span class="feature-pill" role="listitem">Route to review</span>
-              <span class="feature-pill" role="listitem">Block</span>
-              <span class="feature-pill" role="listitem">Decision trace</span>
-              <span class="feature-pill" role="listitem">MCP Server</span>
-            </div>
-            <div class="featured-ctas">
-              <a href="#install" class="btn btn-primary btn-sm">Install Local →</a>
-              <a href="./dashboard.html" class="btn btn-outline btn-sm">Open Dashboard</a>
-              <a href="./contact.html" class="btn btn-outline btn-sm">Join Hosted Beta</a>
-              <a href="./products/confidence-gate-mcp-server.html" class="btn btn-outline btn-sm">Full product page →</a>
-            </div>
-          </div>
-
-          <!-- Interactive workbench demo -->
-          <div class="reveal">
-            <div class="workbench-wrapper" aria-label="Interactive Confidence Gate demo">
-              <div class="workbench-tabs" role="tablist" aria-label="Review scenarios">
-                <button class="wb-tab active" role="tab" aria-selected="true"  type="button" data-scenario="code">Code</button>
-                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="customer">Customer</button>
-                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="database">Database</button>
-                <button class="wb-tab"        role="tab" aria-selected="false" type="button" data-scenario="deploy">Deploy</button>
-              </div>
-
-              <div class="workbench-body">
-                <div class="wb-main">
-                  <div class="wb-topline">
-                    <span class="wb-live-dot" aria-hidden="true"></span>
-                    <span class="wb-scene-label" id="sceneLabel">Code change review</span>
-                    <button class="wb-replay-btn" type="button" id="replayButton">Replay</button>
-                  </div>
-
-                  <div class="motion-stage" data-frame="proposed" aria-label="Gate sequence">
-                    <ol class="stage-steps" aria-label="Steps">
-                      <li class="active" data-step="proposed">Proposed</li>
-                      <li data-step="scored">Scored</li>
-                      <li data-step="routed">Routed</li>
-                      <li data-step="logged">Logged</li>
-                    </ol>
-
-                    <article class="action-surface" aria-label="Proposed action">
-                      <p class="wb-surface-label">Agent proposes</p>
-                      <h2 id="actionTitle">Rewrite authentication middleware after failing tests.</h2>
-                      <p id="actionContext">The agent has test output, touched files, and rollback notes, but the change affects login behavior.</p>
-                    </article>
-
-                    <div class="gate-surface" aria-label="Gate decision">
-                      <div class="score-block">
-                        <span>Confidence</span>
-                        <strong id="scoreValue">78%</strong>
-                      </div>
-                      <div class="decision-block">
-                        <span>Decision</span>
-                        <strong id="decisionValue">Review required</strong>
-                      </div>
-                      <div class="progress-track" aria-label="Step progress">
-                        <span id="progressFill" style="width:18%"></span>
-                      </div>
-                    </div>
-
-                    <div class="trace-surface" aria-label="Decision trace">
-                      <p class="wb-surface-label">Decision trace</p>
-                      <code id="auditPreview">08:42 · Code change · Proposed · 78% · policy: high_risk_review</code>
-                      <ul id="reasonList">
-                        <li>Touches authentication flow.</li>
-                        <li>Test evidence is present but incomplete.</li>
-                        <li>Rollback path should be confirmed.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
     <!-- ── ALL PRODUCTS GRID ───────────────────────── -->
     <section class="section products-section" aria-labelledby="all-products-title">
       <div class="section-inner">
@@ -228,12 +135,12 @@
             </div>
             <span class="product-num">02</span>
             <h3 class="product-name">Confidence Gate MCP Server</h3>
-            <p class="product-desc">Scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context. The primary control point in the CertaWorks suite — the product the gate workbench above demonstrates live.</p>
+            <p class="product-desc">Scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context. The primary control point in the CertaWorks suite.</p>
             <div class="product-card-footer">
               <span class="product-status">
                 <span class="status-dot live" aria-hidden="true"></span>Available now
               </span>
-              <a href="#install" class="product-cta-text">Install local →</a>
+              <a href="./products/confidence-gate-mcp-server.html#install" class="product-cta-text">Install local →</a>
               <a href="./products/confidence-gate-mcp-server.html" class="product-cta-text" style="margin-left:12px;opacity:0.7;">Full product page →</a>
             </div>
             <div class="card-expand-panel">
@@ -532,90 +439,33 @@
       </div>
     </section>
 
-    <!-- ── INSTALL ─────────────────────────────────── -->
-    <section class="install-section" id="install" aria-labelledby="install-title">
-      <div class="install-inner">
-
-        <div class="reveal">
-          <div class="section-label dark">
-            <span class="eyebrow eyebrow-green">Local Install</span>
-          </div>
-          <h2 class="install-heading" id="install-title">
-            Run Confidence Gate locally.
-          </h2>
-          <p class="install-desc">
-            The local MCP server is the current install path for private testing. Public package names are not reserved or published yet.
-          </p>
-          <div class="install-actions">
-            <button class="btn btn-ghost btn-sm copy-button" type="button"
-              data-copy-target="mcpConfig">Copy MCP config</button>
-            <a href="./contact.html" class="btn btn-sm"
-              style="background:rgba(255,255,255,0.06);color:rgba(200,225,255,0.7);border:1px solid rgba(255,255,255,0.1)">
-              Join hosted beta →
-            </a>
-          </div>
-          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
-        </div>
-
-        <div class="reveal">
-          <div class="code-block">
-            <div class="code-block-header">
-              <span class="code-block-label">Build &amp; test</span>
-            </div>
-            <pre><code>cd /Users/source/Desktop/CC/products/02-confidence-gate-mcp-server
-npm install
-npm run build
-npm test</code></pre>
-          </div>
-
-          <div class="code-block" id="mcpConfig">
-            <div class="code-block-header">
-              <span class="code-block-label">MCP config</span>
-              <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfig">Copy</button>
-            </div>
-            <pre><code>{
-  "mcpServers": {
-    "confidence-gate": {
-      "command": "node",
-      "args": [
-        "/Users/source/Desktop/CC/products/02-confidence-gate-mcp-server/dist/index.js"
-      ]
-    }
-  }
-}</code></pre>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
     <!-- ── TRUST POSTURE ───────────────────────────── -->
-    <section class="section" id="trust" style="background: var(--c-white);"
+    <section class="section" id="trust" style="background: var(--c-dark);"
       aria-labelledby="trust-title">
       <div class="section-inner">
         <div class="section-label reveal">
           <span class="eyebrow eyebrow-teal">Trust posture</span>
         </div>
-        <h2 class="section-headline reveal" id="trust-title">
+        <h2 class="section-headline reveal" id="trust-title" style="color:#fff;">
           Calm, precise,<br>careful about claims.
         </h2>
 
         <div class="values-grid stagger-children reveal" style="margin-top: 48px;" role="list">
           <article class="value-card" role="listitem">
-            <h3 class="value-title">Clear boundary</h3>
-            <p class="value-desc">Confidence Gate is a decision-support layer. It helps teams evaluate and log agent actions, but it does not replace human judgment, legal review, security review, or production controls.</p>
+            <h3 class="value-title">Decision support, not replacement</h3>
+            <p class="value-desc">Every product in the suite is a decision-support layer. These tools help teams evaluate, route, log, and observe agent actions — they do not replace human judgment, legal review, or production controls.</p>
           </article>
           <article class="value-card" role="listitem">
-            <h3 class="value-title">Private brand status</h3>
-            <p class="value-desc">CertaWorks is a working private brand direction. Name, trademark, domain, and public launch risk remain unresolved as of this prototype version.</p>
+            <h3 class="value-title">Early stage</h3>
+            <p class="value-desc">CertaWorks is a live product suite, not a finished platform. Each product has a clear scope, an honest status label, and known limits documented on its product page.</p>
           </article>
           <article class="value-card" role="listitem">
-            <h3 class="value-title">Payment posture</h3>
-            <p class="value-desc">Pricing can be discussed for beta planning, but checkout and Stripe products are intentionally not enabled at this stage of development.</p>
+            <h3 class="value-title">All products are local-first</h3>
+            <p class="value-desc">Every tool in the suite ships as a local install. No data leaves your machine by default. Hosted cloud features are roadmap items — not current reality.</p>
           </article>
           <article class="value-card" role="listitem">
-            <h3 class="value-title">What is live now</h3>
-            <p class="value-desc">The local Confidence Gate MCP server is the current working product. A prototype dashboard is available now; hosted access and persistent team storage are not current reality.</p>
+            <h3 class="value-title">Available now</h3>
+            <p class="value-desc">All 10 products are published on npm under the @certaworks scope and installable today via npx. Each product page has a full install guide and MCP configuration snippet.</p>
           </article>
         </div>
       </div>
@@ -655,7 +505,7 @@ npm test</code></pre>
         <ul class="footer-links">
           <li><a href="./about.html">About</a></li>
           <li><a href="./contact.html">Contact</a></li>
-          <li><a href="#install">Install Docs</a></li>
+          <li><a href="./products/confidence-gate-mcp-server.html#install">Install Docs</a></li>
         </ul>
       </nav>
 
