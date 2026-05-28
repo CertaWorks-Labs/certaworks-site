@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Identity Engine SDK — CertaWorks</title>
-  <meta name="description" content="Identity Engine SDK gives agents a persistent identity layer with an immutable core, evolving mutable state, append-only journal, and deterministic drift checks. Node / TypeScript prototype.">
+  <meta name="description" content="Persistent identity, state, journal, and drift checks for agents that need continuity across sessions. Immutable core and append-only history.">
   <link rel="canonical" href="https://certaworks.dev/products/identity-engine-sdk">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/identity-engine-sdk">
   <meta property="og:title" content="Identity Engine SDK — CertaWorks">
   <meta property="og:description" content="Persistent identity, state, journal, and drift checks for agents that need continuity across sessions.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Identity Engine SDK — CertaWorks">
+  <meta name="twitter:description" content="Persistent identity, state, journal, and drift checks for agents that need continuity across sessions.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Identity Engine SDK",
+    "url": "https://certaworks.dev/products/identity-engine-sdk",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Gives agent builders a persistent identity layer with an immutable core, evolving state, append-only history, and drift checks for continuity across sessions.",
@@ -873,10 +877,13 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
         <div class="reveal">
           <div class="code-block" id="ieInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="ieInstallCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/identity-engine-sdk</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/01-identity-engine-sdk
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="ieImport">

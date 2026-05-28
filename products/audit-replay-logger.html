@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Audit & Replay Logger — CertaWorks</title>
-  <meta name="description" content="Audit & Replay Logger records explicitly logged agent decisions, tool calls, state changes, causal chains, and replay bundles in a local tamper-evident audit store.">
+  <meta name="description" content="Capture local hash-chain audit events, redacted payloads, causal chains, and exportable replay bundles for agent debugging and review.">
   <link rel="canonical" href="https://certaworks.dev/products/audit-replay-logger">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/audit-replay-logger">
   <meta property="og:title" content="Audit & Replay Logger — CertaWorks">
   <meta property="og:description" content="Capture local hash-chain audit events, redacted payloads, causal chains, and exportable replay bundles for agent debugging and review.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Audit & Replay Logger — CertaWorks">
+  <meta name="twitter:description" content="Capture local hash-chain audit events, redacted payloads, causal chains, and exportable replay bundles for agent debugging and review.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Audit & Replay Logger",
+    "url": "https://certaworks.dev/products/audit-replay-logger",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Audit & Replay Logger records explicitly logged agent decisions, tool calls, state changes, causal chains, and replay bundles in a local audit store.",
@@ -572,10 +576,13 @@
         <div class="reveal">
           <div class="code-block" id="arInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="arInstallCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/audit-replay-logger</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/08-audit-replay-logger
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="arSdkExample">

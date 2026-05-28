@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Goal Drift Monitor — CertaWorks</title>
-  <meta name="description" content="Goal Drift Monitor tracks whether long-running agents are still aligned with their original goal. Includes CLI, MCP tools, local HTTP API, turn-by-turn drift scoring, and webhook alert receipts.">
+  <meta name="description" content="Detect when long-running agents drift off-task. Session-based drift scoring, webhook alerts, and a local dashboard for monitoring alignment turn by turn.">
   <link rel="canonical" href="https://certaworks.dev/products/goal-drift-monitor">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/goal-drift-monitor">
   <meta property="og:title" content="Goal Drift Monitor — CertaWorks">
   <meta property="og:description" content="Detect when long-running agents drift off-task. Session-based drift scoring, webhook alerts, and a local dashboard for monitoring alignment turn by turn.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Goal Drift Monitor — CertaWorks">
+  <meta name="twitter:description" content="Detect when long-running agents drift off-task. Session-based drift scoring, webhook alerts, and local dashboard for monitoring alignment turn by turn.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Goal Drift Monitor",
+    "url": "https://certaworks.dev/products/goal-drift-monitor",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Goal Drift Monitor tracks whether long-running agents are still aligned with their original goal and records webhook alert receipts when behavior diverges.",
@@ -639,10 +643,13 @@
         <div class="reveal">
           <div class="code-block" id="gdInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="gdInstallCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/goal-drift-monitor</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/05-goal-drift-monitor
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="gdCliExample">

@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agent Skill Marketplace Plugin — CertaWorks</title>
-  <meta name="description" content="Agent Skill Marketplace Plugin lets agents discover, inspect, install, verify, and run trusted skills from a local registry-style capability layer. SHA256 checksum verification, permission gates, and 7 MCP tools.">
+  <meta name="description" content="Let agents discover, install, and run trusted skills locally. Checksum-verified, permission-gated, MCP-native. 7 MCP tools and local skill registry.">
   <link rel="canonical" href="https://certaworks.dev/products/agent-skill-marketplace-plugin">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/agent-skill-marketplace-plugin">
   <meta property="og:title" content="Agent Skill Marketplace Plugin — CertaWorks">
   <meta property="og:description" content="Let agents discover, install, and run trusted skills locally. Checksum-verified, permission-gated, MCP-native.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Agent Skill Marketplace Plugin — CertaWorks">
+  <meta name="twitter:description" content="Let agents discover, install, and run trusted skills locally. Checksum-verified, permission-gated, MCP-native.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Agent Skill Marketplace Plugin",
+    "url": "https://certaworks.dev/products/agent-skill-marketplace-plugin",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Lets agents discover, inspect, install, verify, and run trusted skills from a local registry-style capability layer with SHA256 checksum verification, permission gates, and MCP tools.",
@@ -1131,7 +1135,7 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
             <li>No OS-level sandboxing — permission gates are manifest checks, not process isolation</li>
             <li>No signed publisher identity or certificate chain for remote skills</li>
             <li>No remote registry caching — remote merges happen on-demand each call</li>
-            <li>Not published to npm yet — pending registry name clearance</li>
+            <li>Published to npm as <code style="font-family:var(--font-mono);font-size:13px">@certaworks/agent-skill-marketplace-plugin</code></li>
           </ul>
         </div>
       </div>
@@ -1161,10 +1165,13 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
       <div class="reveal">
         <div class="code-block" id="installCmdASM">
           <div class="code-block-header">
-            <span class="code-block-label">Install</span>
+            <span class="code-block-label">Local source</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdASM">Copy</button>
           </div>
-          <pre><code>npx @certaworks/agent-skill-marketplace-plugin</code></pre>
+          <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/07-agent-skill-marketplace-plugin
+npm install
+npm run build</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigASM">

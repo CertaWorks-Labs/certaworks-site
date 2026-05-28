@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agent Test Harness — CertaWorks</title>
-  <meta name="description" content="Agent Test Harness lets teams write repeatable unit and integration tests for agent outputs, tool traces, latency, cost budgets, mock tool behavior, and consistency. Local SDK and CLI with JSON, Markdown, and JUnit reporting.">
+  <meta name="description" content="Repeatable local tests for agent outputs, tool traces, cost budgets, and consistency. 13 assertion types, mock runner, and CI-friendly JUnit output.">
   <link rel="canonical" href="https://certaworks.dev/products/agent-test-harness">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/agent-test-harness">
   <meta property="og:title" content="Agent Test Harness — CertaWorks">
   <meta property="og:description" content="Repeatable local tests for agent outputs, tool traces, cost budgets, and consistency. 13 assertion types, deterministic mock runner, and CI-friendly JUnit output.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Agent Test Harness — CertaWorks">
+  <meta name="twitter:description" content="Repeatable local tests for agent outputs, tool traces, cost budgets, and consistency. 13 assertion types, deterministic mock runner, CI-friendly JUnit output.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Agent Test Harness",
+    "url": "https://certaworks.dev/products/agent-test-harness",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Write repeatable unit and integration tests for agent pipelines, tool traces, cost budgets, latency, mock tool behavior, and consistency. Local SDK and CLI with deterministic mock runner and CI-friendly JUnit output.",
@@ -1053,7 +1057,7 @@ await writeReports(suite, {
           <ul class="limits-list not" role="list">
             <li>No hosted runner or managed CI service — local execution only</li>
             <li>No live provider adapter (OpenAI, Anthropic, etc.) bundled in current prototype</li>
-            <li>No public npm publication — pending registry name clearance</li>
+            <li>Published to npm as <code style="font-family:var(--font-mono);font-size:13px">@certaworks/agent-test-harness</code></li>
             <li>No hosted analytics dashboard or cloud-synced run history</li>
             <li>No visual test report UI — output is file artifacts and terminal text</li>
             <li>Does not guarantee behavioral correctness — tests assert what you specify</li>
@@ -1087,10 +1091,13 @@ await writeReports(suite, {
       <div class="reveal">
         <div class="code-block" id="installCmdATH">
           <div class="code-block-header">
-            <span class="code-block-label">Install</span>
+            <span class="code-block-label">Local source</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdATH">Copy</button>
           </div>
-          <pre><code>npx @certaworks/agent-test-harness</code></pre>
+          <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/10-agent-test-harness
+npm install
+npm run build</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigATH">

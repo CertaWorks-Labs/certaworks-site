@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cognitive Memory MCP Server — CertaWorks</title>
-  <meta name="description" content="Cognitive Memory MCP Server gives agents durable local episodic and semantic memory with keyword-based retrieval, session-scoped recall, and deterministic context packing. Local MCP server for any MCP-compatible agent runtime.">
+  <meta name="description" content="Give agents durable local memory. Keyword retrieval, session-scoped recall, and deterministic context packing. MCP server for any MCP-compatible runtime.">
   <link rel="canonical" href="https://certaworks.dev/products/cognitive-memory-mcp-server">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/cognitive-memory-mcp-server">
   <meta property="og:title" content="Cognitive Memory MCP Server — CertaWorks">
   <meta property="og:description" content="Give agents durable local memory. Store, search, and pack context across sessions — no cloud required.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cognitive Memory MCP Server — CertaWorks">
+  <meta name="twitter:description" content="Give agents durable local memory. Store, search, and pack context across sessions — no cloud required.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Cognitive Memory MCP Server",
+    "url": "https://certaworks.dev/products/cognitive-memory-mcp-server",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Gives agents durable local episodic, semantic, and working-memory tools for retrieval, scoped recall, context packing, and deterministic summaries.",
@@ -790,10 +794,13 @@
         <div class="reveal">
           <div class="code-block" id="cmInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="cmInstallCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/cognitive-memory-mcp-server</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/06-cognitive-memory-mcp-server
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="cmMcpConfig">

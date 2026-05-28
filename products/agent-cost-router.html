@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agent Cost Router — CertaWorks</title>
-  <meta name="description" content="Agent Cost Router classifies prompt complexity and routes each task to the cheapest capable model. Includes CLI, MCP tools, local HTTP API, and a persistent savings ledger.">
+  <meta name="description" content="Route agent work to the cheapest capable model. Classify complexity, pick the best fit, log every decision. CLI, MCP tools, HTTP API included.">
   <link rel="canonical" href="https://certaworks.dev/products/agent-cost-router">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/agent-cost-router">
   <meta property="og:title" content="Agent Cost Router — CertaWorks">
   <meta property="og:description" content="Route agent work to the cheapest capable model. Classify complexity, pick the best fit, log every decision.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Agent Cost Router — CertaWorks">
+  <meta name="twitter:description" content="Route agent work to the cheapest capable model. Classify complexity, pick the best fit, log every decision.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Agent Cost Router",
+    "url": "https://certaworks.dev/products/agent-cost-router",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Agent Cost Router routes prompts to the cheapest capable model while estimating cost and respecting quality needs and budget constraints.",
@@ -730,10 +734,13 @@
         <div class="reveal">
           <div class="code-block" id="acrInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="acrInstallCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/agent-cost-router</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/04-agent-cost-router
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="acrCliExample">

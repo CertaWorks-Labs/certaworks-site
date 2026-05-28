@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Confidence Gate MCP Server — CertaWorks</title>
-  <meta name="description" content="Confidence Gate scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context. Local MCP server for any MCP-compatible agent runtime.">
+  <meta name="description" content="Score proposed agent actions before tools run. Allow, review, or block decisions with confidence factors and trace context. Local MCP server.">
   <link rel="canonical" href="https://certaworks.dev/products/confidence-gate-mcp-server">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/confidence-gate-mcp-server">
   <meta property="og:title" content="Confidence Gate MCP Server — CertaWorks">
   <meta property="og:description" content="Score proposed agent actions before tools run. Return allow, review, or block — with evidence.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Confidence Gate MCP Server — CertaWorks">
+  <meta name="twitter:description" content="Score proposed agent actions before tools run. Return allow, review, or block — with evidence. Local MCP server for any MCP-compatible agent runtime.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Confidence Gate MCP Server",
+    "url": "https://certaworks.dev/products/confidence-gate-mcp-server",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Confidence Gate scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context.",
@@ -802,10 +806,13 @@
         <div class="reveal">
           <div class="code-block" id="installCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Install</span>
+              <span class="code-block-label">Local source</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="installCmd">Copy</button>
             </div>
-            <pre><code>npx @certaworks/confidence-gate-mcp-server</code></pre>
+            <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/02-confidence-gate-mcp-server
+npm install
+npm run build</code></pre>
           </div>
 
           <div class="code-block" id="mcpConfigPdp">
@@ -1127,7 +1134,7 @@
     </div>
   </footer>
 
-  <script src="../app.js"></script>
+  <script src="../app.js" defer></script>
   <script>
   const cgForm = document.getElementById('cg-betaForm');
   if (cgForm) {

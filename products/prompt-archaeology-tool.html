@@ -4,14 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prompt Archaeology Tool — CertaWorks</title>
-  <meta name="description" content="Prompt Archaeology Tool runs scripted probes against observed agent responses to estimate likely behavioral constraints, persona patterns, refusal style, tool policy, and formatting habits. Local probe runner with MCP, HTTP API, and CLI.">
+  <meta name="description" content="Inspect agent behavior from observed responses. Evidence-backed estimates of persona, constraints, refusal style, and tool policy. MCP and CLI included.">
   <link rel="canonical" href="https://certaworks.dev/products/prompt-archaeology-tool">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/prompt-archaeology-tool">
   <meta property="og:title" content="Prompt Archaeology Tool — CertaWorks">
   <meta property="og:description" content="Inspect agent behavior from observed responses. Evidence-backed estimates of persona, constraints, refusal style, and tool policy — not exact prompt recovery.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Prompt Archaeology Tool — CertaWorks">
+  <meta name="twitter:description" content="Inspect agent behavior from observed responses. Evidence-backed estimates of persona, constraints, refusal style, and tool policy — not exact prompt recovery.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -19,6 +22,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Prompt Archaeology Tool",
+    "url": "https://certaworks.dev/products/prompt-archaeology-tool",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
     "description": "Runs scripted probes against observed agent responses to estimate likely behavioral constraints, persona patterns, refusal style, tool policy, and formatting habits. Local probe runner with MCP tools, HTTP API, and CLI.",
@@ -1386,7 +1390,7 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
             <li>No authenticated dashboard or multi-user run history</li>
             <li>Does not guarantee inferred constraints are complete or exhaustive</li>
             <li>Probe signals are keyword-based — no LLM or semantic scoring in current implementation</li>
-            <li>Not published to npm yet — pending registry name clearance</li>
+            <li>Published to npm as <code style="font-family:var(--font-mono);font-size:13px">@certaworks/prompt-archaeology-tool</code></li>
           </ul>
         </div>
       </div>
@@ -1416,10 +1420,13 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
       <div class="reveal">
         <div class="code-block" id="installCmdPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Install</span>
+            <span class="code-block-label">Local source</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdPAT">Copy</button>
           </div>
-          <pre><code>npx @certaworks/prompt-archaeology-tool</code></pre>
+          <pre><code># npm package publication is pending; use local source for now
+cd /Users/source/Desktop/CC/products/09-prompt-archaeology-tool
+npm install
+npm run build</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigPAT">
