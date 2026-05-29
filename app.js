@@ -474,17 +474,6 @@ if (betaForm) {
     });
   });
 
-  if (reduce) return; // pointer-driven effects below are motion; skip them
-
-  // ── Cursor-reactive ambient glow ─────────────────
-  document.querySelectorAll('[data-cursor-glow]').forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--gx', `${((e.clientX - r.left) / r.width) * 100}%`);
-      el.style.setProperty('--gy', `${((e.clientY - r.top) / r.height) * 100}%`);
-      el.classList.add('glow-on');
-    });
-    el.addEventListener('pointerleave', () => el.classList.remove('glow-on'));
-  });
+  // Cursor-following glow removed per request.
   // .spotlight / .hairline-top hover effects are pure CSS (box-shadow) — no JS needed.
 })();

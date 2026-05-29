@@ -3614,23 +3614,9 @@ body::after {
   100% { transform: translate3d(5%, -1%, 0) scale(1.04);opacity: 0.85;}
 }
 
-/* Cursor-reactive glow — follows the mouse inside [data-cursor-glow].
-   JS sets --gx/--gy as % coordinates. */
+/* Cursor-reactive glow — REMOVED per request. The [data-cursor-glow]
+   attribute is left inert on pages; it produces no visual effect. */
 [data-cursor-glow] { position: relative; }
-/* Keep real content above the cursor glow; leave decorative layers behind. */
-[data-cursor-glow] > *:not([aria-hidden="true"]) { position: relative; z-index: 1; }
-[data-cursor-glow]::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 400ms var(--ease-smooth);
-  background: radial-gradient(420px circle at var(--gx, 50%) var(--gy, 50%),
-              rgba(16,185,129,0.10), transparent 60%);
-}
-[data-cursor-glow].glow-on::after { opacity: 1; }
 
 /* ───────────────────────────────────────────
    LAYER 3 · SIGNATURE DETAILS
