@@ -415,3 +415,84 @@ if (betaForm) {
     }
   });
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   ✦ PREMIUM POLISH ENGINE — Linear-precise
+   Scroll progress · cursor glow · spotlight cards · stagger reveals.
+   All effects respect prefers-reduced-motion.
+   ══════════════════════════════════════════════════════════════════ */
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Scroll progress bar ──────────────────────────
+  (function scrollProgress() {
+    if (reduce) return;
+    let bar = document.querySelector('.scroll-progress');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.className = 'scroll-progress';
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(bar);
+    }
+    let ticking = false;
+    const update = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const p = max > 0 ? h.scrollTop / max : 0;
+      bar.style.transform = `scaleX(${p})`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  })();
+
+  // ── data-reveal observer (directional + blur variants) ──
+  (function dataReveal() {
+    const els = document.querySelectorAll('[data-reveal]');
+    if (!els.length) return;
+    if (reduce || !('IntersectionObserver' in window)) {
+      els.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach((el) => obs.observe(el));
+  })();
+
+  // ── Auto-stagger: set --i on children of [data-stagger] ──
+  document.querySelectorAll('[data-stagger]').forEach((parent) => {
+    Array.from(parent.children).forEach((child, i) => {
+      child.style.setProperty('--i', i);
+    });
+  });
+
+  if (reduce) return; // pointer-driven effects below are motion; skip them
+
+  // ── Cursor-reactive ambient glow ─────────────────
+  document.querySelectorAll('[data-cursor-glow]').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--gx', `${((e.clientX - r.left) / r.width) * 100}%`);
+      el.style.setProperty('--gy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      el.classList.add('glow-on');
+    });
+    el.addEventListener('pointerleave', () => el.classList.remove('glow-on'));
+  });
+
+  // ── Spotlight cards: track pointer for .spotlight border glow ──
+  document.querySelectorAll('.spotlight').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+})();
