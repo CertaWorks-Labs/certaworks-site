@@ -1023,7 +1023,7 @@
       <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; Configure</h2>
       <p class="pdp-section-body">
         Package source is at <code>@blair/agent-skill-marketplace</code> (v0.1.0). Publication to
-        a public registry is pending name clearance. Until then, clone the repo and build locally.
+        available on npm as shown below.
       </p>
       <div class="install-pdp-inner">
 
@@ -1396,7 +1396,7 @@ npm run build</code></pre>
         <ul class="footer-links">
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
-          <li><a href="../products#install">Install Docs</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
         </ul>
       </nav>
 
@@ -1416,27 +1416,6 @@ npm run build</code></pre>
   </footer>
 
   <script src="../app.js" defer></script>
-  <script>
-    // ── sm-betaForm handler ─────────────────────────
-    (function () {
-      const form   = document.getElementById('sm-betaForm');
-      const status = document.getElementById('sm-formStatus');
-      if (!form || !status) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const name    = document.getElementById('sm-beta-name').value.trim();
-        const email   = document.getElementById('sm-beta-email').value.trim();
-        if (!name || !email || !email.includes('@')) {
-          status.style.color = '#f87171';
-          status.textContent = 'Please enter your name and a valid email.';
-          return;
-        }
-        status.style.color = '#22d3ee';
-        status.textContent = 'Thanks! We\'ll be in touch about early access.';
-        form.reset();
-      });
-    })();
-  </script>
 
 </body>
 </html>

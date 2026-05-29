@@ -1359,7 +1359,7 @@ npm run build</code></pre>
         <ul class="footer-links">
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
-          <li><a href="../products#install">Install Docs</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
         </ul>
       </nav>
 
@@ -1379,62 +1379,5 @@ npm run build</code></pre>
   </footer>
 
   <script src="../app.js" defer></script>
-  <script>
-    // ── ie-betaForm handler ───────────────────────────
-    (function () {
-      const form = document.getElementById('ie-betaForm');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        form.reset();
-        const status = document.getElementById('ie-formStatus');
-        if (status) {
-          status.textContent =
-            'You are on the prototype list. Hosted access and the Python SDK are not live yet.';
-        }
-      });
-    })();
-
-    // ── copy-btn handlers for this page ──────────────
-    document.querySelectorAll('.copy-btn.copy-button').forEach(function (btn) {
-      btn.addEventListener('click', async function () {
-        const targetId = btn.dataset.copyTarget;
-        const target = targetId ? document.getElementById(targetId) : null;
-        if (!target) return;
-        const pre = target.querySelector('pre');
-        const text = (pre || target).textContent.trim();
-        const statusEl = document.getElementById('ie-copyStatus');
-        const succeed = function () {
-          if (statusEl) statusEl.textContent = 'Copied to clipboard.';
-          const orig = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(function () {
-            if (statusEl) statusEl.textContent = '';
-            btn.textContent = orig;
-          }, 2200);
-        };
-        const fail = function () {
-          if (statusEl) statusEl.textContent = 'Copy failed — select the block manually.';
-        };
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(text);
-            succeed();
-          } else {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.readOnly = true;
-            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy') ? succeed() : fail();
-            ta.parentNode.removeChild(ta);
-          }
-        } catch (_) {
-          fail();
-        }
-      });
-    });
-  </script>
 </body>
 </html>

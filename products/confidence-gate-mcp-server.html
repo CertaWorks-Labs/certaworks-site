@@ -1254,7 +1254,7 @@ npm run build</code></pre>
         <ul class="footer-links">
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
-          <li><a href="../products#install">Install Docs</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
         </ul>
       </nav>
 
@@ -1271,22 +1271,11 @@ npm run build</code></pre>
 
     <div class="footer-bottom">
       <p class="footer-legal">
-        © 2026 CertaWorks. Private prototype — not legal, trademark, domain, or public launch clearance. Confidence Gate is a decision-support layer and does not replace human judgment.
+        © 2026 CertaWorks. Private prototype — not legal, trademark, or public launch clearance. Confidence Gate is a decision-support layer and does not replace human judgment.
       </p>
     </div>
   </footer>
 
   <script src="../app.js" defer></script>
-  <script>
-  const cgForm = document.getElementById('cg-betaForm');
-  if (cgForm) {
-    cgForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      cgForm.reset();
-      const s = document.getElementById('cg-formStatus');
-      if (s) s.textContent = 'You are on the prototype list. Hosted beta access is not live yet.';
-    });
-  }
-  </script>
 </body>
 </html>

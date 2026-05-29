@@ -943,7 +943,7 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         <ul class="footer-links">
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
-          <li><a href="../products#install">Install Docs</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
         </ul>
       </nav>
 
@@ -963,57 +963,5 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
   </footer>
 
   <script src="../app.js" defer></script>
-  <script>
-    // ── mv-betaForm handler ─────────────────────────
-    (function () {
-      var form = document.getElementById('mv-betaForm');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        form.reset();
-        var status = document.getElementById('mv-formStatus');
-        if (status) {
-          status.textContent = 'You are on the prototype list. Hosted beta access is not live yet.';
-        }
-      });
-    })();
-
-    // ── copy buttons ────────────────────────────────
-    document.querySelectorAll('.copy-btn.copy-button').forEach(function (btn) {
-      btn.addEventListener('click', async function () {
-        var targetId = btn.dataset.copyTarget;
-        var target = targetId ? document.getElementById(targetId) : null;
-        if (!target) return;
-        var pre = target.querySelector('pre');
-        var text = (pre || target).textContent.trim();
-        var statusEl = document.getElementById('mv-copyStatus');
-        var succeed = function () {
-          if (statusEl) statusEl.textContent = 'Copied to clipboard.';
-          var orig = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(function () {
-            if (statusEl) statusEl.textContent = '';
-            btn.textContent = orig;
-          }, 2200);
-        };
-        var fail = function () {
-          if (statusEl) statusEl.textContent = 'Copy failed — select the block manually.';
-        };
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(text);
-            succeed();
-          } else {
-            var ta = document.createElement('textarea');
-            ta.value = text; ta.readOnly = true;
-            ta.style.cssText = 'position:fixed;left:-9999px;top:-9999px';
-            document.body.appendChild(ta); ta.select();
-            document.execCommand('copy') ? succeed() : fail();
-            ta.parentNode.removeChild(ta);
-          }
-        } catch (_) { fail(); }
-      });
-    });
-  </script>
 </body>
 </html>
