@@ -592,7 +592,7 @@
     </nav>
 
     <!-- ── WORKBENCH DEMO / PAGE HERO ─────────────── -->
-    <section class="section" id="demo" aria-labelledby="demo-title"
+    <section class="section" id="demo" aria-labelledby="demo-title" data-aurora data-cursor-glow
       style="background: var(--c-dark); padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 60px) clamp(72px, 9vw, 120px);">
       <div class="pdp-hero-num-bg" aria-hidden="true">02</div>
       <div class="section-inner">
@@ -603,7 +603,7 @@
               <span class="eyebrow eyebrow-teal">Product 02 · MCP Server</span>
             </div>
             <h1 class="featured-headline" id="demo-title"
-              style="color: #fff;">Confidence Gate</h1>
+              style="color: #fff;"><span class="text-grad">Confidence Gate</span></h1>
             <p class="featured-desc" style="color: var(--c-dark-muted);">
               Scores proposed agent actions and returns allow, review, or block decisions — before tools touch files, APIs, customers, or production. The primary control point in the CertaWorks suite.
             </p>
@@ -703,7 +703,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Agents act. Then you find out.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agents act. Then you find out.</h2>
         <div class="problem-body reveal">
           <p>
             AI agents call tools, write to files, send customer emails, and push production changes
@@ -730,10 +730,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Score → Route → Trace</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Score → Route → Trace</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Agent proposes an action</div>
             <p class="how-step-desc">
@@ -744,7 +744,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Confidence Gate scores it</div>
             <p class="how-step-desc">
@@ -756,7 +756,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Returns a decision with trace</div>
             <p class="how-step-desc">
@@ -783,7 +783,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Policy Defaults</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="threshold-title">Default confidence thresholds</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="threshold-title">Default confidence thresholds</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">Thresholds are configurable. These are the defaults shipped with Confidence Gate.</p>
         <div class="threshold-table-wrap reveal">
           <table class="threshold-table" aria-label="Default confidence thresholds by domain">
@@ -858,11 +858,11 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Core Decisions</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="decisions-title">Three outcomes. One clear interface.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="decisions-title">Three outcomes. One clear interface.</h2>
 
-        <div class="outcome-grid reveal" role="list">
+        <div class="outcome-grid reveal" data-stagger role="list">
 
-          <article class="gate-outcome gate-outcome-allow" role="listitem">
+          <article class="gate-outcome gate-outcome-allow spotlight hairline-top" role="listitem">
             <div class="outcome-label outcome-label-allow">
               <span class="outcome-dot outcome-dot-green" aria-hidden="true"></span>
               Allow
@@ -874,7 +874,7 @@
             <p class="outcome-example">Example: low-risk file read, documentation update, non-destructive query</p>
           </article>
 
-          <article class="gate-outcome gate-outcome-review" role="listitem">
+          <article class="gate-outcome gate-outcome-review spotlight hairline-top" role="listitem">
             <div class="outcome-label outcome-label-review">
               <span class="outcome-dot outcome-dot-amber" aria-hidden="true"></span>
               Review
@@ -887,7 +887,7 @@
             <p class="outcome-example">Example: authentication change, customer-facing message, production deploy</p>
           </article>
 
-          <article class="gate-outcome gate-outcome-block" role="listitem">
+          <article class="gate-outcome gate-outcome-block spotlight hairline-top" role="listitem">
             <div class="outcome-label outcome-label-block">
               <span class="outcome-dot outcome-dot-red" aria-hidden="true"></span>
               Block
@@ -912,7 +912,7 @@
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Local Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             Run it locally in under 5 minutes
           </h2>
           <p class="install-pdp-subhead">
@@ -923,7 +923,7 @@
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">check_gate</code>
             to score and route proposed actions.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/confidence-gate-mcp-server" target="_blank" rel="noopener">
+          <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/confidence-gate-mcp-server" target="_blank" rel="noopener">
             View on npm →
           </a>
         </div>
@@ -968,71 +968,71 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">Confidence Gate exposes the following tools to any MCP-compatible agent runtime.</p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
 
           <div class="tools-group-label">Scoring</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">score_confidence</div>
             <div class="tool-desc">Score agent output text from 0 to 1 with a full factor breakdown.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">check_gate</div>
             <div class="tool-desc">Gate an action and return <code style="font-size:12px">allow</code>, <code style="font-size:12px">review</code>, or <code style="font-size:12px">block</code> with confidence trace.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">explain_confidence</div>
             <div class="tool-desc">Retrieve a saved confidence trace by <code style="font-size:12px">gate_id</code>.</div>
           </div>
 
           <div class="tools-group-label">Policy &amp; Thresholds</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">set_threshold</div>
             <div class="tool-desc">Update the default, domain, or risk-level threshold at runtime.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_config</div>
             <div class="tool-desc">Inspect the active gate configuration including all current thresholds.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_policies</div>
             <div class="tool-desc">List named project policies stored in the local policy store.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">upsert_policy</div>
             <div class="tool-desc">Create or version a named project policy with full audit metadata.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_policy_audit</div>
             <div class="tool-desc">List policy version and threshold-change audit events.</div>
           </div>
 
           <div class="tools-group-label">Trace &amp; Audit</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_traces</div>
             <div class="tool-desc">List stored gate traces from the local trace store.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">query_traces</div>
             <div class="tool-desc">Filter traces by decision, approval status, project, source, policy, domain, risk, or time range.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">resolve_approval</div>
             <div class="tool-desc">Approve, reject, or resolve a review-queue item with approver identity and note.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">record_enforcement_receipt</div>
             <div class="tool-desc">Record what a client actually did after receiving a gate decision.</div>
           </div>
 
           <div class="tools-group-label">Dashboard</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_dashboard_summary</div>
             <div class="tool-desc">Return dashboard counts, recent checks, review queue, config, policies, and policy audit events.</div>
           </div>
@@ -1048,7 +1048,7 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Dashboard</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Confidence Gate includes a local HTML dashboard for reviewing scored decisions, exploring
           policy settings, and inspecting trace history. The dashboard runs locally alongside the
@@ -1074,11 +1074,11 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Confidence Gate does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -1134,20 +1134,20 @@ npm run build</code></pre>
     <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
       <div class="section-inner">
         <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-        <div class="related-strip" role="list">
-          <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+        <div class="related-strip" data-stagger role="list">
+          <a href="audit-replay-logger.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 08</div>
             <div class="related-card-name">Audit &amp; Replay Logger</div>
             <p class="related-card-desc">Every gate decision is a loggable event. Audit Logger captures the allow/review/block trace so decisions can be replayed, inspected, and audited later.</p>
             <span class="related-card-link">View Audit &amp; Replay Logger →</span>
           </a>
-          <a href="goal-drift-monitor.html" class="related-card reveal" role="listitem">
+          <a href="goal-drift-monitor.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 05</div>
             <div class="related-card-name">Goal Drift Monitor</div>
             <p class="related-card-desc">Confidence Gate catches risky individual actions; Goal Drift Monitor catches session-level divergence. Use both for action-level and trajectory-level safety signals.</p>
             <span class="related-card-link">View Goal Drift Monitor →</span>
           </a>
-          <a href="identity-engine-sdk.html" class="related-card reveal" role="listitem">
+          <a href="identity-engine-sdk.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 01</div>
             <div class="related-card-name">Identity Engine SDK</div>
             <p class="related-card-desc">Gate decisions are richer with persistent agent identity. Identity Engine supplies the agent context — who is acting, what their history is, and whether drift has been flagged.</p>
@@ -1164,7 +1164,7 @@ npm run build</code></pre>
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Hosted Beta</span>
           </div>
-          <h2 class="beta-heading-dark" id="beta-pdp-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="beta-pdp-title">
             Get early access to hosted Confidence Gate
           </h2>
           <p class="beta-desc-dark">

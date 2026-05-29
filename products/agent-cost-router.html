@@ -568,11 +568,11 @@
     </nav>
 
     <!-- ── HERO ──────────────────────────────────── -->
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-num-bg" aria-hidden="true">04</div>
       <div class="pdp-hero-inner">
         <p class="pdp-eyebrow">Product 04 · Router / API / Dashboard · Local Slice</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Agent Cost Router</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Agent Cost Router</span></h1>
         <p class="pdp-subhead">
           Route agent work to the cheapest capable model. Classify complexity, pick the best fit, log every decision.
         </p>
@@ -603,7 +603,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Every task goes to the same expensive model.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Every task goes to the same expensive model.</h2>
         <div class="problem-body reveal">
           <p>
             Agent workloads are not uniform. A prompt that asks "what is the capital of France?" does
@@ -633,10 +633,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Classify → Route → Log</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Classify → Route → Log</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Classify prompt complexity</div>
             <p class="how-step-desc">
@@ -652,7 +652,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Select the cheapest capable model</div>
             <p class="how-step-desc">
@@ -666,7 +666,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Execute and log the decision</div>
             <p class="how-step-desc">
@@ -692,7 +692,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Static Catalog</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="models-title">Built-in model catalog</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="models-title">Built-in model catalog</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The router ships with a static catalog of known models. Additional models can be synced
           live from OpenRouter with the <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">sync_models</code> tool or
@@ -769,16 +769,16 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Routing Policy</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="modes-title">Three budget modes. One consistent interface.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="modes-title">Three budget modes. One consistent interface.</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Every route call takes a <code style="font-family:var(--font-mono);font-size:14px;color:#7da4e8">budget_mode</code>.
           The classifier determines the minimum capable tier. The budget mode controls how the winner
           is selected from that tier and above.
         </p>
 
-        <div class="budget-grid reveal" role="list">
+        <div class="budget-grid reveal" data-stagger role="list">
 
-          <article class="budget-card budget-cheapest" role="listitem">
+          <article class="budget-card budget-cheapest spotlight hairline-top" role="listitem">
             <div class="budget-label budget-label-cheapest">
               <span class="budget-dot budget-dot-green" aria-hidden="true"></span>
               Cheapest
@@ -790,7 +790,7 @@
             </p>
           </article>
 
-          <article class="budget-card budget-balanced" role="listitem">
+          <article class="budget-card budget-balanced spotlight hairline-top" role="listitem">
             <div class="budget-label budget-label-balanced">
               <span class="budget-dot budget-dot-violet" aria-hidden="true"></span>
               Balanced
@@ -802,7 +802,7 @@
             </p>
           </article>
 
-          <article class="budget-card budget-performance" role="listitem">
+          <article class="budget-card budget-performance spotlight hairline-top" role="listitem">
             <div class="budget-label budget-label-performance">
               <span class="budget-dot budget-dot-amber" aria-hidden="true"></span>
               Performance
@@ -826,7 +826,7 @@
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Local Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             CLI, MCP server, and local dashboard
           </h2>
           <p class="install-pdp-subhead">
@@ -840,7 +840,7 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">agent-cost-router serve</code>.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-cost-router" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/agent-cost-router" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -907,46 +907,46 @@ agent-cost-router serve --port 4317</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Agent Cost Router exposes the following tools to any MCP-compatible agent runtime.
         </p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
 
           <div class="tools-group-label">Routing</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">route_prompt</div>
             <div class="tool-desc">Classify a prompt and pick the cheapest capable model — dry run only. Returns model, tier, estimated cost, and savings vs. claude-sonnet.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">run_prompt</div>
             <div class="tool-desc">Route a prompt to the cheapest capable model and execute it. Returns the model response plus a full cost breakdown.</div>
           </div>
 
           <div class="tools-group-label">Model Catalog</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_models</div>
             <div class="tool-desc">List known models sorted by cost. Supports filtering by tier, provider, and free-only. Includes both static and live-synced models.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">sync_models</div>
             <div class="tool-desc">Fetch the latest model list from OpenRouter and update the local cache. Requires <code style="font-size:12px">OPENROUTER_API_KEY</code>.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">estimate_cost</div>
             <div class="tool-desc">Calculate the estimated cost in USD for a specific model and token counts without routing or executing.</div>
           </div>
 
           <div class="tools-group-label">History &amp; Budget</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_route_history</div>
             <div class="tool-desc">List persisted routing and run history records, newest first. Filter by project or budget ID.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_budget_summary</div>
             <div class="tool-desc">Summarize estimated cost, actual cost, and total savings by project or budget ID across all recorded history.</div>
           </div>
@@ -962,7 +962,7 @@ agent-cost-router serve --port 4317</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Dashboard &amp; History</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Agent Cost Router includes a local HTTP API and HTML dashboard for reviewing routing
           decisions, model selections, cost history, and savings ledger. The dashboard starts
@@ -995,11 +995,11 @@ agent-cost-router serve --port 4317</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Agent Cost Router does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -1059,20 +1059,20 @@ agent-cost-router serve --port 4317</code></pre>
     <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
       <div class="section-inner">
         <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-        <div class="related-strip" role="list">
-          <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <div class="related-strip" data-stagger role="list">
+          <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 02</div>
             <div class="related-card-name">Confidence Gate</div>
             <p class="related-card-desc">Route to the cheapest model, then gate the action before it runs. Cost Router handles the model decision; Confidence Gate handles the safety decision.</p>
             <span class="related-card-link">View Confidence Gate →</span>
           </a>
-          <a href="agent-test-harness.html" class="related-card reveal" role="listitem">
+          <a href="agent-test-harness.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 10</div>
             <div class="related-card-name">Agent Test Harness</div>
             <p class="related-card-desc">Write repeatable tests to assert that routing decisions, cost estimates, and model selections hold across provider updates and budget rule changes.</p>
             <span class="related-card-link">View Agent Test Harness →</span>
           </a>
-          <a href="cognitive-memory-mcp-server.html" class="related-card reveal" role="listitem">
+          <a href="cognitive-memory-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 06</div>
             <div class="related-card-name">Cognitive Memory MCP Server</div>
             <p class="related-card-desc">Cached session memory reduces re-prompting costs. Memory and Cost Router work together — retrieve what the agent already knows before routing a new full-context prompt.</p>
@@ -1089,7 +1089,7 @@ agent-cost-router serve --port 4317</code></pre>
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Hosted Beta</span>
           </div>
-          <h2 class="beta-heading-dark" id="beta-pdp-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="beta-pdp-title">
             Get early access to hosted Agent Cost Router
           </h2>
           <p class="beta-desc-dark">

@@ -686,12 +686,12 @@
   </div>
 
   <!-- ── Hero ────────────────────────────── -->
-  <section class="pdp-hero" aria-labelledby="hero-h1">
+  <section class="pdp-hero" aria-labelledby="hero-h1" data-aurora data-cursor-glow>
     <div class="pdp-hero-glow" aria-hidden="true"></div>
     <div class="pdp-hero-num-bg" aria-hidden="true">10</div>
     <div class="pdp-hero-inner" style="position:relative;z-index:1;">
       <p class="pdp-eyebrow" aria-label="Product category">10 · Local SDK · CLI Test Framework</p>
-      <h1 class="pdp-h1" id="hero-h1">Agent Test<br>Harness</h1>
+      <h1 class="pdp-h1" id="hero-h1"><span class="text-grad">Agent Test<br>Harness</span></h1>
       <p class="pdp-subhead">
         Write repeatable tests for agent outputs, tool call sequences, cost budgets,
         latency bounds, and consistency across runs. A local TypeScript SDK and CLI
@@ -722,7 +722,7 @@
   <!-- ── Problem ─────────────────────────── -->
   <section class="section-dark reveal" aria-labelledby="problem-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="problem-h2">Agent behavior drifts without repeatable tests</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="problem-h2">Agent behavior drifts without repeatable tests</h2>
       <div class="problem-body">
         <p>
           Agent outputs change across prompts, models, tool configurations, and runs.
@@ -750,13 +750,13 @@
   <!-- ── How It Works ─────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="how-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="how-h2">How it works</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="how-h2">How it works</h2>
       <p class="pdp-section-body">
         Four steps: write a fixture, run the CLI, read the report, and maintain history.
         All execution is local — no provider calls, no accounts.
       </p>
-      <div class="how-flow" role="list">
-        <div class="how-step reveal" role="listitem">
+      <div class="how-flow" data-stagger role="list">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">1</div>
           <div class="how-step-title">Write a JSON Fixture</div>
           <p class="how-step-body">
@@ -768,7 +768,7 @@
             to filter runs by purpose.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">2</div>
           <div class="how-step-title">Run the CLI</div>
           <p class="how-step-body">
@@ -778,7 +778,7 @@
             test fails — wires directly into shell scripts and CI steps without extra tooling.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">3</div>
           <div class="how-step-title">Read the Report</div>
           <p class="how-step-body">
@@ -788,7 +788,7 @@
             giving you a local trend record over time.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">4</div>
           <div class="how-step-title">Use the SDK for Custom Runners</div>
           <p class="how-step-body">
@@ -805,7 +805,7 @@
   <!-- ── Fixture Format ───────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="fixture-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="fixture-h2">Fixture Format</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="fixture-h2">Fixture Format</h2>
       <p class="pdp-section-body">
         A fixture file is a JSON object with a <code>tests</code> array.
         Each test case specifies a prompt, optional mock tools and scripted tool calls,
@@ -867,7 +867,7 @@
   <!-- ── Assertion Types ──────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" id="assertions" aria-labelledby="assertions-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="assertions-h2">Assertion Types</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="assertions-h2">Assertion Types</h2>
       <p class="pdp-section-body">
         Thirteen assertion types across four groups. Twelve are available in JSON fixtures;
         <code>custom</code> requires a JavaScript function and is SDK-only.
@@ -970,7 +970,7 @@
   <!-- ── Mock Runner & Tool Traces ─────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="mock-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="mock-h2">Deterministic Mock Runner &amp; Tool Traces</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="mock-h2">Deterministic Mock Runner &amp; Tool Traces</h2>
       <p class="pdp-section-body">
         The built-in mock agent runner executes scripted tool calls deterministically,
         records full tool traces, and constructs output from tool responses — no live LLM
@@ -1026,30 +1026,30 @@ const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedTool
   <!-- ── Reports ───────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="reports-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="reports-h2">Reports &amp; CI-Friendly Output</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="reports-h2">Reports &amp; CI-Friendly Output</h2>
       <p class="pdp-section-body">
         Three reporters write to an <code>--out</code> directory (default: <code>.agent-test-results/</code>).
         <code>history.json</code> is always appended regardless of which reporters are selected.
         Use <code>--reporter junit</code> for JUnit XML that CI servers such as GitHub Actions,
         GitLab CI, and Jenkins can parse to show per-test results inline.
       </p>
-      <div class="report-grid" role="list">
-        <div class="report-card reveal" role="listitem">
+      <div class="report-grid" data-stagger role="list">
+        <div class="report-card reveal spotlight hairline-top" role="listitem">
           <div class="report-reporter">--reporter json</div>
           <div class="report-filename">latest.json</div>
           <p class="report-desc">Full <code>RunSuiteResult</code> — all test results, assertion outcomes, tool call traces, output strings, and per-test metadata. Machine-readable for downstream tooling.</p>
         </div>
-        <div class="report-card reveal" role="listitem">
+        <div class="report-card reveal spotlight hairline-top" role="listitem">
           <div class="report-reporter">--reporter markdown</div>
           <div class="report-filename">latest.md</div>
           <p class="report-desc">Summary table with test ID, pass/fail/skipped status, and per-assertion outcomes. Ready to commit to a repo or paste into a PR description.</p>
         </div>
-        <div class="report-card reveal" role="listitem">
+        <div class="report-card reveal spotlight hairline-top" role="listitem">
           <div class="report-reporter">--reporter junit</div>
           <div class="report-filename">latest.xml</div>
           <p class="report-desc">JUnit-compatible XML output. CI-friendly — GitHub Actions, GitLab CI, and Jenkins parse this format to display per-test results in pull request checks. Exit code 1 on failure.</p>
         </div>
-        <div class="report-card reveal" role="listitem">
+        <div class="report-card reveal spotlight hairline-top" role="listitem">
           <div class="report-reporter">Always written</div>
           <div class="report-filename">history.json</div>
           <p class="report-desc">Append-only local history. Each run appends a summary row: <code>runId, startedAt, total, passed, failed, skipped, durationMs</code>. Local trend record with no cloud dependency.</p>
@@ -1061,7 +1061,7 @@ const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedTool
   <!-- ── Install & CLI ────────────────────── -->
   <section class="section-dark reveal" id="install" aria-labelledby="install-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="install-h2">Install &amp; CLI</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; CLI</h2>
       <p class="pdp-section-body">
         Package source is at <code>@blair/agent-test-harness</code> (v0.1.0). Publication to a
         public registry is pending name clearance. Until then, clone the repo and build locally.
@@ -1138,8 +1138,8 @@ await writeReports(suite, {
   <!-- ── Scope ─────────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="scope-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="scope-h2">Scope</h2>
-      <div class="limits-cols">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="scope-h2">Scope</h2>
+      <div class="limits-cols" data-stagger>
         <div>
           <div class="limits-block-title does">What this does</div>
           <ul class="limits-list does" role="list">
@@ -1178,7 +1178,7 @@ await writeReports(suite, {
         <div class="section-label dark">
           <span class="eyebrow eyebrow-green">Local Install</span>
         </div>
-        <h2 class="install-pdp-heading" id="install-npx-title">
+        <h2 class="install-pdp-heading" data-reveal="up" id="install-npx-title">
           Run it locally in under 5 minutes
         </h2>
         <p class="install-pdp-subhead">
@@ -1187,7 +1187,7 @@ await writeReports(suite, {
         <p class="install-pdp-subhead">
           Once built locally, run `agent-test` to execute repeatable unit and integration tests against agent outputs, tool traces, and cost budgets.
         </p>
-        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-test-harness" target="_blank" rel="noopener">View on npm →</a>
+        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-test-harness" target="_blank" rel="noopener" class="link-grow">View on npm →</a>
       </div>
 
       <div class="reveal">
@@ -1226,24 +1226,24 @@ npm run build</code></pre>
   <!-- ── Related ───────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-      <div class="related-strip" role="list">
-        <a href="prompt-archaeology-tool.html" class="related-card reveal" role="listitem">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="related-h2">Related Products</h2>
+      <div class="related-strip" data-stagger role="list">
+        <a href="prompt-archaeology-tool.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">09</div>
           <div class="related-card-name">Prompt Archaeology Tool</div>
           <p class="related-card-desc">Inspect observed behavioral constraints before writing tests. Archaeology findings surface which assertion types are most relevant for a given agent.</p>
         </a>
-        <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+        <a href="audit-replay-logger.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">08</div>
           <div class="related-card-name">Audit &amp; Replay Logger</div>
           <p class="related-card-desc">Log explicit decisions and tool calls during real runs. Replay logs can seed fixture files with real tool traces and outputs to assert against.</p>
         </a>
-        <a href="multi-voice-deliberation-framework.html" class="related-card reveal" role="listitem">
+        <a href="multi-voice-deliberation-framework.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">03</div>
           <div class="related-card-name">Multi-Voice Deliberation</div>
           <p class="related-card-desc">Structured reasoning review with Builder, Skeptic, Evolver, and Guardian voices. Test that panel confidence thresholds hold across repeated deliberation runs.</p>
         </a>
-        <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">02</div>
           <div class="related-card-name">Confidence Gate</div>
           <p class="related-card-desc">Block low-confidence agent actions. Use the test harness to assert that the Confidence Gate correctly blocks or passes specific inputs during integration testing.</p>
@@ -1256,7 +1256,7 @@ npm run build</code></pre>
   <section class="beta-section-dark reveal" aria-labelledby="beta-h2">
     <div class="section-inner">
       <p class="beta-eyebrow">Early Access</p>
-      <h2 class="beta-headline" id="beta-h2">Start testing your agents</h2>
+      <h2 class="beta-headline" data-reveal="up" id="beta-h2">Start testing your agents</h2>
       <p class="beta-sub">
         Get early access to Agent Test Harness — repeatable local tests for
         outputs, traces, cost budgets, and consistency. Write fixtures once,

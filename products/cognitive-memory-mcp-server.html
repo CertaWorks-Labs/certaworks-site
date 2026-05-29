@@ -637,11 +637,11 @@
     </nav>
 
     <!-- ── HERO ──────────────────────────────────── -->
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-num-bg" aria-hidden="true">06</div>
       <div class="pdp-hero-inner">
         <p class="pdp-eyebrow">Product 06 · Local MCP Server · Local Slice</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Cognitive Memory</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Cognitive Memory</span></h1>
         <p class="pdp-subhead">
           Give agents durable local memory that persists across sessions. Store episodic and semantic
           records, retrieve by keyword or tag, and pack relevant context into the next prompt —
@@ -674,7 +674,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Agents forget everything between sessions.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agents forget everything between sessions.</h2>
         <div class="problem-body reveal">
           <p>
             Every new agent session starts from zero. Decisions made in the previous run, context
@@ -704,10 +704,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Store → Recall → Pack</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Store → Recall → Pack</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Store memories by type</div>
             <p class="how-step-desc">
@@ -723,7 +723,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Retrieve by keyword, tag, or session scope</div>
             <p class="how-step-desc">
@@ -737,7 +737,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Pack context for the next prompt</div>
             <p class="how-step-desc">
@@ -770,16 +770,16 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Memory Types</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="memory-types-title">Two durable record types</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="memory-types-title">Two durable record types</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The store supports two memory types pulled directly from the source. Both share the same
           record structure and storage format. The type field controls how the agent categorizes
           and filters memories.
         </p>
 
-        <div class="memory-type-grid reveal">
+        <div class="memory-type-grid reveal" data-stagger>
 
-          <div class="memory-type-card">
+          <div class="memory-type-card spotlight hairline-top">
             <div class="memory-type-label">episodic</div>
             <p class="memory-type-desc">
               Records of things that happened — agent actions, decisions made, tool calls executed,
@@ -797,7 +797,7 @@
             </ul>
           </div>
 
-          <div class="memory-type-card">
+          <div class="memory-type-card spotlight hairline-top">
             <div class="memory-type-label">semantic</div>
             <p class="memory-type-desc">
               General knowledge, facts, rules, patterns, or durable observations that are not
@@ -826,7 +826,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Retrieval &amp; Context Packing</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="retrieval-title">Deterministic lexical search, no embeddings required</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="retrieval-title">Deterministic lexical search, no embeddings required</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Search is fully deterministic and runs without any API key or external model call.
           The relevance function computes token overlap between the query and stored content
@@ -887,7 +887,7 @@
           <div class="section-label dark">
             <span class="eyebrow" style="color:#2dd4bf;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">Local Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             MCP server, SDK, and local JSON store
           </h2>
           <p class="install-pdp-subhead">
@@ -900,7 +900,7 @@
             <code style="font-family:var(--font-mono);font-size:13px;color:#2dd4bf">cognitive-memory-mcp</code>.
             The MCP server reads from and writes to the local store on every tool call.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/cognitive-memory-mcp-server" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/cognitive-memory-mcp-server" target="_blank" rel="noopener" class="link-grow">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -943,55 +943,55 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Cognitive Memory MCP Server exposes the following tools to any MCP-compatible agent
           runtime. Tool names match the TOOLS array in
           <code style="font-family:var(--font-mono);font-size:14px;color:#2dd4bf">src/mcp/server.ts</code> exactly.
         </p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
 
           <div class="tools-group-label">Write / Store</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">write_memory</div>
             <div class="tool-desc">Store a new memory record (episodic or semantic).</div>
           </div>
 
           <div class="tools-group-label">Recall / Search</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">search_memory</div>
             <div class="tool-desc">Search memories by relevance to a query.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_memory</div>
             <div class="tool-desc">List recent memory records.</div>
           </div>
 
           <div class="tools-group-label">Context &amp; Summary</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">pack_context</div>
             <div class="tool-desc">Retrieve the most relevant memories that fit within a character budget.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">summarize_context</div>
             <div class="tool-desc">Pack and summarize relevant memories within a character budget.</div>
           </div>
 
           <div class="tools-group-label">Session / Admin</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">delete_memory</div>
             <div class="tool-desc">Delete a memory record by id.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">clear_memory</div>
             <div class="tool-desc">Clear all memories, or all of a specific type.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">memory_stats</div>
             <div class="tool-desc">Get counts and stats about stored memories.</div>
           </div>
@@ -1007,7 +1007,7 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Local Storage</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="storage-title">File-backed local JSON store</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="storage-title">File-backed local JSON store</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           All episodic and semantic memory records are written to a single versioned JSON file.
           The store is loaded from disk on every tool call and saved after every write or delete.
@@ -1064,11 +1064,11 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Cognitive Memory does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -1139,15 +1139,15 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Related Products</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="related-title">Stronger together</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="related-title">Stronger together</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Cognitive Memory pairs naturally with other CertaWorks products that operate across
           sessions and need a retrievable history of what happened.
         </p>
 
-        <div class="related-strip reveal">
+        <div class="related-strip reveal" data-stagger>
 
-          <a href="audit-replay-logger.html" class="related-card">
+          <a href="audit-replay-logger.html" class="related-card spotlight hairline-top">
             <div class="related-card-label">Product 08</div>
             <div class="related-card-name">Audit &amp; Replay Logger</div>
             <p class="related-card-desc">
@@ -1158,7 +1158,7 @@ npm run build</code></pre>
             <span class="related-card-link">View Audit &amp; Replay Logger →</span>
           </a>
 
-          <a href="identity-engine-sdk.html" class="related-card">
+          <a href="identity-engine-sdk.html" class="related-card spotlight hairline-top">
             <div class="related-card-label">Product 01</div>
             <div class="related-card-name">Identity Engine SDK</div>
             <p class="related-card-desc">
@@ -1180,7 +1180,7 @@ npm run build</code></pre>
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Hosted Beta</span>
           </div>
-          <h2 class="beta-heading-dark" id="cm-beta-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="cm-beta-title">
             Get early access to hosted Cognitive Memory
           </h2>
           <p class="beta-desc-dark">

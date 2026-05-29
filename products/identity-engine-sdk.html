@@ -599,11 +599,11 @@
     </nav>
 
     <!-- ── HERO ──────────────────────────────────── -->
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-num-bg" aria-hidden="true">01</div>
       <div class="pdp-hero-inner">
         <p class="pdp-eyebrow">Product 01 · SDK · Node / TypeScript · Local Slice</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Identity Engine SDK</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Identity Engine SDK</span></h1>
         <p class="pdp-subhead">
           Give agents durable identity across sessions. Persistent identity with an immutable core,
           evolving mutable state, an append-only journal, and deterministic drift checks —
@@ -636,7 +636,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Agents have no stable self across sessions.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agents have no stable self across sessions.</h2>
         <div class="problem-body reveal">
           <p>
             Every new agent session starts with no memory of what the agent is, what it was set up
@@ -668,10 +668,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Initialize → Record → Check drift</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Initialize → Record → Check drift</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Initialize an identity</div>
             <p class="how-step-desc">
@@ -686,7 +686,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Record state changes and journal events</div>
             <p class="how-step-desc">
@@ -702,7 +702,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Run drift checks</div>
             <p class="how-step-desc">
@@ -733,7 +733,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Identity Model</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="identity-model-title">Two structures: immutable core and mutable state</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="identity-model-title">Two structures: immutable core and mutable state</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The SDK defines two interfaces from <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">src/identity.ts</code>.
           Fields listed below are the exact source fields — nothing is invented.
@@ -837,7 +837,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Journal &amp; State Events</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="journal-title">Append-only history of every meaningful event</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="journal-title">Append-only history of every meaningful event</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Every SDK operation that changes state or runs a drift check returns a
           <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">JournalEntry</code> with four fields:
@@ -904,7 +904,7 @@ await store.appendJournal(next.core.id, entry);
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Drift Checks</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="drift-title">Deterministic lexical alignment — no LLM required</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="drift-title">Deterministic lexical alignment — no LLM required</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Drift detection compares the agent's <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">purpose</code> string against a caller-supplied
           description of recent behavior. Both strings are tokenized by lowercasing, stripping
@@ -965,7 +965,7 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
           <div class="section-label dark">
             <span class="eyebrow" style="color:#7da4e8;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">SDK Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             TypeScript SDK, local file-backed store
           </h2>
           <p class="install-pdp-subhead">
@@ -984,7 +984,7 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
             Install the package from npm as
             <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">@certaworks/identity-engine-sdk</code>.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/identity-engine-sdk" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/identity-engine-sdk" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -1029,7 +1029,7 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">SDK API</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="api-title">Exported functions and class</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="api-title">Exported functions and class</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           All public exports are defined in
           <code style="font-family:var(--font-mono);font-size:14px;color:#7da4e8">src/identity.ts</code>
@@ -1038,46 +1038,46 @@ npm run build</code></pre>
           Names below are exact — no aliases or undocumented exports exist in the current build.
         </p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
 
           <div class="tools-group-label">Identity Functions</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">createIdentity(name, purpose)</div>
             <div class="tool-desc">Create a new <code class="ie">IdentityState</code> with a generated UUID, fingerprint, empty mutable state, and version 1.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">updateState(identity, patch)</div>
             <div class="tool-desc">Merge a patch into <code class="ie">mutableState</code>, increment version, and return the updated <code class="ie">IdentityState</code> and a <code class="ie">JournalEntry</code>.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">checkDrift(identity, recentBehavior, threshold?)</div>
             <div class="tool-desc">Run lexical alignment of recent behavior against the identity's purpose. Returns a <code class="ie">DriftCheckResult</code> and a <code class="ie">JournalEntry</code>.</div>
           </div>
 
           <div class="tools-group-label">FileIdentityStore Methods</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.save(identity)</div>
             <div class="tool-desc">Write identity state to <code class="ie">&lt;dir&gt;/&lt;id&gt;.json</code>. Creates the directory if it does not exist.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.load(id)</div>
             <div class="tool-desc">Read and parse <code class="ie">&lt;dir&gt;/&lt;id&gt;.json</code>. Returns <code class="ie">null</code> if the file does not exist.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.appendJournal(id, entry)</div>
             <div class="tool-desc">Append a single JSON line to <code class="ie">&lt;dir&gt;/&lt;id&gt;.journal.jsonl</code>.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.readJournal(id)</div>
             <div class="tool-desc">Read all journal entries from the JSONL file. Returns an empty array if the file does not exist.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.list()</div>
             <div class="tool-desc">Return the IDs of all saved identities in the store directory (files ending in <code class="ie">.json</code> that are not journal files).</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">store.delete(id)</div>
             <div class="tool-desc">Remove the state file and journal file for the given ID. Uses <code class="ie">Promise.allSettled</code> — missing files do not throw.</div>
           </div>
@@ -1093,7 +1093,7 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Local Storage</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="storage-title">File-backed local store, one directory per agent</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="storage-title">File-backed local store, one directory per agent</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">FileIdentityStore</code>
           takes a directory path in its constructor. For each identity, it writes two files:
@@ -1153,11 +1153,11 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Identity Engine SDK does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -1228,15 +1228,15 @@ npm run build</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Related Products</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="related-title">Stronger together</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="related-title">Stronger together</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Identity Engine pairs naturally with the CertaWorks products that extend memory and
           session-level monitoring — together they form the agent continuity layer.
         </p>
 
-        <div class="related-strip reveal">
+        <div class="related-strip reveal" data-stagger>
 
-          <a href="cognitive-memory-mcp-server.html" class="related-card">
+          <a href="cognitive-memory-mcp-server.html" class="related-card spotlight hairline-top">
             <div class="related-card-label">Product 06</div>
             <div class="related-card-name">Cognitive Memory MCP Server</div>
             <p class="related-card-desc">
@@ -1247,7 +1247,7 @@ npm run build</code></pre>
             <span class="related-card-link">View Cognitive Memory MCP Server →</span>
           </a>
 
-          <a href="goal-drift-monitor.html" class="related-card">
+          <a href="goal-drift-monitor.html" class="related-card spotlight hairline-top">
             <div class="related-card-label">Product 05</div>
             <div class="related-card-name">Goal Drift Monitor</div>
             <p class="related-card-desc">
@@ -1270,7 +1270,7 @@ npm run build</code></pre>
           <div class="section-label dark">
             <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Early Access</span>
           </div>
-          <h2 class="beta-heading-dark" id="ie-beta-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="ie-beta-title">
             Get early access to Identity Engine SDK
           </h2>
           <p class="beta-desc-dark">

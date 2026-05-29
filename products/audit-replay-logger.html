@@ -476,12 +476,12 @@
       </ol>
     </nav>
 
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-glow" aria-hidden="true"></div>
       <div class="pdp-hero-num-bg" aria-hidden="true">08</div>
       <div class="pdp-hero-inner" style="position:relative;z-index:1;">
         <p class="pdp-eyebrow">Product 08 · Logger / API / MCP / Dashboard · Local Slice</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Audit &amp; Replay Logger</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Audit &amp; Replay Logger</span></h1>
         <p class="pdp-subhead">
           Agents make decisions, call tools, and change state. Audit &amp; Replay Logger captures the
           events you explicitly send it, redacts sensitive payload fields, links causes together,
@@ -513,7 +513,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Agent work is hard to trust when the trail is missing.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agent work is hard to trust when the trail is missing.</h2>
         <div class="problem-body reveal">
           <p>
             A model can produce a useful final answer while leaving the team unsure which decision
@@ -540,10 +540,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Record → Chain → Replay</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Record → Chain → Replay</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Start a local audit session</div>
             <p class="how-step-desc">
@@ -555,7 +555,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Log events with causal links</div>
             <p class="how-step-desc">
@@ -567,7 +567,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Replay or export the evidence</div>
             <p class="how-step-desc">
@@ -591,7 +591,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Audit Signals</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="audit-signals-title">What the audit record contains</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="audit-signals-title">What the audit record contains</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The fields below match the local logger's event and bundle model: ordered events,
           redacted payloads, causal chains, and exportable replay bundles.
@@ -660,7 +660,7 @@
           <div class="section-label dark">
             <span class="eyebrow eyebrow-light">Local Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             SDK, MCP server, and local HTTP API
           </h2>
           <p class="install-pdp-subhead">
@@ -674,7 +674,7 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:#cbd5e1">npm run serve</code>.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/audit-replay-logger" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/audit-replay-logger" target="_blank" rel="noopener" class="link-grow">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -744,63 +744,63 @@ const timeline = audit.replay(session.id);</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Audit &amp; Replay Logger exposes these tools to any MCP-compatible agent runtime. Tool
           names match the TOOLS array in
           <code style="font-family:var(--font-mono);font-size:14px;color:#cbd5e1">src/mcp/server.ts</code> exactly.
         </p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
           <div class="tools-group-label">Sessions</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">start_session</div>
             <div class="tool-desc">Start a new audit session. Returns the session ID to use for future event logging.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">end_session</div>
             <div class="tool-desc">End an audit session and append a session_end event to the local timeline.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_sessions</div>
             <div class="tool-desc">List local audit sessions with ID, timestamps, end status, and metadata.</div>
           </div>
 
           <div class="tools-group-label">Event Logging</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">log_event</div>
             <div class="tool-desc">Record an arbitrary audit event with redacted payload and hash-chain continuity.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">log_decision</div>
             <div class="tool-desc">Record an agent decision with reasoning, alternatives, and optional causal parent event.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">log_tool_call</div>
             <div class="tool-desc">Record a tool invocation, including redacted input payload and optional caused_by link.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">log_tool_result</div>
             <div class="tool-desc">Record a tool result, duration, output payload, and causal link back to the call.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">log_state_change</div>
             <div class="tool-desc">Record a before/after state transition under a named key.</div>
           </div>
 
           <div class="tools-group-label">Replay &amp; Export</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">replay_session</div>
             <div class="tool-desc">Replay events with optional filters for sequence range, event type, and actor.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">causal_chain</div>
             <div class="tool-desc">Trace the causal chain leading to a specific event ID.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">export_bundle</div>
             <div class="tool-desc">Export a session replay bundle to a safe local path inside the configured export directory.</div>
           </div>
@@ -814,7 +814,7 @@ const timeline = audit.replay(session.id);</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Dashboard &amp; API</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Audit &amp; Replay Logger includes a local HTTP API and lightweight dashboard landing page.
           The dashboard lists the local replay endpoints and requires no cloud connection.
@@ -846,11 +846,11 @@ const timeline = audit.replay(session.id);</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Audit &amp; Replay Logger does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -917,21 +917,21 @@ const timeline = audit.replay(session.id);</code></pre>
     <!-- ── Related ───────────────────────────── -->
     <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
       <div class="section-inner">
-        <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-        <div class="related-strip" role="list">
-          <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <h2 class="pdp-section-headline" data-reveal="blur" id="related-h2">Related Products</h2>
+        <div class="related-strip" data-stagger role="list">
+          <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 02</div>
             <div class="related-card-name">Confidence Gate</div>
             <p class="related-card-desc">Gate decisions are the most important events to log. Confidence Gate generates the allow/review/block decisions; Audit Logger captures them for replay and review.</p>
             <span class="related-card-link">View Confidence Gate →</span>
           </a>
-          <a href="agent-test-harness.html" class="related-card reveal" role="listitem">
+          <a href="agent-test-harness.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 10</div>
             <div class="related-card-name">Agent Test Harness</div>
             <p class="related-card-desc">Replay bundles from the logger can seed fixture files for the test harness. Real tool traces become repeatable test cases — log once, assert forever.</p>
             <span class="related-card-link">View Agent Test Harness →</span>
           </a>
-          <a href="goal-drift-monitor.html" class="related-card reveal" role="listitem">
+          <a href="goal-drift-monitor.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 05</div>
             <div class="related-card-name">Goal Drift Monitor</div>
             <p class="related-card-desc">Drift events are loggable signals. Log the moment a session drifts and replay the sequence of turns that preceded it — the two products form an accountability arc.</p>
@@ -947,7 +947,7 @@ const timeline = audit.replay(session.id);</code></pre>
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Hosted Beta</span>
           </div>
-          <h2 class="beta-heading-dark" id="ar-beta-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="ar-beta-title">
             Get early access to hosted Audit &amp; Replay
           </h2>
           <p class="beta-desc-dark">

@@ -70,12 +70,12 @@
   <main>
 
     <!-- ── PRODUCTS HERO ──────────────────────────── -->
-    <section class="products-hero" aria-labelledby="products-title">
+    <section class="products-hero" aria-labelledby="products-title" data-cursor-glow>
       <div class="products-hero-inner">
         <div class="section-label dark">
           <span class="eyebrow eyebrow-green">CertaWorks</span>
         </div>
-        <h1 id="products-title">The full suite.<br>Ten products, one layer.</h1>
+        <h1 id="products-title"><span class="text-grad">The full suite.<br>Ten products, one layer.</span></h1>
         <p class="products-hero-lead">
           Every product solves a specific infrastructure problem for teams building with AI agents — from scoring actions before they run, to routing cost, to keeping a complete audit trail.
         </p>
@@ -88,12 +88,12 @@
         <div class="section-label reveal">
           <span class="eyebrow eyebrow-teal">Complete suite</span>
         </div>
-        <h2 class="section-headline reveal" id="all-products-title">All ten products.</h2>
+        <h2 class="section-headline reveal" id="all-products-title" data-reveal="up">All ten products.</h2>
 
-        <div class="products-grid" role="list">
+        <div class="products-grid" role="list" data-stagger>
 
           <!-- 01 Identity Engine SDK -->
-          <article class="product-card reveal" id="identity-engine-sdk"
+          <article class="product-card reveal spotlight hairline-top" id="identity-engine-sdk"
             style="--product-accent: #2563EB" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-identity" aria-hidden="true"></div>
@@ -127,7 +127,7 @@
           </article>
 
           <!-- 02 Confidence Gate -->
-          <article class="product-card reveal" id="confidence-gate-mcp-server"
+          <article class="product-card reveal spotlight hairline-top" id="confidence-gate-mcp-server"
             style="--product-accent: #10B981" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-gate" aria-hidden="true"></div>
@@ -164,7 +164,7 @@
           </article>
 
           <!-- 03 Multi-Voice Deliberation -->
-          <article class="product-card reveal" id="multi-voice-deliberation-framework"
+          <article class="product-card reveal spotlight hairline-top" id="multi-voice-deliberation-framework"
             style="--product-accent: #6366F1" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-deliberation" aria-hidden="true"></div>
@@ -198,7 +198,7 @@
           </article>
 
           <!-- 04 Agent Cost Router -->
-          <article class="product-card reveal" id="agent-cost-router"
+          <article class="product-card reveal spotlight hairline-top" id="agent-cost-router"
             style="--product-accent: #10B981" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-router" aria-hidden="true"></div>
@@ -232,7 +232,7 @@
           </article>
 
           <!-- 05 Goal Drift Monitor -->
-          <article class="product-card reveal" id="goal-drift-monitor"
+          <article class="product-card reveal spotlight hairline-top" id="goal-drift-monitor"
             style="--product-accent: #F59E0B" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-drift" aria-hidden="true"></div>
@@ -266,7 +266,7 @@
           </article>
 
           <!-- 06 Cognitive Memory -->
-          <article class="product-card reveal" id="cognitive-memory-mcp-server"
+          <article class="product-card reveal spotlight hairline-top" id="cognitive-memory-mcp-server"
             style="--product-accent: #0F766E" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-memory" aria-hidden="true"></div>
@@ -300,7 +300,7 @@
           </article>
 
           <!-- 07 Skill Marketplace -->
-          <article class="product-card reveal" id="agent-skill-marketplace-plugin"
+          <article class="product-card reveal spotlight hairline-top" id="agent-skill-marketplace-plugin"
             style="--product-accent: #10B981" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-skills" aria-hidden="true"></div>
@@ -334,7 +334,7 @@
           </article>
 
           <!-- 08 Audit & Replay Logger -->
-          <article class="product-card reveal" id="audit-replay-logger"
+          <article class="product-card reveal spotlight hairline-top" id="audit-replay-logger"
             style="--product-accent: #334155" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-replay" aria-hidden="true"></div>
@@ -368,7 +368,7 @@
           </article>
 
           <!-- 09 Prompt Archaeology -->
-          <article class="product-card reveal" id="prompt-archaeology-tool"
+          <article class="product-card reveal spotlight hairline-top" id="prompt-archaeology-tool"
             style="--product-accent: #6366F1" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-archaeology" aria-hidden="true"></div>
@@ -402,7 +402,7 @@
           </article>
 
           <!-- 10 Agent Test Harness -->
-          <article class="product-card reveal" id="agent-test-harness"
+          <article class="product-card reveal spotlight hairline-top" id="agent-test-harness"
             style="--product-accent: #1E3A8A" role="listitem" data-expandable>
             <div class="product-card-header">
               <div class="product-mark mark-harness" aria-hidden="true"></div>
@@ -446,24 +446,24 @@
         <div class="section-label reveal">
           <span class="eyebrow eyebrow-teal">Trust posture</span>
         </div>
-        <h2 class="section-headline reveal" id="trust-title" style="color:#fff;">
+        <h2 class="section-headline reveal" id="trust-title" style="color:#fff;" data-reveal="blur">
           Calm, precise,<br>careful about claims.
         </h2>
 
         <div class="values-grid stagger-children reveal" style="margin-top: 48px;" role="list">
-          <article class="value-card" role="listitem">
+          <article class="value-card spotlight" role="listitem" style="position:relative">
             <h3 class="value-title">Decision support, not replacement</h3>
             <p class="value-desc">Every product in the suite is a decision-support layer. These tools help teams evaluate, route, log, and observe agent actions — they do not replace human judgment, legal review, or production controls.</p>
           </article>
-          <article class="value-card" role="listitem">
+          <article class="value-card spotlight" role="listitem" style="position:relative">
             <h3 class="value-title">Early stage</h3>
             <p class="value-desc">CertaWorks is a live product suite, not a finished platform. Each product has a clear scope, an honest status label, and known limits documented on its product page.</p>
           </article>
-          <article class="value-card" role="listitem">
+          <article class="value-card spotlight" role="listitem" style="position:relative">
             <h3 class="value-title">All products are local-first</h3>
             <p class="value-desc">Every tool in the suite ships as a local install. No data leaves your machine by default. Hosted cloud features are roadmap items — not current reality.</p>
           </article>
-          <article class="value-card" role="listitem">
+          <article class="value-card spotlight" role="listitem" style="position:relative">
             <h3 class="value-title">Available now</h3>
             <p class="value-desc">All 10 products are published on npm under the @certaworks scope and installable today via npx. Each product page has a full install guide and MCP configuration snippet.</p>
           </article>

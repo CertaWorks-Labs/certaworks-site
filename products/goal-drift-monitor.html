@@ -516,11 +516,11 @@
     </nav>
 
     <!-- ── HERO ──────────────────────────────────── -->
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-num-bg" aria-hidden="true">05</div>
       <div class="pdp-hero-inner">
         <p class="pdp-eyebrow">Product 05 · Monitor / API / MCP / Dashboard · Local Slice</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Goal Drift Monitor</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Goal Drift Monitor</span></h1>
         <p class="pdp-subhead">
           Long-running agents drift. A task that starts focused on one goal slowly shifts across tool
           calls, subtasks, and multi-step work — without any system noticing. Goal Drift Monitor
@@ -553,7 +553,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Agents drift off-goal without warning.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agents drift off-goal without warning.</h2>
         <div class="problem-body reveal">
           <p>
             Long-running agents don't fail obviously. They drift. A task that starts with a clear
@@ -584,10 +584,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Session → Score → Alert</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Session → Score → Alert</h2>
 
-        <div class="how-flow reveal" role="list">
-          <article class="how-step" role="listitem">
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Create a goal session</div>
             <p class="how-step-desc">
@@ -599,7 +599,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Record turns and score drift</div>
             <p class="how-step-desc">
@@ -613,7 +613,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Receive alerts and review history</div>
             <p class="how-step-desc">
@@ -643,7 +643,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Drift Signals</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="scoring-title">What the scorer measures</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="scoring-title">What the scorer measures</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Every turn scored by Goal Drift Monitor returns a structured result. The fields below
           are pulled directly from the scorer and monitor interfaces in the source.
@@ -735,7 +735,7 @@
           <div class="section-label dark">
             <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Local Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             CLI, MCP server, and local dashboard
           </h2>
           <p class="install-pdp-subhead">
@@ -749,7 +749,7 @@
             after running
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-amber)">goal-drift serve</code>.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/goal-drift-monitor" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/goal-drift-monitor" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -820,48 +820,48 @@ goal-drift serve --port 4321</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Goal Drift Monitor exposes the following tools to any MCP-compatible agent runtime.
           Tool names match the TOOLS array in
           <code style="font-family:var(--font-mono);font-size:14px;color:#fbbf24">src/mcp/server.ts</code> exactly.
         </p>
 
-        <div class="tools-grid reveal">
+        <div class="tools-grid reveal" data-stagger>
 
           <div class="tools-group-label">Session Management</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">create_session</div>
             <div class="tool-desc">Register a goal and create a drift monitoring session. Returns a session ID to use in subsequent calls. Accepts optional drift threshold and alert webhook URL.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_sessions</div>
             <div class="tool-desc">List active monitoring sessions, sorted by most recently updated. Returns session ID, goal text, status, and turn count for each.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">delete_session</div>
             <div class="tool-desc">Delete a monitoring session from the local store. Note: compliance-grade immutable audit retention is roadmap scope only.</div>
           </div>
 
           <div class="tools-group-label">Turn Scoring</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">add_turn</div>
             <div class="tool-desc">Score an agent turn against the registered goal. Returns drift score, alignment score, alert fired status, alert delivery status, drift trend, and scoring method.</div>
           </div>
 
           <div class="tools-group-label">History &amp; Alerts</div>
 
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_summary</div>
             <div class="tool-desc">Get drift summary for a session: average drift, max drift, alert count, latest agent intent, last alert delivery status, and trend direction.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_history</div>
             <div class="tool-desc">Get the per-turn drift history for a session. Returns turn number, drift score, alignment score, timestamp, alert fired flag, and delivery status for every recorded turn.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_alert_receipts</div>
             <div class="tool-desc">Get webhook alert delivery receipts for a session. Each receipt records attempted timestamp, webhook URL, delivery status, HTTP status code, and any error.</div>
           </div>
@@ -877,7 +877,7 @@ goal-drift serve --port 4321</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Dashboard &amp; History</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="dashboard-title">Local dashboard — prototype status</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Goal Drift Monitor includes a local HTTP API and HTML dashboard for reviewing sessions,
           per-turn drift scores, summaries, and alert receipts. The dashboard starts alongside the
@@ -914,11 +914,11 @@ goal-drift serve --port 4321</code></pre>
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Goal Drift Monitor does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -986,20 +986,20 @@ goal-drift serve --port 4321</code></pre>
     <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
       <div class="section-inner">
         <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-        <div class="related-strip" role="list">
-          <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <div class="related-strip" data-stagger role="list">
+          <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 02</div>
             <div class="related-card-name">Confidence Gate</div>
             <p class="related-card-desc">When Goal Drift Monitor flags a session as drifting, Confidence Gate is the layer that can block or route the next action. Drift detection feeds directly into gate policy.</p>
             <span class="related-card-link">View Confidence Gate →</span>
           </a>
-          <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+          <a href="audit-replay-logger.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 08</div>
             <div class="related-card-name">Audit &amp; Replay Logger</div>
             <p class="related-card-desc">Log the sequence of turns that preceded a high-drift score. Replay Logger captures the evidence trail so teams can understand why drift occurred and when it started.</p>
             <span class="related-card-link">View Audit &amp; Replay Logger →</span>
           </a>
-          <a href="identity-engine-sdk.html" class="related-card reveal" role="listitem">
+          <a href="identity-engine-sdk.html" class="related-card reveal spotlight hairline-top" role="listitem">
             <div class="related-card-label">Product 01</div>
             <div class="related-card-name">Identity Engine SDK</div>
             <p class="related-card-desc">Drift is measured against a session baseline. Identity Engine provides the persistent agent identity and goal record that Goal Drift Monitor compares each new turn against.</p>
@@ -1016,7 +1016,7 @@ goal-drift serve --port 4321</code></pre>
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Hosted Beta</span>
           </div>
-          <h2 class="beta-heading-dark" id="gd-beta-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="gd-beta-title">
             Get early access to hosted Goal Drift Monitor
           </h2>
           <p class="beta-desc-dark">

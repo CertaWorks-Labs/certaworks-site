@@ -751,12 +751,12 @@
   </div>
 
   <!-- ── Hero ────────────────────────────── -->
-  <section class="pdp-hero" aria-labelledby="hero-h1">
+  <section class="pdp-hero" aria-labelledby="hero-h1" data-aurora data-cursor-glow>
     <div class="pdp-hero-glow" aria-hidden="true"></div>
     <div class="pdp-hero-num-bg" aria-hidden="true">07</div>
     <div class="pdp-hero-inner" style="position:relative;z-index:1;">
       <p class="pdp-eyebrow" aria-label="Product category">07 · Plugin · Local Registry</p>
-      <h1 class="pdp-h1" id="hero-h1">Agent Skill<br>Marketplace</h1>
+      <h1 class="pdp-h1" id="hero-h1"><span class="text-grad">Agent Skill<br>Marketplace</span></h1>
       <p class="pdp-subhead">
         Let agents discover, inspect, install, and run trusted skills from a local
         registry-style capability layer. SHA256 checksum verification, permission
@@ -786,7 +786,7 @@
   <!-- ── Problem ─────────────────────────── -->
   <section class="section-dark reveal" aria-labelledby="problem-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="problem-h2">Skills without a marketplace are a liability</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="problem-h2">Skills without a marketplace are a liability</h2>
       <div class="problem-body">
         <p>
           Agents accumulate capabilities informally — functions pasted in prompts, scripts loaded
@@ -812,13 +812,13 @@
   <!-- ── How It Works ─────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="how-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="how-h2">How it works</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="how-h2">How it works</h2>
       <p class="pdp-section-body">
         Three phases: register a skill with a manifest, install it to the local store,
         then load and run it with explicit permission grants.
       </p>
-      <div class="how-flow" role="list">
-        <div class="how-step reveal" role="listitem">
+      <div class="how-flow" data-stagger role="list">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">1</div>
           <div class="how-step-title">Browse &amp; Inspect</div>
           <p class="how-step-body">
@@ -827,7 +827,7 @@
             manifest including permissions required before committing to install.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">2</div>
           <div class="how-step-title">Install &amp; Verify</div>
           <p class="how-step-body">
@@ -836,7 +836,7 @@
             the checksum at load time — refusing to execute if the code has changed.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">3</div>
           <div class="how-step-title">Grant Permissions &amp; Run</div>
           <p class="how-step-body">
@@ -852,7 +852,7 @@
   <!-- ── Manifest Format ──────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="manifest-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="manifest-h2">Skill Manifest Format</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="manifest-h2">Skill Manifest Format</h2>
       <p class="pdp-section-body">
         Every skill is described by a typed manifest. Required fields are validated before
         persistence; the URL must use <code>builtin:</code>, <code>file:</code>, or <code>https:</code> schemes.
@@ -938,31 +938,31 @@
   <!-- ── Built-in Skills ──────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="builtins-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="builtins-h2">Starter Registry — Built-in Skills</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="builtins-h2">Starter Registry — Built-in Skills</h2>
       <p class="pdp-section-body">
         Four built-in skills are included and require no installation. All declare
         <code>permissions: ["none"]</code> and run entirely in-process with no side effects.
       </p>
-      <div class="builtin-grid" role="list">
-        <div class="builtin-card reveal" role="listitem">
+      <div class="builtin-grid" data-stagger role="list">
+        <div class="builtin-card reveal spotlight hairline-top" role="listitem">
           <span class="builtin-tag">utility</span>
           <div class="builtin-id">format-json</div>
           <p class="builtin-desc">Pretty-print or minify a JSON string. Accepts a <code>json</code> string and an optional <code>minify</code> boolean.</p>
           <div class="builtin-perm">✓ permissions: none</div>
         </div>
-        <div class="builtin-card reveal" role="listitem">
+        <div class="builtin-card reveal spotlight hairline-top" role="listitem">
           <span class="builtin-tag">text · analysis</span>
           <div class="builtin-id">word-count</div>
           <p class="builtin-desc">Count words, characters, chars-without-spaces, and lines in a text string. Returns all four metrics.</p>
           <div class="builtin-perm">✓ permissions: none</div>
         </div>
-        <div class="builtin-card reveal" role="listitem">
+        <div class="builtin-card reveal spotlight hairline-top" role="listitem">
           <span class="builtin-tag">encoding</span>
           <div class="builtin-id">base64</div>
           <p class="builtin-desc">Encode or decode a string as Base64. Pass <code>mode: "encode"</code> or <code>mode: "decode"</code> with the <code>text</code> input.</p>
           <div class="builtin-perm">✓ permissions: none</div>
         </div>
-        <div class="builtin-card reveal" role="listitem">
+        <div class="builtin-card reveal spotlight hairline-top" role="listitem">
           <span class="builtin-tag">time · utility</span>
           <div class="builtin-id">timestamp</div>
           <p class="builtin-desc">Get the current UTC timestamp in ISO, Unix epoch seconds, or human-readable format. Pass <code>format: "iso" | "unix" | "human"</code>.</p>
@@ -975,7 +975,7 @@
   <!-- ── Permission Gates ──────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="perms-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="perms-h2">Permission Gates</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="perms-h2">Permission Gates</h2>
       <p class="pdp-section-body">
         Each skill declares its permissions upfront in the manifest. Any permission
         not explicitly granted in <code>run_skill</code>'s <code>grant_permissions</code>
@@ -983,24 +983,24 @@
         Permission checks are manifest gates, not OS-level sandboxing — skill code
         still executes inside the current Node.js process.
       </p>
-      <div class="perm-grid" role="list">
-        <div class="perm-card reveal" role="listitem">
+      <div class="perm-grid" data-stagger role="list">
+        <div class="perm-card reveal spotlight hairline-top" style="position:relative" role="listitem">
           <div class="perm-name perm-safe">none</div>
           <p class="perm-desc">No external access. Safe for pure transformation utilities. Default for all built-in skills.</p>
         </div>
-        <div class="perm-card reveal" role="listitem">
+        <div class="perm-card reveal spotlight hairline-top" style="position:relative" role="listitem">
           <div class="perm-name perm-caution">network</div>
           <p class="perm-desc">Skill may make outbound HTTP/HTTPS requests. Must be granted explicitly at runtime.</p>
         </div>
-        <div class="perm-card reveal" role="listitem">
+        <div class="perm-card reveal spotlight hairline-top" style="position:relative" role="listitem">
           <div class="perm-name perm-caution">filesystem</div>
           <p class="perm-desc">Skill may read or write local files. Requires explicit grant; scope is not further restricted.</p>
         </div>
-        <div class="perm-card reveal" role="listitem">
+        <div class="perm-card reveal spotlight hairline-top" style="position:relative" role="listitem">
           <div class="perm-name perm-danger">secrets</div>
           <p class="perm-desc">Skill may access environment variables or credential stores. High-risk — grant with caution.</p>
         </div>
-        <div class="perm-card reveal" role="listitem">
+        <div class="perm-card reveal spotlight hairline-top" style="position:relative" role="listitem">
           <div class="perm-name perm-danger">shell</div>
           <p class="perm-desc">Skill may invoke shell commands. Highest-risk permission — grant only to verified local skills.</p>
         </div>
@@ -1011,7 +1011,7 @@
   <!-- ── Install ──────────────────────────── -->
   <section class="section-dark reveal" id="install" aria-labelledby="install-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="install-h2">Install &amp; Configure</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; Configure</h2>
       <p class="pdp-section-body">
         Package source is at <code>@blair/agent-skill-marketplace</code> (v0.1.0). Publication to
         a public registry is pending name clearance. Until then, clone the repo and build locally.
@@ -1065,7 +1065,7 @@ agent-skill-marketplace-mcp</div>
   <!-- ── SDK Surface ──────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="sdk-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="sdk-h2">SDK Surface</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="sdk-h2">SDK Surface</h2>
       <p class="pdp-section-body">
         Import the SDK directly for programmatic skill management without MCP.
         All functions accept an optional <code>storePath</code> to override the default store location.
@@ -1114,13 +1114,13 @@ const result = await runSkill(
   <!-- ── MCP Tools ─────────────────────────── -->
   <section class="section-dark reveal" id="tools" style="padding-top:0" aria-labelledby="tools-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="tools-h2">MCP Tools</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="tools-h2">MCP Tools</h2>
       <p class="pdp-section-body">
         Seven tools exposed over the MCP protocol. All callable from any MCP-compatible agent runtime.
       </p>
-      <div class="tools-grid" role="list">
+      <div class="tools-grid" data-stagger role="list">
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">list_skills</div>
           <p class="tool-card-desc">Browse the skill registry. Returns built-in, installed, and optionally remote registry skills matching the provided filters.</p>
           <div class="tool-card-params">
@@ -1131,7 +1131,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">skill_info</div>
           <p class="tool-card-desc">Get full manifest details about a specific skill — permissions required, URL, checksum, tags, and version — before installing.</p>
           <div class="tool-card-params">
@@ -1139,7 +1139,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">install_skill</div>
           <p class="tool-card-desc">Install a trusted local or remote skill manifest into the local marketplace store. Validates the manifest schema before persisting.</p>
           <div class="tool-card-params">
@@ -1147,7 +1147,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">installed_skills</div>
           <p class="tool-card-desc">List all skills currently installed in the local marketplace store, including their install timestamps and full manifests.</p>
           <div class="tool-card-params">
@@ -1155,7 +1155,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">uninstall_skill</div>
           <p class="tool-card-desc">Remove a skill from the local marketplace store and unload it from the in-process cache. Returns a boolean indicating success.</p>
           <div class="tool-card-params">
@@ -1163,7 +1163,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">run_skill</div>
           <p class="tool-card-desc">Load and execute a skill with the given input object. Permissions declared in the manifest but absent from <code>grant_permissions</code> abort execution before the skill runs.</p>
           <div class="tool-card-params">
@@ -1173,7 +1173,7 @@ const result = await runSkill(
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">loaded_skills</div>
           <p class="tool-card-desc">List the IDs of skills currently cached in the in-process skill cache. Useful for inspecting loader state after a run session.</p>
           <div class="tool-card-params">
@@ -1188,7 +1188,7 @@ const result = await runSkill(
   <!-- ── Local Store ───────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="store-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="store-h2">Durable Local Store</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="store-h2">Durable Local Store</h2>
       <p class="pdp-section-body">
         Installed skill manifests are persisted as versioned JSON at a configurable local path.
         The store is created automatically on first install. Override the default path with an
@@ -1213,8 +1213,8 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
   <!-- ── Scope ─────────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="scope-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="scope-h2">Scope</h2>
-      <div class="limits-cols">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="scope-h2">Scope</h2>
+      <div class="limits-cols" data-stagger>
         <div>
           <div class="limits-block-title does">What this does</div>
           <ul class="limits-list does" role="list">
@@ -1250,7 +1250,7 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
         <div class="section-label dark">
           <span class="eyebrow eyebrow-green">Local Install</span>
         </div>
-        <h2 class="install-pdp-heading" id="install-npx-title">
+        <h2 class="install-pdp-heading" data-reveal="up" id="install-npx-title">
           Run it locally in under 5 minutes
         </h2>
         <p class="install-pdp-subhead">
@@ -1259,7 +1259,7 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
         <p class="install-pdp-subhead">
           Once running locally, agents can call `list_skills`, `install_skill`, and `run_skill` to discover and execute trusted skills from the local registry.
         </p>
-        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-skill-marketplace-plugin" target="_blank" rel="noopener">View on npm →</a>
+        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/agent-skill-marketplace-plugin" target="_blank" rel="noopener" class="link-grow">View on npm →</a>
       </div>
 
       <div class="reveal">
@@ -1298,24 +1298,24 @@ npm run build</code></pre>
   <!-- ── Related ───────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-      <div class="related-strip" role="list">
-        <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="related-h2">Related Products</h2>
+      <div class="related-strip" data-stagger role="list">
+        <a href="audit-replay-logger.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">08</div>
           <div class="related-card-name">Audit &amp; Replay Logger</div>
           <p class="related-card-desc">Log decisions and tool calls, then replay full agent sessions with causal chains. Complements skill execution records.</p>
         </a>
-        <a href="cognitive-memory-mcp-server.html" class="related-card reveal" role="listitem">
+        <a href="cognitive-memory-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">06</div>
           <div class="related-card-name">Cognitive Memory</div>
           <p class="related-card-desc">Durable local episodic and semantic memory. Skills can read and write session-scoped context without cloud calls.</p>
         </a>
-        <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">02</div>
           <div class="related-card-name">Confidence Gate</div>
           <p class="related-card-desc">Block low-confidence agent actions before they execute. Works well as a permission layer before running skills with elevated permissions.</p>
         </a>
-        <a href="goal-drift-monitor.html" class="related-card reveal" role="listitem">
+        <a href="goal-drift-monitor.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">05</div>
           <div class="related-card-name">Goal Drift Monitor</div>
           <p class="related-card-desc">Detect when agent turns diverge from the session's declared goal. Useful when skills change agent behavior mid-session.</p>
@@ -1328,7 +1328,7 @@ npm run build</code></pre>
   <section class="beta-section-dark reveal" aria-labelledby="beta-h2">
     <div class="section-inner">
       <p class="beta-eyebrow">Early Access</p>
-      <h2 class="beta-headline" id="beta-h2">Build your skill registry</h2>
+      <h2 class="beta-headline" data-reveal="up" id="beta-h2">Build your skill registry</h2>
       <p class="beta-sub">
         Get early access to Agent Skill Marketplace Plugin — local-first,
         checksum-verified capability management for agents that need to trust

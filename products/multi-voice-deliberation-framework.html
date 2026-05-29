@@ -342,11 +342,11 @@
     </nav>
 
     <!-- ── HERO ──────────────────────────────────── -->
-    <section class="pdp-hero" aria-labelledby="pdp-hero-title">
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
       <div class="pdp-hero-num-bg" aria-hidden="true">03</div>
       <div class="pdp-hero-inner">
         <p class="pdp-eyebrow">Product 03 · Framework · SDK / MCP / CLI · Local Prototype</p>
-        <h1 class="pdp-h1" id="pdp-hero-title">Multi-Voice Deliberation</h1>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Multi-Voice Deliberation</span></h1>
         <p class="pdp-subhead">
           Four voices — Builder, Skeptic, Evolver, Guardian — review every decision before your agent commits to an answer. Structured debate for high-stakes agent reasoning.
         </p>
@@ -377,7 +377,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">The Problem</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="problem-title">Single-pass answers miss risks, gaps, and better alternatives.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Single-pass answers miss risks, gaps, and better alternatives.</h2>
         <div class="problem-body reveal">
           <p>
             LLMs generate answers in a single forward pass. They have no built-in adversarial review,
@@ -408,11 +408,11 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">How It Works</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="how-title">Submit → Panel → Synthesize</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Submit → Panel → Synthesize</h2>
 
-        <div class="how-flow reveal" role="list">
+        <div class="how-flow reveal" data-stagger role="list">
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Submit the question or decision</div>
             <p class="how-step-desc">
@@ -425,7 +425,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">2</div>
             <div class="how-step-title">Each voice reads and responds</div>
             <p class="how-step-desc">
@@ -441,7 +441,7 @@
 
           <div class="how-flow-arrow" aria-hidden="true">→</div>
 
-          <article class="how-step" role="listitem">
+          <article class="how-step spotlight hairline-top" role="listitem">
             <div class="how-step-num" aria-hidden="true">3</div>
             <div class="how-step-title">Synthesize — flag for review if needed</div>
             <p class="how-step-desc">
@@ -471,7 +471,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">The Panel</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="voices-title">Four voices. Four perspectives.</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="voices-title">Four voices. Four perspectives.</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Each voice is defined by a name, a label, and a system prompt that shapes its response.
           All four are active by default. Voices can be filtered per call.
@@ -543,7 +543,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Result Model</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="result-title">What deliberate() returns</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="result-title">What deliberate() returns</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">DeliberationResult</code>
           interface is the exact return type of every
@@ -584,7 +584,7 @@
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">SDK Install</span>
           </div>
-          <h2 class="install-pdp-heading" id="install-title">
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             TypeScript SDK, MCP server, and CLI
           </h2>
           <p class="install-pdp-subhead">
@@ -602,7 +602,7 @@
             <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">GROQ_API_KEY</code>
             in your environment. Provider support uses the OpenAI-compatible SDK.
           </p>
-          <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/multi-voice-deliberation-framework" target="_blank" rel="noopener">View on npm →</a>
+          <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/multi-voice-deliberation-framework" target="_blank" rel="noopener">View on npm →</a>
         </div>
 
         <div class="reveal">
@@ -666,7 +666,7 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Provider Support</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="providers-title">OpenAI-compatible providers via env vars</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="providers-title">OpenAI-compatible providers via env vars</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">adapterFromEnv()</code>
           checks for the following API keys in order and returns a ready-to-use adapter.
@@ -710,18 +710,18 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="tools-title">Available MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Multi-Voice Deliberation exposes the following tools to any MCP-compatible agent runtime.
           Both tools require a configured provider API key in the server environment.
         </p>
 
-        <div class="tools-grid reveal">
-          <div class="tool-card">
+        <div class="tools-grid reveal" data-stagger>
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">deliberate</div>
             <div class="tool-desc">Run a multi-voice deliberation panel (Builder, Skeptic, Evolver, Guardian) on a question or proposed action before committing. Returns a synthesis, per-voice positions, concerns, suggestions, and a human-review flag when confidence is low.</div>
           </div>
-          <div class="tool-card">
+          <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_voices</div>
             <div class="tool-desc">List the available deliberation voices and their roles.</div>
           </div>
@@ -750,11 +750,11 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-light">Scope</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="limits-title">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
           What Multi-Voice Deliberation does and does not do
         </h2>
 
-        <div class="limits-cols reveal">
+        <div class="limits-cols reveal" data-stagger>
           <div class="limits-col-does">
             <div class="limits-col-title">Does</div>
             <ul class="limits-list" aria-label="Capabilities">
@@ -821,22 +821,22 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">Suite Context</span>
         </div>
-        <h2 class="pdp-section-headline reveal" id="related-title">Pairs well with the control loop</h2>
-        <div class="related-strip reveal" role="list">
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="related-title">Pairs well with the control loop</h2>
+        <div class="related-strip reveal" data-stagger role="list">
 
-          <a class="related-card" href="confidence-gate-mcp-server.html" role="listitem">
+          <a class="related-card spotlight hairline-top" href="confidence-gate-mcp-server.html" role="listitem">
             <div class="related-card-num">Product 02</div>
             <div class="related-card-name">Confidence Gate</div>
             <p class="related-card-desc">Score and gate the action after deliberation. Deliberation improves the decision; Confidence Gate controls whether it executes.</p>
           </a>
 
-          <a class="related-card" href="identity-engine-sdk.html" role="listitem">
+          <a class="related-card spotlight hairline-top" href="identity-engine-sdk.html" role="listitem">
             <div class="related-card-num">Product 01</div>
             <div class="related-card-name">Identity Engine SDK</div>
             <p class="related-card-desc">Persistent agent identity, state, and drift checks. Deliberation can be used to review actions that touch the agent's declared purpose.</p>
           </a>
 
-          <a class="related-card" href="cognitive-memory-mcp-server.html" role="listitem">
+          <a class="related-card spotlight hairline-top" href="cognitive-memory-mcp-server.html" role="listitem">
             <div class="related-card-num">Product 06</div>
             <div class="related-card-name">Cognitive Memory</div>
             <p class="related-card-desc">Feed relevant past decisions as context into a deliberation panel. Memory improves the quality of every voice response.</p>
@@ -853,7 +853,7 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
           <div class="section-label dark">
             <span class="eyebrow eyebrow-green">Prototype Access</span>
           </div>
-          <h2 class="beta-heading-dark" id="beta-pdp-title">
+          <h2 class="beta-heading-dark" data-reveal="up" id="beta-pdp-title">
             Get early access to Multi-Voice Deliberation
           </h2>
           <p class="beta-desc-dark">

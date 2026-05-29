@@ -486,13 +486,5 @@ if (betaForm) {
     });
     el.addEventListener('pointerleave', () => el.classList.remove('glow-on'));
   });
-
-  // ── Spotlight cards: track pointer for .spotlight border glow ──
-  document.querySelectorAll('.spotlight').forEach((el) => {
-    el.addEventListener('pointermove', (e) => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      el.style.setProperty('--my', `${e.clientY - r.top}px`);
-    });
-  });
+  // .spotlight / .hairline-top hover effects are pure CSS (box-shadow) — no JS needed.
 })();

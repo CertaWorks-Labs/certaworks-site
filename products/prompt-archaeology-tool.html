@@ -827,12 +827,12 @@
   </div>
 
   <!-- ── Hero ────────────────────────────── -->
-  <section class="pdp-hero" aria-labelledby="hero-h1">
+  <section class="pdp-hero" aria-labelledby="hero-h1" data-aurora data-cursor-glow>
     <div class="pdp-hero-glow" aria-hidden="true"></div>
     <div class="pdp-hero-num-bg" aria-hidden="true">09</div>
     <div class="pdp-hero-inner" style="position:relative;z-index:1;">
       <p class="pdp-eyebrow" aria-label="Product category">09 · Local Probe Runner · API · MCP · CLI</p>
-      <h1 class="pdp-h1" id="hero-h1">Prompt<br>Archaeology</h1>
+      <h1 class="pdp-h1" id="hero-h1"><span class="text-grad">Prompt<br>Archaeology</span></h1>
       <p class="pdp-subhead">
         Inspect what an agent actually does — not what its documentation says it does.
         Scripted probes surface behavioral signals across persona, constraints, refusal style,
@@ -862,7 +862,7 @@
   <!-- ── Problem ─────────────────────────── -->
   <section class="section-dark reveal" aria-labelledby="problem-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="problem-h2">You inherit agents without knowing how they behave</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="problem-h2">You inherit agents without knowing how they behave</h2>
       <div class="problem-body">
         <p>
           Teams regularly deploy, integrate, or hand off agents whose behavioral constraints,
@@ -891,13 +891,13 @@
   <!-- ── How It Works ─────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="how-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="how-h2">How it works</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="how-h2">How it works</h2>
       <p class="pdp-section-body">
         Three steps: select probes, supply responses (live or captured), receive an
         evidence-backed report with per-probe confidence, signal quotes, and limitations.
       </p>
-      <div class="how-flow" role="list">
-        <div class="how-step reveal" role="listitem">
+      <div class="how-flow" data-stagger role="list">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">1</div>
           <div class="how-step-title">Select Probes</div>
           <p class="how-step-body">
@@ -908,7 +908,7 @@
             or <code>ownership</code> — to target specific behavioral dimensions.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">2</div>
           <div class="how-step-title">Supply Responses</div>
           <p class="how-step-body">
@@ -917,7 +917,7 @@
             Both paths produce the same analysis. No cloud call is required.
           </p>
         </div>
-        <div class="how-step reveal" role="listitem">
+        <div class="how-step reveal spotlight hairline-top" role="listitem">
           <div class="how-step-num" aria-hidden="true">3</div>
           <div class="how-step-title">Read the Report</div>
           <p class="how-step-body">
@@ -934,7 +934,7 @@
   <!-- ── Probe Catalog ────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" id="probes" aria-labelledby="probes-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="probes-h2">Probe Catalog — 8 Categories, 16 Probes</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="probes-h2">Probe Catalog — 8 Categories, 16 Probes</h2>
       <p class="pdp-section-body">
         All probes are scripted text prompts with declared signal keywords and an interpretation
         statement. When an agent response contains a signal keyword, it contributes to the
@@ -951,9 +951,9 @@
         </div>
       </div>
 
-      <div class="probe-cat-grid" role="list">
+      <div class="probe-cat-grid" data-stagger role="list">
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">persona</div>
           <div class="probe-cat-title">Persona &amp; Role</div>
           <p class="probe-cat-desc">Does the agent have a defined name or role? Probes ask directly for its identity and its design purpose to detect persona constraints.</p>
@@ -963,7 +963,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">ownership</div>
           <div class="probe-cat-title">Ownership &amp; Creator</div>
           <p class="probe-cat-desc">Does the agent reveal or conceal its creator and product affiliation? Probes ask which company built it and what product it is part of.</p>
@@ -973,7 +973,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">constraints</div>
           <div class="probe-cat-title">Behavioral Constraints</div>
           <p class="probe-cat-desc">What is the agent prohibited from doing? Probes test direct override attempts, harm refusal, system prompt reveal requests, and topic restrictions.</p>
@@ -985,7 +985,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">refusal_style</div>
           <div class="probe-cat-title">Refusal Style</div>
           <p class="probe-cat-desc">How does the agent refuse? Probes distinguish between firm flat-refusals ("I cannot") and redirect-and-offer patterns ("Instead, I can help with…").</p>
@@ -995,7 +995,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">tool_policy</div>
           <div class="probe-cat-title">Tool Policy</div>
           <p class="probe-cat-desc">What tools or actions does the agent claim access to? Probes ask about capabilities and whether it can take autonomous actions like sending email or posting to social media.</p>
@@ -1005,7 +1005,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">format_rules</div>
           <div class="probe-cat-title">Format Rules</div>
           <p class="probe-cat-desc">Does the agent obey explicit length instructions or does it apply a fixed format regardless? Probes test length compliance and default markdown usage.</p>
@@ -1015,7 +1015,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">tone</div>
           <div class="probe-cat-title">Tone</div>
           <p class="probe-cat-desc">How does the agent respond to informal input? Does it mirror casual language or maintain formal register? Signals distinguish formal versus casual response patterns.</p>
@@ -1024,7 +1024,7 @@
           </div>
         </div>
 
-        <div class="probe-cat-card reveal" role="listitem">
+        <div class="probe-cat-card reveal spotlight hairline-top" role="listitem">
           <div class="probe-cat-name">knowledge_cutoff</div>
           <div class="probe-cat-title">Knowledge Cutoff</div>
           <p class="probe-cat-desc">Does the agent acknowledge a training cutoff? Asking for the current date surfaces whether the agent claims real-time access or reports a training cutoff boundary.</p>
@@ -1040,7 +1040,7 @@
   <!-- ── Evidence-Backed Inference ─────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="inference-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="inference-h2">Evidence-Backed Inference Model</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="inference-h2">Evidence-Backed Inference Model</h2>
       <p class="pdp-section-body">
         Every probe result includes a <strong style="color:#fff">signal hit rate</strong> (matched keywords ÷ total signals),
         a <strong style="color:#fff">confidence level</strong>, supporting evidence quotes, and at least one
@@ -1098,15 +1098,15 @@
   <!-- ── Report Formats ───────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="reports-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="reports-h2">Report Formats &amp; Export</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="reports-h2">Report Formats &amp; Export</h2>
       <p class="pdp-section-body">
         Every run produces a structured <code>ArchaeologyReport</code>. Export it locally in three
         formats using the SDK, CLI, or <code>export_report</code> MCP tool.
         No cloud upload, no hosted analytics.
       </p>
-      <div class="report-format-grid" role="list">
+      <div class="report-format-grid" data-stagger role="list">
 
-        <div class="report-format-card reveal" role="listitem">
+        <div class="report-format-card reveal spotlight hairline-top" role="listitem">
           <div class="report-format-name">json</div>
           <p class="report-format-desc">Full structured report — machine-readable. Includes all probe results, evidence snippets, inference claims, category findings, and raw signal data.</p>
           <div class="report-format-sections">
@@ -1119,7 +1119,7 @@
           </div>
         </div>
 
-        <div class="report-format-card reveal" role="listitem">
+        <div class="report-format-card reveal spotlight hairline-top" role="listitem">
           <div class="report-format-name">markdown</div>
           <p class="report-format-desc">Human-readable structured report. Sections for Methodology, Limitations, Inferences, Evidence — ready for sharing in docs or PR reviews.</p>
           <div class="report-format-sections">
@@ -1130,7 +1130,7 @@
           </div>
         </div>
 
-        <div class="report-format-card reveal" role="listitem">
+        <div class="report-format-card reveal spotlight hairline-top" role="listitem">
           <div class="report-format-name">text</div>
           <p class="report-format-desc">Plain-text ASCII report. Terminal-safe. Sections delimited with decorative separators for quick scanning in CI output or shell sessions.</p>
           <div class="report-format-sections">
@@ -1148,7 +1148,7 @@
   <!-- ── Install ──────────────────────────── -->
   <section class="section-dark reveal" id="install" aria-labelledby="install-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="install-h2">Install &amp; Configure</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; Configure</h2>
       <p class="pdp-section-body">
         Package source is at <code>@blair/prompt-archaeology</code> (v0.1.0). Publication to a
         public registry is pending name clearance. Until then, clone the repo and build locally.
@@ -1213,7 +1213,7 @@ prompt-archaeology \
   <!-- ── SDK Surface ──────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="sdk-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="sdk-h2">SDK Surface</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="sdk-h2">SDK Surface</h2>
       <p class="pdp-section-body">
         Import the SDK directly for programmatic probe runs and report export without MCP or HTTP.
         Pass a live <code>agent</code> callback for active probing, or supply pre-captured
@@ -1277,14 +1277,14 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
   <!-- ── MCP Tools ─────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" id="tools" aria-labelledby="tools-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="tools-h2">MCP Tools</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="tools-h2">MCP Tools</h2>
       <p class="pdp-section-body">
         Four tools exposed over the MCP protocol. Callable from any MCP-compatible agent runtime.
         All analysis is local — no cloud calls.
       </p>
-      <div class="tools-grid" role="list">
+      <div class="tools-grid" data-stagger role="list">
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">list_probes</div>
           <p class="tool-card-desc">List available prompt archaeology probes. Optionally filter by category to return only probes for a specific behavioral dimension.</p>
           <div class="tool-card-params">
@@ -1292,7 +1292,7 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">analyze_response</div>
           <p class="tool-card-desc">Analyze one observed agent response for cautious behavioral signals. Provide a probe ID and the observed response string — returns confidence, signals found, evidence quotes, and caveats.</p>
           <div class="tool-card-params">
@@ -1301,7 +1301,7 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">build_report</div>
           <p class="tool-card-desc">Build a full evidence-backed archaeology report from a set of <code>{ probe_id, response }</code> result pairs. Returns the report as structured JSON or formatted plain text.</p>
           <div class="tool-card-params">
@@ -1310,7 +1310,7 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
           </div>
         </div>
 
-        <div class="tool-card reveal" role="listitem">
+        <div class="tool-card reveal spotlight hairline-top" role="listitem">
           <div class="tool-card-name">export_report</div>
           <p class="tool-card-desc">Build a report and write it to a local file. Supports <code>json</code>, <code>markdown</code>, and <code>text</code> formats. Returns <code>{ ok: true, path }</code> on success.</p>
           <div class="tool-card-params">
@@ -1327,7 +1327,7 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
   <!-- ── HTTP API ──────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="api-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="api-h2">HTTP API</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="api-h2">HTTP API</h2>
       <p class="pdp-section-body">
         The local HTTP server binds to <code>127.0.0.1:4320</code> by default
         (<code>PORT</code> and <code>HOST</code> env vars override). All routes return JSON
@@ -1393,7 +1393,7 @@ await exportReport(run.report, { format: <span class="c-str">'text'</span>,     
   <!-- ── CLI ───────────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="cli-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="cli-h2">CLI</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="cli-h2">CLI</h2>
       <p class="pdp-section-body">
         The <code>prompt-archaeology</code> bin reads a JSON input file of captured responses,
         analyzes them, and writes reports to local files. Suitable for CI pipelines, shell scripts,
@@ -1441,7 +1441,7 @@ prompt-archaeology --help</div>
   <!-- ── Dashboard &amp; Run History ──────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="store-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="store-h2">Local Run History &amp; Dashboard</h2>
+      <h2 class="pdp-section-headline" data-reveal="blur" id="store-h2">Local Run History &amp; Dashboard</h2>
       <p class="pdp-section-body">
         Every probe batch run can be saved to a durable local store. The HTTP server provides a
         lightweight <code>/dashboard</code> page and <code>/api/runs</code> endpoints for
@@ -1466,8 +1466,8 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
   <!-- ── Scope ─────────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="scope-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="scope-h2">Scope</h2>
-      <div class="limits-cols">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="scope-h2">Scope</h2>
+      <div class="limits-cols" data-stagger>
         <div>
           <div class="limits-block-title does">What this does</div>
           <ul class="limits-list does" role="list">
@@ -1507,7 +1507,7 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
         <div class="section-label dark">
           <span class="eyebrow eyebrow-green">Local Install</span>
         </div>
-        <h2 class="install-pdp-heading" id="install-npx-title">
+        <h2 class="install-pdp-heading" data-reveal="up" id="install-npx-title">
           Run it locally in under 5 minutes
         </h2>
         <p class="install-pdp-subhead">
@@ -1516,7 +1516,7 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
         <p class="install-pdp-subhead">
           Once running locally, call `analyze_response` to run scripted probes against agent responses and estimate behavioral constraints.
         </p>
-        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/prompt-archaeology-tool" target="_blank" rel="noopener">View on npm →</a>
+        <a class="install-pdp-link" href="https://www.npmjs.com/package/@certaworks/prompt-archaeology-tool" target="_blank" rel="noopener" class="link-grow">View on npm →</a>
       </div>
 
       <div class="reveal">
@@ -1555,24 +1555,24 @@ npm run build</code></pre>
   <!-- ── Related ───────────────────────────── -->
   <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
     <div class="section-inner">
-      <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
-      <div class="related-strip" role="list">
-        <a href="agent-test-harness.html" class="related-card reveal" role="listitem">
+      <h2 class="pdp-section-headline" data-reveal="blur" id="related-h2">Related Products</h2>
+      <div class="related-strip" data-stagger role="list">
+        <a href="agent-test-harness.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">10</div>
           <div class="related-card-name">Agent Test Harness</div>
           <p class="related-card-desc">Turn archaeology findings into repeatable tests. The test harness validates that behavioral constraints hold across model versions and deployments.</p>
         </a>
-        <a href="audit-replay-logger.html" class="related-card reveal" role="listitem">
+        <a href="audit-replay-logger.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">08</div>
           <div class="related-card-name">Audit &amp; Replay Logger</div>
           <p class="related-card-desc">Log explicit decisions and tool calls for replay. Audit Logger records what happened; Prompt Archaeology estimates why constraints exist.</p>
         </a>
-        <a href="multi-voice-deliberation-framework.html" class="related-card reveal" role="listitem">
+        <a href="multi-voice-deliberation-framework.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">03</div>
           <div class="related-card-name">Multi-Voice Deliberation</div>
           <p class="related-card-desc">Structure agent reasoning with Builder, Skeptic, Evolver, and Guardian voices. Pairs with archaeology findings to review whether observed constraints are appropriate.</p>
         </a>
-        <a href="confidence-gate-mcp-server.html" class="related-card reveal" role="listitem">
+        <a href="confidence-gate-mcp-server.html" class="related-card reveal spotlight hairline-top" role="listitem">
           <div class="related-card-num">02</div>
           <div class="related-card-name">Confidence Gate</div>
           <p class="related-card-desc">Block low-confidence agent actions before they execute. Use archaeology signal data to calibrate confidence thresholds for a specific agent's behavior profile.</p>
@@ -1585,7 +1585,7 @@ npm run build</code></pre>
   <section class="beta-section-dark reveal" aria-labelledby="beta-h2">
     <div class="section-inner">
       <p class="beta-eyebrow">Early Access</p>
-      <h2 class="beta-headline" id="beta-h2">Start your behavioral audit</h2>
+      <h2 class="beta-headline" data-reveal="up" id="beta-h2">Start your behavioral audit</h2>
       <p class="beta-sub">
         Get early access to Prompt Archaeology Tool — local probe runner,
         evidence-backed inference, and run history for agents you inherit,

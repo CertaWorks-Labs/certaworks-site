@@ -49,7 +49,7 @@
   <main>
 
     <!-- ── CONTACT HERO ──────────────────────────────────────────── -->
-    <section class="contact-hero" aria-labelledby="contact-hero-title">
+    <section class="contact-hero" aria-labelledby="contact-hero-title" data-cursor-glow>
       <div class="contact-hero-inner">
         <div class="hero-eyebrow" aria-label="Company">
           <svg width="8" height="8" viewBox="0 0 8 8" aria-hidden="true">
@@ -57,7 +57,7 @@
           </svg>
           CertaWorks Labs
         </div>
-        <h1 id="contact-hero-title" class="reveal">Get in Touch</h1>
+        <h1 id="contact-hero-title" class="reveal"><span class="text-grad">Get in Touch</span></h1>
         <p class="contact-hero-lead reveal">
           Join the hosted beta, ask a question, or tell us what you're building.
         </p>
@@ -74,14 +74,14 @@
             <div class="section-label reveal">
               <span class="eyebrow eyebrow-green">Hosted Beta</span>
             </div>
-            <h2 class="beta-heading reveal" style="margin-bottom: 0.75rem;">
+            <h2 class="beta-heading reveal" style="margin-bottom: 0.75rem;" data-reveal="up">
               Join the list for hosted Confidence Gate.
             </h2>
             <p class="beta-desc reveal">
               Tell us what agents you are gating and whether local or hosted fits your workflow. The local MCP server is available now for private testing.
             </p>
 
-            <form class="beta-form reveal" id="contactForm" aria-label="Contact form" novalidate method="POST" action="https://formspree.io/f/xkoekajl">
+            <form class="beta-form reveal" id="contactForm" aria-label="Contact form" data-reveal="up" novalidate method="POST" action="https://formspree.io/f/xkoekajl">
               <input type="hidden" name="_subject" value="CertaWorks Contact Form">
               <input type="hidden" name="_next" value="https://certaworks.dev/thanks.html">
               <div class="form-field">
@@ -112,7 +112,7 @@
           <!-- Right: Info (40%) -->
           <div class="contact-info-col reveal">
 
-            <div class="contact-expect-card">
+            <div class="contact-expect-card spotlight hairline-top" style="position:relative">
               <h3 class="contact-expect-title">What to expect</h3>
               <ul class="contact-expect-list">
                 <li>
