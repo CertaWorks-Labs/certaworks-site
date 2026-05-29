@@ -448,6 +448,28 @@ if (betaForm) {
     update();
   })();
 
+  // ── Product pages: hand the header off to the section nav ──
+  // When .pdp-subnav docks at the top, slide the global nav up out of
+  // view so the section nav becomes the pinned header (never overlaps,
+  // never scrolls off). On scroll-up, the global nav returns.
+  (function headerHandoff() {
+    const subnav = document.querySelector('.pdp-subnav');
+    const nav = document.getElementById('site-nav');
+    if (!subnav || !nav) return;
+    let ticking = false;
+    const update = () => {
+      const docked = subnav.getBoundingClientRect().top <= 0;
+      nav.classList.toggle('nav-hidden', docked);
+      subnav.classList.toggle('is-docked', docked);
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
+
   // ── data-reveal observer (directional + blur variants) ──
   (function dataReveal() {
     const els = document.querySelectorAll('[data-reveal]');
