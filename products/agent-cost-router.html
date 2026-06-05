@@ -855,13 +855,14 @@
         <div class="reveal">
           <div class="code-block" id="acrInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">npm package</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="acrInstallCmd">Copy</button>
             </div>
-            <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/04-agent-cost-router
-npm install
-npm run build</code></pre>
+            <pre><code># Install locally for MCP config
+npm install @certaworks/agent-cost-router
+
+# Optional: install globally for direct CLI commands
+npm install -g @certaworks/agent-cost-router</code></pre>
           </div>
 
           <div class="code-block" id="acrCliExample">
@@ -890,14 +891,14 @@ agent-cost-router serve --port 4317</code></pre>
 
           <div class="code-block" id="acrMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config</span>
+              <span class="code-block-label">Project-local Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="acrMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "agent-cost-router": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/agent-cost-router"]
+      "command": "node",
+      "args": ["./node_modules/@certaworks/agent-cost-router/dist/mcp/server.js"]
     }
   }
 }</code></pre>

@@ -1159,8 +1159,7 @@
     <div class="section-inner">
       <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; Configure</h2>
       <p class="pdp-section-body">
-        Package source is at <code>@blair/prompt-archaeology</code> (v0.1.0). Publication to a
-        available on npm as shown below.
+        Package source is published as <code>@certaworks/prompt-archaeology-tool</code> (v0.1.0) on npm as shown below.
         Three binaries are exposed: <code>prompt-archaeology</code> (CLI),
         <code>prompt-archaeology-mcp</code> (MCP server), and
         <code>prompt-archaeology-api</code> (HTTP server).
@@ -1236,7 +1235,7 @@ import {
   runProbeBatch,
   createRunStore,
   exportReport
-} from <span class="c-str">'@blair/prompt-archaeology'</span>;
+} from <span class="c-str">'@certaworks/prompt-archaeology-tool'</span>;
 
 <span class="c-comment">// Run probes through a live agent callback</span>
 const run = await runProbeBatch({
@@ -1531,13 +1530,10 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
       <div class="reveal">
         <div class="code-block" id="installCmdPAT">
           <div class="code-block-header">
-            <span class="code-block-label">Local source</span>
+            <span class="code-block-label">npm package</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdPAT">Copy</button>
           </div>
-          <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/09-prompt-archaeology-tool
-npm install
-npm run build</code></pre>
+          <pre><code>npm install -g @certaworks/prompt-archaeology-tool</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigPAT">
@@ -1549,7 +1545,7 @@ npm run build</code></pre>
   "mcpServers": {
     "prompt-archaeology-tool": {
       "command": "npx",
-      "args": ["-y", "@certaworks/prompt-archaeology-tool"]
+      "args": ["-y", "-p", "@certaworks/prompt-archaeology-tool", "prompt-archaeology-mcp"]
     }
   }
 }</code></pre>

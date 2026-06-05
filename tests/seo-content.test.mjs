@@ -174,8 +174,8 @@ assert.ok(webPage, "dashboard.html: missing WebPage JSON-LD");
 const productsHtml = pages["products.html"];
 for (const slug of PRODUCT_SLUGS) {
   assert.ok(
-    productsHtml.includes(`./products/${slug}.html`) || productsHtml.includes(`products/${slug}.html`),
-    `products.html: missing link to products/${slug}.html`
+    productsHtml.includes(`./products/${slug}`) || productsHtml.includes(`products/${slug}`),
+    `products.html: missing clean link to products/${slug}`
   );
 }
 
@@ -187,7 +187,7 @@ const requiredIndexSnippets = [
   "Agentic Infrastructure",
   "infrastructure layer that makes AI agency accountable",
   "Join Hosted Beta",
-  './dashboard.html">Dashboard</a>',
+  './dashboard">Dashboard</a>',
   "Building agentic infrastructure for safer, cheaper, and more accountable AI work.",
 ];
 for (const snippet of requiredIndexSnippets) {
@@ -200,8 +200,9 @@ const requiredProductsSnippets = [
   "<title>Products — CertaWorks Suite</title>",
   "The full suite.",
   "Confidence Gate",
-  "Install Local",
-  "Confidence Gate is a decision-support layer",
+  "Install local",
+  "All 10 products are published on npm under the @certaworks scope",
+  "Every product in the suite is a decision-support layer",
 ];
 for (const snippet of requiredProductsSnippets) {
   assert.ok(productsHtml.includes(snippet), `products.html: missing snippet: ${snippet}`);
@@ -234,7 +235,7 @@ const requiredAuditSnippets = [
   "export_bundle",
   "Hosted audit cloud is not live yet",
   "Hash-chain events provide local tamper evidence, not notarized compliance storage",
-  "npm package publication is pending",
+  "npm install -g @certaworks/audit-replay-logger",
   'id="ar-betaForm"',
   'id="ar-beta-name"',
   'id="ar-beta-email"',
@@ -271,7 +272,7 @@ for (const p of ALL_PAGES) {
 // legitimately use these terms in negative context, e.g.:
 //   "No live checkout or SaaS availability"
 //   "Guarantee safety or prevent all harmful agent actions"
-//   "@certaworks/confidence-gate-mcp-server — publication is pending"
+//   "@certaworks/confidence-gate-mcp-server — published package name"
 // Checking top-level pages catches accidental positive claims in primary content.
 // The shared footer can include concise negative launch-status disclaimers.
 const unsafeClaimsTopPages = [
@@ -284,7 +285,8 @@ const unsafeClaimsTopPages = [
   /live\s+checkout/i,
   /payment\s+link/i,
   /\bnpm\s+publish\b/i,
-  /@certaworks\//i,
+  /publication\s+is\s+pending/i,
+  /pending\s+publication/i,
   /SOC\s*2\s+certif(?:ied|ication)/i,
   /HIPAA\s+certif(?:ied|ication)/i,
   /ISO\s+27001\s+certif(?:ied|ication)/i,
@@ -309,6 +311,9 @@ for (const p of TOP_PAGES) {
 const robotsTxt = read("robots.txt");
 assert.ok(robotsTxt.includes("User-agent: *"), "robots.txt: missing default user-agent");
 assert.ok(robotsTxt.includes("Allow: /"), "robots.txt: should allow crawling");
+assert.ok(robotsTxt.includes(`${SITE_ORIGIN}/llms.txt`), "robots.txt: should mention llms.txt");
+assert.ok(robotsTxt.includes(`${SITE_ORIGIN}/llms-full.txt`), "robots.txt: should mention llms-full.txt");
+assert.ok(robotsTxt.includes(`${SITE_ORIGIN}/products.json`), "robots.txt: should mention products.json");
 assert.ok(robotsTxt.includes(`Sitemap: ${SITE_ORIGIN}/sitemap.xml`), "robots.txt: sitemap URL must use certaworks.dev");
 assertNoStaleDomains(robotsTxt, "robots.txt");
 
@@ -319,11 +324,49 @@ const expectedSitemapUrls = [
   `${SITE_ORIGIN}/products`,
   `${SITE_ORIGIN}/dashboard`,
   ...PRODUCT_SLUGS.map((slug) => `${SITE_ORIGIN}/products/${slug}`),
+  `${SITE_ORIGIN}/about`,
+  `${SITE_ORIGIN}/contact`,
   `${SITE_ORIGIN}/privacy`,
 ];
 
 assert.deepEqual(sitemapUrls, expectedSitemapUrls, "sitemap.xml: URL inventory must match static public pages");
 assertNoStaleDomains(sitemapXml, "sitemap.xml");
+
+// ── 16. Agent-readable files ─────────────────────────────────────────────────
+
+const llmsTxt = read("llms.txt");
+const llmsFullTxt = read("llms-full.txt");
+const productsJsonText = read("products.json");
+const productsJson = JSON.parse(productsJsonText);
+
+for (const [name, content] of [
+  ["llms.txt", llmsTxt],
+  ["llms-full.txt", llmsFullTxt],
+  ["products.json", productsJsonText],
+]) {
+  assert.ok(content.includes(SITE_ORIGIN), `${name}: should use certaworks.dev URLs`);
+  assertNoStaleDomains(content, name);
+  assert.ok(!/publication\s+is\s+pending|pending\s+publication|not\s+publicly\s+published/i.test(content),
+    `${name}: should not describe npm publication as pending`);
+}
+
+assert.equal(productsJson.origin, SITE_ORIGIN, "products.json: origin must use certaworks.dev");
+assert.equal(productsJson.products.length, 10, "products.json: must list exactly 10 products");
+
+for (const slug of PRODUCT_SLUGS) {
+  const product = productsJson.products.find((item) => item.slug === slug);
+  assert.ok(product, `products.json: missing product slug: ${slug}`);
+  assert.equal(product.url, `${SITE_ORIGIN}/products/${slug}`, `products.json: wrong URL for ${slug}`);
+  assert.ok(product.npm_package.startsWith("@certaworks/"), `products.json: ${slug} must use @certaworks npm scope`);
+  assert.equal(product.npm_version, "0.1.0", `products.json: ${slug} npm version must be 0.1.0`);
+  assert.ok(product.install, `products.json: ${slug} missing install command`);
+  assert.ok(product.description, `products.json: ${slug} missing description`);
+}
+
+for (const name of PRODUCT_NAMES) {
+  assert.ok(productsJson.products.some((item) => item.name === name), `products.json: missing product name: ${name}`);
+  assert.ok(llmsFullTxt.includes(name), `llms-full.txt: missing product name: ${name}`);
+}
 
 // ── Done ──────────────────────────────────────────────────────────────────────
 

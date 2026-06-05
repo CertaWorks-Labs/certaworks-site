@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Agent-readable:
+# https://certaworks.dev/llms.txt
+# https://certaworks.dev/llms-full.txt
+# https://certaworks.dev/products.json
+
 Sitemap: https://certaworks.dev/sitemap.xml

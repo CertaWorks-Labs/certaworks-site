@@ -764,13 +764,14 @@
         <div class="reveal">
           <div class="code-block" id="gdInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">npm package</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="gdInstallCmd">Copy</button>
             </div>
-            <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/05-goal-drift-monitor
-npm install
-npm run build</code></pre>
+            <pre><code># Install locally for MCP config
+npm install @certaworks/goal-drift-monitor
+
+# Optional: install globally for direct CLI commands
+npm install -g @certaworks/goal-drift-monitor</code></pre>
           </div>
 
           <div class="code-block" id="gdCliExample">
@@ -803,14 +804,14 @@ goal-drift serve --port 4321</code></pre>
 
           <div class="code-block" id="gdMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Claude Desktop config</span>
+              <span class="code-block-label">Project-local Claude Desktop config</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="gdMcpConfig">Copy</button>
             </div>
             <pre><code>{
   "mcpServers": {
     "goal-drift-monitor": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/goal-drift-monitor"]
+      "command": "node",
+      "args": ["./node_modules/@certaworks/goal-drift-monitor/dist/mcp/server.js"]
     }
   }
 }</code></pre>

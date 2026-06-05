@@ -880,7 +880,7 @@
             <span class="code-block-label">TypeScript — record a state update to the journal</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="ieJournalCode">Copy</button>
           </div>
-          <pre><code>import { createIdentity, updateState, FileIdentityStore } from '@blair/identity-engine-sdk';
+          <pre><code>import { createIdentity, updateState, FileIdentityStore } from '@certaworks/identity-engine-sdk';
 
 const store = new FileIdentityStore('./.identity-store');
 
@@ -939,7 +939,7 @@ await store.appendJournal(next.core.id, entry);
             <span class="code-block-label">TypeScript — run a drift check</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="ieDriftCode">Copy</button>
           </div>
-          <pre><code>import { checkDrift, FileIdentityStore } from '@blair/identity-engine-sdk';
+          <pre><code>import { checkDrift, FileIdentityStore } from '@certaworks/identity-engine-sdk';
 
 const store = new FileIdentityStore('./.identity-store');
 const identity = await store.load('&lt;agent-uuid&gt;');
@@ -998,13 +998,10 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
         <div class="reveal">
           <div class="code-block" id="ieInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">npm package</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="ieInstallCmd">Copy</button>
             </div>
-            <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/01-identity-engine-sdk
-npm install
-npm run build</code></pre>
+            <pre><code>npm install @certaworks/identity-engine-sdk</code></pre>
           </div>
 
           <div class="code-block" id="ieImport">

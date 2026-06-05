@@ -999,7 +999,7 @@
 <span class="c-comment">//    meta = { durationMs, costUsd: 0 }</span>
 
 <span class="c-comment">// SDK: use your own runner for live agents</span>
-import { runSuite } from <span class="c-str">'@blair/agent-test-harness'</span>;
+import { runSuite } from <span class="c-str">'@certaworks/agent-test-harness'</span>;
 
 const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedToolCalls }) => {
   <span class="c-comment">// call your real agent or staging env here</span>
@@ -1072,8 +1072,7 @@ const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedTool
     <div class="section-inner">
       <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; CLI</h2>
       <p class="pdp-section-body">
-        Package source is at <code>@blair/agent-test-harness</code> (v0.1.0). Publication to a
-        available on npm as shown below.
+        Package source is published as <code>@certaworks/agent-test-harness</code> (v0.1.0) on npm as shown below.
         The CLI binary is <code>agent-test</code>.
       </p>
       <div class="install-pdp-inner">
@@ -1120,7 +1119,7 @@ import {
   loadFixtureFile,
   writeReports,
   formatSuiteReport
-} from <span class="c-str">'@blair/agent-test-harness'</span>;
+} from <span class="c-str">'@certaworks/agent-test-harness'</span>;
 
 <span class="c-comment">// Load a fixture file</span>
 const testCases = await loadFixtureFile(<span class="c-str">'suite.json'</span>);
@@ -1202,28 +1201,18 @@ await writeReports(suite, {
       <div class="reveal">
         <div class="code-block" id="installCmdATH">
           <div class="code-block-header">
-            <span class="code-block-label">Local source</span>
+            <span class="code-block-label">npm package</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdATH">Copy</button>
           </div>
-          <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/10-agent-test-harness
-npm install
-npm run build</code></pre>
+          <pre><code>npm install -g @certaworks/agent-test-harness</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigATH">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config</span>
+            <span class="code-block-label">CLI command</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mcpConfigATH">Copy</button>
           </div>
-          <pre><code>{
-  "mcpServers": {
-    "agent-test-harness": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/agent-test-harness"]
-    }
-  }
-}</code></pre>
+          <pre><code>npx -y @certaworks/agent-test-harness --help</code></pre>
         </div>
 
         <p class="copy-status" id="copyStatusATH" aria-live="polite" style="font-size:13px;color:var(--c-green);min-height:20px;margin-top:4px;"></p>

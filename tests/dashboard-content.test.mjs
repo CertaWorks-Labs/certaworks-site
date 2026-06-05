@@ -54,7 +54,7 @@ for (const snippet of requiredDashboardJsSnippets) {
 
 for (const html of [indexHtml, productsHtml]) {
   assert.ok(
-    html.includes('./dashboard.html">Dashboard</a>'),
+    html.includes('./dashboard">Dashboard</a>'),
     "Primary nav should link to the dashboard"
   );
 }

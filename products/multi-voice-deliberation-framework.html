@@ -617,13 +617,14 @@
         <div class="reveal">
           <div class="code-block" id="mvInstall">
             <div class="code-block-header">
-              <span class="code-block-label">Local source</span>
+              <span class="code-block-label">npm package</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mvInstall">Copy</button>
             </div>
-            <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/03-multi-voice-deliberation-framework
-npm install
-npm run build</code></pre>
+            <pre><code># Install locally for MCP config and SDK imports
+npm install @certaworks/multi-voice-deliberation-framework
+
+# Optional: install globally for direct CLI commands
+npm install -g @certaworks/multi-voice-deliberation-framework</code></pre>
           </div>
 
           <div class="code-block" id="mvQuickstart">
@@ -738,14 +739,14 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
 
         <div class="code-block reveal" id="mvMcpConfig" style="margin-top: 28px; max-width: 680px;">
           <div class="code-block-header">
-            <span class="code-block-label">Claude Desktop config</span>
+            <span class="code-block-label">Project-local Claude Desktop config</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="mvMcpConfig">Copy</button>
           </div>
           <pre><code>{
   "mcpServers": {
     "multi-voice-deliberation-framework": {
-      "command": "npx",
-      "args": ["-y", "@certaworks/multi-voice-deliberation-framework"]
+      "command": "node",
+      "args": ["./node_modules/@certaworks/multi-voice-deliberation-framework/dist/mcp/server.js"]
     }
   }
 }</code></pre>

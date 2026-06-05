@@ -1022,8 +1022,7 @@
     <div class="section-inner">
       <h2 class="pdp-section-headline" data-reveal="blur" id="install-h2">Install &amp; Configure</h2>
       <p class="pdp-section-body">
-        Package source is at <code>@blair/agent-skill-marketplace</code> (v0.1.0). Publication to
-        available on npm as shown below.
+        Package source is published as <code>@certaworks/agent-skill-marketplace-plugin</code> (v0.1.0) on npm as shown below.
       </p>
       <div class="install-pdp-inner">
 
@@ -1091,7 +1090,7 @@ import {
   findSkill,
   listInstalledSkills,
   loadedSkillIds
-} from <span class="c-str">'@blair/agent-skill-marketplace'</span>;</div>
+} from <span class="c-str">'@certaworks/agent-skill-marketplace-plugin'</span>;</div>
         </div>
         <div>
           <div class="install-block-label">Install &amp; run example</div>
@@ -1274,13 +1273,10 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
       <div class="reveal">
         <div class="code-block" id="installCmdASM">
           <div class="code-block-header">
-            <span class="code-block-label">Local source</span>
+            <span class="code-block-label">npm package</span>
             <button class="copy-btn copy-button" type="button" data-copy-target="installCmdASM">Copy</button>
           </div>
-          <pre><code># npm package publication is pending; use local source for now
-cd /Users/source/Desktop/CC/products/07-agent-skill-marketplace-plugin
-npm install
-npm run build</code></pre>
+          <pre><code>npm install -g @certaworks/agent-skill-marketplace-plugin</code></pre>
         </div>
 
         <div class="code-block" id="mcpConfigASM">
