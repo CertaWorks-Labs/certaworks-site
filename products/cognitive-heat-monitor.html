@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cognitive Heat Monitor — CertaWorks</title>
+  <meta name="description" content="Read-only internal-state telemetry for agents. Reads recent agent state and proposed text, scores six deterministic strain signals 0–1, and bands each quiet, watch, or elevated. Wave 2 — planned, not yet published.">
+  <link rel="canonical" href="https://certaworks.dev/products/cognitive-heat-monitor">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/cognitive-heat-monitor">
+  <meta property="og:title" content="Cognitive Heat Monitor — CertaWorks">
+  <meta property="og:description" content="A read-only internal-state sensor for agents: six deterministic strain signals banded quiet, watch, or elevated. Telemetry only — never blocks output. Wave 2 — planned.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cognitive Heat Monitor — CertaWorks">
+  <meta name="twitter:description" content="A read-only internal-state sensor for agents: six deterministic strain signals banded quiet, watch, or elevated. Telemetry only — never blocks output. Wave 2 — planned.">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cognitive Heat Monitor",
+    "url": "https://certaworks.dev/products/cognitive-heat-monitor",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Cognitive Heat Monitor provides read-only internal-state telemetry for agents: it reads recent agent state and proposed text, scores six deterministic strain signals from 0 to 1, and bands each quiet, watch, or elevated. Planned Wave 2 product — not yet published. Telemetry only — it never blocks output, revises answers, or calls a model.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* ── Product detail page extras ─────────────────── */
+
+    body { --spot-rgb: 245,158,11; }
+
+    /* Hero — amber heat glow */
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(245,158,11,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .pdp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 20px;
+    }
+    .pdp-h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .pdp-h1 .text-grad {
+      background: linear-gradient(120deg, #fbbf24 0%, #f59e0b 55%, #fb923c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .pdp-subhead {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 36px;
+    }
+    .pdp-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    /* Planned (Wave 2) status badge — amber, honest "not yet published" */
+    .pdp-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.28);
+      color: var(--c-amber);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--c-amber);
+      flex-shrink: 0;
+    }
+
+    /* ── Dark section base ─── */
+    .section-dark {
+      background: var(--c-dark);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Standard section on bg ─── */
+    .section .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Section headline (dark bg) ─── */
+    .pdp-section-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .pdp-section-body {
+      color: var(--c-dark-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── Problem section ─── */
+    .problem-body {
+      color: var(--c-dark-muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.75;
+      max-width: 720px;
+      margin-top: 24px;
+    }
+    .problem-body p + p { margin-top: 20px; }
+
+    /* ── How it works flow ─── */
+    .how-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-step {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 200ms, border-color 200ms;
+    }
+    .how-step:hover { transform: translateY(-2px); border-color: rgba(245,158,11,0.25); }
+    .how-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.25);
+      color: var(--c-amber);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .how-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+    }
+    .how-flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-dark-muted);
+      font-size: 22px;
+      padding: 0 4px;
+      align-self: center;
+    }
+    .how-caveat {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      color: var(--c-dark-muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    /* ── Heat signals model tables ─── */
+    .model-table-wrap { overflow-x: auto; margin-top: 28px; }
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .model-table th {
+      text-align: left;
+      padding: 10px 16px;
+      color: rgba(160,200,240,0.55);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-family: var(--font-sans, inherit);
+    }
+    .model-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--c-dark-muted);
+      vertical-align: top;
+    }
+    .model-table td:first-child {
+      font-family: var(--font-mono);
+      color: var(--c-dark-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .state-badge-running   { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(16,185,129,0.12); color: var(--c-green); }
+    .state-badge-completed { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(56,189,248,0.12); color: var(--c-teal); }
+    .state-badge-aborted   { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
+    /* Heat band chips */
+    .band-quiet    { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(16,185,129,0.12); color: var(--c-green); }
+    .band-watch    { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
+    .band-elevated { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(248,113,113,0.14); color: #f87171; }
+    .band-privacy  { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(160,200,240,0.10); color: rgba(160,200,240,0.7); }
+    .exp-tag { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.3); color: var(--c-amber); margin-left: 8px; vertical-align: middle; }
+    .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
+    .model-subhead { margin-top: 40px; margin-bottom: 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.5); }
+
+    /* ── Planned / roadmap callout ─── */
+    .planned-callout {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.22);
+      border-radius: 10px;
+    }
+    .planned-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 10px;
+    }
+    .planned-callout p {
+      font-size: 14px;
+      color: rgba(200,180,120,0.85);
+      line-height: 1.65;
+    }
+    .planned-callout p + p { margin-top: 12px; }
+
+    /* Experimental callout — amber, marks fixture-only candidate signals */
+    .exp-callout {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(245,158,11,0.06);
+      border: 1px dashed rgba(245,158,11,0.32);
+      border-radius: 10px;
+      max-width: 880px;
+    }
+    .exp-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 10px;
+    }
+    .exp-callout p {
+      font-size: 14px;
+      color: rgba(200,180,120,0.85);
+      line-height: 1.65;
+    }
+    .exp-callout p + p { margin-top: 12px; }
+
+    /* ── MCP tools grid ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(245,158,11,0.18); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #fbbf24; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
+    .tools-group-label:first-child { margin-top: 0; }
+
+    /* ── Limits section ─── */
+    .limits-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) {
+      .limits-cols { grid-template-columns: 1fr; }
+    }
+    .limits-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .limits-col-does   .limits-col-title { color: var(--c-green); }
+    .limits-col-doesnt .limits-col-title { color: var(--c-amber); }
+    .limits-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .limits-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--c-dark-line);
+      font-size: 14px;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-icon-does   { color: var(--c-green); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-icon-doesnt { color: var(--c-amber);  flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-list li span { color: var(--c-dark-muted); }
+
+    /* ── Beta form (dark context) ─── */
+    .beta-section-dark {
+      background: var(--c-dark-2);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .beta-section-dark .beta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .beta-section-dark .beta-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .beta-heading-dark {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .beta-desc-dark {
+      font-size: 15px;
+      color: var(--c-dark-muted);
+      line-height: 1.65;
+    }
+
+    /* Reveal animation (shared with main site) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Breadcrumb ─── */
+    .breadcrumb { padding: 18px clamp(20px,4vw,60px) 0; position: relative; z-index: 2; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .breadcrumb-list li { color: rgba(160,200,240,0.45); }
+    .breadcrumb-list li a { color: rgba(160,200,240,0.55); text-decoration: none; transition: color 200ms; }
+    .breadcrumb-list li a:hover { color: var(--c-dark-text); }
+    .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
+
+    /* ── Responsive nav tweak on subpage ─── */
+    @media (max-width: 600px) {
+      .pdp-hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Hero number watermark ─── */
+    .pdp-hero-num-bg {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-60%);
+      font-size: clamp(180px, 25vw, 320px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 0;
+    }
+
+    /* ── In-page subnav ─── */
+    .pdp-subnav {
+      background: rgba(5, 12, 24, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+    .pdp-subnav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pdp-subnav-inner::-webkit-scrollbar { display: none; }
+    .pdp-subnav-link {
+      display: inline-block;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(160,200,240,0.55);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 200ms, border-color 200ms;
+    }
+    .pdp-subnav-link:hover {
+      color: rgba(230,240,255,0.9);
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    /* ── Next/Prev product bar ─── */
+    .pdp-next-bar {
+      background: var(--c-dark-2);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pdp-next-back {
+      font-size: 13px;
+      color: rgba(160,200,240,0.45);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .pdp-next-back:hover { color: rgba(160,200,240,0.8); }
+    .pdp-next-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-decoration: none;
+      gap: 4px;
+    }
+    .pdp-next-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(160,200,240,0.4);
+    }
+    .pdp-next-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--c-dark-text);
+      transition: color 200ms;
+    }
+    .pdp-next-link:hover .pdp-next-name { color: var(--c-amber); }
+
+    /* ── Lineage note ─── */
+    .lineage-note {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(56,189,248,0.05);
+      border: 1px solid rgba(56,189,248,0.18);
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+      max-width: 820px;
+    }
+    .lineage-note strong { color: var(--c-teal); font-weight: 700; }
+
+    /* ── Related cards ─── */
+    .related-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 36px; }
+    .related-card { padding: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; text-decoration: none; transition: background 200ms, border-color 200ms; }
+    .related-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(245,158,11,0.3); }
+    .related-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.45); margin-bottom: 8px; }
+    .related-card-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .related-card-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.55; }
+    .related-card-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--c-amber); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../products" class="active" aria-current="page">Products</a></li>
+          <li><a href="../dashboard">Dashboard</a></li>
+          <li><a href="../about">About</a></li>
+          <li><a href="../contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="../contact" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── BREADCRUMB ────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="background: var(--c-dark);">
+      <ol class="breadcrumb-list">
+        <li><a href="../products">Products</a></li>
+        <li aria-current="page">Cognitive Heat Monitor</li>
+      </ol>
+    </nav>
+
+    <!-- ── HERO ──────────────────────────────────── -->
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
+      <div class="pdp-hero-num-bg" aria-hidden="true">13</div>
+      <div class="pdp-hero-inner">
+        <p class="pdp-eyebrow">Product 13 · SDK / MCP / Local API · Wave 2</p>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Cognitive Heat Monitor</span></h1>
+        <p class="pdp-subhead">
+          A read-only internal-state sensor for agents. It reads recent agent state and proposed
+          text, scores a fixed set of strain signals from 0 to 1, and reports each as quiet, watch,
+          or elevated — before output quality visibly degrades. Telemetry only: it never blocks
+          output, revises answers, or calls a model.
+        </p>
+        <div class="pdp-hero-ctas">
+          <a href="#how-it-works" class="btn btn-primary btn-sm">How It Works →</a>
+          <a href="#install" class="btn btn-ghost btn-sm">Planned Interface</a>
+        </div>
+        <div class="pdp-status-badge">
+          Wave 2 — Planned · Not yet published on npm
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Prev/Next (top) ─────────── -->
+    <div class="pdp-next-bar">
+      <a href="recovery-assessment-engine" class="pdp-next-back">← Product 12: Recovery Assessment Engine</a>
+      <a href="contradiction-detector" class="pdp-next-link">
+        <span class="pdp-next-label">Next: Product 14 · Wave 2</span>
+        <span class="pdp-next-name">Contradiction Detector →</span>
+      </a>
+    </div>
+
+    <!-- ── IN-PAGE NAV ─────────────────────────────────── -->
+    <nav class="pdp-subnav" aria-label="Page sections">
+      <div class="pdp-subnav-inner">
+        <a href="#problem" class="pdp-subnav-link">Problem</a>
+        <a href="#how-it-works" class="pdp-subnav-link">How It Works</a>
+        <a href="#model" class="pdp-subnav-link">Heat Signals</a>
+        <a href="#tools" class="pdp-subnav-link">MCP Tools</a>
+        <a href="#install" class="pdp-subnav-link">Interface</a>
+        <a href="#limits" class="pdp-subnav-link">Scope</a>
+        <a href="#beta" class="pdp-subnav-link">Wave 2 Access</a>
+      </div>
+    </nav>
+
+    <!-- ── THE PROBLEM ───────────────────────────── -->
+    <section class="section-dark" id="problem" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">The Problem</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">Agents have no internal-state signal.</h2>
+        <div class="problem-body reveal">
+          <p>
+            A confidence score rates an <em>answer</em>; a drift monitor rates a <em>trajectory</em>.
+            Neither measures the agent's own activation or strain in the moment — the rising
+            vagueness, the stalled momentum, the certainty that has outrun its evidence. By the time
+            those show up as a wrong answer, the strain that produced them has already passed
+            unrecorded.
+          </p>
+          <p>
+            Most agent runtimes expose token counts and latency, but nothing that approximates an
+            interoceptive signal — a measure of load or pressure that could indicate overload,
+            fixation, or rising risk while there is still time to slow down. Operators see the
+            degraded output, not the band that was climbing toward
+            <code style="font-size:14px;color:#f87171">elevated</code> three turns earlier.
+          </p>
+          <p>
+            Cognitive Heat Monitor adds that lane. It is deliberately passive: it reads recent
+            witness/heat state and optional text and returns deterministic telemetry. It does
+            <strong style="color:var(--c-dark-text)">not</strong> claim to measure consciousness or
+            feeling, and it does not block anything. It surfaces a small, named set of pressure
+            signals so a human or a downstream gate can decide what to do.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────── -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">How It Works</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Read → Score → Band</h2>
+
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">1</div>
+            <div class="how-step-title">Agent requests a reading</div>
+            <p class="how-step-desc">
+              Your agent calls <code style="font-size:12px;color:#fbbf24">get_heat_reading</code>
+              with an optional <code style="font-size:12px">session_id</code> and the text under
+              consideration. The monitor pulls the latest witness packet and recent heat events for
+              that session — it does not need you to pre-compute anything. If the session's
+              <code style="font-size:12px">privacy_mode</code> is on, it short-circuits and computes
+              no signals.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">2</div>
+            <div class="how-step-title">The sensor scores six signals</div>
+            <p class="how-step-desc">
+              For each signal it combines pattern matches in the text (vague phrasing, reversal
+              language, strong certainty terms) with structured state (claim types, evidence status,
+              recursion round index, recent heat components) into a deterministic 0–1 score, then
+              assigns a band: <span class="band-quiet">quiet</span> (&lt; 0.34),
+              <span class="band-watch">watch</span> (0.34–0.66), or
+              <span class="band-elevated">elevated</span> (≥ 0.67). The overall score is the maximum
+              across signals.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">3</div>
+            <div class="how-step-title">Returns banded telemetry with evidence</div>
+            <p class="how-step-desc">
+              The reading lists each signal with its score, band, short evidence strings, and a
+              one-line note, plus an overall band and a reference to the source rows. Optionally call
+              <code style="font-size:12px;color:#fbbf24">log_heat_event</code> to persist a
+              structured event for later back-tracing via
+              <code style="font-size:12px;color:#fbbf24">query_heat_events</code>.
+            </p>
+          </article>
+        </div>
+
+        <div class="how-caveat reveal">
+          Cognitive Heat Monitor is a decision-support layer. It reports read-only internal-state
+          telemetry; it does not block output, revise answers, certify recovery, or replace human
+          judgment. The scores are deterministic heuristics — strain telemetry, not a feeling and
+          not a safety guarantee.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HEAT SIGNALS MODEL ──────────────────────── -->
+    <section class="section" id="model" aria-labelledby="model-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Heat Signals</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="model-title">Six signals, three bands</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The sensor ships six <strong style="color:var(--c-dark-text)">live signals</strong>
+          (<code style="font-family:var(--font-mono);font-size:13px">chs.v0.1</code>). Each is scored
+          0–1 deterministically and banded. Scoring blends text pattern matches (regex) with
+          structured witness/heat state; the overall reading is the maximum signal score.
+        </p>
+
+        <div class="model-subhead reveal">Bands</div>
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Heat bands and thresholds">
+            <thead>
+              <tr><th>Band</th><th>Score range</th><th>Meaning</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="band-quiet">quiet</span></td>
+                <td>&lt; 0.34</td>
+                <td>No notable strain on this signal.</td>
+              </tr>
+              <tr>
+                <td><span class="band-watch">watch</span></td>
+                <td>0.34 – 0.66</td>
+                <td>Pressure is present and worth noting; not yet acute.</td>
+              </tr>
+              <tr>
+                <td><span class="band-elevated">elevated</span></td>
+                <td>≥ 0.67</td>
+                <td>Strain is high on this signal; a human or downstream gate should look.</td>
+              </tr>
+              <tr>
+                <td><span class="band-privacy">privacy</span></td>
+                <td>n/a</td>
+                <td>Returned for the overall band when the agent's <code style="font-family:var(--font-mono);font-size:12px">privacy_mode</code> is on; no signals are computed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model-subhead reveal">Live signals <span style="font-weight:600;text-transform:none;letter-spacing:0;color:rgba(160,200,240,0.4)">— deterministic, read-only</span></div>
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Live heat signals">
+            <thead>
+              <tr><th>Signal</th><th>What raises it</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>vagueness_pressure</td>
+                <td>Vague phrasing ("kind of", "maybe", "stuff", "unclear") plus a recent heat event tagged with the vagueness component. Pressure rises when language loses concrete anchors.</td>
+              </tr>
+              <tr>
+                <td>momentum_disruption</td>
+                <td>Reversal/interruption language ("wait", "actually", "however", "stop", "redirect") and recent interventions that paused, redirected, or stopped output. Rises when a response appears to halt or reverse course.</td>
+              </tr>
+              <tr>
+                <td>source_claim_risk</td>
+                <td>Claims that files, PDFs, articles, or sources were read/covered, paired with witness <code style="font-family:var(--font-mono);font-size:12px">source_confusion</code> findings. Rises around unverified source-coverage claims.</td>
+              </tr>
+              <tr>
+                <td>unsupported_certainty</td>
+                <td>Strong certainty language ("confirmed", "definitely", "never", "proved") when evidence is <code style="font-family:var(--font-mono);font-size:12px">UNSEARCHED</code>, <code style="font-family:var(--font-mono);font-size:12px">ABSENT</code>, <code style="font-family:var(--font-mono);font-size:12px">PARTIAL_EVIDENCE</code>, or <code style="font-family:var(--font-mono);font-size:12px">INFERRED</code>, or when witness flags an overclaim / unsupported denial. Rises when confidence exceeds attached receipt status.</td>
+              </tr>
+              <tr>
+                <td>recursion_drift</td>
+                <td>Recursive witness rounds above index 0, "no new receipt" / "configured round cap" stop reasons, and closed loops with a stop reason. Rises when repeated rounds stop adding new grounding.</td>
+              </tr>
+              <tr>
+                <td>visual_provenance_risk</td>
+                <td>Image-generation/editing claims ("generated image", "edited image", "Image 2") and <code style="font-family:var(--font-mono);font-size:12px">visual_provenance_gap</code> findings, without visual receipts.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="model-note reveal">
+          Privacy short-circuit: when <code style="font-family:var(--font-mono);font-size:12px">privacy_mode</code>
+          is on for a session, the sensor returns an overall <span class="band-privacy">privacy</span>
+          band and computes none of the six signals.
+        </p>
+
+        <div class="model-subhead reveal" style="color:var(--c-amber)">Candidate signals <span class="exp-tag">Experimental · fixture-only</span></div>
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Candidate (experimental) signals">
+            <thead>
+              <tr><th>Candidate signal</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Momentum Stutter <span style="font-family:var(--font-mono);font-size:11px;color:rgba(160,200,240,0.5)">(CANDIDATE_STUTTER)</span></td>
+                <td>Candidate definition with fixture-backed evaluation only. Tagged <code style="font-family:var(--font-mono);font-size:12px">[CANDIDATE_SIGNAL]</code> / <code style="font-family:var(--font-mono);font-size:12px">[ABSENT]</code>; live monitoring disallowed.</td>
+              </tr>
+              <tr>
+                <td>Ontological Drift <span style="font-family:var(--font-mono);font-size:11px;color:rgba(160,200,240,0.5)">(CANDIDATE_DRIFT)</span></td>
+                <td>Candidate definition with fixture-backed evaluation only. Reported as <code style="font-family:var(--font-mono);font-size:12px">hypothetical</code>; fixture success does not prove the phenomenon exists.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="exp-callout reveal">
+          <div class="exp-callout-label">Experimental — not live telemetry</div>
+          <p>
+            <strong style="color:var(--c-amber)">Momentum Stutter</strong> and
+            <strong style="color:var(--c-amber)">Ontological Drift</strong> are exposed only as
+            candidate definitions and fixture-backed evaluation. The source explicitly marks them
+            <code style="font-family:var(--font-mono);font-size:12px">candidate_only_not_live_telemetry</code>
+            with <code style="font-family:var(--font-mono);font-size:12px">evidence_strength: fixture_only</code>,
+            and live monitoring is disallowed. A passive-observation lane can run the candidate
+            classifier over bounded historical rows, but every result is tagged
+            <code style="font-family:var(--font-mono);font-size:12px">[CANDIDATE_SIGNAL]</code> /
+            <code style="font-family:var(--font-mono);font-size:12px">[ABSENT]</code> and the
+            phenomenon is reported as hypothetical. These are clearly-labeled experimental signals,
+            not core readings — fixture success does not prove the phenomena exist.
+          </p>
+        </div>
+
+        <div class="lineage-note reveal">
+          <strong>Lineage note.</strong> The six live signals, the bands, the event store, and the
+          privacy mode are real and read-only in the originating agent today (Cognitive Heat Sensor
+          <code style="font-family:var(--font-mono);font-size:12px">chs.v0.1</code>). The Momentum
+          Stutter / Ontological Drift "interoceptive" metrics are explicitly fixture-only candidates
+          — the originating agent does not claim they exist in live cognition, and this product does not either.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MCP TOOLS ────────────────────────────── -->
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Planned MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The proposed MCP surface below is derived from the routes in the originating agent's
+          <code style="font-family:var(--font-mono);font-size:13px">cognitive_heat.py</code> and
+          <code style="font-family:var(--font-mono);font-size:13px">interoceptive_state.py</code>.
+          Names are the planned product interface for the Wave 2 package and may change before first
+          publish.
+        </p>
+
+        <div class="tools-grid reveal" data-stagger>
+
+          <div class="tools-group-label">Readings</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_heat_reading</div>
+            <div class="tool-desc">Read-only sensor reading: six banded signals plus overall band, from recent state and optional text. <code style="font-size:12px">GET /api/cognitive_heat/sensor</code></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">classify_heat_boundary</div>
+            <div class="tool-desc">Classify a snippet of text into its boundary domain. <code style="font-size:12px">GET /api/cognitive_heat/classify</code></div>
+          </div>
+
+          <div class="tools-group-label">Event History</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">log_heat_event</div>
+            <div class="tool-desc">Persist a structured heat event (trigger context, signal components, risk level, intervention taken, output completed) with an event id and receipt reference. <code style="font-size:12px">POST /api/cognitive_heat/</code></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">query_heat_events</div>
+            <div class="tool-desc">Query persisted events by id, time window, signal component, session, or simulation flag; live events only by default, no causal inference. <code style="font-size:12px">GET /api/cognitive_heat/events</code></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_heat_events</div>
+            <div class="tool-desc">List recent events filtered by session, boundary domain, or follow-through flags. <code style="font-size:12px">GET /api/cognitive_heat</code></div>
+          </div>
+
+          <div class="tools-group-label">Candidate / Passive (experimental)</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">observe_candidate_signals</div>
+            <div class="tool-desc"><span class="exp-tag" style="margin-left:0;margin-bottom:6px;display:inline-block">Experimental</span><br>Run the fixture-backed candidate classifier over bounded historical rows; classifier output only, tagged <code style="font-size:12px">[CANDIDATE_SIGNAL]</code> / <code style="font-size:12px">[ABSENT]</code>. <code style="font-size:12px">GET /api/cognitive_heat/passive-observation</code></div>
+          </div>
+
+          <div class="tools-group-label">Interoceptive Inspection</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_interoceptive_states</div>
+            <div class="tool-desc">Read-only inspection of recorded interoceptive states by capture point, flow quality, sensitivity mode, or load level. <code style="font-size:12px">GET /api/interoceptive/states</code></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PLANNED INTERFACE / STATUS ────────────── -->
+    <section class="install-pdp" id="install" aria-labelledby="install-title">
+      <div class="install-pdp-inner">
+
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Planned</span>
+          </div>
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
+            Planned local interface
+          </h2>
+          <p class="install-pdp-subhead">
+            Cognitive Heat Monitor is a CertaWorks Wave 2 product. It is currently in design and
+            <strong>not yet published</strong> on npm. The commands below show the planned local
+            interface — an SDK, an MCP server, and a local HTTP API, consistent with the rest of the
+            suite — so you can see exactly what it will expose.
+          </p>
+          <p class="install-pdp-subhead">
+            Want to be notified when the Wave 2 package ships, or help shape the interface? Use the
+            <a href="#beta" style="color:var(--c-amber);text-decoration:none;font-weight:600;">Wave 2 access</a>
+            form below.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="planned-callout" style="margin-bottom:20px;">
+            <div class="planned-callout-label">Status — not currently published</div>
+            <p>
+              The package <code style="font-family:var(--font-mono);font-size:12px">@certaworks/cognitive-heat-monitor</code>
+              is a planned name. The snippets below are illustrative of the intended interface and
+              will not install until the Wave 2 package is released.
+            </p>
+          </div>
+
+          <div class="code-block" id="chInstallCmd">
+            <div class="code-block-header">
+              <span class="code-block-label">Planned npm package</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="chInstallCmd">Copy</button>
+            </div>
+            <pre><code># Planned — not yet published
+npm install -g @certaworks/cognitive-heat-monitor</code></pre>
+          </div>
+
+          <div class="code-block" id="chMcpConfig">
+            <div class="code-block-header">
+              <span class="code-block-label">Planned Claude Desktop config</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="chMcpConfig">Copy</button>
+            </div>
+            <pre><code>{
+  "mcpServers": {
+    "cognitive-heat-monitor": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/cognitive-heat-monitor"]
+    }
+  }
+}</code></pre>
+          </div>
+
+          <p class="copy-status" id="ch-copyStatus" aria-live="polite" style="font-size:13px;color:var(--c-amber);min-height:20px;margin-top:4px;"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CURRENT LIMITS / SCOPE ────────────────── -->
+    <section class="section-dark" id="limits" aria-labelledby="limits-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">Scope</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
+          What Cognitive Heat Monitor does and does not do
+        </h2>
+
+        <div class="limits-cols reveal" data-stagger>
+          <div class="limits-col-does">
+            <div class="limits-col-title">Does</div>
+            <ul class="limits-list" aria-label="Capabilities">
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Read recent agent/witness state and optional text and return six banded strain signals</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Score each signal 0–1 deterministically and band it <span class="band-quiet">quiet</span> / <span class="band-watch">watch</span> / <span class="band-elevated">elevated</span></span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Persist structured heat events and retrieve them later without inferring cause</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Honor a <code style="font-family:var(--font-mono);font-size:12px">privacy_mode</code> that returns no signals</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Provide local MCP server, SDK, and local HTTP API surfaces</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="limits-col-doesnt">
+            <div class="limits-col-title">Does Not</div>
+            <ul class="limits-list" aria-label="Not in scope">
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Block, revise, or hold agent output</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Call a model provider, start workers, or dispatch webhooks as part of a reading</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Claim to measure consciousness, feeling, or that candidate phenomena exist</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Replace human judgment, the Confidence Gate, or production controls</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Provide hosted storage, team accounts, or managed alerting (roadmap)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Related ───────────────────────────── -->
+    <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
+      <div class="section-inner">
+        <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
+        <div class="related-strip" data-stagger role="list">
+          <a href="confidence-gate-mcp-server" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 02</div>
+            <div class="related-card-name">Confidence Gate</div>
+            <p class="related-card-desc">An <code style="font-size:12px;color:#f87171">elevated</code> heat band is a natural pre-action risk input. The gate decides allow / review / block; heat says how strained the agent was when it proposed.</p>
+            <span class="related-card-link">View Confidence Gate →</span>
+          </a>
+          <a href="goal-drift-monitor" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 05</div>
+            <div class="related-card-name">Goal Drift Monitor</div>
+            <p class="related-card-desc">Drift watches the trajectory across turns; heat watches strain within a turn. Together they give per-turn and per-session signals.</p>
+            <span class="related-card-link">View Goal Drift Monitor →</span>
+          </a>
+          <a href="contradiction-detector" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 14 · Wave 2 — in design</div>
+            <div class="related-card-name">Contradiction Detector</div>
+            <p class="related-card-desc">Rising <code style="font-size:12px;color:var(--c-amber)">unsupported_certainty</code> often precedes a belief that conflicts with stored memory — heat is a cue to run a contradiction scan.</p>
+            <span class="related-card-link">View Contradiction Detector →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAVE 2 ACCESS / BETA INTEREST ─────────── -->
+    <section class="beta-section-dark" id="beta" aria-labelledby="ch-beta-title">
+      <div class="beta-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Wave 2 Access</span>
+          </div>
+          <h2 class="beta-heading-dark" data-reveal="up" id="ch-beta-title">
+            Get notified when Cognitive Heat Monitor ships
+          </h2>
+          <p class="beta-desc-dark">
+            Cognitive Heat Monitor is in design as part of CertaWorks Wave 2 — a second set of tools
+            productized from a working cognitive agent. Leave your details and we'll reach out when
+            the package is published, or sooner if you'd like to help shape the read-only telemetry
+            interface.
+          </p>
+        </div>
+
+        <form class="beta-form reveal" id="ch-betaForm" aria-label="Wave 2 access signup form" novalidate method="POST" action="https://formspree.io/f/xkoekajl">
+          <input type="hidden" name="_subject" value="Cognitive Heat Monitor (Wave 2) Interest — CertaWorks">
+          <input type="hidden" name="_next" value="https://certaworks.dev/thanks">
+          <div class="form-field">
+            <label class="form-label" for="ch-beta-name">Name</label>
+            <input class="form-input" id="ch-beta-name" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ch-beta-email">Email</label>
+            <input class="form-input" id="ch-beta-email" name="email" type="email"
+              autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ch-beta-company">Company or project</label>
+            <input class="form-input" id="ch-beta-company" name="project"
+              autocomplete="organization" placeholder="Acme Corp">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="ch-beta-usage">What kind of agent would you read internal-state telemetry from?</label>
+            <textarea class="form-input form-textarea" id="ch-beta-usage" name="usage"
+              rows="3" placeholder="Long-running loops, tool-using agents, recursion-heavy reasoning…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Request Wave 2 Access →</button>
+          <p class="form-status" id="ch-formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <div class="pdp-next-bar">
+      <a href="recovery-assessment-engine" class="pdp-next-back">← Product 12: Recovery Assessment Engine</a>
+      <a href="contradiction-detector" class="pdp-next-link">
+        <span class="pdp-next-label">Next: Product 14 · Wave 2</span>
+        <span class="pdp-next-name">Contradiction Detector →</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server">Confidence Gate</a></li>
+          <li><a href="agent-cost-router">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness">Agent Test Harness</a></li>
+          <li><a href="../products">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../about">About</a></li>
+          <li><a href="../contact">Contact</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No live checkout or SaaS availability</li>
+          <li><a href="../privacy">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>

@@ -1979,6 +1979,96 @@ ul { list-style: none; margin: 0; padding: 0; }
     linear-gradient(135deg, #1E3A8A 0%, #DC2626 100%);
 }
 
+.mark-heartbeat {
+  background:
+    linear-gradient(90deg, transparent 18%, rgba(255,255,255,0.85) 19% 21%, transparent 22% 38%, rgba(255,255,255,0.85) 39% 41%, transparent 42% 46%, rgba(255,255,255,0.85) 47% 53%, transparent 54% 58%, rgba(255,255,255,0.85) 59% 61%, transparent 62% 80%, rgba(255,255,255,0.85) 81% 83%, transparent 84%),
+    linear-gradient(135deg, #065F46 0%, #10B981 100%);
+}
+
+.mark-recovery {
+  background:
+    linear-gradient(135deg, transparent 42%, rgba(255,255,255,0.85) 43% 47%, transparent 48%),
+    linear-gradient(45deg, transparent 42%, rgba(255,255,255,0.5) 43% 47%, transparent 48%),
+    radial-gradient(circle at 50% 50%, transparent 30%, rgba(255,255,255,0.18) 31% 38%, transparent 39%),
+    linear-gradient(135deg, #0F766E 0%, #38BDF8 100%);
+}
+
+.mark-cognitive-heat {
+  background:
+    radial-gradient(circle at 50% 64%, rgba(255,255,255,0.85) 0 11%, transparent 12%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0 22%, transparent 23%),
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,0.18) 0 32%, transparent 33%),
+    linear-gradient(135deg, #92400E 0%, #F59E0B 100%);
+}
+
+.mark-contradiction {
+  background:
+    linear-gradient(45deg, transparent 44%, rgba(255,255,255,0.85) 45% 49%, transparent 50%),
+    linear-gradient(135deg, transparent 44%, rgba(255,255,255,0.85) 45% 49%, transparent 50%),
+    linear-gradient(135deg, #7F1D1D 0%, #DC2626 100%);
+}
+
+.mark-witness {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9) 0 9%, transparent 10%),
+    radial-gradient(ellipse 42% 26% at 50% 50%, transparent 56%, rgba(255,255,255,0.55) 57% 64%, transparent 65%),
+    linear-gradient(135deg, #3730A3 0%, #6366F1 100%);
+}
+
+.mark-receipt {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 6px, rgba(255,255,255,0.55) 7px 9px, transparent 10px 17px),
+    linear-gradient(90deg, transparent 24%, rgba(255,255,255,0.7) 25% 30%, transparent 31% 70%, rgba(255,255,255,0.7) 71% 76%, transparent 77%),
+    linear-gradient(135deg, #0F766E 0%, #14B8A6 100%);
+}
+
+.mark-regulation {
+  background:
+    linear-gradient(0deg, transparent 46%, rgba(255,255,255,0.7) 47% 53%, transparent 54%),
+    radial-gradient(circle at 50% 50%, transparent 28%, rgba(255,255,255,0.6) 29% 35%, transparent 36%),
+    radial-gradient(circle at 50% 50%, transparent 46%, rgba(255,255,255,0.25) 47% 53%, transparent 54%),
+    linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+}
+
+.mark-curiosity {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9) 0 8%, transparent 9%),
+    conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,0.5) 0 8%, transparent 8% 25%, rgba(255,255,255,0.5) 25% 33%, transparent 33% 50%, rgba(255,255,255,0.5) 50% 58%, transparent 58% 75%, rgba(255,255,255,0.5) 75% 83%, transparent 83%),
+    linear-gradient(135deg, #6B21A8 0%, #A855F7 100%);
+}
+
+.mark-triad {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,0.85) 0 8%, transparent 9%),
+    radial-gradient(circle at 32% 68%, rgba(255,255,255,0.85) 0 8%, transparent 9%),
+    radial-gradient(circle at 68% 68%, rgba(255,255,255,0.85) 0 8%, transparent 9%),
+    linear-gradient(135deg, #0E7490 0%, #06B6D4 100%);
+}
+
+.mark-plugin {
+  background:
+    linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.7) 31% 38%, transparent 39% 61%, rgba(255,255,255,0.7) 62% 69%, transparent 70%),
+    linear-gradient(0deg, transparent 40%, rgba(255,255,255,0.5) 41% 59%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.85) 0 14%, transparent 15%),
+    linear-gradient(135deg, #5B21B6 0%, #7C3AED 100%);
+}
+
+.mark-webhook {
+  background:
+    radial-gradient(circle at 30% 50%, rgba(255,255,255,0.85) 0 9%, transparent 10%),
+    linear-gradient(90deg, transparent 38%, rgba(255,255,255,0.6) 39% 44%, transparent 45%),
+    radial-gradient(circle at 70% 50%, transparent 30%, rgba(255,255,255,0.4) 31% 38%, transparent 39%),
+    linear-gradient(135deg, #9A3412 0%, #F97316 100%);
+}
+
+.mark-maintenance {
+  background:
+    linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.75) 41% 46%, transparent 47%),
+    linear-gradient(45deg, transparent 54%, rgba(255,255,255,0.5) 55% 60%, transparent 61%),
+    radial-gradient(circle at 50% 50%, transparent 24%, rgba(255,255,255,0.5) 25% 30%, transparent 31%),
+    linear-gradient(135deg, #166534 0%, #22C55E 100%);
+}
+
 /* ══════════════════════════════════════════════════
    REVEAL ANIMATIONS
    ══════════════════════════════════════════════════ */
@@ -3651,8 +3741,8 @@ body::after {
 .spotlight:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 0 0 1px rgba(16,185,129,0.30),
-    0 14px 44px rgba(16,185,129,0.13),
+    0 0 0 1px rgba(var(--spot-rgb, 16,185,129),0.30),
+    0 14px 44px rgba(var(--spot-rgb, 16,185,129),0.13),
     0 4px 14px rgba(0,0,0,0.18);
 }
 
@@ -3661,16 +3751,18 @@ body::after {
   transition: box-shadow 300ms var(--ease-smooth);
 }
 .hairline-top:hover {
-  box-shadow: inset 0 1px 0 0 rgba(14,207,145,0.65);
+  box-shadow: inset 0 1px 0 0 rgba(var(--spot-rgb, 14,207,145),0.65);
 }
 
-/* Combined (both classes) — single multi-shadow wins via higher specificity */
+/* Combined (both classes) — single multi-shadow wins via higher specificity.
+   --spot-rgb lets a page (e.g. a Wave 2 product) tint the hover ring/glow to
+   its own accent. Defaults to the brand green so Wave 1 + home are unchanged. */
 .spotlight.hairline-top:hover {
   transform: translateY(-3px);
   box-shadow:
-    inset 0 1px 0 0 rgba(14,207,145,0.65),
-    0 0 0 1px rgba(16,185,129,0.30),
-    0 14px 44px rgba(16,185,129,0.13),
+    inset 0 1px 0 0 rgba(var(--spot-rgb, 14,207,145),0.65),
+    0 0 0 1px rgba(var(--spot-rgb, 16,185,129),0.30),
+    0 14px 44px rgba(var(--spot-rgb, 16,185,129),0.13),
     0 4px 14px rgba(0,0,0,0.18);
 }
 
@@ -3683,6 +3775,16 @@ textarea:focus-visible,
   outline: 2px solid rgba(16,185,129,0.7);
   outline-offset: 2px;
   border-radius: 6px;
+}
+
+/* Product MCP-tool cards: keep long snake_case tool names and inline <code>
+   from spilling past the card border in narrow grid columns. */
+.tools-grid .tool-card { min-width: 0; }
+.tools-grid .tool-name,
+.tools-grid .tool-desc,
+.tools-grid .tool-desc code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Refined text-gradient utility for signature headlines */

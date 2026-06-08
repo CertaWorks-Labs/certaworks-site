@@ -34,6 +34,7 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 99,102,241; }
 
     /* Hero — navy/Trust Blue glow */
     .pdp-hero {
@@ -63,7 +64,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #7da4e8;
+      color: #6366F1;
       margin-bottom: 20px;
     }
     .pdp-h1 {
@@ -168,9 +169,9 @@
       justify-content: center;
       width: 36px; height: 36px;
       border-radius: 8px;
-      background: rgba(30,58,138,0.18);
-      border: 1px solid rgba(30,58,138,0.35);
-      color: #7da4e8;
+      background: rgba(99,102,241,0.18);
+      border: 1px solid rgba(99,102,241,0.35);
+      color: #6366F1;
       font-size: 14px;
       font-weight: 800;
       margin-bottom: 18px;
@@ -232,7 +233,7 @@
     }
     .model-table td:first-child {
       font-family: var(--font-mono);
-      color: #7da4e8;
+      color: #6366F1;
       font-weight: 600;
     }
 
@@ -262,8 +263,8 @@
     /* ── SDK API tools grid — navy hover ─── */
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
     .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
-    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(30,58,138,0.3); }
-    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #7da4e8; font-weight: 600; margin-bottom: 6px; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(99,102,241,0.3); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #6366F1; font-weight: 600; margin-bottom: 6px; }
     .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
     .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
     .tools-group-label:first-child { margin-top: 0; }
@@ -322,7 +323,7 @@
     }
     .related-card:hover {
       background: rgba(255,255,255,0.06);
-      border-color: rgba(30,58,138,0.3);
+      border-color: rgba(99,102,241,0.3);
     }
     .related-card-label {
       font-size: 11px;
@@ -347,7 +348,7 @@
       display: inline-block;
       margin-top: 14px;
       font-size: 13px;
-      color: #7da4e8;
+      color: #6366F1;
       font-weight: 600;
     }
 
@@ -401,7 +402,7 @@
     .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
 
     /* ── Inline accent for code references ─── */
-    code.ie { font-family: var(--font-mono); font-size: 12px; color: #7da4e8; }
+    code.ie { font-family: var(--font-mono); font-size: 12px; color: #6366F1; }
 
     /* ── Responsive nav tweak on subpage ─── */
     @media (max-width: 600px) {
@@ -417,7 +418,7 @@
     }
     .journal-type-card {
       background: var(--c-dark-2);
-      border: 1px solid rgba(30,58,138,0.18);
+      border: 1px solid rgba(99,102,241,0.18);
       border-radius: 10px;
       padding: 20px;
     }
@@ -426,7 +427,7 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.06em;
-      color: #7da4e8;
+      color: #6366F1;
       margin-bottom: 8px;
     }
     .journal-type-desc {
@@ -439,8 +440,8 @@
     .drift-note {
       margin-top: 28px;
       padding: 20px 24px;
-      background: rgba(30,58,138,0.07);
-      border: 1px solid rgba(30,58,138,0.22);
+      background: rgba(99,102,241,0.07);
+      border: 1px solid rgba(99,102,241,0.22);
       border-radius: 10px;
     }
     .drift-note-label {
@@ -448,7 +449,7 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #7da4e8;
+      color: #6366F1;
       margin-bottom: 10px;
     }
     .drift-note p {
@@ -555,7 +556,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #6366F1; }
   </style>
 </head>
 <body>
@@ -674,7 +675,7 @@
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">How It Works</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">How It Works</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Initialize → Record → Check drift</h2>
 
@@ -739,11 +740,11 @@
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Identity Model</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Identity Model</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="identity-model-title">Two structures: immutable core and mutable state</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The SDK defines two interfaces from <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">src/identity.ts</code>.
+          The SDK defines two interfaces from <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">src/identity.ts</code>.
           Fields listed below are the exact source fields — nothing is invented.
         </p>
 
@@ -843,12 +844,12 @@
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Journal &amp; State Events</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Journal &amp; State Events</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="journal-title">Append-only history of every meaningful event</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           Every SDK operation that changes state or runs a drift check returns a
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">JournalEntry</code> with four fields:
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">JournalEntry</code> with four fields:
           <code class="ie">seq</code> (entry sequence number, equal to the current version),
           <code class="ie">timestamp</code> (ISO 8601), <code class="ie">type</code> (one of four
           event types below), and <code class="ie">payload</code> (structured data specific to
@@ -910,11 +911,11 @@ await store.appendJournal(next.core.id, entry);
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Drift Checks</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Drift Checks</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="drift-title">Deterministic lexical alignment — no LLM required</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          Drift detection compares the agent's <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">purpose</code> string against a caller-supplied
+          Drift detection compares the agent's <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">purpose</code> string against a caller-supplied
           description of recent behavior. Both strings are tokenized by lowercasing, stripping
           punctuation, splitting on whitespace, removing tokens shorter than 3 characters, and
           removing a fixed stopword list. The alignment score is the number of shared tokens
@@ -971,26 +972,26 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
 
         <div class="reveal">
           <div class="section-label dark">
-            <span class="eyebrow" style="color:#7da4e8;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">SDK Install</span>
+            <span class="eyebrow" style="color:#6366F1;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">SDK Install</span>
           </div>
           <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
             TypeScript SDK, local file-backed store
           </h2>
           <p class="install-pdp-subhead">
             Identity Engine SDK ships as a Node / TypeScript package. Import
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">createIdentity</code>,
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">updateState</code>,
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">checkDrift</code>,
-            and <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">FileIdentityStore</code>
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">createIdentity</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">updateState</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">checkDrift</code>,
+            and <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">FileIdentityStore</code>
             directly from the package. The storage adapter writes per-identity
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">.json</code>
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">.json</code>
             state files and append-only
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">.journal.jsonl</code>
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">.journal.jsonl</code>
             files to a local directory.
           </p>
           <p class="install-pdp-subhead">
             Install the package from npm as
-            <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">@certaworks/identity-engine-sdk</code>.
+            <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">@certaworks/identity-engine-sdk</code>.
           </p>
           <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/identity-engine-sdk" target="_blank" rel="noopener">View on npm →</a>
         </div>
@@ -1021,7 +1022,7 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
           </div>
 
           <p class="copy-status" id="ie-copyStatus" aria-live="polite"
-            style="font-size:13px;color:#7da4e8;min-height:20px;margin-top:4px;"></p>
+            style="font-size:13px;color:#6366F1;min-height:20px;margin-top:4px;"></p>
         </div>
 
       </div>
@@ -1032,14 +1033,14 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">SDK API</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">SDK API</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="api-title">Exported functions and class</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           All public exports are defined in
-          <code style="font-family:var(--font-mono);font-size:14px;color:#7da4e8">src/identity.ts</code>
+          <code style="font-family:var(--font-mono);font-size:14px;color:#6366F1">src/identity.ts</code>
           and re-exported from
-          <code style="font-family:var(--font-mono);font-size:14px;color:#7da4e8">src/index.ts</code>.
+          <code style="font-family:var(--font-mono);font-size:14px;color:#6366F1">src/index.ts</code>.
           Names below are exact — no aliases or undocumented exports exist in the current build.
         </p>
 
@@ -1096,27 +1097,27 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Local Storage</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Local Storage</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="storage-title">File-backed local store, one directory per agent</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">FileIdentityStore</code>
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">FileIdentityStore</code>
           takes a directory path in its constructor. For each identity, it writes two files:
-          a JSON state file at <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">&lt;dir&gt;/&lt;uuid&gt;.json</code>
-          (the full <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">IdentityState</code> object, pretty-printed)
+          a JSON state file at <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">&lt;dir&gt;/&lt;uuid&gt;.json</code>
+          (the full <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">IdentityState</code> object, pretty-printed)
           and an append-only journal at
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">&lt;dir&gt;/&lt;uuid&gt;.journal.jsonl</code>
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">&lt;dir&gt;/&lt;uuid&gt;.journal.jsonl</code>
           (one JSON object per line). The directory is created automatically on first save or
           append if it does not exist.
         </p>
         <p class="pdp-section-body reveal" style="margin-top: 12px;">
-          There is no in-memory-only mode in this version — <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">FileIdentityStore</code>
+          There is no in-memory-only mode in this version — <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">FileIdentityStore</code>
           always reads and writes disk files. The SDK does not currently ship an in-memory or
           database-backed store adapter, but the constructor pattern is easy to extend by
-          implementing the same <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">save</code> /
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">load</code> /
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">appendJournal</code> /
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">readJournal</code> interface.
+          implementing the same <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">save</code> /
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">load</code> /
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">appendJournal</code> /
+          <code style="font-family:var(--font-mono);font-size:13px;color:#6366F1">readJournal</code> interface.
         </p>
 
         <div class="code-block reveal" style="max-width:560px;margin-top:24px;" id="ieStoreFormat">
@@ -1231,7 +1232,7 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Related Products</span>
+          <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Related Products</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="related-title">Stronger together</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
@@ -1273,7 +1274,7 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
       <div class="beta-inner">
         <div class="reveal">
           <div class="section-label dark">
-            <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7da4e8;">Early Access</span>
+            <span class="eyebrow" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6366F1;">Early Access</span>
           </div>
           <h2 class="beta-heading-dark" data-reveal="up" id="ie-beta-title">
             Get early access to Identity Engine SDK

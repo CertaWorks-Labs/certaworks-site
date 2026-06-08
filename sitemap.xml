@@ -66,6 +66,66 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://certaworks.dev/products/heartbeat-continuity-mcp-server</loc>
+    <lastmod>2026-06-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/recovery-assessment-engine</loc>
+    <lastmod>2026-06-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/cognitive-heat-monitor</loc>
+    <lastmod>2026-06-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/contradiction-detector</loc>
+    <lastmod>2026-06-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/high-fidelity-witness-mcp-server</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/receipt-discovery-layer</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/agentic-regulation-engine</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/curiosity-protocol-controller</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/triad-protocol-framework</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/plugin-runtime</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/webhook-event-dormancy-manager</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://certaworks.dev/products/agent-maintenance-protocol</loc>
+    <lastmod>2026-06-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://certaworks.dev/about</loc>
     <lastmod>2026-05-28</lastmod>
     <priority>0.7</priority>

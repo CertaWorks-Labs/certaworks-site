@@ -34,6 +34,7 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 37,99,235; }
 
     /* Hero */
     .pdp-hero {
@@ -63,7 +64,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--c-green);
+      color: #2563EB;
       margin-bottom: 20px;
     }
     .pdp-h1 {
@@ -172,9 +173,9 @@
       justify-content: center;
       width: 36px; height: 36px;
       border-radius: 8px;
-      background: rgba(30,58,138,0.18);
-      border: 1px solid rgba(30,58,138,0.35);
-      color: #7da4e8;
+      background: rgba(37,99,235,0.18);
+      border: 1px solid rgba(37,99,235,0.35);
+      color: #2563EB;
       font-size: 14px;
       font-weight: 800;
       margin-bottom: 18px;
@@ -239,7 +240,7 @@
       font-weight: 600;
     }
     .tier-nano    { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(16,185,129,0.12); color: var(--c-green); }
-    .tier-std     { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(99,102,241,0.12); color: #a5b4fc; }
+    .tier-std     { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(37,99,235,0.12); color: #2563EB; }
     .tier-adv     { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
     .model-cost-green { color: var(--c-green); font-family: var(--font-mono); }
     .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
@@ -266,8 +267,8 @@
     }
     .budget-cheapest { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.18); }
     .budget-cheapest::before { background: var(--c-green); }
-    .budget-balanced { background: rgba(99,102,241,0.06); border-color: rgba(99,102,241,0.2); }
-    .budget-balanced::before { background: #818cf8; }
+    .budget-balanced { background: rgba(37,99,235,0.06); border-color: rgba(37,99,235,0.2); }
+    .budget-balanced::before { background: #2563EB; }
     .budget-performance { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.2); }
     .budget-performance::before { background: var(--c-amber); }
 
@@ -283,11 +284,11 @@
     }
     .budget-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
     .budget-dot-green  { background: var(--c-green); }
-    .budget-dot-violet { background: #818cf8; }
+    .budget-dot-violet { background: #2563EB; }
     .budget-dot-amber  { background: var(--c-amber); }
 
     .budget-label-cheapest    { color: var(--c-green); }
-    .budget-label-balanced    { color: #a5b4fc; }
+    .budget-label-balanced    { color: #2563EB; }
     .budget-label-performance { color: var(--c-amber); }
 
     .budget-desc {
@@ -322,7 +323,7 @@
       margin-top: 20px;
       font-size: 14px;
       font-weight: 600;
-      color: var(--c-teal);
+      color: #2563EB;
       text-decoration: none;
     }
     .dashboard-link:hover { text-decoration: underline; }
@@ -330,8 +331,8 @@
     /* ── MCP tools grid ─── */
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
     .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
-    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(30,58,138,0.35); }
-    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #7da4e8; font-weight: 600; margin-bottom: 6px; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(37,99,235,0.35); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #2563EB; font-weight: 600; margin-bottom: 6px; }
     .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
     .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
     .tools-group-label:first-child { margin-top: 0; }
@@ -516,7 +517,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #2563EB; }
 
     /* ── Force all sections to dark background ─── */
     .section-light {
@@ -640,7 +641,7 @@
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">How It Works</span>
+          <span class="eyebrow" style="color:#2563EB;">How It Works</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Classify → Route → Log</h2>
 
@@ -651,11 +652,11 @@
             <p class="how-step-desc">
               The classifier reads the prompt and assigns a complexity tier —
               <strong style="color:var(--c-green)">nano</strong>,
-              <strong style="color:#a5b4fc">standard</strong>, or
+              <strong style="color:#2563EB">standard</strong>, or
               <strong style="color:var(--c-amber)">advanced</strong> —
               based on length, token estimate, reasoning signals, and caller-supplied constraints like
-              <code style="font-size:12px;color:#7da4e8">requiresTools</code> or
-              <code style="font-size:12px;color:#7da4e8">minContextWindow</code>.
+              <code style="font-size:12px;color:#2563EB">requiresTools</code> or
+              <code style="font-size:12px;color:#2563EB">minContextWindow</code>.
             </p>
           </article>
 
@@ -667,7 +668,7 @@
             <p class="how-step-desc">
               The router filters the model catalog by tier, provider constraints, tool and vision
               support, context window, and budget cap. The selected
-              <code style="font-size:12px;color:#7da4e8">budget_mode</code> —
+              <code style="font-size:12px;color:#2563EB">budget_mode</code> —
               <em>cheapest</em>, <em>balanced</em>, or <em>performance</em> —
               controls how the winner is chosen from the filtered set.
             </p>
@@ -699,13 +700,13 @@
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">Static Catalog</span>
+          <span class="eyebrow" style="color:#2563EB;">Static Catalog</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="models-title">Built-in model catalog</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The router ships with a static catalog of known models. Additional models can be synced
-          live from OpenRouter with the <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">sync_models</code> tool or
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">agent-cost-router models sync</code> CLI command.
+          live from OpenRouter with the <code style="font-family:var(--font-mono);font-size:13px;color:#2563EB">sync_models</code> tool or
+          <code style="font-family:var(--font-mono);font-size:13px;color:#2563EB">agent-cost-router models sync</code> CLI command.
         </p>
 
         <div class="model-table-wrap reveal">
@@ -776,11 +777,11 @@
     <section class="section-dark" id="budget-modes" aria-labelledby="modes-title">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">Routing Policy</span>
+          <span class="eyebrow" style="color:#2563EB;">Routing Policy</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="modes-title">Three budget modes. One consistent interface.</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          Every route call takes a <code style="font-family:var(--font-mono);font-size:14px;color:#7da4e8">budget_mode</code>.
+          Every route call takes a <code style="font-family:var(--font-mono);font-size:14px;color:#2563EB">budget_mode</code>.
           The classifier determines the minimum capable tier. The budget mode controls how the winner
           is selected from that tier and above.
         </p>
@@ -915,7 +916,7 @@ agent-cost-router serve --port 4317</code></pre>
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+          <span class="eyebrow" style="color:#2563EB;">MCP Interface</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
@@ -970,7 +971,7 @@ agent-cost-router serve --port 4317</code></pre>
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">Dashboard &amp; History</span>
+          <span class="eyebrow" style="color:#2563EB;">Dashboard &amp; History</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
@@ -980,7 +981,7 @@ agent-cost-router serve --port 4317</code></pre>
         </p>
         <p class="pdp-section-body reveal" style="margin-top: 12px;">
           Route history is persisted to
-          <code style="font-family:var(--font-mono);font-size:13px;color:#7da4e8">~/.agent-cost-router-history.json</code>
+          <code style="font-family:var(--font-mono);font-size:13px;color:#2563EB">~/.agent-cost-router-history.json</code>
           by default. The store records sanitized prompt previews, SHA-256 prompt hashes, model,
           tier, complexity, estimated and actual cost, savings, and alternatives considered.
           Full prompts are never stored.

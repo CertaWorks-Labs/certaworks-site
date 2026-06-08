@@ -34,8 +34,9 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 99,102,241; }
 
-    /* Hero — amber glow for forensic/inspection theme */
+    /* Hero — indigo glow for forensic/inspection theme */
     .pdp-hero {
       background: var(--c-dark);
       padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
@@ -48,7 +49,7 @@
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(245,158,11,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(99,102,241,0.10) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -138,7 +139,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #6366F1; }
     /* Force install-pdp to dark */
     .install-pdp { background: var(--c-dark) !important; }
     .pdp-hero-inner {
@@ -151,7 +152,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 20px;
     }
     .pdp-h1 {
@@ -182,9 +183,9 @@
       gap: 8px;
       padding: 8px 16px;
       border-radius: 999px;
-      background: rgba(249,115,22,0.10);
-      border: 1px solid rgba(251,146,60,0.28);
-      color: #fb923c;
+      background: rgba(99,102,241,0.10);
+      border: 1px solid rgba(99,102,241,0.28);
+      color: #6366F1;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -193,14 +194,14 @@
       content: '';
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: #fb923c;
+      background: #6366F1;
       flex-shrink: 0;
     }
 
     /* ── Inference clarity banner ─── */
     .inference-banner {
-      background: rgba(249,115,22,0.08);
-      border: 1px solid rgba(251,146,60,0.22);
+      background: rgba(99,102,241,0.08);
+      border: 1px solid rgba(99,102,241,0.22);
       border-radius: 10px;
       padding: 16px 20px;
       display: flex;
@@ -219,7 +220,7 @@
       line-height: 1.6;
     }
     .inference-banner-text strong {
-      color: #fb923c;
+      color: #6366F1;
     }
 
     /* ── Dark section base ─── */
@@ -286,9 +287,9 @@
       justify-content: center;
       width: 36px; height: 36px;
       border-radius: 8px;
-      background: rgba(249,115,22,0.14);
-      border: 1px solid rgba(251,146,60,0.28);
-      color: #fb923c;
+      background: rgba(99,102,241,0.14);
+      border: 1px solid rgba(99,102,241,0.28);
+      color: #6366F1;
       font-size: 14px;
       font-weight: 800;
       margin-bottom: 18px;
@@ -324,14 +325,14 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, #f97316, #fb923c);
+      background: linear-gradient(90deg, #4F46E5, #6366F1);
       border-radius: 12px 12px 0 0;
     }
     .probe-cat-name {
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 13px;
       font-weight: 700;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 8px;
     }
     .probe-cat-title {
@@ -354,9 +355,9 @@
     .probe-id-chip {
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 11px;
-      background: rgba(249,115,22,0.10);
-      color: #fdba74;
-      border: 1px solid rgba(251,146,60,0.2);
+      background: rgba(99,102,241,0.10);
+      color: #A5B4FC;
+      border: 1px solid rgba(99,102,241,0.2);
       border-radius: 4px;
       padding: 2px 8px;
     }
@@ -374,7 +375,7 @@
     }
     .confidence-table th {
       background: var(--c-dark-2);
-      color: #fb923c;
+      color: #6366F1;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -396,8 +397,8 @@
     .conf-low    { color: #f87171; font-weight: 700; }
     .confidence-table code {
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
-      background: rgba(249,115,22,0.10);
-      color: #fb923c;
+      background: rgba(99,102,241,0.10);
+      color: #6366F1;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 12px;
@@ -420,7 +421,7 @@
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 14px;
       font-weight: 700;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 10px;
     }
     .report-format-desc {
@@ -440,7 +441,7 @@
     }
     .report-format-section::before {
       content: '→ ';
-      color: #fb923c;
+      color: #6366F1;
     }
 
     /* ── Install section ─── */
@@ -459,7 +460,7 @@
       font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 14px;
     }
     .install-code-block {
@@ -475,7 +476,7 @@
       overflow-x: auto;
     }
     .install-code-block .c-comment { color: #64748b; }
-    .install-code-block .c-key     { color: #fb923c; }
+    .install-code-block .c-key     { color: #6366F1; }
     .install-code-block .c-val     { color: #86efac; }
     .install-code-block .c-str     { color: #fde68a; }
     .install-code-copy {
@@ -490,8 +491,8 @@
       transition: border-color 0.2s, color 0.2s;
     }
     .install-code-copy:hover {
-      border-color: #fb923c;
-      color: #fb923c;
+      border-color: #6366F1;
+      color: #6366F1;
     }
 
     /* ── MCP tools grid ─── */
@@ -511,7 +512,7 @@
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 14px;
       font-weight: 700;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 10px;
     }
     .tool-card-desc {
@@ -528,11 +529,11 @@
     .tool-param {
       font-size: 11px;
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
-      background: rgba(249,115,22,0.10);
-      color: #fdba74;
+      background: rgba(99,102,241,0.10);
+      color: #A5B4FC;
       border-radius: 4px;
       padding: 2px 7px;
-      border: 1px solid rgba(251,146,60,0.2);
+      border: 1px solid rgba(99,102,241,0.2);
     }
     .tool-param-opt {
       font-size: 11px;
@@ -557,7 +558,7 @@
     }
     .api-table th {
       background: var(--c-dark-2);
-      color: #fb923c;
+      color: #6366F1;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -581,7 +582,7 @@
       border-radius: 4px;
     }
     .api-method-get  { background: rgba(74,222,128,0.12); color: #4ade80; }
-    .api-method-post { background: rgba(251,146,60,0.12); color: #fb923c; }
+    .api-method-post { background: rgba(99,102,241,0.12); color: #6366F1; }
     .api-path {
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 13px;
@@ -591,7 +592,7 @@
     /* ── Dashboard callout ─── */
     .dashboard-callout {
       background: var(--c-dark-2);
-      border: 1px solid rgba(249,115,22,0.22);
+      border: 1px solid rgba(99,102,241,0.22);
       border-radius: 14px;
       padding: 40px 36px;
       margin-top: 40px;
@@ -616,7 +617,7 @@
       padding: 16px 20px;
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 13px;
-      color: #fb923c;
+      color: #6366F1;
     }
 
     /* ── Scope — does / does not ─── */
@@ -680,13 +681,13 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .related-card:hover {
-      border-color: #fb923c;
+      border-color: #6366F1;
       transform: translateY(-2px);
     }
     .related-card-num {
       font-size: 11px;
       font-weight: 700;
-      color: #fb923c;
+      color: #6366F1;
       letter-spacing: 0.06em;
       margin-bottom: 6px;
     }
@@ -718,7 +719,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #fb923c;
+      color: #6366F1;
       margin-bottom: 16px;
     }
     .beta-headline {
@@ -750,10 +751,10 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .beta-form input:focus { border-color: #fb923c; }
+    .beta-form input:focus { border-color: #6366F1; }
     .beta-form input::placeholder { color: #475569; }
     .beta-form button {
-      background: #f97316;
+      background: #4F46E5;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -763,10 +764,10 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .beta-form button:hover { background: #ea580c; }
+    .beta-form button:hover { background: #4338CA; }
     .beta-form-status {
       font-size: 14px;
-      color: #fb923c;
+      color: #6366F1;
       min-height: 20px;
       text-align: center;
     }
@@ -790,9 +791,9 @@
       color: var(--c-dark-muted);
       text-decoration: none;
     }
-    .breadcrumb-inner a:hover { color: #fb923c; }
+    .breadcrumb-inner a:hover { color: #6366F1; }
     .breadcrumb-sep { opacity: 0.4; }
-    .breadcrumb-current { color: #fb923c; }
+    .breadcrumb-current { color: #6366F1; }
   </style>
 </head>
 <body>
@@ -1169,7 +1170,7 @@
         <div>
           <div class="install-block-label">Build &amp; run locally</div>
           <div class="install-code-block" id="pa-codeBlock1"><span class="c-comment"># Clone &amp; build</span>
-git clone https://github.com/blair/prompt-archaeology-tool
+git clone https://github.com/CertaWorks-Labs/prompt-archaeology-tool
 cd prompt-archaeology-tool
 npm install &amp;&amp; npm run build
 
@@ -1188,7 +1189,7 @@ prompt-archaeology \
   --text-out report.md</div>
           <button class="install-code-copy" onclick="
             navigator.clipboard.writeText(
-              'git clone https://github.com/blair/prompt-archaeology-tool\ncd prompt-archaeology-tool\nnpm install && npm run build\nnpm run mcp'
+              'git clone https://github.com/CertaWorks-Labs/prompt-archaeology-tool\ncd prompt-archaeology-tool\nnpm install && npm run build\nnpm run mcp'
             ).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})
           ">Copy</button>
         </div>
@@ -1464,7 +1465,7 @@ prompt-archaeology --help</div>
         <div class="dashboard-store-path">PROMPT_ARCHAEOLOGY_STORE_PATH=/path/to/runs.json
 PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
         <div style="margin-top:16px; font-size:14px; color:var(--c-dark-muted);">
-          Store schema: <code style="color:#fb923c; background:rgba(249,115,22,0.1); padding:2px 7px; border-radius:4px; font-size:12px;">{ "version": 1, "runs": [ ...ProbeBatchRun ] }</code>
+          Store schema: <code style="color:#6366F1; background:rgba(99,102,241,0.1); padding:2px 7px; border-radius:4px; font-size:12px;">{ "version": 1, "runs": [ ...ProbeBatchRun ] }</code>
           — newest runs first. Runs include the full report, all probe results, evidence, and errors.
         </div>
       </div>

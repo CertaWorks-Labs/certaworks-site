@@ -34,8 +34,9 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 45,212,191; }
 
-    /* Hero — green glow for marketplace theme */
+    /* Hero — teal glow for marketplace theme */
     .pdp-hero {
       background: var(--c-dark);
       padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
@@ -48,7 +49,7 @@
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(16,185,129,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(45,212,191,0.10) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -138,7 +139,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #2DD4BF; }
     .pdp-hero-inner {
       max-width: 900px;
       margin: 0 auto;
@@ -149,7 +150,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #22d3ee;
+      color: #2DD4BF;
       margin-bottom: 20px;
     }
     .pdp-h1 {
@@ -180,9 +181,9 @@
       gap: 8px;
       padding: 8px 16px;
       border-radius: 999px;
-      background: rgba(6,182,212,0.1);
-      border: 1px solid rgba(6,182,212,0.28);
-      color: #22d3ee;
+      background: rgba(45,212,191,0.1);
+      border: 1px solid rgba(45,212,191,0.28);
+      color: #2DD4BF;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -191,7 +192,7 @@
       content: '';
       width: 7px; height: 7px;
       border-radius: 50%;
-      background: #22d3ee;
+      background: #2DD4BF;
       flex-shrink: 0;
     }
 
@@ -261,9 +262,9 @@
       justify-content: center;
       width: 36px; height: 36px;
       border-radius: 8px;
-      background: rgba(6,182,212,0.15);
-      border: 1px solid rgba(34,211,238,0.3);
-      color: #22d3ee;
+      background: rgba(45,212,191,0.15);
+      border: 1px solid rgba(45,212,191,0.3);
+      color: #2DD4BF;
       font-size: 14px;
       font-weight: 800;
       margin-bottom: 18px;
@@ -293,7 +294,7 @@
     }
     .manifest-table th {
       background: var(--c-dark-2);
-      color: #22d3ee;
+      color: #2DD4BF;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -312,8 +313,8 @@
     .manifest-table tr:last-child td { border-bottom: none; }
     .manifest-table code {
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
-      background: rgba(6,182,212,0.1);
-      color: #22d3ee;
+      background: rgba(45,212,191,0.1);
+      color: #2DD4BF;
       padding: 2px 7px;
       border-radius: 4px;
       font-size: 12px;
@@ -348,7 +349,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, #06b6d4, #22d3ee);
+      background: linear-gradient(90deg, #14B8A6, #2DD4BF);
       border-radius: 10px 10px 0 0;
     }
     .builtin-tag {
@@ -356,9 +357,9 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #22d3ee;
-      background: rgba(6,182,212,0.12);
-      border: 1px solid rgba(34,211,238,0.22);
+      color: #2DD4BF;
+      background: rgba(45,212,191,0.12);
+      border: 1px solid rgba(45,212,191,0.22);
       border-radius: 4px;
       padding: 3px 8px;
       display: inline-block;
@@ -427,7 +428,7 @@
       font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      color: #22d3ee;
+      color: #2DD4BF;
       margin-bottom: 14px;
     }
     .install-code-block {
@@ -443,7 +444,7 @@
       overflow-x: auto;
     }
     .install-code-block .c-comment { color: #64748b; }
-    .install-code-block .c-key     { color: #22d3ee; }
+    .install-code-block .c-key     { color: #2DD4BF; }
     .install-code-block .c-val     { color: #86efac; }
     .install-code-block .c-str     { color: #fde68a; }
     .install-code-copy {
@@ -458,8 +459,8 @@
       transition: border-color 0.2s, color 0.2s;
     }
     .install-code-copy:hover {
-      border-color: #22d3ee;
-      color: #22d3ee;
+      border-color: #2DD4BF;
+      color: #2DD4BF;
     }
 
     /* ── MCP tools grid ─── */
@@ -479,7 +480,7 @@
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 14px;
       font-weight: 700;
-      color: #22d3ee;
+      color: #2DD4BF;
       margin-bottom: 10px;
     }
     .tool-card-desc {
@@ -496,11 +497,11 @@
     .tool-param {
       font-size: 11px;
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
-      background: rgba(6,182,212,0.1);
-      color: #a5f3fc;
+      background: rgba(45,212,191,0.1);
+      color: #99F6E4;
       border-radius: 4px;
       padding: 2px 7px;
-      border: 1px solid rgba(34,211,238,0.18);
+      border: 1px solid rgba(45,212,191,0.18);
     }
     .tool-param-opt {
       font-size: 11px;
@@ -515,7 +516,7 @@
     /* ── Dashboard callout ─── */
     .dashboard-callout {
       background: var(--c-dark-2);
-      border: 1px solid rgba(6,182,212,0.22);
+      border: 1px solid rgba(45,212,191,0.22);
       border-radius: 14px;
       padding: 40px 36px;
       margin-top: 40px;
@@ -540,7 +541,7 @@
       padding: 16px 20px;
       font-family: 'Fira Code', 'Cascadia Code', 'Menlo', monospace;
       font-size: 13px;
-      color: #22d3ee;
+      color: #2DD4BF;
     }
 
     /* ── Scope — does / does not ─── */
@@ -604,13 +605,13 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .related-card:hover {
-      border-color: #22d3ee;
+      border-color: #2DD4BF;
       transform: translateY(-2px);
     }
     .related-card-num {
       font-size: 11px;
       font-weight: 700;
-      color: #22d3ee;
+      color: #2DD4BF;
       letter-spacing: 0.06em;
       margin-bottom: 6px;
     }
@@ -642,7 +643,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #22d3ee;
+      color: #2DD4BF;
       margin-bottom: 16px;
     }
     .beta-headline {
@@ -674,10 +675,10 @@
       outline: none;
       transition: border-color 0.2s;
     }
-    .beta-form input:focus { border-color: #22d3ee; }
+    .beta-form input:focus { border-color: #2DD4BF; }
     .beta-form input::placeholder { color: #475569; }
     .beta-form button {
-      background: #06b6d4;
+      background: #14B8A6;
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -687,10 +688,10 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .beta-form button:hover { background: #0891b2; }
+    .beta-form button:hover { background: #0D9488; }
     .beta-form-status {
       font-size: 14px;
-      color: #22d3ee;
+      color: #2DD4BF;
       min-height: 20px;
       text-align: center;
     }
@@ -714,9 +715,9 @@
       color: var(--c-dark-muted);
       text-decoration: none;
     }
-    .breadcrumb-inner a:hover { color: #22d3ee; }
+    .breadcrumb-inner a:hover { color: #2DD4BF; }
     .breadcrumb-sep { opacity: 0.4; }
-    .breadcrumb-current { color: #22d3ee; }
+    .breadcrumb-current { color: #2DD4BF; }
   </style>
 </head>
 <body>
@@ -1029,7 +1030,7 @@
         <div>
           <div class="install-block-label">Build &amp; run locally</div>
           <div class="install-code-block" id="sm-codeBlock1"><span class="c-comment"># Clone &amp; build</span>
-git clone https://github.com/blair/agent-skill-marketplace-plugin
+git clone https://github.com/CertaWorks-Labs/agent-skill-marketplace-plugin
 cd agent-skill-marketplace-plugin
 npm install &amp;&amp; npm run build
 
@@ -1040,7 +1041,7 @@ npm run mcp
 agent-skill-marketplace-mcp</div>
           <button class="install-code-copy" onclick="
             navigator.clipboard.writeText(
-              'git clone https://github.com/blair/agent-skill-marketplace-plugin\ncd agent-skill-marketplace-plugin\nnpm install && npm run build\nnpm run mcp'
+              'git clone https://github.com/CertaWorks-Labs/agent-skill-marketplace-plugin\ncd agent-skill-marketplace-plugin\nnpm install && npm run build\nnpm run mcp'
             ).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})
           ">Copy</button>
         </div>
@@ -1211,7 +1212,7 @@ const result = await runSkill(
         <div class="dashboard-store-path">AGENT_SKILL_MARKETPLACE_STORE_PATH=/path/to/installed-skills.json
 AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
         <div style="margin-top:16px; font-size:14px; color:var(--c-dark-muted);">
-          Store schema: <code style="color:#22d3ee; background:rgba(6,182,212,0.1); padding:2px 7px; border-radius:4px; font-size:12px;">{ "version": 1, "installed": [ ...InstalledSkillRecord ] }</code>
+          Store schema: <code style="color:#2DD4BF; background:rgba(45,212,191,0.1); padding:2px 7px; border-radius:4px; font-size:12px;">{ "version": 1, "installed": [ ...InstalledSkillRecord ] }</code>
           — manifests are validated on every read.
         </div>
       </div>
@@ -1256,7 +1257,7 @@ AGENT_SKILL_MARKETPLACE_STORE=/path/to/installed-skills.json</div>
 
       <div class="reveal">
         <div class="section-label dark">
-          <span class="eyebrow eyebrow-green">Local Install</span>
+          <span class="eyebrow eyebrow-teal">Local Install</span>
         </div>
         <h2 class="install-pdp-heading" data-reveal="up" id="install-npx-title">
           Run it locally in under 5 minutes

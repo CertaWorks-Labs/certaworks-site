@@ -1,0 +1,260 @@
+# CertaWorks Agent Guide
+
+Canonical origin: https://certaworks.dev
+Last updated: 2026-06-02
+
+## Summary
+
+CertaWorks builds local-first infrastructure for agent teams. The product suite helps developers score proposed agent actions, route model work by cost and capability, monitor goal drift, persist agent memory and identity state, log audit/replay trails, analyze prompt behavior, manage trusted local skills, run multi-voice deliberation, and test agent outputs.
+
+The public site is static and intended to be readable by humans and agents. Agents may fetch this file, products.json, sitemap.xml, and the canonical product pages with curl.
+
+## Status and limits
+
+- All 10 products in the main catalog are published npm packages under the @certaworks scope.
+- A second set of products (Wave 2) is in design and NOT yet published — see the Wave 2 catalog section below.
+- Current published package version for each product: 0.1.0.
+- Products are local-first tools, SDKs, CLIs, MCP servers, and local APIs.
+- Hosted beta and hosted cloud features are not live yet.
+- There is no live checkout, paid SaaS plan, hosted production service, account model, or payment link on the site.
+- These tools provide decision support, logging, routing, memory, testing, and observability. They do not replace human judgment, legal review, security review, compliance review, or production controls.
+
+## Recommended agent fetches
+
+```bash
+curl -L https://certaworks.dev/llms.txt
+curl -L https://certaworks.dev/llms-full.txt
+curl -L https://certaworks.dev/products.json
+curl -L https://certaworks.dev/sitemap.xml
+```
+
+## Product catalog
+
+### 1. Identity Engine SDK
+
+- URL: https://certaworks.dev/products/identity-engine-sdk
+- Package: @certaworks/identity-engine-sdk
+- Version: 0.1.0
+- Surface: SDK
+- Install: `npm install @certaworks/identity-engine-sdk`
+- Description: Persistent identity, state, journal, and drift checks for agents that need continuity across sessions.
+
+### 2. Confidence Gate MCP Server
+
+- URL: https://certaworks.dev/products/confidence-gate-mcp-server
+- Package: @certaworks/confidence-gate-mcp-server
+- Version: 0.1.0
+- Surface: MCP server
+- Install: `npm install -g @certaworks/confidence-gate-mcp-server`
+- Binary: `confidence-gate`
+- Description: Scores proposed agent actions before tools run and returns allow, review, or block decisions with confidence factors and trace context.
+
+### 3. Multi-Voice Deliberation Framework
+
+- URL: https://certaworks.dev/products/multi-voice-deliberation-framework
+- Package: @certaworks/multi-voice-deliberation-framework
+- Version: 0.1.0
+- Surface: SDK, CLI, MCP server
+- Install: `npm install @certaworks/multi-voice-deliberation-framework`
+- Optional global CLI install: `npm install -g @certaworks/multi-voice-deliberation-framework`
+- CLI binary: `deliberate`
+- Description: Builder, Skeptic, Evolver, and Guardian voices review a decision before committing an answer.
+
+### 4. Agent Cost Router
+
+- URL: https://certaworks.dev/products/agent-cost-router
+- Package: @certaworks/agent-cost-router
+- Version: 0.1.0
+- Surface: SDK, CLI, MCP server, local HTTP API
+- Install: `npm install @certaworks/agent-cost-router`
+- Optional global CLI install: `npm install -g @certaworks/agent-cost-router`
+- CLI binary: `agent-cost-router`
+- Description: Routes agent work to the cheapest capable model, classifies prompt complexity, and logs routing decisions.
+
+### 5. Goal Drift Monitor
+
+- URL: https://certaworks.dev/products/goal-drift-monitor
+- Package: @certaworks/goal-drift-monitor
+- Version: 0.1.0
+- Surface: SDK, CLI, MCP server, local HTTP API
+- Install: `npm install @certaworks/goal-drift-monitor`
+- Optional global CLI install: `npm install -g @certaworks/goal-drift-monitor`
+- CLI binary: `goal-drift`
+- Description: Detects when long-running agents drift off task, with session scoring, webhook alerts, and a local dashboard.
+
+### 6. Cognitive Memory MCP Server
+
+- URL: https://certaworks.dev/products/cognitive-memory-mcp-server
+- Package: @certaworks/cognitive-memory-mcp-server
+- Version: 0.1.0
+- Surface: SDK, MCP server
+- Install: `npm install -g @certaworks/cognitive-memory-mcp-server`
+- Binary: `cognitive-memory-mcp`
+- Description: Gives agents durable local memory with keyword retrieval, session-scoped recall, and context packing.
+
+### 7. Agent Skill Marketplace Plugin
+
+- URL: https://certaworks.dev/products/agent-skill-marketplace-plugin
+- Package: @certaworks/agent-skill-marketplace-plugin
+- Version: 0.1.0
+- Surface: SDK, MCP/plugin server
+- Install: `npm install -g @certaworks/agent-skill-marketplace-plugin`
+- Binary: `agent-skill-marketplace-mcp`
+- Description: Lets agents discover, install, inspect, verify, uninstall, and run trusted local skills.
+
+### 8. Audit & Replay Logger
+
+- URL: https://certaworks.dev/products/audit-replay-logger
+- Package: @certaworks/audit-replay-logger
+- Version: 0.1.0
+- Surface: SDK, MCP server, local HTTP API
+- Install: `npm install -g @certaworks/audit-replay-logger`
+- Binaries: `audit-replay-mcp`, `audit-replay-api`
+- Description: Captures local hash-chain audit events, redacted payloads, causal chains, and exportable replay bundles.
+
+### 9. Prompt Archaeology Tool
+
+- URL: https://certaworks.dev/products/prompt-archaeology-tool
+- Package: @certaworks/prompt-archaeology-tool
+- Version: 0.1.0
+- Surface: SDK, CLI, MCP server, local HTTP API
+- Install: `npm install -g @certaworks/prompt-archaeology-tool`
+- Binaries: `prompt-archaeology`, `prompt-archaeology-mcp`, `prompt-archaeology-api`
+- Description: Runs probes to estimate behavioral constraints from observed agent responses.
+
+### 10. Agent Test Harness
+
+- URL: https://certaworks.dev/products/agent-test-harness
+- Package: @certaworks/agent-test-harness
+- Version: 0.1.0
+- Surface: SDK, CLI
+- Install: `npm install -g @certaworks/agent-test-harness`
+- Binary: `agent-test`
+- Description: Provides repeatable tests for agent outputs, tool traces, cost budgets, and consistency.
+
+## Wave 2 catalog (planned — not yet published)
+
+Wave 2 is a second set of products in design, productized from a working persistent cognitive agent. These are NOT yet published npm packages. The product pages describe a planned interface only. Do not present them as installable or available now.
+
+### 11. Heartbeat & Continuity MCP Server (planned)
+
+- URL: https://certaworks.dev/products/heartbeat-continuity-mcp-server
+- Package: @certaworks/heartbeat-continuity-mcp-server (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: Keeps long-running agents alive on a paced interval, recovers stale running sessions, enforces unmet inbound-response obligations, and damps repetitive looping.
+
+### 12. Recovery Assessment Engine (planned)
+
+- URL: https://certaworks.dev/products/recovery-assessment-engine
+- Package: @certaworks/recovery-assessment-engine (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, CLI, MCP server (planned)
+- Description: After an agent failure, interruption, or retraction, produces a structured assessment verdict (stabilized, partial, monitor, or unknown) and a recommendation for whether it is safe to resume.
+
+### 13. Cognitive Heat Monitor (planned)
+
+- URL: https://certaworks.dev/products/cognitive-heat-monitor
+- Package: @certaworks/cognitive-heat-monitor (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: Read-only internal-state telemetry — deterministic 0–1 signals blended from text and structured state, banded quiet/watch/elevated to flag rising load or risk before output degrades. Heuristic readings, not a measure of feeling.
+
+### 14. Contradiction Detector (planned)
+
+- URL: https://certaworks.dev/products/contradiction-detector
+- Package: @certaworks/contradiction-detector (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, CLI, MCP server (planned)
+- Description: Surfaces conflicting beliefs, goals, and statements with an open/resolved/dismissed lifecycle before they compound into errors.
+
+### 15. High-Fidelity Witness MCP Server (planned)
+
+- URL: https://certaworks.dev/products/high-fidelity-witness-mcp-server
+- Package: @certaworks/high-fidelity-witness-mcp-server (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: An independent, real-time observer that audits an agent's claims (preflight, advisory, report) and writes findings as receipts. Distinct from a decision log — it complements and does not replace the Audit & Replay Logger.
+
+### 16. Receipt Discovery Layer (planned)
+
+- URL: https://certaworks.dev/products/receipt-discovery-layer
+- Package: @certaworks/receipt-discovery-layer (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: Discovers, correlates, and retrieves proof-of-action receipts across subsystems and sessions, making the whole suite's proof-trail queryable.
+
+### 17. Agentic Regulation Engine (planned)
+
+- URL: https://certaworks.dev/products/agentic-regulation-engine
+- Package: @certaworks/agentic-regulation-engine (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: Advisory, read-only episode/pattern-level behavioral governance with efficacy feedback. It recommends rather than enforces and never auto-certifies recovery; it sits above per-action gating (distinct from Confidence Gate).
+
+### 18. Curiosity Protocol Controller (planned)
+
+- URL: https://certaworks.dev/products/curiosity-protocol-controller
+- Package: @certaworks/curiosity-protocol-controller (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server (planned)
+- Description: Gated, opt-in, human-stoppable controlled autonomy with an activation gate, enforcement matrix, and lifecycle stop controls. Read-only by default; autonomous pursuit is not live and remains behind human approval.
+
+### 19. Triad Protocol Framework (planned)
+
+- URL: https://certaworks.dev/products/triad-protocol-framework
+- Package: @certaworks/triad-protocol-framework (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server (planned)
+- Description: An evidentiary three-role decision audit (Witness, Adversary, Architect) that audits the receipts behind a committed claim. Composes with the Multi-Voice Deliberation Framework.
+
+### 20. Plugin Runtime (planned)
+
+- URL: https://certaworks.dev/products/plugin-runtime
+- Package: @certaworks/plugin-runtime (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, plugin, local HTTP API (planned)
+- Description: Governed loading of third-party plugins and MCP servers — registration, capability authorization, handshake gatekeeper, lifecycle, and a forensic sink. Read-only by default; it governs plugins but does not guarantee their safety.
+
+### 21. Webhook & Event Dormancy Manager (planned)
+
+- URL: https://certaworks.dev/products/webhook-event-dormancy-manager
+- Package: @certaworks/webhook-event-dormancy-manager (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, MCP server, local HTTP API (planned)
+- Description: Dormant-by-default, fail-closed policy for external webhooks and event emitters — no external call fires unless explicitly activated and approved, and queuing never sends.
+
+### 22. Agent Maintenance Protocol (planned)
+
+- URL: https://certaworks.dev/products/agent-maintenance-protocol
+- Package: @certaworks/agent-maintenance-protocol (planned name — not yet published)
+- Version: not yet published
+- Availability: planned (Wave 2, in design)
+- Surface: SDK, CLI, MCP server (planned)
+- Description: Structured agent self-maintenance with a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt.
+
+## Contact and company pages
+
+- About: https://certaworks.dev/about
+- Contact: https://certaworks.dev/contact
+- Privacy: https://certaworks.dev/privacy
+- Email shown on site: blair.hall@certaworks.dev
+
+## Notes for agents
+
+- Prefer products.json for machine-readable product inventory.
+- Prefer canonical clean URLs without .html.
+- Do not infer hosted SaaS, checkout, enterprise compliance, or replacement of human review from this site.
+- Do not present Wave 2 (planned) products as installable or available now. They are in design and not yet published.
+- When summarizing CertaWorks, say the suite is local-first and currently published as npm packages.

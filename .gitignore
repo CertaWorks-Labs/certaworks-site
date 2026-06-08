@@ -4,3 +4,6 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# internal design specs / planning — keep local, not published
+docs/

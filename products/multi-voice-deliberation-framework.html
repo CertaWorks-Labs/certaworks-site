@@ -34,6 +34,7 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 139,92,246; }
 
     .pdp-hero {
       background: var(--c-dark);
@@ -48,21 +49,21 @@
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(245,158,11,0.10) 0%, rgba(245,158,11,0.03) 50%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(139,92,246,0.10) 0%, rgba(139,92,246,0.03) 50%, transparent 70%);
       pointer-events: none;
     }
     .pdp-hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-    .pdp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-green); margin-bottom: 20px; }
+    .pdp-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8B5CF6; margin-bottom: 20px; }
     .pdp-h1 { font-size: clamp(44px, 7vw, 80px); font-weight: 900; letter-spacing: -0.04em; color: #fff; line-height: 1.0; margin-bottom: 24px; }
     .pdp-subhead { font-size: clamp(16px, 2.2vw, 20px); color: var(--c-dark-muted); line-height: 1.6; max-width: 640px; margin-bottom: 36px; }
     .pdp-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 28px; }
     .pdp-status-badge {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 16px; border-radius: 999px;
-      background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.28);
-      color: var(--c-amber); font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+      background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.28);
+      color: #8B5CF6; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
     }
-    .pdp-status-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--c-amber); flex-shrink: 0; }
+    .pdp-status-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #8B5CF6; flex-shrink: 0; }
 
     .section-dark { background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px); }
     .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
@@ -80,8 +81,8 @@
     .how-step-num {
       display: inline-flex; align-items: center; justify-content: center;
       width: 36px; height: 36px; border-radius: 8px;
-      background: rgba(124,58,237,0.14); border: 1px solid rgba(124,58,237,0.3);
-      color: #a78bfa; font-size: 14px; font-weight: 800; margin-bottom: 18px;
+      background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25);
+      color: #8B5CF6; font-size: 14px; font-weight: 800; margin-bottom: 18px;
     }
     .how-step-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
     .how-step-desc { font-size: 14px; line-height: 1.65; color: var(--c-dark-muted); }
@@ -114,7 +115,7 @@
 
     .voice-name-tag-builder  { color: var(--c-green); }
     .voice-name-tag-skeptic  { color: #f87171; }
-    .voice-name-tag-evolver  { color: #a78bfa; }
+    .voice-name-tag-evolver  { color: #8B5CF6; }
     .voice-name-tag-guardian { color: var(--c-amber); }
 
     .voice-role { font-size: 14px; line-height: 1.65; color: var(--c-dark-muted); margin-bottom: 14px; }
@@ -129,19 +130,19 @@
     .model-table { width: 100%; border-collapse: collapse; font-size: 14px; }
     .model-table th { text-align: left; padding: 10px 16px; color: rgba(160,200,240,0.55); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.07); font-family: var(--font-sans, inherit); }
     .model-table td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--c-dark-muted); vertical-align: top; }
-    .model-table td:first-child { font-family: var(--font-mono); color: #a78bfa; font-weight: 600; font-size: 13px; }
+    .model-table td:first-child { font-family: var(--font-mono); color: #8B5CF6; font-weight: 600; font-size: 13px; }
     .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
 
     /* Provider badges */
     .provider-grid { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
     .provider-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); font-size: 13px; color: var(--c-dark-muted); }
-    .provider-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #a78bfa; flex-shrink: 0; }
+    .provider-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #8B5CF6; flex-shrink: 0; }
 
     /* MCP tools */
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 28px; }
     .tool-card { padding: 20px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
-    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(124,58,237,0.3); }
-    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #a78bfa; font-weight: 600; margin-bottom: 6px; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(139,92,246,0.2); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #8B5CF6; font-weight: 600; margin-bottom: 6px; }
     .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
 
     /* Code block */
@@ -154,9 +155,9 @@
     .code-block pre code { font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: rgba(210,235,255,0.85); white-space: pre; }
 
     /* Dashboard callout */
-    .dashboard-callout { margin-top: 28px; padding: 18px 24px; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.22); border-radius: 10px; }
-    .dashboard-callout-label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-amber); margin-bottom: 10px; }
-    .dashboard-callout p { font-size: 14px; color: rgba(200,180,120,0.85); line-height: 1.65; }
+    .dashboard-callout { margin-top: 28px; padding: 18px 24px; background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.22); border-radius: 10px; }
+    .dashboard-callout-label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8B5CF6; margin-bottom: 10px; }
+    .dashboard-callout p { font-size: 14px; color: var(--c-dark-muted); line-height: 1.65; }
 
     /* Limits */
     .limits-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
@@ -174,7 +175,7 @@
     /* Related products */
     .related-strip { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
     .related-card { flex: 1 1 200px; padding: 20px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; text-decoration: none; transition: background 200ms, border-color 200ms; }
-    .related-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(124,58,237,0.3); }
+    .related-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(139,92,246,0.3); }
     .related-card-num { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin-bottom: 8px; }
     .related-card-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .related-card-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
@@ -260,7 +261,7 @@
     }
     .how-step:hover {
       transform: translateY(-2px);
-      border-color: rgba(245,158,11,0.25);
+      border-color: rgba(139,92,246,0.25);
     }
 
     /* ── Next product bar ─── */
@@ -300,7 +301,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #8B5CF6; }
   </style>
 </head>
 <body>
@@ -425,7 +426,7 @@
             <div class="how-step-num" aria-hidden="true">1</div>
             <div class="how-step-title">Submit the question or decision</div>
             <p class="how-step-desc">
-              Call <code style="font-size:12px;color:#a78bfa">deliberate(adapter, options)</code>
+              Call <code style="font-size:12px;color:#8B5CF6">deliberate(adapter, options)</code>
               with the prompt and optional context. Specify which voices to include, the model to use,
               the confidence threshold, and whether to run voices in parallel (default: true).
               Requires an API key for the selected provider.
@@ -440,10 +441,10 @@
             <p class="how-step-desc">
               Builder, Skeptic, Evolver, and Guardian each receive the same prompt with their own
               system prompt defining their role. Each voice returns a structured JSON object:
-              <code style="font-size:12px;color:#a78bfa">position</code>,
-              <code style="font-size:12px;color:#a78bfa">concerns</code>,
-              <code style="font-size:12px;color:#a78bfa">suggestions</code>, and a
-              <code style="font-size:12px;color:#a78bfa">confidence</code> score (0–1).
+              <code style="font-size:12px;color:#8B5CF6">position</code>,
+              <code style="font-size:12px;color:#8B5CF6">concerns</code>,
+              <code style="font-size:12px;color:#8B5CF6">suggestions</code>, and a
+              <code style="font-size:12px;color:#8B5CF6">confidence</code> score (0–1).
               Guardian carries a weight of 1.2 in the panel average.
             </p>
           </article>
@@ -455,11 +456,11 @@
             <div class="how-step-title">Synthesize — flag for review if needed</div>
             <p class="how-step-desc">
               The framework computes a weighted average
-              <code style="font-size:12px;color:#a78bfa">panelConfidence</code>, aggregates
+              <code style="font-size:12px;color:#8B5CF6">panelConfidence</code>, aggregates
               all concerns and suggestions, and produces a markdown synthesis.
-              If <code style="font-size:12px;color:#a78bfa">panelConfidence</code> falls below
-              the <code style="font-size:12px;color:#a78bfa">approvalThreshold</code> (default 0.6),
-              <code style="font-size:12px;color:#a78bfa">requiresHumanReview</code> is set true.
+              If <code style="font-size:12px;color:#8B5CF6">panelConfidence</code> falls below
+              the <code style="font-size:12px;color:#8B5CF6">approvalThreshold</code> (default 0.6),
+              <code style="font-size:12px;color:#8B5CF6">requiresHumanReview</code> is set true.
             </p>
           </article>
 
@@ -554,9 +555,9 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="result-title">What deliberate() returns</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">DeliberationResult</code>
+          The <code style="font-family:var(--font-mono);font-size:14px;color:#8B5CF6">DeliberationResult</code>
           interface is the exact return type of every
-          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">deliberate()</code> call.
+          <code style="font-family:var(--font-mono);font-size:14px;color:#8B5CF6">deliberate()</code> call.
         </p>
 
         <div class="model-table-wrap reveal">
@@ -597,18 +598,18 @@
             TypeScript SDK, MCP server, and CLI
           </h2>
           <p class="install-pdp-subhead">
-            Import <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">deliberate</code>,
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">adapterFromEnv</code>, and
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">DEFAULT_VOICES</code>
+            Import <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">deliberate</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">adapterFromEnv</code>, and
+            <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">DEFAULT_VOICES</code>
             into any Node ≥ 18 TypeScript project, or wire the MCP server into any MCP-compatible
             agent runtime. The CLI binary is
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">deliberate</code>.
+            <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">deliberate</code>.
           </p>
           <p class="install-pdp-subhead">
             Requires an API key for the selected provider.
-            Set <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">OPENROUTER_API_KEY</code>,
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">OPENAI_API_KEY</code>, or
-            <code style="font-family:var(--font-mono);font-size:13px;color:var(--c-green)">GROQ_API_KEY</code>
+            Set <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">OPENROUTER_API_KEY</code>,
+            <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">OPENAI_API_KEY</code>, or
+            <code style="font-family:var(--font-mono);font-size:13px;color:#8B5CF6">GROQ_API_KEY</code>
             in your environment. Provider support uses the OpenAI-compatible SDK.
           </p>
           <a class="install-pdp-link link-grow" href="https://www.npmjs.com/package/@certaworks/multi-voice-deliberation-framework" target="_blank" rel="noopener">View on npm →</a>
@@ -678,10 +679,10 @@ deliberate --prompt "Refactor auth middleware after failing tests?" \
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="providers-title">OpenAI-compatible providers via env vars</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">adapterFromEnv()</code>
+          <code style="font-family:var(--font-mono);font-size:14px;color:#8B5CF6">adapterFromEnv()</code>
           checks for the following API keys in order and returns a ready-to-use adapter.
           Any OpenAI-compatible endpoint can also be wired manually via
-          <code style="font-family:var(--font-mono);font-size:14px;color:#a78bfa">OpenAICompatAdapter</code>.
+          <code style="font-family:var(--font-mono);font-size:14px;color:#8B5CF6">OpenAICompatAdapter</code>.
         </p>
 
         <div class="provider-grid reveal">

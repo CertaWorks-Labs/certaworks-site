@@ -34,6 +34,7 @@
   </script>
   <style>
     /* Product detail page extras */
+    body { --spot-rgb: 148,163,184; }
     .pdp-hero {
       background: var(--c-dark);
       padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
@@ -46,7 +47,7 @@
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(15,118,110,0.12) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(148,163,184,0.12) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -136,7 +137,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #94A3B8; }
     /* Force install-pdp to dark */
     .install-pdp {
       background: var(--c-dark) !important;
@@ -344,7 +345,7 @@
       margin-top: 20px;
       font-size: 14px;
       font-weight: 600;
-      color: var(--c-teal);
+      color: #94A3B8;
       text-decoration: none;
     }
     .dashboard-link:hover { text-decoration: underline; }
@@ -547,7 +548,7 @@
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">How It Works</span>
+          <span class="eyebrow" style="color:#94A3B8;">How It Works</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Record → Chain → Replay</h2>
 
@@ -598,7 +599,7 @@
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">Audit Signals</span>
+          <span class="eyebrow" style="color:#94A3B8;">Audit Signals</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="audit-signals-title">What the audit record contains</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
@@ -748,7 +749,7 @@ const timeline = audit.replay(session.id);</code></pre>
       style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+          <span class="eyebrow" style="color:#94A3B8;">MCP Interface</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Available MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
@@ -818,7 +819,7 @@ const timeline = audit.replay(session.id);</code></pre>
       style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
       <div class="section-inner">
         <div class="section-label dark reveal">
-          <span class="eyebrow eyebrow-teal">Dashboard &amp; API</span>
+          <span class="eyebrow" style="color:#94A3B8;">Dashboard &amp; API</span>
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="dashboard-title">Local dashboard — prototype status</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">

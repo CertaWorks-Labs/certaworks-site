@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webhook &amp; Event Dormancy Manager — CertaWorks</title>
+  <meta name="description" content="Keep an agent's webhooks and event emitters dormant by default — queued but never delivered — until external dispatch is explicitly and approvably activated. Fail-closed on malformed config. Wave 2 — planned local MCP server.">
+  <link rel="canonical" href="https://certaworks.dev/products/webhook-event-dormancy-manager">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://certaworks.dev/products/webhook-event-dormancy-manager">
+  <meta property="og:title" content="Webhook &amp; Event Dormancy Manager — CertaWorks">
+  <meta property="og:description" content="Dormant by default: agents queue webhooks and emit events without firing external calls until an explicit, approved activation branch is opened. Fail-closed. Wave 2 — planned.">
+  <meta property="og:image" content="https://certaworks.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Webhook &amp; Event Dormancy Manager — CertaWorks">
+  <meta name="twitter:description" content="Dormant by default: queue without delivery, fail-closed on malformed config, external calls only on explicit approved activation. Wave 2 — planned local MCP server.">
+  <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
+  <meta name="theme-color" content="#050C18">
+  <link rel="stylesheet" href="../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Webhook & Event Dormancy Manager",
+    "url": "https://certaworks.dev/products/webhook-event-dormancy-manager",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Node.js",
+    "description": "Webhook & Event Dormancy Manager is a dormant-by-default external-emit governor: it keeps an agent's webhooks and event emitters queued but never delivered until external dispatch is explicitly and approvably activated, and fails closed on any malformed lock, mode, or routing flag. Planned Wave 2 product — not yet published.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "CertaWorks"
+    }
+}
+  </script>
+  <style>
+    /* ── Product detail page extras ─────────────────── */
+
+    body { --spot-rgb: 249,115,22; }
+
+    /* Hero — orange glow for dormancy / activation theme */
+    .pdp-hero {
+      background: var(--c-dark);
+      padding: clamp(120px, 14vw, 180px) clamp(20px, 4vw, 60px) clamp(72px, 8vw, 100px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pdp-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(249,115,22,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pdp-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .pdp-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fb923c;
+      margin-bottom: 20px;
+    }
+    .pdp-h1 {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 24px;
+    }
+    .pdp-h1 .text-grad {
+      background: linear-gradient(120deg, #fff 0%, #fb923c 60%, #f97316 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .pdp-subhead {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--c-dark-muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 36px;
+    }
+    .pdp-hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    /* Planned (Wave 2) status badge — amber, honest "not yet published" */
+    .pdp-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.28);
+      color: var(--c-amber);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .pdp-status-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--c-amber);
+      flex-shrink: 0;
+    }
+
+    /* ── Dark section base ─── */
+    .section-dark {
+      background: var(--c-dark);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .section-dark .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Standard section on bg ─── */
+    .section .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── Section headline (dark bg) ─── */
+    .pdp-section-headline {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .pdp-section-body {
+      color: var(--c-dark-muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── Problem section ─── */
+    .problem-body {
+      color: var(--c-dark-muted);
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.75;
+      max-width: 720px;
+      margin-top: 24px;
+    }
+    .problem-body p + p { margin-top: 20px; }
+
+    /* ── How it works flow ─── */
+    .how-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .how-step {
+      background: var(--c-dark-2);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 200ms, border-color 200ms;
+    }
+    .how-step:hover { transform: translateY(-2px); border-color: rgba(249,115,22,0.25); }
+    .how-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.25);
+      color: #fb923c;
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+    .how-step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .how-step-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+    }
+    .how-flow-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-dark-muted);
+      font-size: 22px;
+      padding: 0 4px;
+      align-self: center;
+    }
+    .how-caveat {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--c-dark-line);
+      border-radius: 10px;
+      color: var(--c-dark-muted);
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 780px;
+    }
+
+    /* ── Dormancy model tables ─── */
+    .model-table-wrap { overflow-x: auto; margin-top: 28px; }
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .model-table th {
+      text-align: left;
+      padding: 10px 16px;
+      color: rgba(160,200,240,0.55);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-family: var(--font-sans, inherit);
+    }
+    .model-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--c-dark-muted);
+      vertical-align: top;
+    }
+    .model-table td:first-child {
+      font-family: var(--font-mono);
+      color: var(--c-dark-text);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .state-badge-dormant  { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(245,158,11,0.12); color: var(--c-amber); }
+    .state-badge-manual   { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(56,189,248,0.12); color: var(--c-teal); }
+    .state-badge-auto     { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; background: rgba(249,115,22,0.14); color: #fb923c; }
+    .model-note { margin-top: 16px; font-size: 13px; color: rgba(160,200,240,0.4); }
+    .model-subhead { margin-top: 40px; margin-bottom: 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.5); }
+
+    /* ── Fail-closed callout (prominent) ─── */
+    .failclosed-callout {
+      margin-top: 36px;
+      padding: 22px 26px;
+      background: rgba(249,115,22,0.07);
+      border: 1px solid rgba(249,115,22,0.30);
+      border-left: 4px solid #f97316;
+      border-radius: 12px;
+    }
+    .failclosed-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fb923c;
+      margin-bottom: 10px;
+    }
+    .failclosed-callout p {
+      font-size: 15px;
+      color: rgba(230,210,180,0.92);
+      line-height: 1.7;
+    }
+    .failclosed-callout p + p { margin-top: 12px; }
+    .failclosed-callout code { font-family: var(--font-mono); font-size: 12px; color: #fdba74; }
+
+    /* ── Planned / roadmap callout ─── */
+    .planned-callout {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.22);
+      border-radius: 10px;
+    }
+    .planned-callout-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-amber);
+      margin-bottom: 10px;
+    }
+    .planned-callout p {
+      font-size: 14px;
+      color: rgba(200,180,120,0.85);
+      line-height: 1.65;
+    }
+    .planned-callout p + p { margin-top: 12px; }
+
+    /* ── MCP tools grid ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(249,115,22,0.20); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #fb923c; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
+    .tools-group-label:first-child { margin-top: 0; }
+
+    /* ── Limits section ─── */
+    .limits-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media (max-width: 640px) {
+      .limits-cols { grid-template-columns: 1fr; }
+    }
+    .limits-col-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .limits-col-does   .limits-col-title { color: var(--c-green); }
+    .limits-col-doesnt .limits-col-title { color: var(--c-amber); }
+    .limits-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .limits-list li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--c-dark-line);
+      font-size: 14px;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .limits-list li:last-child { border-bottom: none; }
+    .limits-icon-does   { color: var(--c-green); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-icon-doesnt { color: var(--c-amber);  flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .limits-list li span { color: var(--c-dark-muted); }
+
+    /* ── Beta form (dark context) ─── */
+    .beta-section-dark {
+      background: var(--c-dark-2);
+      padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);
+    }
+    .beta-section-dark .beta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .beta-section-dark .beta-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .beta-heading-dark {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .beta-desc-dark {
+      font-size: 15px;
+      color: var(--c-dark-muted);
+      line-height: 1.65;
+    }
+
+    /* Reveal animation (shared with main site) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Breadcrumb ─── */
+    .breadcrumb { padding: 18px clamp(20px,4vw,60px) 0; position: relative; z-index: 2; }
+    .breadcrumb-list { display: flex; align-items: center; gap: 8px; list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .breadcrumb-list li { color: rgba(160,200,240,0.45); }
+    .breadcrumb-list li a { color: rgba(160,200,240,0.55); text-decoration: none; transition: color 200ms; }
+    .breadcrumb-list li a:hover { color: var(--c-dark-text); }
+    .breadcrumb-list li + li::before { content: '›'; margin-right: 8px; opacity: 0.4; }
+
+    /* ── Responsive nav tweak on subpage ─── */
+    @media (max-width: 600px) {
+      .pdp-hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Hero number watermark ─── */
+    .pdp-hero-num-bg {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-60%);
+      font-size: clamp(180px, 25vw, 320px);
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      z-index: 0;
+    }
+
+    /* ── In-page subnav ─── */
+    .pdp-subnav {
+      background: rgba(5, 12, 24, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      position: sticky;
+      top: 0;
+      z-index: 90;
+    }
+    .pdp-subnav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 60px);
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pdp-subnav-inner::-webkit-scrollbar { display: none; }
+    .pdp-subnav-link {
+      display: inline-block;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(160,200,240,0.55);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 200ms, border-color 200ms;
+    }
+    .pdp-subnav-link:hover {
+      color: rgba(230,240,255,0.9);
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    /* ── Next/Prev product bar ─── */
+    .pdp-next-bar {
+      background: var(--c-dark-2);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 28px clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pdp-next-back {
+      font-size: 13px;
+      color: rgba(160,200,240,0.45);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .pdp-next-back:hover { color: rgba(160,200,240,0.8); }
+    .pdp-next-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-decoration: none;
+      gap: 4px;
+    }
+    .pdp-next-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(160,200,240,0.4);
+    }
+    .pdp-next-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--c-dark-text);
+      transition: color 200ms;
+    }
+    .pdp-next-link:hover .pdp-next-name { color: #fb923c; }
+
+    /* ── Lineage note ─── */
+    .lineage-note {
+      margin-top: 28px;
+      padding: 18px 24px;
+      background: rgba(56,189,248,0.05);
+      border: 1px solid rgba(56,189,248,0.18);
+      border-radius: 10px;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--c-dark-muted);
+      max-width: 820px;
+    }
+    .lineage-note strong { color: var(--c-teal); font-weight: 700; }
+
+    /* ── Related cards ─── */
+    .related-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 36px; }
+    .related-card { padding: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; text-decoration: none; transition: background 200ms, border-color 200ms; }
+    .related-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(249,115,22,0.30); }
+    .related-card-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.45); margin-bottom: 8px; }
+    .related-card-name { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .related-card-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.55; }
+    .related-card-link { display: inline-block; margin-top: 14px; font-size: 13px; color: #fb923c; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────── -->
+  <header class="site-nav" id="site-nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo" aria-label="CertaWorks home">
+        <div class="nav-logo-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M13 3.5H8C5.5 3.5 3.5 6.4 3.5 10s2 6.5 4.5 6.5h5" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10.5 7h6.5M10.5 10h4.5M10.5 13h6.5" stroke="white" stroke-width="1.6" stroke-linecap="round" opacity="0.75"/>
+            <circle cx="10.5" cy="10" r="1.9" fill="white"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">CertaWorks</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="../">Home</a></li>
+          <li><a href="../products" class="active" aria-current="page">Products</a></li>
+          <li><a href="../dashboard">Dashboard</a></li>
+          <li><a href="../about">About</a></li>
+          <li><a href="../contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="../contact" class="nav-cta">Join Beta</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── BREADCRUMB ────────────────────────────── -->
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="background: var(--c-dark);">
+      <ol class="breadcrumb-list">
+        <li><a href="../products">Products</a></li>
+        <li aria-current="page">Webhook &amp; Event Dormancy Manager</li>
+      </ol>
+    </nav>
+
+    <!-- ── HERO ──────────────────────────────────── -->
+    <section class="pdp-hero" aria-labelledby="pdp-hero-title" data-aurora data-cursor-glow>
+      <div class="pdp-hero-num-bg" aria-hidden="true">21</div>
+      <div class="pdp-hero-inner">
+        <p class="pdp-eyebrow">Product 21 · SDK / MCP / Local API · Wave 2</p>
+        <h1 class="pdp-h1" id="pdp-hero-title"><span class="text-grad">Webhook &amp; Event Dormancy Manager</span></h1>
+        <p class="pdp-subhead">
+          Dormant by default — external calls fire only when you say so. Agents queue webhooks and
+          emit events without ever touching the outside world by accident. Delivery is fail-closed:
+          an event can be queued and inspected, but nothing leaves the machine until an explicit,
+          approved activation branch is opened.
+        </p>
+        <div class="pdp-hero-ctas">
+          <a href="#how-it-works" class="btn btn-primary btn-sm">How It Works →</a>
+          <a href="#install" class="btn btn-ghost btn-sm">Planned Interface</a>
+        </div>
+        <div class="pdp-status-badge">
+          Wave 2 — Planned · Not yet published on npm
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Prev/Next (top) ─────────── -->
+    <div class="pdp-next-bar">
+      <a href="plugin-runtime" class="pdp-next-back">← Product 20: Plugin Runtime</a>
+      <a href="agent-maintenance-protocol" class="pdp-next-link">
+        <span class="pdp-next-label">Next: Product 22 · Wave 2</span>
+        <span class="pdp-next-name">Agent Maintenance Protocol →</span>
+      </a>
+    </div>
+
+    <!-- ── IN-PAGE NAV ─────────────────────────────────── -->
+    <nav class="pdp-subnav" aria-label="Page sections">
+      <div class="pdp-subnav-inner">
+        <a href="#problem" class="pdp-subnav-link">Problem</a>
+        <a href="#how-it-works" class="pdp-subnav-link">How It Works</a>
+        <a href="#model" class="pdp-subnav-link">Dormancy Model</a>
+        <a href="#tools" class="pdp-subnav-link">MCP Tools</a>
+        <a href="#install" class="pdp-subnav-link">Interface</a>
+        <a href="#limits" class="pdp-subnav-link">Scope</a>
+        <a href="#beta" class="pdp-subnav-link">Wave 2 Access</a>
+      </div>
+    </nav>
+
+    <!-- ── THE PROBLEM ───────────────────────────── -->
+    <section class="section-dark" id="problem" aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">The Problem</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="problem-title">An unintended external call is one stray code path away.</h2>
+        <div class="problem-body reveal">
+          <p>
+            An agent that can emit webhooks or fire external events is one stray code path away from
+            an unintended side effect — a message sent to a real Slack channel, a callback POSTed to
+            a production endpoint, a retry storm replayed against a third party. The danger is rarely
+            a deliberate decision; it is a default. A startup path, an environment variable, or an
+            <code style="font-size:14px;color:#fb923c">allow_live=true</code> flag flips delivery on
+            before anyone meant to activate it.
+          </p>
+          <p>
+            The safe posture is the inverse: external delivery should be unavailable unless someone
+            deliberately opened it. Queuing an event for later is harmless and useful; <em>delivering</em>
+            it is the act that needs an explicit, recorded gate. Most webhook layers ship the other
+            way around — wired to deliver, with dormancy as an afterthought you have to remember to
+            configure.
+          </p>
+          <p>
+            Webhook &amp; Event Dormancy Manager makes dormancy the default and activation the
+            exception. Events are queued durably and can be inspected, but every delivery, replay,
+            autodispatch, and outbound integration is checked against a runtime policy that stays
+            locked unless a specific approval and a well-formed activation mode are both present. If
+            the configuration is malformed in any way, the manager fails closed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────── -->
+    <section class="section" id="how-it-works" aria-labelledby="how-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">How It Works</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="how-title">Queue → Evaluate → Activate or block</h2>
+
+        <div class="how-flow reveal" data-stagger role="list">
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">1</div>
+            <div class="how-step-title">Queue, don't deliver</div>
+            <p class="how-step-desc">
+              <code style="font-size:12px;color:#fb923c">queue_webhook_event</code> writes a durable
+              <code style="font-size:12px;color:var(--c-amber)">queued</code> event to the local event
+              log against an active destination. The contract is explicit:
+              <strong style="color:var(--c-dark-text)">queue only — no HTTP send, no retry, no source
+              mutation</strong>. Queuing an event never performs an outbound call; it parks the intent
+              for a later, gated decision.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">2</div>
+            <div class="how-step-title">Evaluate the dormancy policy on every external action</div>
+            <p class="how-step-desc">
+              Before any delivery, replay, or Slack send,
+              <code style="font-size:12px;color:#fb923c">evaluate_webhook_runtime_policy</code> is
+              consulted. The webhook is <code style="font-size:12px;color:var(--c-amber)">webhook_locked</code>
+              by default; it unlocks <strong style="color:var(--c-dark-text)">only</strong> when the
+              dormancy lock is off, <code style="font-size:12px">WEBHOOK_ACTIVATION_APPROVAL</code> is
+              <code style="font-size:12px">approved</code>, the activation mode is valid, and no
+              routing flags are malformed. Every <code style="font-size:12px">*_allowed</code> flag is
+              <code style="font-size:12px">AND</code>-gated on all of these.
+            </p>
+          </article>
+
+          <div class="how-flow-arrow" aria-hidden="true">→</div>
+
+          <article class="how-step spotlight hairline-top" role="listitem">
+            <div class="how-step-num" aria-hidden="true">3</div>
+            <div class="how-step-title">Activate explicitly, or stay blocked with a reason</div>
+            <p class="how-step-desc">
+              A blocked action returns a <code style="font-size:12px">blocked_dormancy_detail</code>
+              string naming exactly why (e.g. "webhook dormancy lock active"). Live delivery via
+              <code style="font-size:12px;color:#fb923c">deliver_webhook_event</code>, autodispatch,
+              dead-letter <code style="font-size:12px;color:#fb923c">replay_dead_letter_event</code>,
+              and Slack inbound/outbound each require their own flag <em>and</em> an unlocked policy.
+              Nothing escalates from a queued event to an external call without that branch.
+            </p>
+          </article>
+        </div>
+
+        <div class="how-caveat reveal">
+          Webhook &amp; Event Dormancy Manager is a decision-support and safety layer. It enforces a
+          dormant-by-default posture and surfaces exactly what is and is not activated; it does not
+          decide on your behalf whether an external integration <em>should</em> be turned on, and it
+          does not replace production access controls. Queuing never sends — only an explicit, approved
+          activation does.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DORMANCY MODEL ──────────────────────── -->
+    <section class="section" id="model" aria-labelledby="model-title"
+      style="background: var(--c-dark); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">Dormancy Model</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="model-title">Modes, gated capabilities &amp; fail-closed</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The model below is derived directly from the originating agent's webhook runtime policy. An activation
+          mode and a set of routing flags decide what — if anything — is permitted to leave the
+          machine. Absence or garbage means locked; activation requires positive, well-formed
+          configuration.
+        </p>
+
+        <div class="model-subhead reveal">Activation modes</div>
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Webhook activation modes">
+            <thead>
+              <tr><th>Mode</th><th>Meaning</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="state-badge-dormant">dormant</span></td>
+                <td>Default. No external delivery of any kind. Unknown or malformed modes collapse to this.</td>
+              </tr>
+              <tr>
+                <td><span class="state-badge-manual">manual_dispatch</span></td>
+                <td>Per-event delivery permitted <strong style="color:var(--c-dark-text)">only</strong> when policy is unlocked and <code style="font-family:var(--font-mono);font-size:12px">WEBHOOK_AUTODISPATCH_ALLOW_LIVE</code> is set.</td>
+              </tr>
+              <tr>
+                <td><span class="state-badge-auto">autodispatch</span></td>
+                <td>Automatic delivery permitted <strong style="color:var(--c-dark-text)">only</strong> when unlocked <em>and</em> <code style="font-family:var(--font-mono);font-size:12px">WEBHOOK_AUTODISPATCH_ENABLED</code> is set.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model-subhead reveal">Gated capabilities</div>
+        <p class="model-note reveal" style="margin-top:8px;margin-bottom:0;">
+          Every capability is <code style="font-family:var(--font-mono);font-size:12px">AND</code>-gated on the policy being <strong style="color:#fb923c">unlocked</strong> — lock off <em>and</em> approval present <em>and</em> mode valid <em>and</em> no malformed flags — <em>plus</em> the additional requirement below.
+        </p>
+        <div class="model-table-wrap reveal">
+          <table class="model-table" aria-label="Gated webhook capabilities">
+            <thead>
+              <tr><th>Capability</th><th>Additional requirement (on top of unlocked)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>live_delivery_allowed</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">WEBHOOK_AUTODISPATCH_ALLOW_LIVE</code> true, mode ∈ {manual_dispatch, autodispatch}</td>
+              </tr>
+              <tr>
+                <td>autodispatch_allowed</td>
+                <td>mode = autodispatch, <code style="font-family:var(--font-mono);font-size:12px">WEBHOOK_AUTODISPATCH_ENABLED</code> true</td>
+              </tr>
+              <tr>
+                <td>manual_dispatch_allowed</td>
+                <td>mode = manual_dispatch</td>
+              </tr>
+              <tr>
+                <td>dead_letter_replay_allowed</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">WEBHOOK_DEAD_LETTER_REPLAY_ENABLED</code> true, mode ∈ {manual_dispatch, autodispatch}</td>
+              </tr>
+              <tr>
+                <td>slack_outbound_queue_allowed</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">SLACK_OUTBOUND_ENABLED</code> true</td>
+              </tr>
+              <tr>
+                <td>slack_inbound_delivery_allowed</td>
+                <td><code style="font-family:var(--font-mono);font-size:12px">SLACK_INBOUND_DELIVERY_ENABLED</code> true</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="failclosed-callout reveal">
+          <div class="failclosed-callout-label">Fail-closed rule</div>
+          <p>
+            A malformed <code>WEBHOOK_DORMANCY_LOCK</code>, an unrecognized activation mode, or any
+            malformed routing flag <strong>forces dormancy</strong> and is named in the policy
+            <code>reason</code>. Activation requires <em>positive, well-formed</em> configuration —
+            absence or garbage means locked.
+          </p>
+          <p>
+            <code>evaluate_webhook_runtime_policy</code> never opens on uncertainty: every
+            <code>*_allowed</code> flag is <code>AND</code>-gated on lock-off, an
+            <code>approved</code> <code>WEBHOOK_ACTIVATION_APPROVAL</code>, a valid mode, and the
+            absence of malformed flags. Queuing an event never sends — only an explicit, approved,
+            well-formed activation branch can permit an external call.
+          </p>
+        </div>
+
+        <div class="lineage-note reveal">
+          <strong>Lineage note.</strong> The originating agent's stance is fail-closed dormancy — webhook
+          delivery, Slack send, autodispatch, retries, and replay stay unavailable unless an explicit
+          gated activation branch is opened. The product packages that exact posture; the only
+          generalization is widening the originating agent's fixed event types and Slack-specific routing into a
+          configurable surface (<em>proposed</em>). Source: the originating agent's webhook runtime +
+          external-routing dormancy.
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MCP TOOLS ────────────────────────────── -->
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Planned MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          The proposed MCP surface below is derived from what the originating agent's webhook routes and services
+          expose today. Names are the planned product interface for the Wave 2 package and may change
+          before first publish.
+        </p>
+
+        <div class="tools-grid reveal" data-stagger>
+
+          <div class="tools-group-label">Queue &amp; Inspect</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">queue_webhook_event</div>
+            <div class="tool-desc">Queue a durable outbound event (<code style="font-size:12px">queued</code>, no send) against an active destination.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_webhook_event_log</div>
+            <div class="tool-desc">List queued / delivered / failed events from the local event log.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_webhook_destinations</div>
+            <div class="tool-desc">List configured destinations and their allowed event types.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_dead_letters</div>
+            <div class="tool-desc">List events parked in the dead-letter state.</div>
+          </div>
+
+          <div class="tools-group-label">Policy &amp; Dormancy</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_dormancy_policy</div>
+            <div class="tool-desc">Return the evaluated runtime policy: lock state, activation mode, and every <code style="font-size:12px">*_allowed</code> flag with a reason.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_external_routing_summary</div>
+            <div class="tool-desc">Admin summary of destinations, recent events, and the current activation posture.</div>
+          </div>
+
+          <div class="tools-group-label">Gated External Actions</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">deliver_webhook_event</div>
+            <div class="tool-desc">Attempt delivery of one queued event; blocked unless policy permits (<code style="font-size:12px">allow_live</code> requires <code style="font-size:12px">live_delivery_allowed</code>).</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">replay_dead_letter_event</div>
+            <div class="tool-desc">Replay a dead-lettered event; blocked unless <code style="font-size:12px">dead_letter_replay_allowed</code>.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">process_webhook_queue</div>
+            <div class="tool-desc">Process the queue; gated by the dormancy policy on every external action.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PLANNED INTERFACE / STATUS ────────────── -->
+    <section class="install-pdp" id="install" aria-labelledby="install-title">
+      <div class="install-pdp-inner">
+
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Planned</span>
+          </div>
+          <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
+            Planned local interface
+          </h2>
+          <p class="install-pdp-subhead">
+            Webhook &amp; Event Dormancy Manager is a CertaWorks Wave 2 product. It is currently in
+            design and <strong>not yet published</strong> on npm. The commands below show the planned
+            local interface — an SDK, an MCP server, and a local HTTP API, consistent with the rest of
+            the suite — so you can see exactly what it will expose.
+          </p>
+          <p class="install-pdp-subhead">
+            Want to be notified when the Wave 2 package ships, or help shape the interface? Use the
+            <a href="#beta" style="color:#fb923c;text-decoration:none;font-weight:600;">Wave 2 access</a>
+            form below.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="planned-callout" style="margin-bottom:20px;">
+            <div class="planned-callout-label">Status — not currently published</div>
+            <p>
+              The package <code style="font-family:var(--font-mono);font-size:12px">@certaworks/webhook-event-dormancy-manager</code>
+              is a planned name. The snippets below are illustrative of the intended interface and
+              will not install until the Wave 2 package is released.
+            </p>
+          </div>
+
+          <div class="code-block" id="wdInstallCmd">
+            <div class="code-block-header">
+              <span class="code-block-label">Planned npm package</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="wdInstallCmd">Copy</button>
+            </div>
+            <pre><code># Planned — not yet published
+npm install -g @certaworks/webhook-event-dormancy-manager</code></pre>
+          </div>
+
+          <div class="code-block" id="wdMcpConfig">
+            <div class="code-block-header">
+              <span class="code-block-label">Planned Claude Desktop config</span>
+              <button class="copy-btn copy-button" type="button" data-copy-target="wdMcpConfig">Copy</button>
+            </div>
+            <pre><code># Planned — not yet published
+{
+  "mcpServers": {
+    "webhook-event-dormancy-manager": {
+      "command": "npx",
+      "args": ["-y", "@certaworks/webhook-event-dormancy-manager"]
+    }
+  }
+}</code></pre>
+          </div>
+
+          <p class="copy-status" id="wd-copyStatus" aria-live="polite" style="font-size:13px;color:#fb923c;min-height:20px;margin-top:4px;"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CURRENT LIMITS / SCOPE ────────────────── -->
+    <section class="section-dark" id="limits" aria-labelledby="limits-title">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-light">Scope</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="limits-title">
+          What Webhook &amp; Event Dormancy Manager does and does not do
+        </h2>
+
+        <div class="limits-cols reveal" data-stagger>
+          <div class="limits-col-does">
+            <div class="limits-col-title">Does</div>
+            <ul class="limits-list" aria-label="Capabilities">
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Stay dormant by default — no external delivery without explicit activation</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Queue events durably so they are not lost while dormant</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Fail closed on a malformed lock, mode, or routing flag — garbage means locked</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Gate live delivery, autodispatch, replay, and Slack independently and explicitly</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Surface a human-readable reason for every blocked action</span>
+              </li>
+              <li>
+                <span class="limits-icon-does" aria-hidden="true">✓</span>
+                <span>Run fully local as a planned MCP server, SDK, and local HTTP API</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="limits-col-doesnt">
+            <div class="limits-col-title">Does Not</div>
+            <ul class="limits-list" aria-label="Not in scope">
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Send external calls while dormant — no delivery while the dormancy lock is active</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Activate without explicit approval, or treat missing/garbage config as permission</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Send during queuing — queuing never performs an HTTP call</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Decide for you whether an integration <em>should</em> be on</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Guarantee delivery, ordering, or third-party acceptance once activated</span>
+              </li>
+              <li>
+                <span class="limits-icon-doesnt" aria-hidden="true">–</span>
+                <span>Replace production webhook infrastructure or its access controls</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Related ───────────────────────────── -->
+    <section class="section-dark reveal" style="padding-top:0" aria-labelledby="related-h2">
+      <div class="section-inner">
+        <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
+        <div class="related-strip" data-stagger role="list">
+          <a href="audit-replay-logger" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 08 · Wave 1</div>
+            <div class="related-card-name">Audit &amp; Replay Logger</div>
+            <p class="related-card-desc">Every queue and every blocked or successful delivery is a durable, replayable event — a full record of what was attempted versus what was allowed.</p>
+            <span class="related-card-link">View Audit &amp; Replay Logger →</span>
+          </a>
+          <a href="confidence-gate-mcp-server" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 02 · Wave 1</div>
+            <div class="related-card-name">Confidence Gate</div>
+            <p class="related-card-desc">Opening the activation lock is itself a high-risk action that can be scored and routed to review before live delivery is ever permitted.</p>
+            <span class="related-card-link">View Confidence Gate →</span>
+          </a>
+          <a href="plugin-runtime" class="related-card reveal spotlight hairline-top" role="listitem">
+            <div class="related-card-label">Product 20 · Wave 2 — in design</div>
+            <div class="related-card-name">Plugin Runtime</div>
+            <p class="related-card-desc">When a governed plugin tries to reach outside the host, this manager is the dormant-by-default boundary that emit must pass.</p>
+            <span class="related-card-link">View Plugin Runtime →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── WAVE 2 ACCESS / BETA INTEREST ─────────── -->
+    <section class="beta-section-dark" id="beta" aria-labelledby="wd-beta-title">
+      <div class="beta-inner">
+        <div class="reveal">
+          <div class="section-label dark">
+            <span class="eyebrow eyebrow-green">Wave 2 Access</span>
+          </div>
+          <h2 class="beta-heading-dark" data-reveal="up" id="wd-beta-title">
+            Get notified when Webhook &amp; Event Dormancy Manager ships
+          </h2>
+          <p class="beta-desc-dark">
+            Webhook &amp; Event Dormancy Manager is in design as part of CertaWorks Wave 2 — a second
+            set of tools productized from a working cognitive agent. Leave your details and we'll reach
+            out when the package is published, or sooner if you'd like to help shape the dormant-by-default
+            activation interface.
+          </p>
+        </div>
+
+        <form class="beta-form reveal" id="wd-betaForm" aria-label="Wave 2 access signup form" novalidate method="POST" action="https://formspree.io/f/xkoekajl">
+          <input type="hidden" name="_subject" value="Webhook & Event Dormancy Manager (Wave 2) Interest — CertaWorks">
+          <input type="hidden" name="_next" value="https://certaworks.dev/thanks">
+          <div class="form-field">
+            <label class="form-label" for="wd-beta-name">Name</label>
+            <input class="form-input" id="wd-beta-name" name="name" type="text"
+              autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="wd-beta-email">Email</label>
+            <input class="form-input" id="wd-beta-email" name="email" type="email"
+              autocomplete="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="wd-beta-company">Company or project</label>
+            <input class="form-input" id="wd-beta-company" name="project"
+              autocomplete="organization" placeholder="Acme Corp">
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="wd-beta-usage">What external webhooks or event emitters does your agent fire?</label>
+            <textarea class="form-input form-textarea" id="wd-beta-usage" name="usage"
+              rows="3" placeholder="Slack sends, production callbacks, third-party integrations, autodispatch loops…"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Request Wave 2 Access →</button>
+          <p class="form-status" id="wd-formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <div class="pdp-next-bar">
+      <a href="plugin-runtime" class="pdp-next-back">← Product 20: Plugin Runtime</a>
+      <a href="agent-maintenance-protocol" class="pdp-next-link">
+        <span class="pdp-next-label">Next: Product 22 · Wave 2</span>
+        <span class="pdp-next-name">Agent Maintenance Protocol →</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">CertaWorks</div>
+        <p class="footer-brand-desc">
+          Building agentic infrastructure for safer, cheaper, and more accountable AI work.
+        </p>
+      </div>
+
+      <nav aria-label="Products">
+        <div class="footer-col-label">Products</div>
+        <ul class="footer-links">
+          <li><a href="confidence-gate-mcp-server">Confidence Gate</a></li>
+          <li><a href="agent-cost-router">Agent Cost Router</a></li>
+          <li><a href="goal-drift-monitor">Goal Drift Monitor</a></li>
+          <li><a href="audit-replay-logger">Audit &amp; Replay Logger</a></li>
+          <li><a href="cognitive-memory-mcp-server">Cognitive Memory</a></li>
+          <li><a href="identity-engine-sdk">Identity Engine SDK</a></li>
+          <li><a href="multi-voice-deliberation-framework">Multi-Voice Deliberation</a></li>
+          <li><a href="agent-skill-marketplace-plugin">Agent Skill Marketplace</a></li>
+          <li><a href="prompt-archaeology-tool">Prompt Archaeology</a></li>
+          <li><a href="agent-test-harness">Agent Test Harness</a></li>
+          <li><a href="../products">All Products →</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Company">
+        <div class="footer-col-label">Company</div>
+        <ul class="footer-links">
+          <li><a href="../about">About</a></li>
+          <li><a href="../contact">Contact</a></li>
+          <li><a href="../products/confidence-gate-mcp-server#install">Install Docs</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Notices">
+        <div class="footer-col-label">Notices</div>
+        <ul class="footer-links">
+          <li>Private prototype — not yet public</li>
+          <li>No legal or trademark clearance</li>
+          <li>No live checkout or SaaS availability</li>
+          <li><a href="../privacy">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+    </div>
+  </footer>
+
+  <script src="../app.js" defer></script>
+</body>
+</html>

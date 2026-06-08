@@ -34,6 +34,7 @@
   </script>
   <style>
     /* ── Product detail page extras ─────────────────── */
+    body { --spot-rgb: 251,113,133; }
 
     /* Hero — green glow for test/CI theme */
     .pdp-hero {
@@ -48,7 +49,7 @@
       transform: translateX(-50%);
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(16,185,129,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(251,113,133,0.10) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -138,7 +139,7 @@
       color: var(--c-dark-text);
       transition: color 200ms;
     }
-    .pdp-next-link:hover .pdp-next-name { color: var(--c-green); }
+    .pdp-next-link:hover .pdp-next-name { color: #FB7185; }
     /* Force install-pdp to dark */
     .install-pdp { background: var(--c-dark) !important; }
     .pdp-hero-inner {
@@ -711,9 +712,9 @@
   <!-- ── Prev/Next (top) ─────────── -->
   <div class="pdp-next-bar">
     <a href="prompt-archaeology-tool" class="pdp-next-back">← Product 09: Prompt Archaeology</a>
-    <a href="../products" class="pdp-next-link">
-      <span class="pdp-next-label">View All</span>
-      <span class="pdp-next-name">Full Product Suite →</span>
+    <a href="heartbeat-continuity-mcp-server" class="pdp-next-link">
+      <span class="pdp-next-label">Next: Product 11 · Wave 2</span>
+      <span class="pdp-next-name">Heartbeat &amp; Continuity →</span>
     </a>
   </div>
 
@@ -1079,7 +1080,7 @@ const suite = await runSuite(testCases, async ({ prompt, mockTools, scriptedTool
 
         <div>
           <div class="install-block-label">Build &amp; run locally</div>
-          <div class="install-code-block" id="th-buildBlock">git clone https://github.com/blair/agent-test-harness
+          <div class="install-code-block" id="th-buildBlock">git clone https://github.com/CertaWorks-Labs/agent-test-harness
 cd agent-test-harness
 npm install &amp;&amp; npm run build
 
@@ -1103,7 +1104,7 @@ agent-test suite.json --bail
 agent-test --help</div>
           <button class="install-code-copy" onclick="
             navigator.clipboard.writeText(
-              'git clone https://github.com/blair/agent-test-harness\ncd agent-test-harness\nnpm install && npm run build\nagent-test suite.json --out .agent-test-results --reporter json --reporter markdown --reporter junit'
+              'git clone https://github.com/CertaWorks-Labs/agent-test-harness\ncd agent-test-harness\nnpm install && npm run build\nagent-test suite.json --out .agent-test-results --reporter json --reporter markdown --reporter junit'
             ).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})
           ">Copy</button>
         </div>
@@ -1275,9 +1276,9 @@ await writeReports(suite, {
   <!-- ── Prev/Next ────────────────────────── -->
   <div class="pdp-next-bar">
     <a href="prompt-archaeology-tool" class="pdp-next-back">← Product 09: Prompt Archaeology</a>
-    <a href="../products" class="pdp-next-link">
-      <span class="pdp-next-label">View All</span>
-      <span class="pdp-next-name">Full Product Suite →</span>
+    <a href="heartbeat-continuity-mcp-server" class="pdp-next-link">
+      <span class="pdp-next-label">Next: Product 11 · Wave 2</span>
+      <span class="pdp-next-name">Heartbeat &amp; Continuity →</span>
     </a>
   </div>
 

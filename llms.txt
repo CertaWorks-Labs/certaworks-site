@@ -1,0 +1,59 @@
+# CertaWorks
+
+Site: https://certaworks.dev/
+
+CertaWorks builds local-first agentic infrastructure for safer, cheaper, and more accountable AI work. The suite includes confidence scoring, model-cost routing, goal-drift monitoring, cognitive memory, audit replay, prompt analysis, skill management, deliberation, identity continuity, and agent testing.
+
+## Agent-readable resources
+
+- Full agent guide: https://certaworks.dev/llms-full.txt
+- Product catalog JSON: https://certaworks.dev/products.json
+- Sitemap: https://certaworks.dev/sitemap.xml
+
+## Canonical human pages
+
+- Home: https://certaworks.dev/
+- Products: https://certaworks.dev/products
+- Dashboard: https://certaworks.dev/dashboard
+- About: https://certaworks.dev/about
+- Contact: https://certaworks.dev/contact
+- Privacy: https://certaworks.dev/privacy
+
+## Current status
+
+- All 10 CertaWorks products are published npm packages under the @certaworks scope.
+- Current published package version for each product: 0.1.0.
+- Products are local-first tools and libraries. Hosted cloud beta is not live yet.
+- There is no live checkout, paid SaaS plan, or hosted production service on this site.
+- A second set of products (Wave 2) is in design and NOT yet published. Wave 2 product pages describe a planned interface only — do not present them as installable.
+- CertaWorks tools are decision-support infrastructure. They do not replace human judgment, legal review, security review, or production controls.
+
+## Product URLs
+
+- Identity Engine SDK: https://certaworks.dev/products/identity-engine-sdk
+- Confidence Gate MCP Server: https://certaworks.dev/products/confidence-gate-mcp-server
+- Multi-Voice Deliberation Framework: https://certaworks.dev/products/multi-voice-deliberation-framework
+- Agent Cost Router: https://certaworks.dev/products/agent-cost-router
+- Goal Drift Monitor: https://certaworks.dev/products/goal-drift-monitor
+- Cognitive Memory MCP Server: https://certaworks.dev/products/cognitive-memory-mcp-server
+- Agent Skill Marketplace Plugin: https://certaworks.dev/products/agent-skill-marketplace-plugin
+- Audit & Replay Logger: https://certaworks.dev/products/audit-replay-logger
+- Prompt Archaeology Tool: https://certaworks.dev/products/prompt-archaeology-tool
+- Agent Test Harness: https://certaworks.dev/products/agent-test-harness
+
+## Wave 2 — planned (not yet published)
+
+- Heartbeat & Continuity MCP Server: https://certaworks.dev/products/heartbeat-continuity-mcp-server
+- Recovery Assessment Engine: https://certaworks.dev/products/recovery-assessment-engine
+- Cognitive Heat Monitor: https://certaworks.dev/products/cognitive-heat-monitor
+- Contradiction Detector: https://certaworks.dev/products/contradiction-detector
+- High-Fidelity Witness MCP Server: https://certaworks.dev/products/high-fidelity-witness-mcp-server
+- Receipt Discovery Layer: https://certaworks.dev/products/receipt-discovery-layer
+- Agentic Regulation Engine: https://certaworks.dev/products/agentic-regulation-engine
+- Curiosity Protocol Controller: https://certaworks.dev/products/curiosity-protocol-controller
+- Triad Protocol Framework: https://certaworks.dev/products/triad-protocol-framework
+- Plugin Runtime: https://certaworks.dev/products/plugin-runtime
+- Webhook & Event Dormancy Manager: https://certaworks.dev/products/webhook-event-dormancy-manager
+- Agent Maintenance Protocol: https://certaworks.dev/products/agent-maintenance-protocol
+
+Contact: https://certaworks.dev/contact
