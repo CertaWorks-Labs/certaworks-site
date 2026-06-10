@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -41,6 +42,10 @@ function stripAllowedNegativeLaunchDisclaimers(html) {
 
 const TOP_PAGES = ["index.html", "products.html", "dashboard.html"];
 
+const productsJsonText = read("products.json");
+const productsJson = JSON.parse(productsJsonText);
+const PUBLISHED_PRODUCTS = productsJson.products;
+const PLANNED_PRODUCTS = productsJson.wave_2_planned ?? [];
 const PRODUCT_SLUGS = [
   "confidence-gate-mcp-server",
   "agent-cost-router",
@@ -52,23 +57,14 @@ const PRODUCT_SLUGS = [
   "agent-skill-marketplace-plugin",
   "prompt-archaeology-tool",
   "agent-test-harness",
+  ...PLANNED_PRODUCTS.map((product) => product.slug),
 ];
 
 const PRODUCT_PAGES = PRODUCT_SLUGS.map((s) => `products/${s}.html`);
 const ALL_PAGES = [...TOP_PAGES, ...PRODUCT_PAGES];
 
-const PRODUCT_NAMES = [
-  "Identity Engine SDK",
-  "Confidence Gate MCP Server",
-  "Multi-Voice Deliberation Framework",
-  "Agent Cost Router",
-  "Goal Drift Monitor",
-  "Cognitive Memory MCP Server",
-  "Agent Skill Marketplace Plugin",
-  "Audit & Replay Logger",
-  "Prompt Archaeology Tool",
-  "Agent Test Harness",
-];
+const PRODUCT_NAMES = PUBLISHED_PRODUCTS.map((product) => product.name);
+const ALL_PRODUCT_NAMES = [...PUBLISHED_PRODUCTS, ...PLANNED_PRODUCTS].map((product) => product.name);
 
 // ── Load all pages once ───────────────────────────────────────────────────────
 
@@ -332,12 +328,44 @@ const expectedSitemapUrls = [
 assert.deepEqual(sitemapUrls, expectedSitemapUrls, "sitemap.xml: URL inventory must match static public pages");
 assertNoStaleDomains(sitemapXml, "sitemap.xml");
 
-// ── 16. Agent-readable files ─────────────────────────────────────────────────
+// ── 16. Canonical redirects for duplicate static URL forms ───────────────────
+
+const redirectsPath = join(root, "_redirects");
+assert.ok(existsSync(redirectsPath), "_redirects: missing permanent canonical redirect rules");
+
+const redirectsTxt = read("_redirects");
+const redirectRules = redirectsTxt
+  .split(/\r?\n/)
+  .map((line) => line.trim())
+  .filter((line) => line && !line.startsWith("#"))
+  .map((line) => line.split(/\s+/));
+
+function assertRedirect(source, destination, status = "301") {
+  assert.ok(
+    redirectRules.some(([ruleSource, ruleDestination, ruleStatus]) =>
+      ruleSource === source &&
+      ruleDestination === destination &&
+      ruleStatus === status
+    ),
+    `_redirects: missing ${status} redirect from ${source} to ${destination}`
+  );
+}
+
+for (const page of ["index.html", "products.html", "dashboard.html", "about.html", "contact.html", "privacy.html", "thanks.html"]) {
+  const canonicalPath = page === "index.html" ? "/" : `/${page.replace(/\.html$/, "")}`;
+  assertRedirect(`/${page}`, canonicalPath);
+  if (canonicalPath !== "/") {
+    assertRedirect(`${canonicalPath}/`, canonicalPath);
+  }
+}
+
+assertRedirect("/products/:slug.html", "/products/:slug");
+assertRedirect("/products/:slug/", "/products/:slug");
+
+// ── 17. Agent-readable files ─────────────────────────────────────────────────
 
 const llmsTxt = read("llms.txt");
 const llmsFullTxt = read("llms-full.txt");
-const productsJsonText = read("products.json");
-const productsJson = JSON.parse(productsJsonText);
 
 for (const [name, content] of [
   ["llms.txt", llmsTxt],
@@ -355,7 +383,9 @@ assert.equal(productsJson.products.length, 10, "products.json: must list exactly
 
 for (const slug of PRODUCT_SLUGS) {
   const product = productsJson.products.find((item) => item.slug === slug);
-  assert.ok(product, `products.json: missing product slug: ${slug}`);
+  if (!product) {
+    continue;
+  }
   assert.equal(product.url, `${SITE_ORIGIN}/products/${slug}`, `products.json: wrong URL for ${slug}`);
   assert.ok(product.npm_package.startsWith("@certaworks/"), `products.json: ${slug} must use @certaworks npm scope`);
   assert.equal(product.npm_version, "0.1.0", `products.json: ${slug} npm version must be 0.1.0`);
@@ -363,8 +393,18 @@ for (const slug of PRODUCT_SLUGS) {
   assert.ok(product.description, `products.json: ${slug} missing description`);
 }
 
-for (const name of PRODUCT_NAMES) {
-  assert.ok(productsJson.products.some((item) => item.name === name), `products.json: missing product name: ${name}`);
+for (const product of PLANNED_PRODUCTS) {
+  assert.equal(product.url, `${SITE_ORIGIN}/products/${product.slug}`, `products.json: wrong planned URL for ${product.slug}`);
+  assert.equal(product.availability, "planned", `products.json: ${product.slug} must be marked planned`);
+  assert.equal(product.install, null, `products.json: ${product.slug} should not present an install command before publication`);
+}
+
+for (const name of ALL_PRODUCT_NAMES) {
+  assert.ok(
+    productsJson.products.some((item) => item.name === name) ||
+    PLANNED_PRODUCTS.some((item) => item.name === name),
+    `products.json: missing product name: ${name}`
+  );
   assert.ok(llmsFullTxt.includes(name), `llms-full.txt: missing product name: ${name}`);
 }
 

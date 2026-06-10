@@ -1,0 +1,16 @@
+# Permanent canonical URL redirects for static duplicate forms.
+/index.html / 301
+/products.html /products 301
+/products/ /products 301
+/dashboard.html /dashboard 301
+/dashboard/ /dashboard 301
+/about.html /about 301
+/about/ /about 301
+/contact.html /contact 301
+/contact/ /contact 301
+/privacy.html /privacy 301
+/privacy/ /privacy 301
+/thanks.html /thanks 301
+/thanks/ /thanks 301
+/products/:slug.html /products/:slug 301
+/products/:slug/ /products/:slug 301
