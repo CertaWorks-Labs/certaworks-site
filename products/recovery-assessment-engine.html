@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Recovery Assessment Engine — CertaWorks</title>
-  <meta name="description" content="After an agent crash, interruption, or retraction, reconstruct pre-event and current state, link the contributing pressure events, and return a structured verdict and resume recommendation. Wave 2 — planned SDK / CLI / MCP server.">
+  <meta name="description" content="After an agent crash, interruption, or retraction, reconstruct pre-event and current state, link the contributing pressure events, and return a structured verdict and resume recommendation. Wave 2 — built, publishing soon.">
   <link rel="canonical" href="https://certaworks.dev/products/recovery-assessment-engine">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/recovery-assessment-engine">
   <meta property="og:title" content="Recovery Assessment Engine — CertaWorks">
-  <meta property="og:description" content="Something interrupted the agent. Recovery Assessment reconstructs the state around the event and returns a verdict — stabilized, partial, or monitor — with a concrete resume recommendation. Wave 2 — planned.">
+  <meta property="og:description" content="Something interrupted the agent. Recovery Assessment reconstructs the state around the event and returns a verdict — stabilized, partial, or monitor — with a concrete resume recommendation. Wave 2 — built, publishing soon.">
   <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Recovery Assessment Engine — CertaWorks">
-  <meta name="twitter:description" content="After a crash, abort, or retracted output, Recovery Assessment reconstructs state and returns a verdict with a resume recommendation. Wave 2 — planned SDK / CLI / MCP server.">
+  <meta name="twitter:description" content="After a crash, abort, or retracted output, Recovery Assessment reconstructs state and returns a verdict with a resume recommendation. Wave 2 — built, publishing soon.">
   <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
@@ -25,7 +25,7 @@
     "url": "https://certaworks.dev/products/recovery-assessment-engine",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
-    "description": "Recovery Assessment Engine reconstructs an agent's pre-event and current state after a failure, interruption, or retraction, links the contributing pressure events, and returns a structured verdict and resume recommendation. Planned Wave 2 product — not yet published.",
+    "description": "Recovery Assessment Engine reconstructs an agent's pre-event and current state after a failure, interruption, or retraction, links the contributing pressure events, and returns a structured verdict and resume recommendation. Built Wave 2 product — npm publication in progress.",
     "publisher": {
         "@type": "Organization",
         "name": "CertaWorks"
@@ -504,6 +504,7 @@
           <li><a href="../dashboard">Dashboard</a></li>
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
+          <li><a href="../changelog">Changelog &amp; Roadmap</a></li>
         </ul>
       </nav>
 
@@ -534,10 +535,10 @@
         </p>
         <div class="pdp-hero-ctas">
           <a href="#how-it-works" class="btn btn-primary btn-sm">How It Works →</a>
-          <a href="#install" class="btn btn-ghost btn-sm">Planned Interface</a>
+          <a href="#install" class="btn btn-ghost btn-sm">Install Preview</a>
         </div>
         <div class="pdp-status-badge">
-          Wave 2 — Planned · Not yet published on npm
+          Wave 2 — Built · publishing soon
         </div>
       </div>
     </section>
@@ -777,11 +778,11 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Planned MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The proposed MCP surface below is derived from the single originating agent's route
           <code style="font-family:var(--font-mono);font-size:13px">GET /api/recovery_assessment/{retraction_id}</code>
-          and the state it reconciles. Names are the planned product interface for the Wave 2 package
+          and the state it reconciles. This is the interface of the built Wave 2 package
           and may change before first publish.
         </p>
 
@@ -831,15 +832,13 @@
 
         <div class="reveal">
           <div class="section-label dark">
-            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Planned</span>
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Built</span>
           </div>
           <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
-            Planned local interface
+            Installation preview — available at publication
           </h2>
           <p class="install-pdp-subhead">
-            Recovery Assessment Engine is a CertaWorks Wave 2 product. It is currently in design and
-            <strong>not yet published</strong> on npm. The commands below show the planned local
-            interface — an SDK, a CLI, and an MCP server, consistent with the rest of the suite — so
+            Recovery Assessment Engine is a CertaWorks Wave 2 product — <strong>built and tested</strong>, with npm publication in progress. The commands below show the package interface — an SDK, a CLI, and an MCP server, consistent with the rest of the suite — so
             you can see exactly what it will expose.
           </p>
           <p class="install-pdp-subhead">
@@ -851,10 +850,10 @@
 
         <div class="reveal">
           <div class="planned-callout" style="margin-bottom:20px;">
-            <div class="planned-callout-label">Status — not currently published</div>
+            <div class="planned-callout-label">Status — built; npm publication in progress</div>
             <p>
               The package <code style="font-family:var(--font-mono);font-size:12px">@certaworks/recovery-assessment-engine</code>
-              is a planned name, with planned binaries <code style="font-family:var(--font-mono);font-size:12px">recovery-assessment</code>
+              ships with binaries <code style="font-family:var(--font-mono);font-size:12px">recovery-assessment</code>
               and <code style="font-family:var(--font-mono);font-size:12px">recovery-assessment-mcp</code>. The
               snippets below are illustrative of the intended interface and will not install until the
               Wave 2 package is released.
@@ -863,16 +862,16 @@
 
           <div class="code-block" id="raInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Planned npm package</span>
+              <span class="code-block-label">npm package — available at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="raInstallCmd">Copy</button>
             </div>
-            <pre><code># Planned — not yet published
+            <pre><code># Available at publication
 npm install -g @certaworks/recovery-assessment-engine</code></pre>
           </div>
 
           <div class="code-block" id="raMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Planned Claude Desktop config</span>
+              <span class="code-block-label">Claude Desktop config — at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="raMcpConfig">Copy</button>
             </div>
             <pre><code>{
@@ -923,7 +922,7 @@ npm install -g @certaworks/recovery-assessment-engine</code></pre>
               </li>
               <li>
                 <span class="limits-icon-does" aria-hidden="true">✓</span>
-                <span>Run fully local as a planned SDK, CLI, and MCP server</span>
+                <span>Run fully local as an SDK, CLI, and MCP server</span>
               </li>
             </ul>
           </div>
@@ -967,7 +966,7 @@ npm install -g @certaworks/recovery-assessment-engine</code></pre>
         <h2 class="pdp-section-headline" id="related-h2">Related Products</h2>
         <div class="related-strip" data-stagger role="list">
           <a href="heartbeat-continuity-mcp-server" class="related-card reveal spotlight hairline-top" role="listitem">
-            <div class="related-card-label">Product 11 · Wave 2 — in design</div>
+            <div class="related-card-label">Product 11 · Wave 2 — built</div>
             <div class="related-card-name">Heartbeat &amp; Continuity MCP Server</div>
             <p class="related-card-desc">Heartbeat detects and reclaims the stall; Recovery Assessment answers whether and how to resume from it. The two halves of the continuity-and-recovery loop.</p>
             <span class="related-card-link">View Heartbeat &amp; Continuity →</span>
@@ -999,8 +998,7 @@ npm install -g @certaworks/recovery-assessment-engine</code></pre>
             Get notified when Recovery Assessment Engine ships
           </h2>
           <p class="beta-desc-dark">
-            Recovery Assessment Engine is in design as part of CertaWorks Wave 2 — a second set of
-            tools productized from a working cognitive agent. Leave your details and we'll reach out
+            Recovery Assessment Engine is part of CertaWorks Wave 2 — a second set of built tools productized from a working cognitive agent. Leave your details and we'll reach out
             when the package is published, or sooner if you'd like to help shape the interface.
           </p>
         </div>
@@ -1083,15 +1081,15 @@ npm install -g @certaworks/recovery-assessment-engine</code></pre>
       <nav aria-label="Notices">
         <div class="footer-col-label">Notices</div>
         <ul class="footer-links">
-          <li>Private prototype — not yet public</li>
-          <li>No legal or trademark clearance</li>
-          <li>No live checkout or SaaS availability</li>
+          <li>CertaWorks Labs LLC — legal entity established</li>
+          <li>Trademark registration pending</li>
+          <li>Local-first tools — no hosted SaaS or checkout yet</li>
           <li><a href="../privacy">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+      <span>© 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.</span>
     </div>
   </footer>
 

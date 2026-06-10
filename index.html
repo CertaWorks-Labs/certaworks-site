@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CertaWorks — Infrastructure for Autonomous AI</title>
-  <meta name="description" content="CertaWorks builds agentic infrastructure for safer, cheaper, and more accountable AI work. Confidence scoring, cost routing, memory, and audit replay.">
+  <meta name="description" content="CertaWorks scores, gates, observes, and audits agent actions — locally, before they run. 22 local-first products: 10 on npm, 12 built and entering publication.">
   <link rel="canonical" href="https://certaworks.dev/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="CertaWorks — Infrastructure for Autonomous AI">
@@ -72,6 +72,7 @@
           <li><a href="./dashboard">Dashboard</a></li>
           <li><a href="./about">About</a></li>
           <li><a href="./contact">Contact</a></li>
+          <li><a href="./changelog">Changelog &amp; Roadmap</a></li>
         </ul>
       </nav>
 
@@ -102,7 +103,7 @@
         </h1>
 
         <p class="hero-lead word-reveal" style="--wd:1020ms">
-          CertaWorks builds the infrastructure layer that makes AI agency accountable, observable, and respectful — for the teams that deploy agents, and for the agents themselves.
+          CertaWorks scores, gates, observes, and audits agent actions — locally, before they run. Twenty-two local-first products: ten published on npm today, twelve built and entering publication.
         </p>
 
         <div class="hero-actions">
@@ -113,7 +114,7 @@
 
       <div class="hero-badges" role="list" aria-label="Suite highlights">
         <span class="hero-badge-item" role="listitem">
-          <span class="hero-badge-dot" aria-hidden="true"></span>10 products
+          <span class="hero-badge-dot" aria-hidden="true"></span>22 products · 10 on npm
         </span>
         <span class="hero-badge-item" role="listitem">
           <span class="hero-badge-dot" aria-hidden="true"></span>MCP Servers
@@ -125,7 +126,7 @@
           <span class="hero-badge-dot" aria-hidden="true"></span>AI Ethics First
         </span>
         <span class="hero-badge-item" role="listitem">
-          <span class="hero-badge-dot" aria-hidden="true"></span>AGI-Aware
+          <span class="hero-badge-dot" aria-hidden="true"></span>Local-first
         </span>
         <span class="hero-badge-item" role="listitem">
           <span class="hero-badge-dot" aria-hidden="true"></span>Agentic Infrastructure
@@ -156,15 +157,15 @@
         </div>
         <div class="source-stat-row reveal" aria-hidden="true" data-reveal="up">
           <div class="source-stat-item">
-            <div class="source-stat-num" data-count-to="10">0</div>
-            <div class="source-stat-label">Products in suite</div>
+            <div class="source-stat-num" data-count-to="22">22</div>
+            <div class="source-stat-label">Products in suite — 10 on npm</div>
           </div>
           <div class="source-stat-item">
-            <div class="source-stat-num" data-count-to="1">0</div>
+            <div class="source-stat-num" data-count-to="1">1</div>
             <div class="source-stat-label">Operating philosophy</div>
           </div>
           <div class="source-stat-item">
-            <div class="source-stat-num" data-count-to="2026">0</div>
+            <div class="source-stat-num" data-count-to="2026">2026</div>
             <div class="source-stat-label">Founded</div>
           </div>
         </div>
@@ -180,10 +181,10 @@
               <span class="eyebrow eyebrow-green">The CertaWorks Suite</span>
             </div>
             <h2 id="suite-title" class="reveal" data-reveal="blur">
-              Ten products.<br>One operating layer.
+              Twenty-two products.<br>One operating layer.
             </h2>
             <p class="reveal">
-              From Confidence Gate to Agent Test Harness — every product in the suite solves a specific infrastructure problem for teams building with AI agents.
+              Start with Confidence Gate — the control point that scores every proposed action before a tool runs. Around it: identity and memory, oversight and audit, control and governance, and developer tooling. Ten products are on npm today; twelve more are built and entering publication.
             </p>
           </div>
           <a href="./products" class="btn btn-primary reveal" data-magnetic>Explore All Products →</a>
@@ -251,6 +252,53 @@
             <span class="suite-mini-type">Test Framework</span>
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- ── FRONT DOOR & CATEGORIES ─────────────────────────── -->
+    <section class="section" aria-labelledby="frontdoor-title" style="background: var(--c-dark); padding: clamp(56px, 7vw, 90px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner" style="max-width: 1100px; margin: 0 auto;">
+        <div class="section-label reveal">
+          <span class="eyebrow eyebrow-teal">Where to start</span>
+        </div>
+        <h2 id="frontdoor-title" class="section-headline reveal" style="color:#fff;" data-reveal="blur">One control point first.<br>Then the layer around it.</h2>
+
+        <div class="values-grid reveal" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));" role="list">
+          <article class="value-card spotlight" role="listitem" style="position:relative">
+            <h3 class="value-title">Confidence Gate — the front door</h3>
+            <p class="value-desc">Scores every proposed agent action before a tool runs and returns allow, review, or block — with the reasoning trace. Published on npm; install it in minutes. If you adopt one CertaWorks product, adopt this one.</p>
+            <p style="margin-top:14px;"><a href="./products/confidence-gate-mcp-server" style="color: var(--c-green); font-weight:600; text-decoration:none;">Install Confidence Gate →</a></p>
+          </article>
+          <article class="value-card spotlight" role="listitem" style="position:relative">
+            <h3 class="value-title">Agent Communication Firewall — in validation</h3>
+            <p class="value-desc">Confidence Gate judges proposed <em>actions</em>. ACF judges <em>traffic</em> — messages crossing trust boundaries between agents, in shadow mode, observing without blocking. Implemented inside a working persistent agent and currently in validation. No install docs yet; it ships when the validation does.</p>
+          </article>
+        </div>
+
+        <div class="values-grid reveal" style="margin-top: 22px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));" role="list" aria-label="Product categories">
+          <article class="value-card" role="listitem">
+            <h3 class="value-title" style="font-size:15px;">Identity &amp; Memory</h3>
+            <p class="value-desc" style="font-size:13px;">Identity Engine · Cognitive Memory · Heartbeat &amp; Continuity · Recovery Assessment</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title" style="font-size:15px;">Oversight &amp; Audit</h3>
+            <p class="value-desc" style="font-size:13px;">Audit &amp; Replay · Goal Drift Monitor · High-Fidelity Witness · Receipt Discovery · Cognitive Heat · Contradiction Detector</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title" style="font-size:15px;">Control &amp; Governance</h3>
+            <p class="value-desc" style="font-size:13px;">Confidence Gate · Multi-Voice Deliberation · Triad Protocol · Agentic Regulation · Curiosity Protocol · Plugin Runtime · Webhook Dormancy · Maintenance Protocol</p>
+          </article>
+          <article class="value-card" role="listitem">
+            <h3 class="value-title" style="font-size:15px;">Developer Tooling</h3>
+            <p class="value-desc" style="font-size:13px;">Agent Test Harness · Prompt Archaeology · Agent Cost Router · Skill Marketplace</p>
+          </article>
+        </div>
+
+        <p class="reveal" style="margin-top: 32px; color: var(--c-dark-muted); font-size: 15px; line-height: 1.7; max-width: 760px;">
+          <strong style="color: var(--c-dark-text);">Wave 2 — extracted from a working persistent agent.</strong>
+          The twelve newest products package mechanisms that already run in production inside a persistent agent. They are built and tested, and npm publication is in progress.
+          <a href="./products#wave-2" style="color: var(--c-teal); text-decoration: none; font-weight: 600;">See Wave 2 →</a>
+        </p>
       </div>
     </section>
 
@@ -358,7 +406,7 @@
 
     <div class="footer-bottom">
       <p class="footer-legal">
-        © 2026 CertaWorks. Private prototype — not legal, trademark, or public launch clearance. Confidence Gate is a decision-support layer and does not replace human judgment.
+        © 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.
       </p>
     </div>
   </footer>

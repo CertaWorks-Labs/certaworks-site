@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Agent Maintenance Protocol — CertaWorks</title>
-  <meta name="description" content="Structured self-maintenance for long-lived agents — a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt. Review, approve, execute, with no step skipped. Wave 2 — planned, not yet published.">
+  <meta name="description" content="Structured self-maintenance for long-lived agents — a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt. Review, approve, execute, with no step skipped. Wave 2 — built, publishing soon.">
   <link rel="canonical" href="https://certaworks.dev/products/agent-maintenance-protocol">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/agent-maintenance-protocol">
   <meta property="og:title" content="Agent Maintenance Protocol — CertaWorks">
-  <meta property="og:description" content="Read-only review → typed human approval → scoped execution. Disciplined self-maintenance for long-lived agents, with a human signature on every change. Wave 2 — planned.">
+  <meta property="og:description" content="Read-only review → typed human approval → scoped execution. Disciplined self-maintenance for long-lived agents, with a human signature on every change. Wave 2 — built, publishing soon.">
   <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Agent Maintenance Protocol — CertaWorks">
-  <meta name="twitter:description" content="Read-only review → typed human approval → scoped execution. Self-maintenance for long-lived agents, with a human signature on every change. Wave 2 — planned, not yet published.">
+  <meta name="twitter:description" content="Read-only review → typed human approval → scoped execution. Self-maintenance for long-lived agents, with a human signature on every change. Wave 2 — built, publishing soon.">
   <meta name="twitter:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
@@ -25,7 +25,7 @@
     "url": "https://certaworks.dev/products/agent-maintenance-protocol",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
-    "description": "Agent Maintenance Protocol gives long-lived agents a disciplined way to tidy their own state: a read-only review phase that mutates nothing, a typed human approval gate (a matching approval token, preview_id, and action ids), then scoped execution that writes a change-log receipt. Review → approve → execute, strictly separated and never collapsed. Planned CertaWorks Wave 2 product — not yet published.",
+    "description": "Agent Maintenance Protocol gives long-lived agents a disciplined way to tidy their own state: a read-only review phase that mutates nothing, a typed human approval gate (a matching approval token, preview_id, and action ids), then scoped execution that writes a change-log receipt. Review → approve → execute, strictly separated and never collapsed. Built CertaWorks Wave 2 product — npm publication in progress.",
     "publisher": {
         "@type": "Organization",
         "name": "CertaWorks"
@@ -526,6 +526,7 @@
           <li><a href="../dashboard">Dashboard</a></li>
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
+          <li><a href="../changelog">Changelog &amp; Roadmap</a></li>
         </ul>
       </nav>
 
@@ -557,10 +558,10 @@
         </p>
         <div class="pdp-hero-ctas">
           <a href="#how-it-works" class="btn btn-primary btn-sm">How It Works →</a>
-          <a href="#install" class="btn btn-ghost btn-sm">Planned Interface</a>
+          <a href="#install" class="btn btn-ghost btn-sm">Install Preview</a>
         </div>
         <div class="pdp-status-badge">
-          Wave 2 — Planned · Not yet published on npm
+          Wave 2 — Built · publishing soon
         </div>
       </div>
     </section>
@@ -792,11 +793,10 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP / API Surface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Planned MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The proposed snake_case surface below wraps the originating agent's maintenance routes and services.
-          Names are the planned product interface for the Wave 2 package and may change before first
-          publish.
+          This is the interface of the built Wave 2 package.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -833,15 +833,13 @@
 
         <div class="reveal">
           <div class="section-label dark">
-            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Planned</span>
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Built</span>
           </div>
           <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
-            Planned local interface
+            Installation preview — available at publication
           </h2>
           <p class="install-pdp-subhead">
-            Agent Maintenance Protocol is a CertaWorks Wave 2 product. It is currently in design and
-            <strong>not yet published</strong> on npm. The commands below show the planned local
-            interface — an SDK, a CLI, and an MCP server, consistent with the rest of the suite — so
+            Agent Maintenance Protocol is a CertaWorks Wave 2 product — <strong>built and tested</strong>, with npm publication in progress. The commands below show the package interface — an SDK, a CLI, and an MCP server, consistent with the rest of the suite — so
             you can see exactly what it will expose.
           </p>
           <p class="install-pdp-subhead">
@@ -853,26 +851,25 @@
 
         <div class="reveal">
           <div class="planned-callout" style="margin-bottom:20px;">
-            <div class="planned-callout-label">Status — not currently published</div>
+            <div class="planned-callout-label">Status — built; npm publication in progress</div>
             <p>
               The package <code style="font-family:var(--font-mono);font-size:12px">@certaworks/agent-maintenance-protocol</code>
-              is a planned name. The snippets below are illustrative of the intended interface and
-              will not install until the Wave 2 package is released.
+              goes live at publication. The snippets below show the exact interface; the install command works the moment the package is published.
             </p>
           </div>
 
           <div class="code-block" id="mpInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Planned npm package</span>
+              <span class="code-block-label">npm package — available at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mpInstallCmd">Copy</button>
             </div>
-            <pre><code># Planned — not yet published
+            <pre><code># Available at publication
 npm install -g @certaworks/agent-maintenance-protocol</code></pre>
           </div>
 
           <div class="code-block" id="mpMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Planned Claude Desktop config</span>
+              <span class="code-block-label">Claude Desktop config — at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="mpMcpConfig">Copy</button>
             </div>
             <pre><code>{
@@ -886,7 +883,7 @@ npm install -g @certaworks/agent-maintenance-protocol</code></pre>
           </div>
 
           <div class="approval-snippet" aria-label="Illustrative typed approval block">
-# Planned — not yet published
+# Available at publication
 # The typed approval a human returns for a preview:
 <span class="ak">MAINTENANCE_EXECUTION_APPROVAL</span>
   approved: true
@@ -937,7 +934,7 @@ npm install -g @certaworks/agent-maintenance-protocol</code></pre>
               </li>
               <li>
                 <span class="limits-icon-does" aria-hidden="true">✓</span>
-                <span>Run fully local as a planned CLI / MCP server / SDK</span>
+                <span>Run fully local as a CLI / MCP server / SDK</span>
               </li>
             </ul>
           </div>
@@ -993,7 +990,7 @@ npm install -g @certaworks/agent-maintenance-protocol</code></pre>
             <span class="related-card-link">View Audit &amp; Replay Logger →</span>
           </a>
           <a href="recovery-assessment-engine" class="related-card reveal spotlight hairline-top" role="listitem">
-            <div class="related-card-label">Product 12 · Wave 2 — in design</div>
+            <div class="related-card-label">Product 12 · Wave 2 — built</div>
             <div class="related-card-name">Recovery Assessment Engine</div>
             <p class="related-card-desc">Recovery decides whether and how to resume from a stall; maintenance decides what to tidy once an agent is running again. Two governed, human-gated halves of keeping a long-lived agent healthy.</p>
             <span class="related-card-link">View the suite →</span>
@@ -1013,8 +1010,7 @@ npm install -g @certaworks/agent-maintenance-protocol</code></pre>
             Get notified when Agent Maintenance Protocol ships
           </h2>
           <p class="beta-desc-dark">
-            Agent Maintenance Protocol is in design as part of CertaWorks Wave 2 — a second set of
-            tools productized from a working cognitive agent. Leave your details and we'll reach out
+            Agent Maintenance Protocol is part of CertaWorks Wave 2 — a second set of built tools productized from a working cognitive agent. Leave your details and we'll reach out
             when the package is published, or sooner if you'd like to help shape the review → approve →
             execute interface.
           </p>
@@ -1098,15 +1094,15 @@ npm install -g @certaworks/agent-maintenance-protocol</code></pre>
       <nav aria-label="Notices">
         <div class="footer-col-label">Notices</div>
         <ul class="footer-links">
-          <li>Private prototype — not yet public</li>
-          <li>No legal or trademark clearance</li>
-          <li>No live checkout or SaaS availability</li>
+          <li>CertaWorks Labs LLC — legal entity established</li>
+          <li>Trademark registration pending</li>
+          <li>Local-first tools — no hosted SaaS or checkout yet</li>
           <li><a href="../privacy">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+      <span>© 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.</span>
     </div>
   </footer>
 

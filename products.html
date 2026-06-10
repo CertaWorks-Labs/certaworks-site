@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Products — CertaWorks Suite</title>
-  <meta name="description" content="The CertaWorks product suite: 10 agentic infrastructure products including Confidence Gate, Agent Cost Router, Cognitive Memory, Audit Replay, and more.">
+  <meta name="description" content="The CertaWorks suite: 22 local-first agentic infrastructure products — 10 published on npm, 12 built and entering publication. Start with Confidence Gate.">
   <link rel="canonical" href="https://certaworks.dev/products">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products">
   <meta property="og:title" content="Products — CertaWorks Suite">
-  <meta property="og:description" content="Ten products, one operating layer for agent teams.">
+  <meta property="og:description" content="Twenty-two local-first products, one operating layer — 10 on npm, 12 entering publication.">
   <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Products — CertaWorks Suite">
@@ -60,6 +60,7 @@
           <li><a href="./dashboard">Dashboard</a></li>
           <li><a href="./about">About</a></li>
           <li><a href="./contact">Contact</a></li>
+          <li><a href="./changelog">Changelog &amp; Roadmap</a></li>
         </ul>
       </nav>
 
@@ -75,7 +76,7 @@
         <div class="section-label dark">
           <span class="eyebrow eyebrow-green">CertaWorks</span>
         </div>
-        <h1 id="products-title"><span class="text-grad">The full suite.<br>Ten products, one layer.</span></h1>
+        <h1 id="products-title"><span class="text-grad">The full suite.<br>Twenty-two products, one layer.</span></h1>
         <p class="products-hero-lead">
           Every product solves a specific infrastructure problem for teams building with AI agents — from scoring actions before they run, to routing cost, to keeping a complete audit trail.
         </p>
@@ -88,7 +89,7 @@
         <div class="section-label reveal">
           <span class="eyebrow eyebrow-teal">Complete suite</span>
         </div>
-        <h2 class="section-headline reveal" id="all-products-title" data-reveal="up">All ten products.</h2>
+        <h2 class="section-headline reveal" id="all-products-title" data-reveal="up">The full suite.</h2>
 
         <div class="products-grid" role="list" data-stagger>
 
@@ -104,7 +105,7 @@
             <p class="product-desc">Persistent identity, mutable state, append-only history, and drift checks for agents that need continuity across sessions. Node / TypeScript prototype.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/identity-engine-sdk" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -138,7 +139,7 @@
             <p class="product-desc">Scores proposed agent actions and returns allow, review, or block decisions with confidence factors and trace context. The primary control point in the CertaWorks suite.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Available now
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/confidence-gate-mcp-server#install" class="product-cta-text">Install local →</a>
               <a href="./products/confidence-gate-mcp-server" class="product-cta-text" style="margin-left:12px;opacity:0.7;">Full product page →</a>
@@ -175,7 +176,7 @@
             <p class="product-desc">Adds Builder, Skeptic, Evolver, and Guardian review loops before an agent commits to an answer. A quality review layer for high-stakes agent decisions.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/multi-voice-deliberation-framework" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -209,7 +210,7 @@
             <p class="product-desc">Routes prompts to the cheapest capable model while estimating cost and respecting quality needs and budget constraints. Local slice — SDK, CLI, MCP tools, local API, and local dashboard.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Local slice
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/agent-cost-router" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -243,7 +244,7 @@
             <p class="product-desc">Monitors long-running agents for divergence from their original goal and flags risky behavioral drift. Local slice — stores session turn history, scores drift, and records webhook alert receipts.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>Prototype
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/goal-drift-monitor" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -277,7 +278,7 @@
             <p class="product-desc">Gives agents episodic, semantic, and working-memory tools for retrieval and context packing. A local memory primitive for agents that need continuity between sessions.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Available now
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/cognitive-memory-mcp-server" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -311,7 +312,7 @@
             <p class="product-desc">Lets agents discover, inspect, load, and run trusted skills from a local registry-style capability layer. Includes durable local install state, checksum verification, and MCP tools.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Local slice
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/agent-skill-marketplace-plugin" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -345,7 +346,7 @@
             <p class="product-desc">Captures explicitly logged decisions, tool calls, state changes, and causal chains for local agent debugging. Includes durable local storage, redaction, hash-chain events, and replay bundles.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>Local slice
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/audit-replay-logger" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -379,7 +380,7 @@
             <p class="product-desc">Runs probes to infer behavioral constraints, persona patterns, and likely hidden operating rules in agent systems. Audit signals — not exact prompt recovery.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Available now
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/prompt-archaeology-tool" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -413,7 +414,7 @@
             <p class="product-desc">Provides repeatable tests for agent outputs, traces, tool calls, latency, cost, and mock tool behavior. An SDK / library for teams building agent test suites.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot live" aria-hidden="true"></span>Available now
+                <span class="status-dot live" aria-hidden="true"></span>Available now · npm
               </span>
               <a href="./products/agent-test-harness" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -439,18 +440,16 @@
       </div>
     </section>
 
-    <!-- ── WAVE 2 — IN DESIGN ───────────────────────── -->
+    <!-- ── WAVE 2 — BUILT, PUBLISHING ─────────────────── -->
     <section class="section products-section" id="wave-2" aria-labelledby="wave2-title"
       style="background: var(--c-dark); padding-top: 0;">
       <div class="section-inner">
         <div class="section-label reveal">
-          <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — in design</span>
+          <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — built, publishing soon</span>
         </div>
         <h2 class="section-headline reveal" id="wave2-title" style="color:#fff;" data-reveal="up">Next: productized from a working agent.</h2>
         <p class="pdp-section-body reveal" style="color: var(--c-dark-muted); margin: 14px 0 8px; max-width: 720px;">
-          Wave 2 extracts systems proven inside a persistent cognitive agent. These are in design and
-          <strong style="color:var(--c-dark-text)">not yet published</strong> — the pages show the planned
-          interface, not an installable package.
+          Extracted from a working persistent agent — every Wave 2 product packages a mechanism that already runs in production inside it. All twelve are <strong style="color:var(--c-dark-text)">built and tested</strong>; npm publication is in progress. Install commands go live the moment each package ships.
         </p>
 
         <div class="products-grid" role="list" data-stagger style="margin-top: 32px;">
@@ -467,7 +466,7 @@
             <p class="product-desc">Keeps long-running agents alive on a paced interval, reclaims stale running sessions, enforces unmet inbound-response obligations, and damps repetitive looping. Planned local MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/heartbeat-continuity-mcp-server" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -501,7 +500,7 @@
             <p class="product-desc">After an agent failure, interruption, or retraction, reconstructs the state around the event and returns a structured verdict — stabilized, partial, or monitor — with a concrete resume recommendation. Planned SDK / CLI / MCP server.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/recovery-assessment-engine" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -535,7 +534,7 @@
             <p class="product-desc">Read-only internal-state telemetry: deterministic 0–1 signals blended from text and structured state, banded quiet / watch / elevated to flag rising load or risk before output degrades. Not a feeling — heuristic readings. Planned MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/cognitive-heat-monitor" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -569,7 +568,7 @@
             <p class="product-desc">Surfaces conflicting beliefs, goals, and statements with an open / resolved / dismissed lifecycle, before silent contradictions compound into errors. Planned SDK / CLI / MCP server.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/contradiction-detector" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -603,7 +602,7 @@
             <p class="product-desc">An independent, real-time observer that audits an agent's claims — preflight, advisory, report — and writes findings as receipts. Complements the Audit &amp; Replay Logger; it does not replace it. Planned MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/high-fidelity-witness-mcp-server" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -637,7 +636,7 @@
             <p class="product-desc">Discovers, correlates, and retrieves proof-of-action receipts across subsystems and sessions, making the whole suite's proof-trail queryable. Planned MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/receipt-discovery-layer" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -671,7 +670,7 @@
             <p class="product-desc">Advisory, read-only governance at the episode and pattern level, with efficacy feedback. It recommends; it does not enforce, and never auto-certifies recovery. Sits above per-action gating. Planned MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/agentic-regulation-engine" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -705,7 +704,7 @@
             <p class="product-desc">Controlled autonomy with the brakes built in first: activation gate, enforcement matrix, and lifecycle stop controls. Read-only by default, human-stoppable — autonomous pursuit is gated and not live. Planned MCP server / SDK.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/curiosity-protocol-controller" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -739,7 +738,7 @@
             <p class="product-desc">An evidentiary three-role decision audit — Witness, Adversary, Architect — that audits the receipts behind a committed claim. Composes with Multi-Voice Deliberation. Planned MCP server / SDK.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/triad-protocol-framework" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -773,7 +772,7 @@
             <p class="product-desc">Governed loading of third-party plugins and MCP servers — registration, capability authorization, handshake gatekeeper, lifecycle, and a forensic sink. Read-only by default; it governs plugins but does not guarantee their safety. Planned MCP / plugin / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/plugin-runtime" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -807,7 +806,7 @@
             <p class="product-desc">Dormant by default, fail-closed: no external call fires unless explicitly activated and approved, and queuing never sends. Prevents accidental external side effects from agents. Planned MCP server / SDK / API.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/webhook-event-dormancy-manager" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -841,7 +840,7 @@
             <p class="product-desc">Structured self-maintenance with a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt. No mutation runs without explicit approval. Planned SDK / CLI / MCP server.</p>
             <div class="product-card-footer">
               <span class="product-status">
-                <span class="status-dot proto" aria-hidden="true"></span>In design · Wave 2
+                <span class="status-dot beta" aria-hidden="true"></span>Built · publishing soon
               </span>
               <a href="./products/agent-maintenance-protocol" class="product-cta-text" style="opacity:0.7;">Full product page →</a>
             </div>
@@ -864,6 +863,11 @@
           </article>
 
         </div>
+
+        <p class="reveal" style="margin-top: 36px; color: var(--c-dark-muted); font-size: 15px; line-height: 1.7; max-width: 760px; padding: 18px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px;">
+          <strong style="color: var(--c-dark-text);">In validation — Agent Communication Firewall.</strong>
+          A shadow-only boundary firewall for agent communication: where Confidence Gate judges proposed actions, ACF judges traffic crossing trust boundaries between agents. Implemented inside a working persistent agent; currently in validation. No install documentation until validation completes.
+        </p>
       </div>
     </section>
 
@@ -893,7 +897,7 @@
           </article>
           <article class="value-card spotlight" role="listitem" style="position:relative">
             <h3 class="value-title">Available now</h3>
-            <p class="value-desc">All 10 products are published on npm under the @certaworks scope. Each product page has a current npm install guide, with npx or MCP configuration where the package exposes a runnable server or CLI.</p>
+            <p class="value-desc">Ten products are published on npm under the @certaworks scope, each with a verified install guide. Twelve more are built and tested, with npm publication in progress — their install commands activate as each package ships.</p>
           </article>
         </div>
       </div>
@@ -940,9 +944,9 @@
       <nav aria-label="Notices">
         <div class="footer-col-label">Notices</div>
         <ul class="footer-links">
-          <li>Private prototype — not yet public</li>
-          <li>No legal or trademark clearance</li>
-          <li>No live checkout or SaaS availability</li>
+          <li>CertaWorks Labs LLC — legal entity established</li>
+          <li>Trademark registration pending</li>
+          <li>Local-first tools — no hosted SaaS or checkout yet</li>
           <li><a href="./privacy">Privacy Policy</a></li>
         </ul>
       </nav>
@@ -950,7 +954,7 @@
 
     <div class="footer-bottom">
       <p class="footer-legal">
-        © 2026 CertaWorks. Private prototype — not legal, trademark, or public launch clearance.
+        © 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.
       </p>
     </div>
   </footer>

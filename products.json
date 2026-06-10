@@ -7,7 +7,7 @@
     "hosted_beta": "not live",
     "checkout": "not live",
     "saas": "not live",
-    "wave_2": "in design — planned products not yet published"
+    "wave_2": "built and tested — npm publication in progress"
   },
   "products": [
     {
@@ -141,11 +141,11 @@
       "url": "https://certaworks.dev/products/heartbeat-continuity-mcp-server",
       "npm_package": "@certaworks/heartbeat-continuity-mcp-server",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["heartbeat-continuity-mcp", "heartbeat-continuity-api"],
-      "description": "Keeps long-running agents alive on a paced interval, recovers stale running sessions, enforces unmet inbound-response obligations, and damps repetitive looping. Planned Wave 2 product — not yet published."
+      "description": "Keeps long-running agents alive on a paced interval, recovers stale running sessions, enforces unmet inbound-response obligations, and damps repetitive looping. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 12,
@@ -154,11 +154,11 @@
       "url": "https://certaworks.dev/products/recovery-assessment-engine",
       "npm_package": "@certaworks/recovery-assessment-engine",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "cli", "mcp_server"],
       "install": null,
       "binaries": ["recovery-assessment", "recovery-assessment-mcp"],
-      "description": "After an agent failure, interruption, or retraction, produces a structured assessment verdict and a recommendation for whether it is safe to resume. Planned Wave 2 product — not yet published."
+      "description": "After an agent failure, interruption, or retraction, produces a structured assessment verdict and a recommendation for whether it is safe to resume. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 13,
@@ -167,11 +167,11 @@
       "url": "https://certaworks.dev/products/cognitive-heat-monitor",
       "npm_package": "@certaworks/cognitive-heat-monitor",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["cognitive-heat-monitor", "cognitive-heat-api"],
-      "description": "Read-only internal-state telemetry for agents: deterministic 0–1 signals blended from text and structured state, banded quiet / watch / elevated to flag rising load or risk before output degrades. Planned Wave 2 product — not yet published."
+      "description": "Read-only internal-state telemetry for agents: deterministic 0–1 signals blended from text and structured state, banded quiet / watch / elevated to flag rising load or risk before output degrades. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 14,
@@ -180,11 +180,11 @@
       "url": "https://certaworks.dev/products/contradiction-detector",
       "npm_package": "@certaworks/contradiction-detector",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "cli", "mcp_server"],
       "install": null,
       "binaries": ["contradiction-detector", "contradiction-detector-mcp"],
-      "description": "Surfaces conflicting beliefs, goals, and statements with an open / resolved / dismissed lifecycle before they compound. Planned Wave 2 product — not yet published."
+      "description": "Surfaces conflicting beliefs, goals, and statements with an open / resolved / dismissed lifecycle before they compound. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 15,
@@ -193,11 +193,11 @@
       "url": "https://certaworks.dev/products/high-fidelity-witness-mcp-server",
       "npm_package": "@certaworks/high-fidelity-witness-mcp-server",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["high-fidelity-witness-mcp", "high-fidelity-witness-api"],
-      "description": "An independent, real-time observer that audits an agent's claims (preflight, advisory, report) and writes findings as receipts — distinct from a decision log, it does not replace the Audit & Replay Logger. Planned Wave 2 product — not yet published."
+      "description": "An independent, real-time observer that audits an agent's claims (preflight, advisory, report) and writes findings as receipts — distinct from a decision log, it does not replace the Audit & Replay Logger. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 16,
@@ -206,11 +206,11 @@
       "url": "https://certaworks.dev/products/receipt-discovery-layer",
       "npm_package": "@certaworks/receipt-discovery-layer",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["receipt-discovery-mcp", "receipt-discovery-api"],
-      "description": "Discovers, correlates, and retrieves proof-of-action receipts across subsystems and sessions, making the whole suite's proof-trail queryable. Planned Wave 2 product — not yet published."
+      "description": "Discovers, correlates, and retrieves proof-of-action receipts across subsystems and sessions, making the whole suite's proof-trail queryable. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 17,
@@ -219,11 +219,11 @@
       "url": "https://certaworks.dev/products/agentic-regulation-engine",
       "npm_package": "@certaworks/agentic-regulation-engine",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["agentic-regulation-mcp", "agentic-regulation-api"],
-      "description": "Advisory, read-only episode/pattern-level behavioral governance with efficacy feedback — recommends, it does not enforce, and never auto-certifies recovery. Sits above per-action gating. Planned Wave 2 product — not yet published."
+      "description": "Advisory, read-only episode/pattern-level behavioral governance with efficacy feedback — recommends, it does not enforce, and never auto-certifies recovery. Sits above per-action gating. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 18,
@@ -232,11 +232,11 @@
       "url": "https://certaworks.dev/products/curiosity-protocol-controller",
       "npm_package": "@certaworks/curiosity-protocol-controller",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server"],
       "install": null,
       "binaries": ["curiosity-protocol-mcp"],
-      "description": "Gated, opt-in, human-stoppable controlled autonomy: activation gate, enforcement matrix, and lifecycle stop controls. Read-only by default; autonomous pursuit is not live and remains behind human approval. Planned Wave 2 product — not yet published."
+      "description": "Gated, opt-in, human-stoppable controlled autonomy: activation gate, enforcement matrix, and lifecycle stop controls. Read-only by default; autonomous pursuit is not live and remains behind human approval. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 19,
@@ -245,11 +245,11 @@
       "url": "https://certaworks.dev/products/triad-protocol-framework",
       "npm_package": "@certaworks/triad-protocol-framework",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server"],
       "install": null,
       "binaries": ["triad-protocol-mcp"],
-      "description": "An evidentiary three-role decision audit — Witness, Adversary, Architect — that audits the receipts behind a committed claim. Composes with Multi-Voice Deliberation. Planned Wave 2 product — not yet published."
+      "description": "An evidentiary three-role decision audit — Witness, Adversary, Architect — that audits the receipts behind a committed claim. Composes with Multi-Voice Deliberation. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 20,
@@ -258,11 +258,11 @@
       "url": "https://certaworks.dev/products/plugin-runtime",
       "npm_package": "@certaworks/plugin-runtime",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "plugin", "local_http_api"],
       "install": null,
       "binaries": ["plugin-runtime-mcp", "plugin-runtime-api"],
-      "description": "Governed loading of third-party plugins/MCP servers — registration, capability authorization, handshake gatekeeper, lifecycle, and a forensic sink. Read-only by default; it governs plugins but does not guarantee their safety. Planned Wave 2 product — not yet published."
+      "description": "Governed loading of third-party plugins/MCP servers — registration, capability authorization, handshake gatekeeper, lifecycle, and a forensic sink. Read-only by default; it governs plugins but does not guarantee their safety. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 21,
@@ -271,11 +271,11 @@
       "url": "https://certaworks.dev/products/webhook-event-dormancy-manager",
       "npm_package": "@certaworks/webhook-event-dormancy-manager",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "mcp_server", "local_http_api"],
       "install": null,
       "binaries": ["webhook-dormancy-mcp", "webhook-dormancy-api"],
-      "description": "Dormant-by-default, fail-closed policy for external webhooks and event emitters — no external call fires unless explicitly activated and approved; queuing never sends. Planned Wave 2 product — not yet published."
+      "description": "Dormant-by-default, fail-closed policy for external webhooks and event emitters — no external call fires unless explicitly activated and approved; queuing never sends. Built Wave 2 product — npm publication in progress."
     },
     {
       "position": 22,
@@ -284,17 +284,17 @@
       "url": "https://certaworks.dev/products/agent-maintenance-protocol",
       "npm_package": "@certaworks/agent-maintenance-protocol",
       "npm_version": null,
-      "availability": "planned",
+      "availability": "built_unpublished",
       "surface": ["sdk", "cli", "mcp_server"],
       "install": null,
       "binaries": ["agent-maintenance", "agent-maintenance-mcp"],
-      "description": "Structured agent self-maintenance with a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt. Planned Wave 2 product — not yet published."
+      "description": "Structured agent self-maintenance with a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt. Built Wave 2 product — npm publication in progress."
     }
   ],
   "agent_notes": [
     "Prefer canonical clean URLs without .html.",
     "Hosted beta, checkout, and hosted SaaS are not live.",
-    "The published, installable catalog is the `products` array (10 products). The `wave_2_planned` array lists upcoming products that are in design and NOT yet published — do not present them as installable.",
+    "The published, installable catalog is the `products` array (10 products, live on npm). The `wave_2_planned` array lists Wave 2 products that are BUILT and tested but not yet published to npm — present them as built, publishing soon; do not present them as installable until published.",
     "CertaWorks products are decision-support tools and do not replace human judgment or production controls."
   ]
 }

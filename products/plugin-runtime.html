@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Plugin Runtime — CertaWorks</title>
-  <meta name="description" content="A governed front door for third-party plugins and MCP servers — registration, capability authorization, a handshake gatekeeper, a fail-closed lifecycle, a mediated MCP bridge, and a forensic sink. Wave 2 — planned, not yet published.">
+  <meta name="description" content="A governed front door for third-party plugins and MCP servers — registration, capability authorization, a handshake gatekeeper, a fail-closed lifecycle, a mediated MCP bridge, and a forensic sink. Wave 2 — built, publishing soon.">
   <link rel="canonical" href="https://certaworks.dev/products/plugin-runtime">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/products/plugin-runtime">
   <meta property="og:title" content="Plugin Runtime — CertaWorks">
-  <meta property="og:description" content="Governed loading of third-party plugins and MCP servers with a forensic record. It governs the boundary — it does not vouch for the plugin. Wave 2 — planned.">
+  <meta property="og:description" content="Governed loading of third-party plugins and MCP servers with a forensic record. It governs the boundary — it does not vouch for the plugin. Wave 2 — built, publishing soon.">
   <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Plugin Runtime — CertaWorks">
-  <meta name="twitter:description" content="Governed loading of third-party plugins and MCP servers with a forensic record. It governs the boundary — it does not vouch for the plugin. Wave 2 — planned, not yet published.">
+  <meta name="twitter:description" content="Governed loading of third-party plugins and MCP servers with a forensic record. It governs the boundary — it does not vouch for the plugin. Wave 2 — built, publishing soon.">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="../styles.css">
   <script type="application/ld+json">
@@ -24,7 +24,7 @@
     "url": "https://certaworks.dev/products/plugin-runtime",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Node.js",
-    "description": "Plugin Runtime governs how an agent loads third-party plugins and MCP servers — registration, capability authorization, a handshake gatekeeper, a fail-closed lifecycle, a mediated MCP bridge, and a forensic sink that records what a plugin did. It governs the boundary; it does not guarantee plugin safety. Planned Wave 2 product — not yet published on npm.",
+    "description": "Plugin Runtime governs how an agent loads third-party plugins and MCP servers — registration, capability authorization, a handshake gatekeeper, a fail-closed lifecycle, a mediated MCP bridge, and a forensic sink that records what a plugin did. It governs the boundary; it does not guarantee plugin safety. Built Wave 2 product — npm publication in progress.",
     "publisher": {
         "@type": "Organization",
         "name": "CertaWorks"
@@ -503,6 +503,7 @@
           <li><a href="../dashboard">Dashboard</a></li>
           <li><a href="../about">About</a></li>
           <li><a href="../contact">Contact</a></li>
+          <li><a href="../changelog">Changelog &amp; Roadmap</a></li>
         </ul>
       </nav>
 
@@ -535,10 +536,10 @@
         </p>
         <div class="pdp-hero-ctas">
           <a href="#how-it-works" class="btn btn-primary btn-sm">How It Works →</a>
-          <a href="#install" class="btn btn-ghost btn-sm">Planned Interface</a>
+          <a href="#install" class="btn btn-ghost btn-sm">Install Preview</a>
         </div>
         <div class="pdp-status-badge">
-          Wave 2 — Planned · Not yet published on npm
+          Wave 2 — Built · publishing soon
         </div>
       </div>
     </section>
@@ -801,7 +802,7 @@
         <div class="section-label dark reveal">
           <span class="eyebrow eyebrow-teal">MCP Interface</span>
         </div>
-        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">Planned MCP tools</h2>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
           The snake_case surface below is the <em>proposed</em> product interface. It wraps the
           originating agent's services named in each description; those method names are not yet snake_case MCP
@@ -872,15 +873,15 @@
 
         <div class="reveal">
           <div class="section-label dark">
-            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Planned</span>
+            <span class="eyebrow eyebrow-amber" style="color: var(--c-amber);">Wave 2 — Built</span>
           </div>
           <h2 class="install-pdp-heading" data-reveal="up" id="install-title">
-            Planned local interface
+            Installation preview — available at publication
           </h2>
           <p class="install-pdp-subhead">
             Plugin Runtime is a CertaWorks Wave 2 product — the most architecturally substantial in
-            the suite. It is currently in design and <strong>not yet published</strong> on npm. The
-            commands below show the planned local interface — an SDK, an MCP server, a host-agent
+            the suite. It is <strong>built and tested</strong>, with npm publication in progress. The
+            commands below show the package interface — an SDK, an MCP server, a host-agent
             plugin, and a local HTTP API, consistent with the rest of the suite — so you can see
             exactly what it will expose.
           </p>
@@ -893,11 +894,10 @@
 
         <div class="reveal">
           <div class="planned-callout" style="margin-bottom:20px;">
-            <div class="planned-callout-label">Status — not currently published</div>
+            <div class="planned-callout-label">Status — built; npm publication in progress</div>
             <p>
               The package <code style="font-family:var(--font-mono);font-size:12px">@certaworks/plugin-runtime</code>
-              is a planned name. The snippets below are illustrative of the intended interface and
-              will not install until the Wave 2 package is released. Plugin Runtime governs how
+              goes live at publication. The snippets below show the exact interface; the install command works the moment the package is published. Plugin Runtime governs how
               plugins are loaded — it does not guarantee plugin safety, and invocation is read-only
               by default.
             </p>
@@ -905,19 +905,19 @@
 
           <div class="code-block" id="prInstallCmd">
             <div class="code-block-header">
-              <span class="code-block-label">Planned npm package</span>
+              <span class="code-block-label">npm package — available at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="prInstallCmd">Copy</button>
             </div>
-            <pre><code># Planned — not yet published
+            <pre><code># Available at publication
 npm install -g @certaworks/plugin-runtime</code></pre>
           </div>
 
           <div class="code-block" id="prMcpConfig">
             <div class="code-block-header">
-              <span class="code-block-label">Planned Claude Desktop config</span>
+              <span class="code-block-label">Claude Desktop config — at publication</span>
               <button class="copy-btn copy-button" type="button" data-copy-target="prMcpConfig">Copy</button>
             </div>
-            <pre><code># Planned — not yet published
+            <pre><code># Available at publication
 {
   "mcpServers": {
     "plugin-runtime": {
@@ -970,7 +970,7 @@ npm install -g @certaworks/plugin-runtime</code></pre>
               </li>
               <li>
                 <span class="limits-icon-does" aria-hidden="true">✓</span>
-                <span>Run fully local as a planned MCP server, SDK, host-agent plugin, and local HTTP API</span>
+                <span>Run fully local as an MCP server, SDK, host-agent plugin, and local HTTP API</span>
               </li>
             </ul>
           </div>
@@ -1026,7 +1026,7 @@ npm install -g @certaworks/plugin-runtime</code></pre>
             <span class="related-card-link">View Confidence Gate →</span>
           </a>
           <a href="../products" class="related-card reveal spotlight hairline-top" role="listitem">
-            <div class="related-card-label">Product 16 · Wave 2 — in design</div>
+            <div class="related-card-label">Product 16 · Wave 2 — built</div>
             <div class="related-card-name">Receipt Discovery + Witness</div>
             <p class="related-card-desc">Every lifecycle transition, invocation, and rejection is a durable forensic receipt — feeding receipt discovery and witnessing across the suite.</p>
             <span class="related-card-link">View the suite →</span>
@@ -1046,7 +1046,7 @@ npm install -g @certaworks/plugin-runtime</code></pre>
             Get notified when Plugin Runtime ships
           </h2>
           <p class="beta-desc-dark">
-            Plugin Runtime is in design as part of CertaWorks Wave 2 — a second set of tools
+            Plugin Runtime is part of CertaWorks Wave 2 — a second set of built tools
             productized from a working cognitive agent. Leave your details and we'll reach out when
             the package is published, or sooner if you'd like to help shape the governance interface.
           </p>
@@ -1130,15 +1130,15 @@ npm install -g @certaworks/plugin-runtime</code></pre>
       <nav aria-label="Notices">
         <div class="footer-col-label">Notices</div>
         <ul class="footer-links">
-          <li>Private prototype — not yet public</li>
-          <li>No legal or trademark clearance</li>
-          <li>No live checkout or SaaS availability</li>
+          <li>CertaWorks Labs LLC — legal entity established</li>
+          <li>Trademark registration pending</li>
+          <li>Local-first tools — no hosted SaaS or checkout yet</li>
           <li><a href="../privacy">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+      <span>© 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.</span>
     </div>
   </footer>
 

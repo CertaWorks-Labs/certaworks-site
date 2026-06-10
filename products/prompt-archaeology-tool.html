@@ -811,6 +811,7 @@
         <li><a href="../dashboard">Dashboard</a></li>
         <li><a href="../about">About</a></li>
         <li><a href="../contact">Contact</a></li>
+          <li><a href="../changelog">Changelog &amp; Roadmap</a></li>
       </ul>
       <a href="../contact" class="nav-cta">Join Beta</a>
     </nav>
@@ -1168,11 +1169,9 @@
       <div class="install-pdp-inner">
 
         <div>
-          <div class="install-block-label">Build &amp; run locally</div>
-          <div class="install-code-block" id="pa-codeBlock1"><span class="c-comment"># Clone &amp; build</span>
-git clone https://github.com/CertaWorks-Labs/prompt-archaeology-tool
-cd prompt-archaeology-tool
-npm install &amp;&amp; npm run build
+          <div class="install-block-label">Install &amp; run locally</div>
+          <div class="install-code-block" id="pa-codeBlock1"><span class="c-comment"># Install from npm</span>
+npm install -g @certaworks/prompt-archaeology-tool
 
 <span class="c-comment"># Run the MCP server</span>
 npm run mcp
@@ -1189,7 +1188,7 @@ prompt-archaeology \
   --text-out report.md</div>
           <button class="install-code-copy" onclick="
             navigator.clipboard.writeText(
-              'git clone https://github.com/CertaWorks-Labs/prompt-archaeology-tool\ncd prompt-archaeology-tool\nnpm install && npm run build\nnpm run mcp'
+              'npm install -g @certaworks/prompt-archaeology-tool\nprompt-archaeology-mcp'
             ).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})
           ">Copy</button>
         </div>
@@ -1657,15 +1656,15 @@ PROMPT_ARCHAEOLOGY_STORE=/path/to/runs.json</div>
       <nav aria-label="Notices">
         <div class="footer-col-label">Notices</div>
         <ul class="footer-links">
-          <li>Private prototype — not yet public</li>
-          <li>No legal or trademark clearance</li>
+          <li>CertaWorks Labs LLC — legal entity established</li>
+          <li>Trademark registration pending</li>
           <li>No hosted SaaS or paid plan available yet</li>
           <li><a href="../privacy">Privacy Policy</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CertaWorks Labs LLC — Private working brand</span>
+      <span>© 2026 CertaWorks Labs LLC. CertaWorks™ trademark registration pending. Products are local-first, decision-support tools and do not replace human judgment or production controls.</span>
     </div>
   </footer>
 

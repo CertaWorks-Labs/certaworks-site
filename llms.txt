@@ -25,7 +25,7 @@ CertaWorks builds local-first agentic infrastructure for safer, cheaper, and mor
 - Current published package version for each product: 0.1.0.
 - Products are local-first tools and libraries. Hosted cloud beta is not live yet.
 - There is no live checkout, paid SaaS plan, or hosted production service on this site.
-- A second set of products (Wave 2) is in design and NOT yet published. Wave 2 product pages describe a planned interface only — do not present them as installable.
+- A second set of 12 products (Wave 2) is BUILT and tested but not yet published to npm. Present Wave 2 as "built — publishing soon"; do not present those packages as installable until published.
 - CertaWorks tools are decision-support infrastructure. They do not replace human judgment, legal review, security review, or production controls.
 
 ## Product URLs
@@ -41,7 +41,7 @@ CertaWorks builds local-first agentic infrastructure for safer, cheaper, and mor
 - Prompt Archaeology Tool: https://certaworks.dev/products/prompt-archaeology-tool
 - Agent Test Harness: https://certaworks.dev/products/agent-test-harness
 
-## Wave 2 — planned (not yet published)
+## Wave 2 — built, publishing soon
 
 - Heartbeat & Continuity MCP Server: https://certaworks.dev/products/heartbeat-continuity-mcp-server
 - Recovery Assessment Engine: https://certaworks.dev/products/recovery-assessment-engine
