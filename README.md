@@ -25,3 +25,40 @@ Serve the folder with any static file server:
 
 ```bash
 python3 -m http.server 8080
+```
+
+Then open:
+
+```text
+http://127.0.0.1:8080/
+```
+
+If you prefer Node tooling, any equivalent static server works as long as it serves this directory as the web root.
+
+## Verification
+
+Run the content checks from the site root:
+
+```bash
+node tests/seo-content.test.mjs
+node tests/dashboard-content.test.mjs
+```
+
+These checks verify canonical URLs, Open Graph metadata, JSON-LD validity, product links, dashboard copy, and guardrails against stale domains or unsafe public-availability claims.
+
+## Deployment Notes
+
+The current canonical origin is:
+
+```text
+https://certaworks.dev/
+```
+
+`wrangler.jsonc` is configured for Cloudflare static asset hosting. Before public launch, confirm DNS, TLS, legal pages, trademark/name review, analytics/privacy posture, and any required business/account setup outside this repository.
+
+## Status
+
+- CertaWorks Labs LLC and the Certa Works DBA are established.
+- `certaworks.dev` has been bought.
+- Public launch, package publication, live payment flows, and hosted product availability still require separate approval and readiness checks.
+- The site should remain cautious about claims until launch-readiness and legal review are complete.

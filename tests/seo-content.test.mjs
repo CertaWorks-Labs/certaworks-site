@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const root = new URL("..", import.meta.url).pathname;
+const root = fileURLToPath(new URL("..", import.meta.url));
 const SITE_ORIGIN = "https://certaworks.dev";
 const SITE_BASE_URL = `${SITE_ORIGIN}/`;
 const STALE_DOMAINS = ["certaworks.com", "certaworks.io", "certaworks.example"];

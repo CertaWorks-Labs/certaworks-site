@@ -1,8 +1,9 @@
 import assert from "node:assert/strict";
+import { fileURLToPath } from "node:url";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-const root = new URL("..", import.meta.url).pathname;
+const root = fileURLToPath(new URL("..", import.meta.url));
 const dashboardHtml = readFileSync(join(root, "dashboard.html"), "utf8");
 const dashboardJs = readFileSync(join(root, "dashboard.js"), "utf8");
 const indexHtml = readFileSync(join(root, "index.html"), "utf8");

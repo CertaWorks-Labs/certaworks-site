@@ -7,3 +7,6 @@
 
 # internal design specs / planning — keep local, not published
 docs/
+
+# macOS
+.DS_Store
