@@ -798,8 +798,7 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed snake_case surface below wraps the originating agent's maintenance routes and services.
-          This is the interface of the built Wave 2 package.
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from the originating agent's maintenance routes and services.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -824,6 +823,20 @@
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">execute_approved_maintenance</div>
             <div class="tool-desc">Execute only the approved action ids after token / preview / id checks pass, then write a change-log receipt. <span style="opacity:0.7">(<code style="font-size:12px">POST /execution/execute</code> → <code style="font-size:12px">execute_approved_maintenance</code>)</span></div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">record_goal</div>
+            <div class="tool-desc">Record a local goal so the review and goal_merge actions have data to work with.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_goals</div>
+            <div class="tool-desc">List recorded goals.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_change_log</div>
+            <div class="tool-desc">List change-log receipts written by successful executions.</div>
           </div>
 
         </div>

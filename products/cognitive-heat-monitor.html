@@ -311,6 +311,7 @@
     .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(245,158,11,0.18); }
     .tool-name { font-family: var(--font-mono); font-size: 13px; color: #fbbf24; font-weight: 600; margin-bottom: 6px; }
     .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tool-proposed-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 4px; font-family: var(--font-sans, inherit); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(245,158,11,0.12); color: var(--c-amber); vertical-align: middle; }
     .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
     .tools-group-label:first-child { margin-top: 0; }
 
@@ -842,10 +843,9 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is derived from the routes in the originating agent's
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from the routes in the originating agent's
           <code style="font-family:var(--font-mono);font-size:13px">cognitive_heat.py</code> and
           <code style="font-family:var(--font-mono);font-size:13px">interoceptive_state.py</code>.
-          This is the interface of the built Wave 2 package.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -880,9 +880,15 @@
             <div class="tool-desc"><span class="exp-tag" style="margin-left:0;margin-bottom:6px;display:inline-block">Experimental</span><br>Run the fixture-backed candidate classifier over bounded historical rows; classifier output only, tagged <code style="font-size:12px">[CANDIDATE_SIGNAL]</code> / <code style="font-size:12px">[ABSENT]</code>. <code style="font-size:12px">GET /api/cognitive_heat/passive-observation</code></div>
           </div>
 
-          <div class="tools-group-label">Interoceptive Inspection</div>
+          <div class="tools-group-label">More tools in the package</div>
           <div class="tool-card spotlight hairline-top">
-            <div class="tool-name">list_interoceptive_states</div>
+            <div class="tool-name">get_heat_config</div>
+            <div class="tool-desc">Inspect the effective sensor version, band thresholds, live signals, candidate signals, and whether the experimental candidate lane is enabled.</div>
+          </div>
+
+          <div class="tools-group-label">Not in the package yet <span style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--c-amber)">· in the originating agent, not exposed by v0.1.1</span></div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_interoceptive_states<span class="tool-proposed-tag">Not in v0.1.1</span></div>
             <div class="tool-desc">Read-only inspection of recorded interoceptive states by capture point, flow quality, sensitivity mode, or load level. <code style="font-size:12px">GET /api/interoceptive/states</code></div>
           </div>
 

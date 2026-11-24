@@ -886,9 +886,8 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is derived from what the originating agent's receipt-discovery route and
-          service expose today. The discovery search is grounded in source; the companion tools are
-          marked <strong style="color:var(--c-amber)">proposed</strong>. This is the interface of the built Wave 2 package; names for the Wave 2 package and may change in later versions.
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from what the originating agent's receipt-discovery route and
+          service expose today.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -899,14 +898,20 @@
             <div class="tool-desc">Read-only fan-out search across all local receipt surfaces; returns the matching evidence, a trust classification (<code style="font-size:12px">CONFIRMED</code> / <code style="font-size:12px">PARTIAL_EVIDENCE</code> / <code style="font-size:12px">INFERRED</code> / <code style="font-size:12px">ABSENT</code>), counts by surface/group/scope, and language + recognition guidance. Wraps <code style="font-size:12px">POST /api/receipts/search</code>.</div>
           </div>
 
-          <div class="tools-group-label">Companion tools <span style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--c-amber)">· proposed — not yet distinct routes in source</span></div>
+          <div class="tools-group-label">Companion tools</div>
           <div class="tool-card spotlight hairline-top">
-            <div class="tool-name">classify_claim<span class="tool-proposed-tag">Proposed</span></div>
+            <div class="tool-name">classify_claim</div>
             <div class="tool-desc">Return only the taxonomy status + <code style="font-size:12px">language_guidance</code> for a query/claim, without the full evidence payload. The discovery service already computes these fields.</div>
           </div>
           <div class="tool-card spotlight hairline-top">
-            <div class="tool-name">list_receipt_surfaces<span class="tool-proposed-tag">Proposed</span></div>
+            <div class="tool-name">list_receipt_surfaces</div>
             <div class="tool-desc">Enumerate the registered trace surfaces and their groups so callers can see exactly what is searchable.</div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">record_receipt</div>
+            <div class="tool-desc">Record a proof-of-action receipt into the local store on a registered trace surface (e.g. tool_audit, model_usage_log, execution_log, memory_semantic, change_log). Makes the local layer usable by giving search_receipts something to find. The surface determines whether it counts as an external receipt or an internal-method trace.</div>
           </div>
 
         </div>

@@ -788,9 +788,9 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is derived directly from what the originating agent's
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from what the originating agent's
           <code style="font-family:var(--font-mono);font-size:14px">contradictions.py</code> route
-          exposes today. This is the interface of the built Wave 2 package.
+          exposes today.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -813,6 +813,16 @@
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">dismiss_contradiction</div>
             <div class="tool-desc">Mark a contradiction <code style="font-size:12px">dismissed</code> by id (<code style="font-size:12px">PATCH /{id}/dismiss</code>).</div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_contradiction</div>
+            <div class="tool-desc">Fetch one contradiction by id with its conflicting pair, status, and metadata.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_contradiction_summary</div>
+            <div class="tool-desc">Return total / open / resolved / dismissed counts over the local map.</div>
           </div>
 
         </div>

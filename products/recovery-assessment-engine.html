@@ -783,7 +783,7 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is derived from the single originating agent's route
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from the single originating agent's route
           <code style="font-family:var(--font-mono);font-size:13px">GET /api/recovery_assessment/{retraction_id}</code>
           and the state it reconciles. This is the interface of the built Wave 2 package
           and may change in later versions.
@@ -823,6 +823,28 @@
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">list_recovery_anchors</div>
             <div class="tool-desc">List recent failure/retraction records eligible for assessment.</div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">record_recovery_anchor</div>
+            <div class="tool-desc">Record a failure/interruption anchor that callers can later assess. Provide its session and optional output id, kind, and notes.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">record_state_event</div>
+            <div class="tool-desc">Record a state/pressure event for a session. The nearest one at or before an anchor is the pre-event state; events can also be linked as contributing events.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">link_contributing_event</div>
+            <div class="tool-desc">Link a recorded state event to an anchor as a contributing pressure event.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">set_agent_state</div>
+            <div class="tool-desc">Set the current agent state (confidence, confidence level, goal drift) the verdict ladder keys on.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">set_final_output</div>
+            <div class="tool-desc">Record the final-output content/timestamp for an output id so an anchor referencing it can attach it as evidence.</div>
           </div>
 
         </div>

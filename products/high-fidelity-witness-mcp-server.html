@@ -316,6 +316,7 @@
     .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(99,102,241,0.22); }
     .tool-name { font-family: var(--font-mono); font-size: 13px; color: #818cf8; font-weight: 600; margin-bottom: 6px; }
     .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
+    .tool-proposed-tag { display: inline-block; margin-left: 8px; padding: 1px 7px; border-radius: 4px; font-family: var(--font-sans, inherit); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(245,158,11,0.12); color: var(--c-amber); vertical-align: middle; }
     .tools-group-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(160,200,240,0.4); margin: 28px 0 12px; grid-column: 1/-1; }
     .tools-group-label:first-child { margin-top: 0; }
 
@@ -878,11 +879,8 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is grounded in <code style="font-family:var(--font-mono);font-size:12px">backend/routes/witness.py</code>
-          and the <code style="font-family:var(--font-mono);font-size:12px">witness_*</code> services.
-          This is the interface of the built Wave 2 package; the local HTTP routes the tools
-          wrap are noted, and items with no dedicated route in source are marked
-          <em>proposed</em>.
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from <code style="font-family:var(--font-mono);font-size:12px">backend/routes/witness.py</code>
+          and the <code style="font-family:var(--font-mono);font-size:12px">witness_*</code> services. Route notes show where each tool came from in the originating agent.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -894,7 +892,7 @@
           </div>
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">witness_advisory</div>
-            <div class="tool-desc">Format the preflight as a compact <code style="font-size:12px">[WITNESS_ADVISORY]</code> context block; emitted only when high-risk claims exist. <em>Proposed — service exists as <code style="font-size:12px">witness_advisory.py</code>; no dedicated route in source.</em></div>
+            <div class="tool-desc">Format the preflight as a compact <code style="font-size:12px">[WITNESS_ADVISORY]</code> context block; emitted only when high-risk claims exist.</div>
           </div>
 
           <div class="tools-group-label">Report &amp; Retrieval</div>
@@ -902,12 +900,48 @@
             <div class="tool-name">witness_report</div>
             <div class="tool-desc">Read-only report over recent witness loops, rounds, claim→receipt links, and latest heat. <code style="font-size:12px">GET /report</code></div>
           </div>
+
+          <div class="tools-group-label">More tools in the package</div>
           <div class="tool-card spotlight hairline-top">
-            <div class="tool-name">get_witness_log</div>
+            <div class="tool-name">evaluate_state_packet</div>
+            <div class="tool-desc">Build and evaluate an hfw.v1 state packet from a request + proposed text: extract claims, gather receipt evidence, and return the packet with witness findings, heat, and next action. Read-only.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">validate_receipt_links</div>
+            <div class="tool-desc">Validate the claim-&gt;receipt links in a state packet. Refuses any free-floating link: each must point to a real receipt row on an existing surface or record an explicit ABSENT from a completed search.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_witness_findings</div>
+            <div class="tool-desc">List recorded witness loops (each carries its findings and receipt links), optionally scoped to a session. Empty under privacy mode.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_witness_loop</div>
+            <div class="tool-desc">Fetch one recorded witness loop by id, with its packet, findings, and claim-&gt;receipt links.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_witness_config</div>
+            <div class="tool-desc">Inspect the effective recursion round cap and privacy-mode flag.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">set_privacy_mode</div>
+            <div class="tool-desc">Enable or disable privacy mode. When enabled, witness_report and list_witness_findings return nothing.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">record_receipt</div>
+            <div class="tool-desc">Record a row on the local receipt surface — proof that something actually happened — so the witness can find it when evaluating claims.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_receipts</div>
+            <div class="tool-desc">List rows on the local receipt surface, optionally filtered by surface or session.</div>
+          </div>
+
+          <div class="tools-group-label">Not in the package yet <span style="text-transform:none;letter-spacing:0;font-weight:600;color:var(--c-amber)">· in the originating agent, not exposed by v0.1.1</span></div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_witness_log<span class="tool-proposed-tag">Not in v0.1.1</span></div>
             <div class="tool-desc">Return witness log entries, optionally filtered by <code style="font-size:12px">lens</code> or <code style="font-size:12px">session_id</code>; empty under privacy mode. <code style="font-size:12px">GET /</code></div>
           </div>
           <div class="tool-card spotlight hairline-top">
-            <div class="tool-name">get_witness_council</div>
+            <div class="tool-name">get_witness_council<span class="tool-proposed-tag">Not in v0.1.1</span></div>
             <div class="tool-desc">Return the most recent entry per witness lens — one card per lens. <code style="font-size:12px">GET /council</code></div>
           </div>
 

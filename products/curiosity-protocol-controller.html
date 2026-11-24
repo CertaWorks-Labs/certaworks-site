@@ -870,10 +870,10 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below maps to the originating agent's
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from the originating agent's
           <code style="font-family:var(--font-mono);font-size:12px">routes/curiosity_protocol.py</code>.
           The only write paths are the gated proposal queue; everything else is read-only safety
-          visibility. This is the interface of the built Wave 2 package.
+          visibility.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -944,6 +944,12 @@
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">get_examples</div>
             <div class="tool-desc">Fixture-backed demo packets (<code style="font-size:12px">GET /examples</code>).</div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">apply_stop_control</div>
+            <div class="tool-desc">Apply a human-held lifecycle control: pause / stop / purge-intent token.</div>
           </div>
 
         </div>

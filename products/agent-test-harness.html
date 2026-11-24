@@ -653,6 +653,12 @@
     .breadcrumb-inner a:hover { color: #fb7185; }
     .breadcrumb-sep { opacity: 0.4; }
     .breadcrumb-current { color: #fb7185; }
+    /* ── MCP tools grid ─── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 28px; }
+    .tool-card { padding: 16px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; transition: background 200ms, border-color 200ms; }
+    .tool-card:hover { background: rgba(255,255,255,0.055); border-color: rgba(251,113,133,0.3); }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; color: #FB7185; font-weight: 600; margin-bottom: 6px; }
+    .tool-desc { font-size: 13px; color: var(--c-dark-muted); line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -725,6 +731,7 @@
       <a href="#problem-h2" class="pdp-subnav-link">Problem</a>
       <a href="#how-h2" class="pdp-subnav-link">How It Works</a>
       <a href="#install" class="pdp-subnav-link">Install</a>
+      <a href="#tools" class="pdp-subnav-link">MCP Tools</a>
       <a href="#scope-h2" class="pdp-subnav-link">Scope</a>
       <a href="#assertions" class="pdp-subnav-link">Assertions</a>
     </div>
@@ -1138,6 +1145,51 @@ await writeReports(suite, {
   outDir: <span class="c-str">'.agent-test-results'</span>,
   reporters: [<span class="c-str">'json'</span>, <span class="c-str">'markdown'</span>, <span class="c-str">'junit'</span>]
 });</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MCP TOOLS ────────────────────────────── -->
+  <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+    style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+    <div class="section-inner">
+      <div class="section-label dark reveal">
+        <span class="eyebrow eyebrow-teal">MCP Interface</span>
+      </div>
+      <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
+      <p class="pdp-section-body reveal" style="margin-top: 16px;">
+        Since v0.1.1, the package also runs as a local MCP server, so any MCP client can list and validate fixtures, run suites or single tests, and read reports and run history.
+        It exposes six tools. Start it with
+        <code style="font-family:var(--font-mono);font-size:12px">npx -y -p @certaworks/agent-test-harness agent-test-mcp</code>, or add it to Claude Desktop:
+        <code style="font-family:var(--font-mono);font-size:12px">"command": "npx", "args": ["-y", "-p", "@certaworks/agent-test-harness", "agent-test-mcp"]</code>.
+      </p>
+
+      <div class="tools-grid reveal" data-stagger>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">list_fixtures</div>
+          <div class="tool-desc">Find agent-test fixture files (JSON with a "tests" array, or a bare array of tests) in a directory, or describe one file. Lists each file's test ids, descriptions and tags, and reports files that look like fixtures but fail validation. <span style="opacity:.75">(optional <code style="font-size:12px">path</code>)</span></div>
+        </div>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">validate_fixture</div>
+          <div class="tool-desc">Validate a fixture file, or inline fixture JSON, without running it. Returns the parsed test ids or the first validation error. <span style="opacity:.75">(optional <code style="font-size:12px">path</code>, <code style="font-size:12px">tests</code>)</span></div>
+        </div>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">run_suite</div>
+          <div class="tool-desc">Run fixture files and/or inline test cases through the deterministic mock agent runner. Writes JSON (always), plus optional Markdown and JUnit reports and a history entry, then returns the summary and per-test assertion results. <span style="opacity:.75">(optional <code style="font-size:12px">fixtures</code>, <code style="font-size:12px">tests</code>, <code style="font-size:12px">test_id</code>, <code style="font-size:12px">tags</code>, <code style="font-size:12px">bail</code>, <code style="font-size:12px">reporters</code>, <code style="font-size:12px">include_output</code>)</span></div>
+        </div>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">run_test</div>
+          <div class="tool-desc">Run a single test by id from a fixture file. Shorthand for run_suite with one fixture and test_id. <span style="opacity:.75">(needs <code style="font-size:12px">fixture</code>, <code style="font-size:12px">test_id</code>)</span></div>
+        </div>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">get_report</div>
+          <div class="tool-desc">Read a run report: the latest run by default, or a specific run_id. Formats: summary (default), json (full result), markdown, junit, or text (the CLI's console report). <span style="opacity:.75">(optional <code style="font-size:12px">run_id</code>, <code style="font-size:12px">format</code>)</span></div>
+        </div>
+        <div class="tool-card spotlight hairline-top">
+          <div class="tool-name">list_runs</div>
+          <div class="tool-desc">List past runs from the local history, newest first, with pass/fail counts. <span style="opacity:.75">(optional <code style="font-size:12px">limit</code>)</span></div>
         </div>
 
       </div>

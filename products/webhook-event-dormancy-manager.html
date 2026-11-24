@@ -814,8 +814,8 @@
         </div>
         <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
         <p class="pdp-section-body reveal" style="margin-top: 16px;">
-          The proposed MCP surface below is derived from what the originating agent's webhook routes and services
-          expose today. This is the interface of the built Wave 2 package.
+          The MCP tools below ship in the published package (v0.1.1). They were extracted from what the originating agent's webhook routes and services
+          expose today.
         </p>
 
         <div class="tools-grid reveal" data-stagger>
@@ -860,6 +860,12 @@
           <div class="tool-card spotlight hairline-top">
             <div class="tool-name">process_webhook_queue</div>
             <div class="tool-desc">Process the queue; gated by the dormancy policy on every external action.</div>
+          </div>
+
+          <div class="tools-group-label">More tools in the package</div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">upsert_webhook_destination</div>
+            <div class="tool-desc">Create or update a destination (local config only — no network).</div>
           </div>
 
         </div>

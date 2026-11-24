@@ -635,6 +635,7 @@
         <a href="#problem" class="pdp-subnav-link">Problem</a>
         <a href="#how-it-works" class="pdp-subnav-link">How It Works</a>
         <a href="#install" class="pdp-subnav-link">Install</a>
+        <a href="#tools" class="pdp-subnav-link">MCP Tools</a>
         <a href="#limits" class="pdp-subnav-link">Scope</a>
         <a href="#beta" class="pdp-subnav-link">Beta</a>
       </div>
@@ -1026,6 +1027,63 @@ await store.appendJournal(identity.core.id, entry);</code></pre>
             style="font-size:13px;color:#6366F1;min-height:20px;margin-top:4px;"></p>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ── MCP TOOLS ────────────────────────────── -->
+    <section class="section tools-section" id="tools" aria-labelledby="tools-title"
+      style="background: var(--c-dark-2); padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 60px);">
+      <div class="section-inner">
+        <div class="section-label dark reveal">
+          <span class="eyebrow eyebrow-teal">MCP Interface</span>
+        </div>
+        <h2 class="pdp-section-headline reveal" data-reveal="blur" id="tools-title">MCP tools</h2>
+        <p class="pdp-section-body reveal" style="margin-top: 16px;">
+          Since v0.2.0, the package also runs as a local MCP server, so any MCP client can create identities, update state, write journal notes, and run drift checks without writing code.
+          It exposes nine tools. Start it with
+          <code style="font-family:var(--font-mono);font-size:12px">npx -y -p @certaworks/identity-engine-sdk identity-engine-mcp</code>, or add it to Claude Desktop:
+          <code style="font-family:var(--font-mono);font-size:12px">"command": "npx", "args": ["-y", "-p", "@certaworks/identity-engine-sdk", "identity-engine-mcp"]</code>.
+        </p>
+
+        <div class="tools-grid reveal" data-stagger>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">create_identity</div>
+            <div class="tool-desc">Create a persistent identity with an immutable core (name, purpose, fingerprint) and an evolving state. Names must be unique in the store. <span style="opacity:.75">(needs <code style="font-size:12px">name</code>, <code style="font-size:12px">purpose</code>; optional <code style="font-size:12px">initial_state</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">get_identity</div>
+            <div class="tool-desc">Load an identity: its core, current state, an integrity check of the core fingerprint, and the most recent journal entries. <span style="opacity:.75">(optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>, <code style="font-size:12px">recent</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">list_identities</div>
+            <div class="tool-desc">List identities in the store with name, purpose, version and last update.</div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">update_state</div>
+            <div class="tool-desc">Merge a patch into the identity's mutable state (the core never changes), bump its version, and journal the change. Pass expected_version to refuse the write if someone else updated it first. <span style="opacity:.75">(needs <code style="font-size:12px">patch</code>; optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>, <code style="font-size:12px">reason</code>, <code style="font-size:12px">expected_version</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">add_note</div>
+            <div class="tool-desc">Append a free-form note to the identity's journal (a reflection, observation or decision) without changing state. <span style="opacity:.75">(needs <code style="font-size:12px">text</code>; optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>, <code style="font-size:12px">tags</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">check_drift</div>
+            <div class="tool-desc">Score recent behavior against the identity's purpose (lexical overlap, deterministic) and journal the result. <span style="opacity:.75">(needs <code style="font-size:12px">recent_behavior</code>; optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>, <code style="font-size:12px">threshold</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">read_journal</div>
+            <div class="tool-desc">Read the identity's append-only journal, newest last. <span style="opacity:.75">(optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>, <code style="font-size:12px">type</code>, <code style="font-size:12px">limit</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">verify_identity</div>
+            <div class="tool-desc">Check that the identity's core is unaltered and its journal is well-formed (strictly increasing sequence, starts with a created entry). <span style="opacity:.75">(optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>)</span></div>
+          </div>
+          <div class="tool-card spotlight hairline-top">
+            <div class="tool-name">delete_identity</div>
+            <div class="tool-desc">Permanently delete an identity and its journal. Requires confirm: true. <span style="opacity:.75">(needs <code style="font-size:12px">confirm</code>; optional <code style="font-size:12px">identity_id</code>, <code style="font-size:12px">name</code>)</span></div>
+          </div>
+
+        </div>
       </div>
     </section>
 
