@@ -3159,14 +3159,22 @@ main,
 .about-stat-label { color: var(--c-dark-muted); }
 
 /* ── Value cards → dark glass ────────────────────── */
+/* The grid's 1px gaps draw the dividers, so its fill must be a subtle
+   dark-theme line colour — the light --c-border showed through the
+   translucent cards and washed them out. Cards get an opaque dark base
+   so nothing behind them bleeds through. */
+.values-grid {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.08);
+}
 .value-card {
-  background: rgba(255,255,255,0.03);
+  background: linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03)), var(--c-dark);
   border-color: rgba(255,255,255,0.07);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 .value-card:hover {
-  background: rgba(255,255,255,0.055);
+  background: linear-gradient(rgba(255,255,255,0.055), rgba(255,255,255,0.055)), var(--c-dark);
   border-color: rgba(16,185,129,0.18);
 }
 .value-number { color: rgba(16,185,129,0.5); }
