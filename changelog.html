@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Changelog &amp; Roadmap — CertaWorks</title>
-  <meta name="description" content="What's new and what's next at CertaWorks: Wave 1 published on npm, Wave 2 built and entering publication, hosted beta and the Agent Communication Firewall ahead.">
+  <meta name="description" content="What's new and what's next at CertaWorks: Wave 1 and Wave 2 published on npm (22 products), hosted beta and the Agent Communication Firewall ahead.">
   <link rel="canonical" href="https://certaworks.dev/changelog">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://certaworks.dev/changelog">
   <meta property="og:title" content="Changelog &amp; Roadmap — CertaWorks">
-  <meta property="og:description" content="Wave 1 published on npm. Wave 2 built and entering publication. Hosted beta and the Agent Communication Firewall ahead.">
+  <meta property="og:description" content="Wave 1 and Wave 2 published on npm — 22 products. Hosted beta and the Agent Communication Firewall ahead.">
   <meta property="og:image" content="https://certaworks.dev/og-image.png">
   <meta name="theme-color" content="#050C18">
   <link rel="stylesheet" href="./styles.css">
@@ -70,10 +70,26 @@
         <p class="log-sub">What has shipped, what is built, and what comes next. Every entry here is true today — nothing is aspirational.</p>
 
         <div class="log-entry">
-          <div class="log-date">June 2026</div>
-          <div class="log-title">Wave 2 built — twelve products entering npm publication</div>
+          <div class="log-date">November 2026</div>
+          <div class="log-title">0.1.1 — installed commands start correctly</div>
           <div class="log-body">
-            Twelve new products, extracted from mechanisms that run in production inside a working persistent agent, are built and tested (TypeScript, full test suites). npm publication is in progress; install commands on each product page go live as each package ships.
+            MCP servers, CLIs, and local APIs now start when launched through an installed command (<code>npx</code> or <code>npm install -g</code>). Previously, several entry points exited silently when run through npm's command links. Fixed in 0.1.1 for Wave 2 and for Agent Cost Router, Goal Drift Monitor, Cognitive Memory, Agent Skill Marketplace, Audit &amp; Replay Logger, Prompt Archaeology, and Agent Test Harness. Identity Engine SDK 0.2.0 adds its MCP server command.
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">November 2026</div>
+          <div class="log-title">Wave 2 published — twelve more products on npm</div>
+          <div class="log-body">
+            All twelve Wave 2 products are now published under the <code>@certaworks</code> scope at v0.1.0, bringing the suite to twenty-two packages on npm. Each product page has a working install command and MCP client config.
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-date">June 2026</div>
+          <div class="log-title">Wave 2 built — twelve products</div>
+          <div class="log-body">
+            Twelve new products, extracted from mechanisms that run in production inside a working persistent agent, are built and tested (TypeScript, full test suites).
             <ul>
               <li>Heartbeat &amp; Continuity, Recovery Assessment, Cognitive Heat Monitor, Contradiction Detector</li>
               <li>High-Fidelity Witness, Receipt Discovery, Agentic Regulation, Curiosity Protocol</li>
@@ -115,8 +131,8 @@
               <span><span class="road-name">Wave 1 — published</span><span class="road-desc" style="display:block;">Ten products live on npm under @certaworks.</span></span>
             </li>
             <li class="road-item">
-              <span class="road-dot road-now" aria-hidden="true"></span>
-              <span><span class="road-name">Wave 2 — publication</span><span class="road-desc" style="display:block;">Twelve built products move to npm. Install commands activate per package.</span></span>
+              <span class="road-dot road-done" aria-hidden="true"></span>
+              <span><span class="road-name">Wave 2 — published</span><span class="road-desc" style="display:block;">Twelve more products live on npm under @certaworks — 22 in total.</span></span>
             </li>
             <li class="road-item">
               <span class="road-dot road-next" aria-hidden="true"></span>

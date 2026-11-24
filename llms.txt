@@ -21,14 +21,13 @@ CertaWorks builds local-first agentic infrastructure for safer, cheaper, and mor
 
 ## Current status
 
-- All 10 CertaWorks products are published npm packages under the @certaworks scope.
-- Current published package version for each product: 0.1.0.
+- All 22 CertaWorks products (Wave 1 and Wave 2) are published npm packages under the @certaworks scope.
+- Current published versions: 0.1.x for most packages, 0.2.0 for Identity Engine SDK (see products.json).
 - Products are local-first tools and libraries. Hosted cloud beta is not live yet.
 - There is no live checkout, paid SaaS plan, or hosted production service on this site.
-- A second set of 12 products (Wave 2) is BUILT and tested but not yet published to npm. Present Wave 2 as "built — publishing soon"; do not present those packages as installable until published.
 - CertaWorks tools are decision-support infrastructure. They do not replace human judgment, legal review, security review, or production controls.
 
-## Product URLs
+## Product URLs — Wave 1
 
 - Identity Engine SDK: https://certaworks.dev/products/identity-engine-sdk
 - Confidence Gate MCP Server: https://certaworks.dev/products/confidence-gate-mcp-server
@@ -41,7 +40,7 @@ CertaWorks builds local-first agentic infrastructure for safer, cheaper, and mor
 - Prompt Archaeology Tool: https://certaworks.dev/products/prompt-archaeology-tool
 - Agent Test Harness: https://certaworks.dev/products/agent-test-harness
 
-## Wave 2 — built, publishing soon
+## Product URLs — Wave 2
 
 - Heartbeat & Continuity MCP Server: https://certaworks.dev/products/heartbeat-continuity-mcp-server
 - Recovery Assessment Engine: https://certaworks.dev/products/recovery-assessment-engine

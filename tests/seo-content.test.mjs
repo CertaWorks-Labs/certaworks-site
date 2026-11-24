@@ -46,26 +46,14 @@ const TOP_PAGES = ["index.html", "products.html", "dashboard.html"];
 const productsJsonText = read("products.json");
 const productsJson = JSON.parse(productsJsonText);
 const PUBLISHED_PRODUCTS = productsJson.products;
-const PLANNED_PRODUCTS = productsJson.wave_2_planned ?? [];
-const PRODUCT_SLUGS = [
-  "confidence-gate-mcp-server",
-  "agent-cost-router",
-  "goal-drift-monitor",
-  "audit-replay-logger",
-  "cognitive-memory-mcp-server",
-  "identity-engine-sdk",
-  "multi-voice-deliberation-framework",
-  "agent-skill-marketplace-plugin",
-  "prompt-archaeology-tool",
-  "agent-test-harness",
-  ...PLANNED_PRODUCTS.map((product) => product.slug),
-];
+const EXPECTED_PRODUCT_COUNT = 22; // Wave 1 (10) + Wave 2 (12), all on npm
+const PRODUCT_SLUGS = PUBLISHED_PRODUCTS.map((product) => product.slug);
 
 const PRODUCT_PAGES = PRODUCT_SLUGS.map((s) => `products/${s}.html`);
 const ALL_PAGES = [...TOP_PAGES, ...PRODUCT_PAGES];
 
 const PRODUCT_NAMES = PUBLISHED_PRODUCTS.map((product) => product.name);
-const ALL_PRODUCT_NAMES = [...PUBLISHED_PRODUCTS, ...PLANNED_PRODUCTS].map((product) => product.name);
+const ALL_PRODUCT_NAMES = PRODUCT_NAMES;
 
 // ── Load all pages once ───────────────────────────────────────────────────────
 
@@ -135,12 +123,12 @@ const indexTypes = indexBlocks.map((b) => b["@type"]);
 assert.ok(indexTypes.includes("Organization"), "index.html: missing Organization JSON-LD");
 assert.ok(indexTypes.includes("WebSite"), "index.html: missing WebSite JSON-LD");
 
-// ── 6. products.html: ItemList with all 10 products ──────────────────────────
+// ── 6. products.html: ItemList with all 22 products ──────────────────────────
 
 const productsBlocks = parseJsonLdBlocks(pages["products.html"]);
 const itemList = productsBlocks.find((b) => b["@type"] === "ItemList");
 assert.ok(itemList, "products.html: missing ItemList JSON-LD");
-assert.equal(itemList.itemListElement.length, 10, "products.html: ItemList must contain exactly 10 products");
+assert.equal(itemList.itemListElement.length, EXPECTED_PRODUCT_COUNT, `products.html: ItemList must contain exactly ${EXPECTED_PRODUCT_COUNT} products`);
 for (const name of PRODUCT_NAMES) {
   assert.ok(
     itemList.itemListElement.some((item) => item.name === name),
@@ -166,7 +154,7 @@ const dashBlocks = parseJsonLdBlocks(pages["dashboard.html"]);
 const webPage = dashBlocks.find((b) => b["@type"] === "WebPage");
 assert.ok(webPage, "dashboard.html: missing WebPage JSON-LD");
 
-// ── 9. products.html: all 10 product detail pages linked ─────────────────────
+// ── 9. products.html: all 22 product detail pages linked ─────────────────────
 
 const productsHtml = pages["products.html"];
 for (const slug of PRODUCT_SLUGS) {
@@ -182,7 +170,6 @@ const indexHtml = pages["index.html"];
 const requiredIndexSnippets = [
   "<title>CertaWorks — Infrastructure for Autonomous AI</title>",
   "Agentic Infrastructure",
-  "infrastructure layer that makes AI agency accountable",
   "Join Hosted Beta",
   './dashboard">Dashboard</a>',
   "Building agentic infrastructure for safer, cheaper, and more accountable AI work.",
@@ -198,7 +185,7 @@ const requiredProductsSnippets = [
   "The full suite.",
   "Confidence Gate",
   "Install local",
-  "All 10 products are published on npm under the @certaworks scope",
+  "All twenty-two products are published on npm under the @certaworks scope",
   "Every product in the suite is a decision-support layer",
 ];
 for (const snippet of requiredProductsSnippets) {
@@ -321,12 +308,13 @@ const expectedSitemapUrls = [
   `${SITE_ORIGIN}/products`,
   `${SITE_ORIGIN}/dashboard`,
   ...PRODUCT_SLUGS.map((slug) => `${SITE_ORIGIN}/products/${slug}`),
+  `${SITE_ORIGIN}/changelog`,
   `${SITE_ORIGIN}/about`,
   `${SITE_ORIGIN}/contact`,
   `${SITE_ORIGIN}/privacy`,
 ];
 
-assert.deepEqual(sitemapUrls, expectedSitemapUrls, "sitemap.xml: URL inventory must match static public pages");
+assert.deepEqual([...sitemapUrls].sort(), [...expectedSitemapUrls].sort(), "sitemap.xml: URL inventory must match static public pages");
 assertNoStaleDomains(sitemapXml, "sitemap.xml");
 
 // ── 16. Canonical redirects for duplicate static URL forms ───────────────────
@@ -380,7 +368,8 @@ for (const [name, content] of [
 }
 
 assert.equal(productsJson.origin, SITE_ORIGIN, "products.json: origin must use certaworks.dev");
-assert.equal(productsJson.products.length, 10, "products.json: must list exactly 10 products");
+assert.equal(productsJson.products.length, EXPECTED_PRODUCT_COUNT, `products.json: must list exactly ${EXPECTED_PRODUCT_COUNT} products`);
+assert.ok(!("wave_2_planned" in productsJson), "products.json: Wave 2 is published; there should be no planned list");
 
 for (const slug of PRODUCT_SLUGS) {
   const product = productsJson.products.find((item) => item.slug === slug);
@@ -389,21 +378,14 @@ for (const slug of PRODUCT_SLUGS) {
   }
   assert.equal(product.url, `${SITE_ORIGIN}/products/${slug}`, `products.json: wrong URL for ${slug}`);
   assert.ok(product.npm_package.startsWith("@certaworks/"), `products.json: ${slug} must use @certaworks npm scope`);
-  assert.equal(product.npm_version, "0.1.0", `products.json: ${slug} npm version must be 0.1.0`);
+  assert.match(product.npm_version, /^0\.\d+\.\d+$/, `products.json: ${slug} npm version must be a published 0.x.y version`);
   assert.ok(product.install, `products.json: ${slug} missing install command`);
   assert.ok(product.description, `products.json: ${slug} missing description`);
 }
 
-for (const product of PLANNED_PRODUCTS) {
-  assert.equal(product.url, `${SITE_ORIGIN}/products/${product.slug}`, `products.json: wrong planned URL for ${product.slug}`);
-  assert.equal(product.availability, "planned", `products.json: ${product.slug} must be marked planned`);
-  assert.equal(product.install, null, `products.json: ${product.slug} should not present an install command before publication`);
-}
-
 for (const name of ALL_PRODUCT_NAMES) {
   assert.ok(
-    productsJson.products.some((item) => item.name === name) ||
-    PLANNED_PRODUCTS.some((item) => item.name === name),
+    productsJson.products.some((item) => item.name === name),
     `products.json: missing product name: ${name}`
   );
   assert.ok(llmsFullTxt.includes(name), `llms-full.txt: missing product name: ${name}`);

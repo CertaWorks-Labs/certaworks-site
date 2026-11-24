@@ -1,7 +1,7 @@
 # CertaWorks Agent Guide
 
 Canonical origin: https://certaworks.dev
-Last updated: 2026-06-02
+Last updated: 2026-11-24
 
 ## Summary
 
@@ -11,9 +11,8 @@ The public site is static and intended to be readable by humans and agents. Agen
 
 ## Status and limits
 
-- All 10 products in the main catalog are published npm packages under the @certaworks scope.
-- A second set of 12 products (Wave 2) is BUILT and tested but not yet published to npm — see the Wave 2 catalog section below.
-- Current published package version for each product: 0.1.0.
+- All 22 products (Wave 1 and Wave 2) are published npm packages under the @certaworks scope.
+- Current published versions: 0.1.x for most packages, 0.2.0 for Identity Engine SDK (see each product below or products.json).
 - Products are local-first tools, SDKs, CLIs, MCP servers, and local APIs.
 - Hosted beta and hosted cloud features are not live yet.
 - There is no live checkout, paid SaaS plan, hosted production service, account model, or payment link on the site.
@@ -34,7 +33,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/identity-engine-sdk
 - Package: @certaworks/identity-engine-sdk
-- Version: 0.1.0
+- Version: 0.2.0
 - Surface: SDK
 - Install: `npm install @certaworks/identity-engine-sdk`
 - Description: Persistent identity, state, journal, and drift checks for agents that need continuity across sessions.
@@ -64,7 +63,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/agent-cost-router
 - Package: @certaworks/agent-cost-router
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, CLI, MCP server, local HTTP API
 - Install: `npm install @certaworks/agent-cost-router`
 - Optional global CLI install: `npm install -g @certaworks/agent-cost-router`
@@ -75,7 +74,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/goal-drift-monitor
 - Package: @certaworks/goal-drift-monitor
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, CLI, MCP server, local HTTP API
 - Install: `npm install @certaworks/goal-drift-monitor`
 - Optional global CLI install: `npm install -g @certaworks/goal-drift-monitor`
@@ -86,7 +85,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/cognitive-memory-mcp-server
 - Package: @certaworks/cognitive-memory-mcp-server
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, MCP server
 - Install: `npm install -g @certaworks/cognitive-memory-mcp-server`
 - Binary: `cognitive-memory-mcp`
@@ -96,7 +95,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/agent-skill-marketplace-plugin
 - Package: @certaworks/agent-skill-marketplace-plugin
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, MCP/plugin server
 - Install: `npm install -g @certaworks/agent-skill-marketplace-plugin`
 - Binary: `agent-skill-marketplace-mcp`
@@ -106,7 +105,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/audit-replay-logger
 - Package: @certaworks/audit-replay-logger
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, MCP server, local HTTP API
 - Install: `npm install -g @certaworks/audit-replay-logger`
 - Binaries: `audit-replay-mcp`, `audit-replay-api`
@@ -116,7 +115,7 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/prompt-archaeology-tool
 - Package: @certaworks/prompt-archaeology-tool
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, CLI, MCP server, local HTTP API
 - Install: `npm install -g @certaworks/prompt-archaeology-tool`
 - Binaries: `prompt-archaeology`, `prompt-archaeology-mcp`, `prompt-archaeology-api`
@@ -126,121 +125,145 @@ curl -L https://certaworks.dev/sitemap.xml
 
 - URL: https://certaworks.dev/products/agent-test-harness
 - Package: @certaworks/agent-test-harness
-- Version: 0.1.0
+- Version: 0.1.1
 - Surface: SDK, CLI
 - Install: `npm install -g @certaworks/agent-test-harness`
 - Binary: `agent-test`
 - Description: Provides repeatable tests for agent outputs, tool traces, cost budgets, and consistency.
 
-## Wave 2 catalog (built — publishing soon)
+## Wave 2 catalog (published on npm)
 
-Wave 2 is a second set of 12 products extracted from a working persistent agent. All twelve are built and tested; npm publication is in progress. Present them as "built — publishing soon" — do not present them as installable until each package is published.
+Wave 2 is a second set of 12 products extracted from a working persistent agent. All twelve are built, tested, and published on npm.
 
-### 11. Heartbeat & Continuity MCP Server (built — publishing soon)
+### 11. Heartbeat & Continuity MCP Server
 
 - URL: https://certaworks.dev/products/heartbeat-continuity-mcp-server
-- Package: @certaworks/heartbeat-continuity-mcp-server (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/heartbeat-continuity-mcp-server
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/heartbeat-continuity-mcp-server`
+- Binaries: `heartbeat-continuity-mcp`, `heartbeat-continuity-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: Keeps long-running agents alive on a paced interval, recovers stale running sessions, enforces unmet inbound-response obligations, and damps repetitive looping.
 
-### 12. Recovery Assessment Engine (built — publishing soon)
+### 12. Recovery Assessment Engine
 
 - URL: https://certaworks.dev/products/recovery-assessment-engine
-- Package: @certaworks/recovery-assessment-engine (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/recovery-assessment-engine
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/recovery-assessment-engine`
+- Binaries: `recovery-assessment`, `recovery-assessment-mcp`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, CLI, MCP server
 - Description: After an agent failure, interruption, or retraction, produces a structured assessment verdict (stabilized, partial, monitor, or unknown) and a recommendation for whether it is safe to resume.
 
-### 13. Cognitive Heat Monitor (built — publishing soon)
+### 13. Cognitive Heat Monitor
 
 - URL: https://certaworks.dev/products/cognitive-heat-monitor
-- Package: @certaworks/cognitive-heat-monitor (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/cognitive-heat-monitor
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/cognitive-heat-monitor`
+- Binaries: `cognitive-heat-monitor`, `cognitive-heat-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: Read-only internal-state telemetry — deterministic 0–1 signals blended from text and structured state, banded quiet/watch/elevated to flag rising load or risk before output degrades. Heuristic readings, not a measure of feeling.
 
-### 14. Contradiction Detector (built — publishing soon)
+### 14. Contradiction Detector
 
 - URL: https://certaworks.dev/products/contradiction-detector
-- Package: @certaworks/contradiction-detector (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/contradiction-detector
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/contradiction-detector`
+- Binaries: `contradiction-detector`, `contradiction-detector-mcp`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, CLI, MCP server
 - Description: Surfaces conflicting beliefs, goals, and statements with an open/resolved/dismissed lifecycle before they compound into errors.
 
-### 15. High-Fidelity Witness MCP Server (built — publishing soon)
+### 15. High-Fidelity Witness MCP Server
 
 - URL: https://certaworks.dev/products/high-fidelity-witness-mcp-server
-- Package: @certaworks/high-fidelity-witness-mcp-server (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/high-fidelity-witness-mcp-server
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/high-fidelity-witness-mcp-server`
+- Binaries: `high-fidelity-witness-mcp`, `high-fidelity-witness-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: An independent, real-time observer that audits an agent's claims (preflight, advisory, report) and writes findings as receipts. Distinct from a decision log — it complements and does not replace the Audit & Replay Logger.
 
-### 16. Receipt Discovery Layer (built — publishing soon)
+### 16. Receipt Discovery Layer
 
 - URL: https://certaworks.dev/products/receipt-discovery-layer
-- Package: @certaworks/receipt-discovery-layer (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/receipt-discovery-layer
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/receipt-discovery-layer`
+- Binaries: `receipt-discovery-mcp`, `receipt-discovery-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: Discovers, correlates, and retrieves proof-of-action receipts across subsystems and sessions, making the whole suite's proof-trail queryable.
 
-### 17. Agentic Regulation Engine (built — publishing soon)
+### 17. Agentic Regulation Engine
 
 - URL: https://certaworks.dev/products/agentic-regulation-engine
-- Package: @certaworks/agentic-regulation-engine (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/agentic-regulation-engine
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/agentic-regulation-engine`
+- Binaries: `agentic-regulation-mcp`, `agentic-regulation-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: Advisory, read-only episode/pattern-level behavioral governance with efficacy feedback. It recommends rather than enforces and never auto-certifies recovery; it sits above per-action gating (distinct from Confidence Gate).
 
-### 18. Curiosity Protocol Controller (built — publishing soon)
+### 18. Curiosity Protocol Controller
 
 - URL: https://certaworks.dev/products/curiosity-protocol-controller
-- Package: @certaworks/curiosity-protocol-controller (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/curiosity-protocol-controller
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/curiosity-protocol-controller`
+- Binaries: `curiosity-protocol-mcp`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server
 - Description: Gated, opt-in, human-stoppable controlled autonomy with an activation gate, enforcement matrix, and lifecycle stop controls. Read-only by default; autonomous pursuit is not live and remains behind human approval.
 
-### 19. Triad Protocol Framework (built — publishing soon)
+### 19. Triad Protocol Framework
 
 - URL: https://certaworks.dev/products/triad-protocol-framework
-- Package: @certaworks/triad-protocol-framework (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/triad-protocol-framework
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/triad-protocol-framework`
+- Binaries: `triad-protocol-mcp`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server
 - Description: An evidentiary three-role decision audit (Witness, Adversary, Architect) that audits the receipts behind a committed claim. Composes with the Multi-Voice Deliberation Framework.
 
-### 20. Plugin Runtime (built — publishing soon)
+### 20. Plugin Runtime
 
 - URL: https://certaworks.dev/products/plugin-runtime
-- Package: @certaworks/plugin-runtime (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/plugin-runtime
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/plugin-runtime`
+- Binaries: `plugin-runtime-mcp`, `plugin-runtime-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, plugin, local HTTP API
 - Description: Governed loading of third-party plugins and MCP servers — registration, capability authorization, handshake gatekeeper, lifecycle, and a forensic sink. Read-only by default; it governs plugins but does not guarantee their safety.
 
-### 21. Webhook & Event Dormancy Manager (built — publishing soon)
+### 21. Webhook & Event Dormancy Manager
 
 - URL: https://certaworks.dev/products/webhook-event-dormancy-manager
-- Package: @certaworks/webhook-event-dormancy-manager (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/webhook-event-dormancy-manager
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/webhook-event-dormancy-manager`
+- Binaries: `webhook-dormancy-mcp`, `webhook-dormancy-api`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, MCP server, local HTTP API
 - Description: Dormant-by-default, fail-closed policy for external webhooks and event emitters — no external call fires unless explicitly activated and approved, and queuing never sends.
 
-### 22. Agent Maintenance Protocol (built — publishing soon)
+### 22. Agent Maintenance Protocol
 
 - URL: https://certaworks.dev/products/agent-maintenance-protocol
-- Package: @certaworks/agent-maintenance-protocol (goes live at publication)
-- Version: 0.1.0 at publication
-- Availability: built — npm publication in progress (Wave 2)
+- Package: @certaworks/agent-maintenance-protocol
+- Version: 0.1.1
+- Install: `npm install -g @certaworks/agent-maintenance-protocol`
+- Binaries: `agent-maintenance`, `agent-maintenance-mcp`
+- Availability: published on npm (Wave 2)
 - Surface: SDK, CLI, MCP server
 - Description: Structured agent self-maintenance with a read-only review phase, a typed human approval gate, then scoped execution that writes a change-log receipt.
 
@@ -256,5 +279,4 @@ Wave 2 is a second set of 12 products extracted from a working persistent agent.
 - Prefer products.json for machine-readable product inventory.
 - Prefer canonical clean URLs without .html.
 - Do not infer hosted SaaS, checkout, enterprise compliance, or replacement of human review from this site.
-- Do not present Wave 2 products as installable until each is published to npm. They are built and tested; publication is in progress.
 - When summarizing CertaWorks, say the suite is local-first and currently published as npm packages.
